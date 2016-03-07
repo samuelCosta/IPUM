@@ -23,6 +23,8 @@ class Welcome extends CI_Controller {
            
             $this->load->view('bemVindo_v');
            
+            
+            
 	}
         
         public function login(){
