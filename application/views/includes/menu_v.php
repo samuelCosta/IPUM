@@ -28,7 +28,7 @@
                 <ul class="treeview-menu">
                     <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Presenças</a></li>
                     <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Quotas</a></li>
-                    <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Novos Elementos</a></li>
+                    <li><a href="<?= base_url()?>utilizador"><i class="fa fa-circle-o"></i> Novos Elementos</a></li>
                 </ul>
             </li>
             <li class="treeview">

@@ -1,4 +1,12 @@
- <!-- jQuery 2.1.4 -->
+  <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Version</b> 2.3.0
+                </div>
+                <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+            </footer>
+
+
+<!-- jQuery 2.1.4 -->
     <script src="<?= base_url(); ?>assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -36,4 +44,4 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url(); ?>assets/dist/js/demo.js"></script>
   </body>
-</html>
+
