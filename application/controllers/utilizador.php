@@ -39,7 +39,7 @@ class Utilizador extends CI_Controller {
         $this->form_validation->set_message('matches','O campo %s esta diferente do campo %s');
         $this->form_validation->set_rules('password2','Repita Password','required|strtolower|matches[password]');
         $this->form_validation->set_rules('nif', 'NIF', 'required|numeric|exact_length[9]');
-        $this->form_validation->set_rules('bi', 'BI', 'required|numeric|exact_length[9]');
+        $this->form_validation->set_rules('bi', 'BI', 'required|numeric|exact_length[8]');
         $this->form_validation->set_rules('dataNascimento', 'Data Nascimento', 'required');
         $this->form_validation->set_rules('cargo', 'Cargo', 'required');
 

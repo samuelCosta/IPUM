@@ -65,12 +65,12 @@
 
                         <div class="col-md-4 form-group">
                             <label>Data Nascimento</label>
-                            <input type="date" class="form-control" name="dataNascimento" value="<?php echo set_value('dataNascimento'); ?>" placeholder="Password">
+                            <input type="date" class="form-control" name="dataNascimento" value="<?php echo set_value('dataNascimento'); ?>">
                         </div>
                         
                         <div class="col-md-4 form-group">
                             <label>Cargo</label>
-                             <select class="form-control"  name="cargo" value="<?php echo set_value('cargo'); ?>" required="">
+                             <select class="form-control"  name="cargo"  required="">
                         <option value=""> ---- </option>
                         <option value="1"> Administrador </option>
                         <option value="2"> Usuário </option>
