@@ -24,7 +24,7 @@
                     <!-- form start -->
 
 
-                    <?php echo form_open('utilizador/registarUtilizador'); ?>
+                    <?php echo form_open_multipart('utilizador/registarUtilizador'); ?>
                     <!--                <form method="post" action="utilizador/registarUtilizador" role="form">-->
                     <div class="box-body">    
 
@@ -47,12 +47,12 @@
                             <label>Password</label>
                             <input type="password" class="form-control" name="password" value="<?php echo set_value('password'); ?>" placeholder="Password">
                         </div>
-                        
-                         <div class="col-md-6 form-group">
+
+                        <div class="col-md-6 form-group">
                             <label>Repita a Password</label>
                             <input type="password" class="form-control" name="password2" value="<?php echo set_value('password2'); ?>" placeholder="Repita Password">
                         </div>
-                        
+
                         <div class="col-md-4 form-group">
                             <label>NIF</label>
                             <input type="text" class="form-control" name="nif" value="<?php echo set_value('nif'); ?>" placeholder="Introduza o NIF">
@@ -67,26 +67,27 @@
                             <label>Data Nascimento</label>
                             <input type="date" class="form-control" name="dataNascimento" value="<?php echo set_value('dataNascimento'); ?>">
                         </div>
-                        
+
                         <div class="col-md-4 form-group">
                             <label>Cargo</label>
-                             <select class="form-control"  name="cargo"  required="">
-                        <option value=""> ---- </option>
-                        <option value="1"> Administrador </option>
-                        <option value="2"> Usuário </option>
-                             </select>
+                            <select class="form-control" name="cargo">
+                                <option value="" <?php echo set_select('cargo', '', TRUE); ?> >---</option>
+                                <option value="Administrador" <?php echo set_select('cargo', 'Administrador'); ?> >Administrador</option>
+                                <option value="Utilizador" <?php echo set_select('cargo', 'Utilizador'); ?> >Utilizador</option>
+                            </select>     
                         </div>
 
                         <div class="col-md-12 form-group">
                             <label for="exampleInputFile">Foto</label>
-                            <input type="file">
+                            <input type="file"  name="foto" size="20">
                             <p class="help-block">Se possivel insira uma foto.</p>
                         </div>
 
                     </div><!-- /.box-body -->
                     <p> <?php echo validation_errors(); ?></p>
+
                     <div class="box-footer">  
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" value="upload" class="btn btn-primary">Submit</button>
                     </div>
                     </form>
 
