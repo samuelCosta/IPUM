@@ -38,7 +38,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> Instrumentos</a></li>
+                    <li><a href="<?= base_url()?>"><i class="fa fa-circle-o"></i> Instrumentos</a></li>
                     <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Traje</a></li>
                     <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Musicas</a></li>
                     <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
