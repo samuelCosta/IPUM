@@ -26,8 +26,10 @@
 
                     <?php echo form_open_multipart('utilizador/registarUtilizador'); ?>
                     <!--                <form method="post" action="utilizador/registarUtilizador" role="form">-->
-                    <div class="box-body">    
-
+                    <div class="box-body">  
+<!--                        passar atributo ativo -->
+                        <input type="hidden"  value="1" name="ativo" >
+                        
                         <div class="col-md-6 form-group">    
                             <label >Nome</label>
                             <input type="text" class="form-control" value="<?php echo set_value('nome'); ?>" name="nome" placeholder="Introduza o nome...">                     

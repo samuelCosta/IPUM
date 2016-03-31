@@ -7,15 +7,24 @@ class Utilizador extends CI_Controller {
     public function index() {
 
         $this->load->view('includes/header_v');
-        $this->load->view('criarUtilizador_v', array('error' => ' '));
+        $this->load->view('utilizador_v');
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
+    }
+    
+    public function criarUtilizador(){
+        
+        $this->load->view('includes/header_v');
+        $this->load->view('criarUtilizador_v');
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+        
     }
 
     public function registarUtilizador() {
         //strtolower-colocar tudo em minusculo
         //ucwords-colocar iniciais em maiusculo
-
+       
         $this->form_validation->set_rules('nome', 'Nome', 'required|ucwords');
         $this->form_validation->set_rules('alcunha', 'Alcunha', 'required|alpha');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|strtolower|valid_email|is_unique[utilizador.email]');
@@ -36,7 +45,7 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             //insere os dados na base de dados
-            $dados = elements(array('nome', 'alcunha', 'email', 'password', 'nif', 'bi', 'dataNascimento', 'cargo', 'foto'), $this->input->post());
+            $dados = elements(array('ativo','nome', 'alcunha', 'email', 'password', 'nif', 'bi', 'dataNascimento', 'cargo', 'foto'), $this->input->post());
             $dados['password'] = md5($dados['password']);
             $this->load->model('utilizador_m');
             $this->utilizador_m->do_insert($dados);
