@@ -39,7 +39,10 @@ class Welcome extends CI_Controller {
             $dados['msg'] = "Login sem Sucesso!";
             $this->load->view('login_v');
         }
+        
     }
+    
+    
 
     public function criarUtilizador() {
 
