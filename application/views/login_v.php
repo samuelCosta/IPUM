@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/iCheck/square/blue.css">
 
     </head>
+    
     <body class="hold-transition login-page">
 
         <div class="login-box">
