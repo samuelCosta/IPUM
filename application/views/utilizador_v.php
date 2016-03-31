@@ -7,8 +7,7 @@
             IPUM
             <small>Universidade do minho</small>
 
-            <?= $mensagem; 
-?>
+  
           </h1>
   
            

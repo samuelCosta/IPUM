@@ -14,15 +14,13 @@ class Utilizador extends CI_Controller {
     
     public function criarUtilizador(){
         
-         $this->load->view('includes/header_v');
+        $this->load->view('includes/header_v');
         $this->load->view('criarUtilizador_v');
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
         
     }
 
-    
-    
     public function registarUtilizador() {
         //strtolower-colocar tudo em minusculo
         //ucwords-colocar iniciais em maiusculo
