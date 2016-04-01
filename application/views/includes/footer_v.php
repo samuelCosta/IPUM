@@ -1,10 +1,10 @@
-  <footer class="main-footer">
-                <div class="pull-right hidden-xs">
-                    <b>Version</b> 1.0.0
-                </div>
-                <strong>INOV Webdesign &copy; 2015-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
-            </footer>
 
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0.0
+    </div>
+    <strong>INOV Webdesign &copy; 2015-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+</footer>
 
 <!-- jQuery 2.1.4 -->
     <script src="<?= base_url(); ?>assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -44,4 +44,5 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url(); ?>assets/dist/js/demo.js"></script>
   </body>
+</html>
 
