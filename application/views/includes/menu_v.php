@@ -28,7 +28,7 @@
                 <ul class="treeview-menu">
                     <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Presenças</a></li>
                     <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Quotas</a></li>
-                    <li><a href="<?= base_url()?>utilizador"><i class="fa fa-circle-o"></i> Novos Elementos</a></li>
+                    <li><a href="<?= base_url() ?>utilizador"><i class="fa fa-circle-o"></i> Novos Elementos</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -38,9 +38,34 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= base_url()?>instrumentos"><i class="fa fa-circle-o"></i> Instrumentos</a></li>
-                    <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Traje</a></li>
-                    <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Musicas</a></li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-circle-o"></i> Instrumentos <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu menu-open" style="display: none;">
+                            <li><a href="<?= base_url() ?>Instrumentos/registarInstrumento"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>Instrumentos/consultarInstrumento"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-circle-o"></i> Traje<i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu menu-open" style="display: none;">
+                            <li><a href="<?= base_url() ?>Traje/registarTraje"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>Traje/consultarTraje"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-circle-o"></i> Música<i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu menu-open" style="display: none;">
+                            <li><a href="<?= base_url() ?>Musica/registarMusica"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>Musica/consultarMusica"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-circle-o"></i> Merchandising<i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu menu-open" style="display: none;">
+                            <li><a href="<?= base_url() ?>Merchandising/registarMerchandising"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>Merchandising/consultarMerchandising"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                        </ul>
+                    </li>
                     <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
                     <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
                     <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
@@ -79,5 +104,5 @@
         </ul>
     </section>
     <!-- /.sidebar -->
-        
+
 </aside>
