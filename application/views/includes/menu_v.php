@@ -31,6 +31,9 @@
                     <li><a href="<?= base_url() ?>utilizador"><i class="fa fa-circle-o"></i> Novos Elementos</a></li>
                 </ul>
             </li>
+
+            <!--    ----------------------------GESTAO MATERIAIS--------------------------        -->
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-laptop"></i>
@@ -66,30 +69,61 @@
                             <li><a href="<?= base_url() ?>Merchandising/consultarMerchandising"><i class="fa fa-circle-o"></i> Consultar</a></li>
                         </ul>
                     </li>
-                    <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                    <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                    <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+
                 </ul>
             </li>
+            <!--              ---------------GESTAO EVENTOS--------------------------------------  -->
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-edit"></i> <span>Gestão Eventos</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> Atividades</a></li>
-                    <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> PGCUM</a></li>
-                    <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Ensaios</a></li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-circle-o"></i> Atividades<i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu menu-open" style="display: none;">
+                            <li><a href="<?= base_url() ?>Atividades"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>Merchandising/consultarMerchandising"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-circle-o"></i> Ensaios<i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu menu-open" style="display: none;">
+                            <li><a href="<?= base_url() ?>Ensaios"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>Merchandising/consultarMerchandising"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-circle-o"></i> Atuações<i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu menu-open" style="display: none;">
+                            <li><a href="<?= base_url() ?>Atuacoes"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>Merchandising/consultarMerchandising"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-circle-o"></i> PGCUM<i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu menu-open" style="display: none;">
+                            <li><a href="<?= base_url() ?>Merchandising/registarMerchandising"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>Merchandising/consultarMerchandising"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                        </ul>
+                    </li>    
                 </ul>
             </li>
+
+            <!--            ------------------------------------------------------------------->
+
+
+
+
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-table"></i> <span>Tables</span>
+                    <i class="fa fa-table"></i> <span>Orgãos Sociais</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                    <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+                    <li><a href="<?= base_url() ?>OrgaosSociais"><i class="fa fa-circle-o"></i> Registar</a></li>
+                    <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Consultar</a></li>
                 </ul>
             </li>
 

@@ -7,7 +7,7 @@ class Utilizador extends CI_Controller {
     public function index() {
 
         $this->load->view('includes/header_v');
-        $this->load->view('utilizador_v');
+        $this->load->view('criarUtilizador_v');
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
