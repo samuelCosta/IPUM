@@ -16,5 +16,29 @@ class Utilizador_m extends CI_Model {
         $usuario = $this->db->get('utilizador')->row_array();
         return $usuario;
     }
+    
+    
+      public function get_utilizadores(){
+               $this->db->select('*');
+           
+           return $this->db->get('utilizador')->result();
+            
+            
+        }
+        
+         public function compararId($id){
+            $this->db->where('idUtilizador',$id);
+     
+           return $this->db->get('utilizador')->result();
+            
+            
+        }
+        
+           public function guardarAtualizacao($id,$data) {
+    
 
+        $this->db->where('idUtilizador', $id);
+       return $this->db->update('utilizador', $data);
+       
+    }
 }

@@ -18,7 +18,6 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MENU</li>
-
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-pie-chart"></i>
@@ -28,7 +27,15 @@
                 <ul class="treeview-menu">
                     <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Presenças</a></li>
                     <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Quotas</a></li>
-                    <li><a href="<?= base_url() ?>utilizador"><i class="fa fa-circle-o"></i> Novos Elementos</a></li>
+                 
+
+                    <li class="active">
+                        <a href="#"><i class="fa fa-circle-o"></i> Elementos <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu menu-open" style="display: none;">
+                            <li><a href="<?= base_url() ?>utilizador"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>utilizador/consultarUtilizadores"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
 

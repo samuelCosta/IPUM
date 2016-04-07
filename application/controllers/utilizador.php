@@ -12,10 +12,11 @@ class Utilizador extends CI_Controller {
         $this->load->view('includes/footer_v');
     }
     
-    public function criarUtilizador(){
-        
+    public function consultarUtilizadores(){
+        $this->load->model('utilizador_m');
+        $dados['utilizadores']=$this->utilizador_m->get_utilizadores();
         $this->load->view('includes/header_v');
-        $this->load->view('criarUtilizador_v');
+        $this->load->view('ConsultarUtilizadores_v',$dados);
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
         
@@ -89,5 +90,66 @@ class Utilizador extends CI_Controller {
             return false;
         }
     }
+    
+     public function atualizar($id=null){              
+                  
+            $this->load->model('utilizador_m');
+            
+         
+               
+            
+            $data['utilizador'] = $this->utilizador_m->compararId($id);
+             
+            $this->load->view('includes/header_v');
+            
+         
+            $this->load->view('editarUtilizador_v',$data);
+              $this->load->view('includes/menu_v');
+              $this->load->view('includes/footer_v');
+             
+             
+        }
+        
+     public function guardarAtualizacao(){
+          //strtolower-colocar tudo em minusculo
+        //ucwords-colocar iniciais em maiusculo
+       
+        $this->form_validation->set_rules('nome', 'Nome', 'required|ucwords');
+        $this->form_validation->set_rules('alcunha', 'Alcunha', 'required|alpha');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|strtolower|valid_email');
+        $this->form_validation->set_rules('nif', 'NIF', 'required|numeric|exact_length[9]');
+        $this->form_validation->set_rules('bi', 'BI', 'required|numeric|exact_length[8]');
+        $this->form_validation->set_rules('dataNascimento', 'Data Nascimento', 'required');
+        $this->form_validation->set_rules('cargo', 'Cargo', 'required');
+        $id = $this->input->post('idUtilizador');
+
+
+        if ($this->form_validation->run() == FALSE) {
+            
+            $this->load->model('utilizador_m');
+            $data['utilizador'] = $this->utilizador_m->compararId($id);
+            
+            $this->load->view('includes/header_v');
+            $this->load->view('editarUtilizador_v', $data);
+            $this->load->view('includes/menu_v');
+            $this->load->view('includes/footer_v');
+        } else {
+            //insere os dados na base de dados
+            $dados = elements(array('nome', 'alcunha', 'email', 'nif', 'bi', 'dataNascimento', 'cargo'), $this->input->post());
+            
+            
+            $this->load->model('utilizador_m');
+            $this->utilizador_m->guardarAtualizacao($id,$dados);
+
+            $data['msg'] = "Alterado com Sucesso.";
+            $this->load->view('includes/header_v');
+            $this->load->view('includes/msgSucesso_v', $data);
+            $this->load->view('utilizador_v');
+            $this->load->view('includes/menu_v');
+            $this->load->view('includes/footer_v');
+        }
+        }
+
+    
 
 }

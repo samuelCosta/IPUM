@@ -48,15 +48,15 @@
                         <div class="col-md-6 form-group">
                             <label>Utilizadores:</label>
                             <select class="form-control" name="utilizador_idUtilizador" required="">
-                                <option value=""<?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                <option value="" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                 <?php foreach ($utilizador as $utilizador) { ?>
-                                    <option value=" <?= $utilizador->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizador->nome); ?>><?= $utilizador->nome; ?></option>
+                                    <option value=" <?= $utilizador->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizador->idUtilizador ); ?>><?php echo $utilizador->nome; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
-
+                        
+                    
                        
-
                     </div><!-- /.box-body -->
                     <p> <?php echo validation_errors(); ?></p>
 
