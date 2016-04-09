@@ -9,23 +9,28 @@
 
     </section>
 
-    <!--formulario listar utilizador-->
+    <!-- listar utilizador-->
 
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Lista de elementos</h3>
-                        <div class="box-tools">
-                            <div class="input-group" style="width: 250px;">
-                                <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+  <!--   ---------------  botão para pesquisar-->
+                    <form action="<?= base_url() ?>utilizador/pesquisar" method="post" >
+                        <div class="box-header">
+                            <h3 class="box-title">Lista de elementos</h3>
+
+                            <div class="box-tools">
+                                <div class="input-group" style="width: 400px;">
+                                    <input type="text" name="pesquisar" class="form-control input-sm pull-right" placeholder="Pesquisar por...">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div><!-- /.box-header -->
+                    </form>
+<!--                   ------------------------------ ----------------------->
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
@@ -54,12 +59,12 @@
                                     <?php } else { ?>
                                         <td><span class="label label-danger">Inativo</span></td>
                                     <?php } ?>   
-                                        
-                                        <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('utilizador/atualizar/'.$uti->idUtilizador)?>">Atualizar</a> 
+
+                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('utilizador/atualizar/' . $uti->idUtilizador) ?>">Atualizar</a> 
                                 </tr>
                             <?php } ?>
-                                
-                                 
+
+
 
                         </table>
                     </div><!-- /.box-body -->

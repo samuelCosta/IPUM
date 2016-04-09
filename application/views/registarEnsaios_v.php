@@ -36,7 +36,7 @@
 <!--                        alterar nome para localizaçao na base de dados-->
                         <div class="col-md-6 form-group">
                             <label>Localização</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('nome'); ?>" name="nome" placeholder="Introduza a localização...">
+                            <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Introduza a localização...">
                         </div>            
 
                     </div><!-- /.box-body -->

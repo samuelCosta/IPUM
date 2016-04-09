@@ -71,11 +71,11 @@
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>Cargo</label>
-                            <select class="form-control" name="cargo">
-                                <option value="" <?php echo set_select('cargo', '', TRUE); ?> >---</option>
-                                <option value="Administrador" <?php echo set_select('cargo', 'Administrador'); ?> >Administrador</option>
-                                <option value="Utilizador" <?php echo set_select('cargo', 'Utilizador'); ?> >Utilizador</option>
+                            <label>Privilégios</label>
+                            <select class="form-control" name="privilegio">
+                                <option value="" <?php echo set_select('privilegio', '', TRUE); ?> >---</option>
+                                <option value="Administrador" <?php echo set_select('privilegio', 'Administrador'); ?> >Administrador</option>
+                                <option value="Utilizador" <?php echo set_select('privilegio', 'Utilizador'); ?> >Utilizador</option>
                             </select>     
                         </div>
 

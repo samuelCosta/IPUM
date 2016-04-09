@@ -18,7 +18,7 @@ class Atuacoes extends CI_Controller {
         //ucwords-colocar iniciais em maiusculo
        
         $this->form_validation->set_rules('dataEvento', 'Data', 'required');
-        $this->form_validation->set_rules('nome', 'Localização', 'required|ucwords');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords');
         $this->form_validation->set_rules('orcamento', 'Orçamento', 'required');
         $this->form_validation->set_rules('responsavel', 'Responsável', 'required|ucwords');
         $this->form_validation->set_rules('contacto', 'Contacto', 'required|numeric|exact_length[9]');
@@ -34,7 +34,7 @@ class Atuacoes extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             //insere os dados na base de dados
-            $dados = elements(array('designacao', 'dataEvento', 'nome','orcamento','responsavel','contacto','despesa'), $this->input->post());
+            $dados = elements(array('designacao', 'dataEvento', 'localizacao','orcamento','responsavel','contacto','despesa'), $this->input->post());
            
             $this->load->model('Atuacoes_m');
             $this->Atuacoes_m->do_insert($dados);
