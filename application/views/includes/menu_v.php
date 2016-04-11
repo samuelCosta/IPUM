@@ -52,7 +52,7 @@
                         <a href="#"><i class="fa fa-circle-o"></i> Instrumentos <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
                             <li><a href="<?= base_url() ?>Instrumentos/registarInstrumento"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>Instrumentos/consultarInstrumento"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>Instrumentos/consultarInstrumentos"><i class="fa fa-circle-o"></i> Consultar</a></li>
                         </ul>
                     </li>
                     <li class="active">
