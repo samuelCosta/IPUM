@@ -9,5 +9,25 @@ class Instrumentos_m extends CI_Model {
             $this->db->insert('instrumentos', $dados);
         endif;
     }
+    
+     public function get_Instrumentos() {
+
+        $this->db->select('*');
+        return $this->db->get('instrumentos')->result();
+    }
+    
+    public function compararId($id) {
+
+        $this->db->where('idInstrumentos', $id);
+        return $this->db->get('instrumentos')->result();
+    }
+    
+    public function guardarAtualizacao($id, $data) {
+
+        $this->db->where('idInstrumentos', $id);
+        return $this->db->update('instrumentos', $data);
+    }
+    
+    
 
 }

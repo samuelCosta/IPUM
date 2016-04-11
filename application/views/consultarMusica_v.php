@@ -16,9 +16,9 @@
             <div class="col-xs-12">
                 <div class="box">
   <!--   ---------------  botão para pesquisar-->
-                    <form action="<?= base_url() ?>Instrumentos/pesquisar" method="post" >
+                    <form action="<?= base_url() ?>Musica/pesquisar" method="post" >
                         <div class="box-header">
-                            <h3 class="box-title">Lista de Instrumentos</h3>
+                            <h3 class="box-title">Lista de Musicas</h3>
 
                             <div class="box-tools">
                                 <div class="input-group" style="width: 400px;">
@@ -34,24 +34,18 @@
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
-                                <th>Instrumento</th>
-                                <th>Tipo</th>
-                                <th>Estado</th>
-                                <th>Tamanho</th>
-                                <th>Localização</th>
+                                <th>Nome da Musica</th>
+                                <th>Video</th>
 
                             </tr>
-                            <?php foreach ($instrumentos as $instrum) { ?>
+                            <?php foreach ($musica as $musica) { ?>
                                 <tr>
-                                    <td><?= $instrum->instrumento; ?></td>
-                                    <td><?= $instrum->tipo; ?></td>
-                                    <td><?= $instrum->estado; ?></td>
-                                    <td><?= $instrum->tamanho; ?></td>
-                                    <td><?= $instrum->localizacao; ?></td>
+                                    <td><?= $musica->nomeMusica; ?></td>
+                                    <td><?= $musica->video; ?></td>
 
                                        
 
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Instrumentos/atualizar/' . $instrum->idInstrumentos) ?>">Atualizar</a> 
+                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Musica/atualizar/' . $musica->idMusica) ?>">Atualizar</a> 
                                 </tr>
                             <?php } ?>
 

@@ -10,4 +10,22 @@ class Traje_m extends CI_Model {
         endif;
     }
 
+    public function get_Traje() {
+
+        $this->db->select('*');
+        return $this->db->get('stocktraje')->result();
+    }
+
+    public function compararId($id) {
+
+        $this->db->where('idStock', $id);
+        return $this->db->get('stocktraje')->result();
+    }
+
+    public function guardarAtualizacao($id, $data) {
+
+        $this->db->where('idStock', $id);
+        return $this->db->update('stocktraje', $data);
+    }
+
 }

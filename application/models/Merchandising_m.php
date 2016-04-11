@@ -9,5 +9,23 @@ class Merchandising_m extends CI_Model {
             $this->db->insert('stockmerchandising', $dados);
         endif;
     }
+    
+    public function get_Merchandising() {
+
+        $this->db->select('*');
+        return $this->db->get('stockmerchandising')->result();
+    }
+    
+    public function compararId($id) {
+
+        $this->db->where('idStockMerchandising', $id);
+        return $this->db->get('stockmerchandising')->result();
+    }
+    
+    public function guardarAtualizacao($id, $data) {
+
+        $this->db->where('idStockMerchandising', $id);
+        return $this->db->update('stockmerchandising', $data);
+    }
 
 }
