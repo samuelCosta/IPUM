@@ -26,13 +26,21 @@
                     <?php echo form_open_multipart('OrgaosSociais/registarOrgaosSociais'); ?>
                     <!--                <form method="post" action="utilizador/registarUtilizador" role="form">-->
                     <div class="box-body">  
-
-
-                        <div class="col-md-6 form-group">    
-                            <label >Categoria</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('categoria'); ?>" name="categoria" placeholder="Introduza o nome da categoria...">                     
+                        
+                           <div class="col-md-6 form-group">
+                            <label>Categoria</label>
+                            <select class="form-control" name="categoria">
+                                <option value="" <?php echo set_select('categoria', '', TRUE); ?> >---</option>
+                                <option value="Direção" <?php echo set_select('categoria', 'Direção'); ?> >Direção</option>
+                                <option value="Mesa da Assembleia" <?php echo set_select('categoria', 'Mesa da Assembleia'); ?> >Mesa da Assembleia</option>
+                                <option value="Conselho Fiscal e Jurisdicional" <?php echo set_select('categoria', 'Conselho Fiscal e Jurisdicional'); ?> >Conselho Fiscal e Jurisdicional</option>
+                                 
+                            </select>     
                         </div>
+                        
 
+
+                       
                         <div class="col-md-6 form-group">
                             <label>Cargo</label>
                             <input type="text" class="form-control" value="<?php echo set_value('cargo'); ?>" name="cargo" placeholder="Introduza o cargo...">

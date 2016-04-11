@@ -72,5 +72,18 @@ class Utilizador_m extends CI_Model {
             return FALSE;
         }
     }
+    
+    public function alterarDataSocio(){
+       $id = $this->input->post('idUtilizador');
+       $socio['socio'] = $this->input->post('socio');
+       $socio['dataSocio'] = $this->input->post('dataSocio');
+        
+       
+       $this->db->where('idUtilizador', $id);
+       return $this->db->update('utilizador', $socio);
+        
+       
+    }
+    
 
 }

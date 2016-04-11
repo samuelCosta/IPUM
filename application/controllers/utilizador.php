@@ -35,7 +35,8 @@ class Utilizador extends CI_Controller {
         $this->form_validation->set_rules('password2', 'Repita Password', 'required|strtolower|matches[password]');
         $this->form_validation->set_rules('nif', 'NIF', 'required|numeric|exact_length[9]');
         $this->form_validation->set_rules('bi', 'BI', 'required|numeric|exact_length[8]');
-        $this->form_validation->set_rules('dataNascimento', 'Data Nascimento', 'required');
+        $this->form_validation->set_rules('dataNascimento', 'Data de Nascimento', 'required');
+         $this->form_validation->set_rules('dataEntrada', 'Data de Entrada', 'required');
         $this->form_validation->set_rules('privilegio', 'Privilégio', 'required');
         $this->form_validation->set_rules('foto', 'Imagem', 'callback_validar_foto');
 
@@ -47,7 +48,7 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             //insere os dados na base de dados
-            $dados = elements(array('ativo', 'nome', 'alcunha', 'email', 'password', 'nif', 'bi', 'dataNascimento', 'privilegio', 'foto'), $this->input->post());
+            $dados = elements(array('ativo','socio', 'nome', 'alcunha', 'email', 'password', 'nif', 'bi', 'dataNascimento', 'privilegio','dataEntrada', 'foto'), $this->input->post());
             $dados['password'] = md5($dados['password']);
             $this->load->model('utilizador_m');
             $this->utilizador_m->do_insert($dados);
@@ -85,9 +86,7 @@ class Utilizador extends CI_Controller {
                 return false;
             }
         } else {
-            // lançar um erro porque nada foi carregado
-            $this->form_validation->set_message('validar_foto', "Insira uma imagem!");
-            return false;
+            return true;
         }
     }
 
@@ -136,7 +135,7 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             //insere os dados na base de dados
-            $dados = elements(array('nome', 'alcunha', 'email', 'nif', 'bi', 'dataNascimento', 'privilegio'), $this->input->post());
+            $dados = elements(array('socio','ativo','nome', 'alcunha', 'email', 'nif', 'bi', 'dataNascimento', 'privilegio'), $this->input->post());
 
 
             $this->load->model('utilizador_m');
@@ -161,6 +160,20 @@ class Utilizador extends CI_Controller {
         } else {
             redirect('utilizador/atualizar/' . $id . '/2');
         }
+    }
+    
+    
+    public function alterarDataSocio(){
+        
+        $this->load->model('utilizador_m');
+        $id = $this->input->post('idUtilizador');
+        if ($this->utilizador_m->alterarDataSocio()) {
+
+            redirect('utilizador/atualizar/' . $id . '/1');
+        } else {
+            redirect('utilizador/atualizar/' . $id . '/2');
+        }
+        
     }
 
     public function pesquisar() {

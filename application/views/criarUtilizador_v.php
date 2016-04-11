@@ -27,23 +27,35 @@
                     <?php echo form_open_multipart('utilizador/registarUtilizador'); ?>
                     <!--                <form method="post" action="utilizador/registarUtilizador" role="form">-->
                     <div class="box-body">  
-<!--                        passar atributo ativo -->
+<!--                        passar atributos ocultos -->
                         <input type="hidden"  value="1" name="ativo" >
+                        <input type="hidden"  value="0" name="socio" >
                         
                         <div class="col-md-6 form-group">    
                             <label >Nome</label>
                             <input type="text" class="form-control" value="<?php echo set_value('nome'); ?>" name="nome" placeholder="Introduza o nome...">                     
                         </div>
-
-                        <div class="col-md-6 form-group">
-                            <label>Alcunha</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('alcunha'); ?>" name="alcunha" placeholder="Introduza o alcunha...">
-                        </div>
-
+                        
                         <div class="col-md-6 form-group">
                             <label>Email address</label>
                             <input type="email" class="form-control" name="email" value="<?php echo set_value('email'); ?>" placeholder="Introduza email">
                         </div>
+
+                        <div class="col-md-4 form-group">
+                            <label>Alcunha</label>
+                            <input type="text" class="form-control" value="<?php echo set_value('alcunha'); ?>" name="alcunha" placeholder="Introduza o alcunha...">
+                        </div>
+                        
+                         <div class="col-md-4 form-group">
+                            <label>NIF</label>
+                            <input type="text" class="form-control" name="nif" value="<?php echo set_value('nif'); ?>" placeholder="Introduza o NIF">
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            <label>BI</label>
+                            <input type="text" class="form-control" name="bi" value="<?php echo set_value('bi'); ?>"placeholder="Introduza o numero de BI">
+                        </div>
+                        
 
                         <div class="col-md-6 form-group">
                             <label>Password</label>
@@ -55,19 +67,16 @@
                             <input type="password" class="form-control" name="password2" value="<?php echo set_value('password2'); ?>" placeholder="Repita Password">
                         </div>
 
-                        <div class="col-md-4 form-group">
-                            <label>NIF</label>
-                            <input type="text" class="form-control" name="nif" value="<?php echo set_value('nif'); ?>" placeholder="Introduza o NIF">
-                        </div>
+                       
 
                         <div class="col-md-4 form-group">
-                            <label>BI</label>
-                            <input type="text" class="form-control" name="bi" value="<?php echo set_value('bi'); ?>"placeholder="Introduza o numero de BI">
-                        </div>
-
-                        <div class="col-md-4 form-group">
-                            <label>Data Nascimento</label>
+                            <label>Data de Nascimento</label>
                             <input type="date" class="form-control" name="dataNascimento" value="<?php echo set_value('dataNascimento'); ?>">
+                        </div>
+                        
+                         <div class="col-md-4 form-group">
+                            <label>Data de Entrada</label>
+                            <input type="date" class="form-control" name="dataEntrada" value="<?php echo set_value('dataEntrada'); ?>">
                         </div>
 
                         <div class="col-md-4 form-group">
@@ -78,6 +87,8 @@
                                 <option value="Utilizador" <?php echo set_select('privilegio', 'Utilizador'); ?> >Utilizador</option>
                             </select>     
                         </div>
+                        
+                       
 
                         <div class="col-md-12 form-group">
                             <label for="exampleInputFile">Foto</label>

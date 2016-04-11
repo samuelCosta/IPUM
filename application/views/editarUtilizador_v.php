@@ -34,22 +34,18 @@
                             <label >Nome</label>
                             <input type="text" class="form-control" value="<?= $utilizador[0]->nome; ?>" name="nome" >                     
                         </div>
-
+                       
                         <div class="col-md-6 form-group">
-                            <label>Alcunha</label>
-                            <input type="text" class="form-control" value="<?= $utilizador[0]->alcunha; ?>" name="alcunha" placeholder="Introduza o alcunha...">
-                        </div>
-
-                        <div class="col-md-6 form-group">
-                            <label>Email address</label>
+                            <label>Email sss address</label>
                             <input type="email" class="form-control" name="email" value="<?= $utilizador[0]->email; ?>" placeholder="Introduza email">
                         </div>
 
-<!--                       Alteracao da password é feita em java script-->
-                        <div class="col-md-6 form-group">
-                            <label>Password</label>
-                            <input class=" btn btn-default btn-block" data-target="#myModal" data-toggle="modal" type="button" value="Atualizar Senha">
-                        </div>      
+
+                        <div class="col-md-4 form-group">
+                            <label>Alcunha</label>
+                            <input type="text" class="form-control" value="<?= $utilizador[0]->alcunha; ?>" name="alcunha" placeholder="Introduza o alcunha...">
+                        </div>
+                       
 
                         <div class="col-md-4 form-group">
                             <label>NIF</label>
@@ -68,13 +64,45 @@
 
                         <div class="col-md-4 form-group">
                             <label>Privilegio</label>
-                            <select class="form-control" name="privilegio">                                
-                                <option value="">---</option>                              
+                            <select class="form-control" name="privilegio">                                                            
                                 <option  value="Administrador" <?= $utilizador[0]->privilegio == 'Administrador' ? ' selected ' : ''; ?>> Administrador</option>
                                 <option  value="Utilizador" <?= $utilizador[0]->privilegio == 'Utilizador' ? ' selected ' : ''; ?>> Utilizador </option>
                             </select>     
                         </div>
+                       
+                          <div class="col-md-4 form-group">
+                            <label>Estado</label>
+                            <select class="form-control" name="ativo">                                                            
+                                <option  value="1" <?= $utilizador[0]->ativo == '1' ? ' selected ' : ''; ?>> Ativo</option>
+                                <option  value="0" <?= $utilizador[0]->ativo == '0' ? ' selected ' : ''; ?>> Não Ativo </option>
+                            </select>     
+                        </div>
+                    
+                       
+                       <!--                       Alteracao da password é feita em java script-->
+                       
+
+                       <?php if ($utilizador[0]->socio == 1) { ?>
+                           <div class="col-md-4 form-group">
+                               <label>Sócio</label>
+                               <select class="form-control" name="socio">                                                            
+                                   <option  value="1" <?= $utilizador[0]->socio == '1' ? ' selected ' : ''; ?>> Sócio</option>
+                                   <option  value="0" <?= $utilizador[0]->socio == '0' ? ' selected ' : ''; ?>> Não Sócio </option>
+                               </select>     
+                           </div>
+                       <?php } else { ?>
+                           <div class="col-md-3 form-group">
+                               <label>Sócio</label>
+                               <input class=" btn btn-default btn-block active" data-target="#myModal2" data-toggle="modal" type="button" value="Atualizar Sócio">
+                           </div>
+                        <input name="socio" type="hidden" value="<?= $utilizador[0]->socio; ?>">
+
+                       <?php } ?>
                         
+                        <div class="col-md-3 form-group">
+                           <label>Password</label>
+                           <input class=" btn btn-default btn-block active" data-target="#myModal" data-toggle="modal" type="button" value="Atualizar Password">
+                       </div>                       
 
                     </div><!-- /.box-body -->
                     <p> <?php echo validation_errors(); ?></p>
@@ -139,11 +167,48 @@
     </div>
 </div>
 
+<!--------------------------------FORMULARIO PARA A DATA DE ENTRADA DO SOCIO------------------------------->
+
+
+<div aria-hidden="true" aria-labelledby="myModalLabel2" class="modal fade" id="myModal2" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <form action="<?= base_url() ?>utilizador/alterarDataSocio" method="post">
+            <input id="idUsuario" name="idUtilizador" type="hidden" value="<?= $utilizador[0]->idUtilizador; ?>">
+             <input id="idUsuario" name="socio" type="hidden" value="1">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+
+
+                    <h4 class="modal-title" id="myModalLabel2">
+                        Sócio</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        
+                        <div class="col-md-12 form-group">
+                            <label>Data sócio:</label>
+                            <input class="form-control" id="senha_nova" name="dataSocio" onkeyup="checarSenha()" type="date">
+                        </div>
+                     
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" type="button">Fechar</button>
+                    <button class="btn btn-primary"  id="enviarsenha" type="submit">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 
 
 <script>
-//    ACHO QUE NAO PRECISO DISTO
+////    ACHO QUE NAO PRECISO DISTO
 //    $(document).ready(function () {
 ////   O evento KeyUp Ocorre quando uma tecla do teclado é solta.
 //        $("#senha_nova").keyup(checkPasswordMatch);
@@ -165,5 +230,18 @@
             $("#divcheck").html("<span style='color: green'>Senha iguais!</span>");           
             document.getElementById("enviarsenha").disabled = false;
         }
+    }
+    
+    function alterarSocio(){
+        var socio = $("#dataSocio").val();
+        $("#divcheck").html("<span style='color: green'>Senha iguais!</span>");  
+        if(socio != ''){
+             document.getElementById("enviarsocio").disabled = true;
+            
+        }else
+            
+        document.getElementById("enviarsocio").disabled = false;
+        
+    
     }
 </script>

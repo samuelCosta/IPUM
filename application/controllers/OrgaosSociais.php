@@ -14,6 +14,17 @@ class OrgaosSociais extends CI_Controller {
         
     }
     
+    //    devolve a lista de todos os orgaosSociais
+    public function consultarOrgaosSociais() {
+        $this->load->model('OrgaosSociais_m');
+        $dados['orgaosSociais'] = $this->OrgaosSociais_m->get_orgaosSociais();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('consultarOrgaosSociais_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+    
     public function registarOrgaosSociais() {
         //strtolower-colocar tudo em minusculo
         //ucwords-colocar iniciais em maiusculo
@@ -26,9 +37,9 @@ class OrgaosSociais extends CI_Controller {
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->model('OrgaosSociais_m');
-        $dados['utilizador']=  $this->OrgaosSociais_m->get_utilizadores();
-             $this->load->view('includes/header_v');
+            $this->load->model('utilizador_m');
+            $dados['utilizadores'] = $this->utilizador_m->get_utilizadores();
+            $this->load->view('includes/header_v');
             $this->load->view('registarOrgaosSociais_v',$dados);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
@@ -46,6 +57,28 @@ class OrgaosSociais extends CI_Controller {
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         }
+    }
+    
+      public function pesquisar() {
+
+        $this->load->model('OrgaosSociais_m');
+        $dados['orgaosSociais'] = $this->OrgaosSociais_m->pesquisar_orgaosSociais();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('consultarOrgaosSociais_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+
+    //    vai permitar devolver os dados de um determinado orgao social
+    public function atualizar($id = null) {
+
+        $this->load->model('OrgaosSociais_m');
+        $data['orgaosSociais'] = $this->OrgaosSociais_m->compararId($id);
+        $this->load->view('includes/header_v');
+        $this->load->view('editarOrgaosSociais_v', $data);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
     }
     
     

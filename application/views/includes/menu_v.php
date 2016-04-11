@@ -130,7 +130,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="<?= base_url() ?>OrgaosSociais"><i class="fa fa-circle-o"></i> Registar</a></li>
-                    <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                    <li><a href="<?= base_url() ?>OrgaosSociais/consultarOrgaosSociais"><i class="fa fa-circle-o"></i> Consultar</a></li>
                 </ul>
             </li>
 
