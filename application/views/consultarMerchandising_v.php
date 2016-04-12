@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-  <!--   ---------------  botão para pesquisar-->
+                    <!--   ---------------  botão para pesquisar-->
                     <form action="<?= base_url() ?>Merchadising/pesquisar" method="post" >
                         <div class="box-header">
                             <h3 class="box-title">Lista de Merchandising</h3>
@@ -30,13 +30,14 @@
                             </div>
                         </div>
                     </form>
-<!--                   ------------------------------ ----------------------->
+                    <!--                   ------------------------------ ----------------------->
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
-                                <th>Tipo</th>
-                                <th>Quantidade</th>
+                                <th style="width:400px">Tipo</th>
+                                <th style="width:400px">Quantidade</th>
                                 <th>Localização</th>
+                                <th style="width:120px"></th>
 
                             </tr>
                             <?php foreach ($merchandising as $merchandising) { ?>
@@ -45,9 +46,10 @@
                                     <td><?= $merchandising->quantidade; ?></td>
                                     <td><?= $merchandising->localizacao; ?></td>
 
-                                       
 
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Merchandising/atualizar/' . $merchandising->idStockMerchandising) ?>">Atualizar</a> 
+
+                                    <td><a class="btn-lg" href="<?= base_url('Merchandising/atualizar/' . $merchandising->idStockMerchandising) ?>"><i class="fa fa-edit"></i></a>
+                                        <a class="btn-lg" href="<?= base_url('Merchandising/atualizar/' . $merchandising->idStockMerchandising) ?>"><i class="fa fa-trash-o"></i></a></td> 
                                 </tr>
                             <?php } ?>
 
