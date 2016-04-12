@@ -19,7 +19,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Novo Elemento</h3>
+                        <h3 class="box-title">Elemento</h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
 
@@ -36,7 +36,7 @@
                         </div>
                        
                         <div class="col-md-6 form-group">
-                            <label>Email sss address</label>
+                            <label>Email address</label>
                             <input type="email" class="form-control" name="email" value="<?= $utilizador[0]->email; ?>" placeholder="Introduza email">
                         </div>
 
@@ -93,7 +93,7 @@
                        <?php } else { ?>
                            <div class="col-md-3 form-group">
                                <label>Sócio</label>
-                               <input class=" btn btn-default btn-block active" data-target="#myModal2" data-toggle="modal" type="button" value="Atualizar Sócio">
+                               <input class=" btn btn-default btn-block active" data-target="#myModal2" data-toggle="modal" type="button" value="Tornar Sócio">
                            </div>
                         <input name="socio" type="hidden" value="<?= $utilizador[0]->socio; ?>">
 
@@ -190,14 +190,17 @@
                         
                         <div class="col-md-12 form-group">
                             <label>Data sócio:</label>
-                            <input class="form-control" id="senha_nova" name="dataSocio" onkeyup="checarSenha()" type="date">
+                            <input class="form-control" id="dataSocio" name="dataSocio" onchange="alterarSocio()" type="date">
                         </div>
-                     
+                      <div class="col-md-12 form-group">
+                            <div id="divcheck2">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-default" data-dismiss="modal" type="button">Fechar</button>
-                    <button class="btn btn-primary"  id="enviarsenha" type="submit">Salvar</button>
+                    <button class="btn btn-primary" disabled="" id="enviarsocio" type="submit">Salvar</button>
                 </div>
             </div>
         </form>
@@ -218,7 +221,7 @@
     function checarSenha() {
         var password = $("#senha_nova").val();
         var confirmPassword = $("#senha_confirmar").val();
-
+        
 
         if (password == '' || '' == confirmPassword) {
             $("#divcheck").html("<span style='color: red'>Campo de senha vazio!</span>");
@@ -234,13 +237,11 @@
     
     function alterarSocio(){
         var socio = $("#dataSocio").val();
-        $("#divcheck").html("<span style='color: green'>Senha iguais!</span>");  
+      
         if(socio != ''){
-             document.getElementById("enviarsocio").disabled = true;
-            
-        }else
-            
-        document.getElementById("enviarsocio").disabled = false;
+             document.getElementById("enviarsocio").disabled = false;            
+        }else            
+        document.getElementById("enviarsocio").disabled = true;
         
     
     }

@@ -11,6 +11,7 @@ class Utilizador extends CI_Controller {
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
+    
 
 //    devolve a lista de todos os utilizadores
     public function consultarUtilizadores() {

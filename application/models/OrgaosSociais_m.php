@@ -9,23 +9,21 @@ class OrgaosSociais_m extends CI_Model {
             $this->db->insert('orgaosSociais', $dados);
         endif;
     }
-    
 
-      //vai buscar todos os nomes dos utilizadores a partir do ID
-            public function get_orgaosSociais(){
-               $this->db->select('*');
-            $this->db->join('utilizador','utilizador_idUtilizador=idUtilizador','inner');
-           return  $this->db->get('orgaosSociais')->result();
-            
-            
-        }
-        
+    //vai buscar todos os nomes dos utilizadores a partir do ID que nao tem data de fim
+    public function get_orgaosSociais() {
+        $this->db->select('*');
+        $this->db->where('dataFim', Null);
+        $this->db->join('utilizador', 'utilizador_idUtilizador=idUtilizador', 'inner');       
+        return $this->db->get('orgaosSociais')->result();
+    }
+
     public function pesquisar_orgaosSociais() {
 //like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
         $pesquisa = $this->input->post('pesquisar');
 
         $this->db->select('*');
-         $this->db->join('utilizador','utilizador_idUtilizador=idUtilizador','inner');
+        $this->db->join('utilizador', 'utilizador_idUtilizador=idUtilizador', 'inner');
         $this->db->like('cargo', $pesquisa);
         return $this->db->get('orgaosSociais')->result();
     }
@@ -34,7 +32,35 @@ class OrgaosSociais_m extends CI_Model {
     public function compararId($id) {
 
         $this->db->where('idorgaosSociais', $id);
-         $this->db->join('utilizador','utilizador_idUtilizador=idUtilizador','inner');
+        $this->db->join('utilizador', 'utilizador_idUtilizador=idUtilizador', 'inner');
         return $this->db->get('orgaosSociais')->result();
     }
+
+    // depois de editado os orgaos Sociais faz update desses dados novos   
+    public function guardarAtualizacao($id, $dados) {
+
+        $this->db->where('idorgaosSociais', $id);
+        return $this->db->update('orgaossociais', $dados);
+    }
+
+    //colocar data de Fim no mandato
+    public function encerrarMandato($id = null) {
+        $this->load->helper('date');
+        $data['dataFim']=date('y-m-d');
+        
+        $this->db->where('idorgaosSociais', $id);
+        return $this->db->update('orgaossociais', $data);
+     
+    }
+    
+       //vai buscar todos os nomes dos utilizadores a partir do ID que tem data de Fim
+    public function get_historicoOrgaosSociais() {
+        $this->db->select('*');
+        $where="dataFim is NOT NULL";
+        $this->db->where($where);
+        $this->db->join('utilizador', 'utilizador_idUtilizador=idUtilizador', 'inner');       
+        return $this->db->get('orgaosSociais')->result();
+    }
+
+
 }

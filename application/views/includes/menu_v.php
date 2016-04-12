@@ -131,6 +131,7 @@
                 <ul class="treeview-menu">
                     <li><a href="<?= base_url() ?>OrgaosSociais"><i class="fa fa-circle-o"></i> Registar</a></li>
                     <li><a href="<?= base_url() ?>OrgaosSociais/consultarOrgaosSociais"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                    <li><a href="<?= base_url() ?>OrgaosSociais/historicoOrgaosSociais"><i class="fa fa-circle-o"></i> Histórico</a></li>
                 </ul>
             </li>
 
