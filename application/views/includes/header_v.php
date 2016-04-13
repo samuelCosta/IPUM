@@ -24,7 +24,9 @@
         <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/morris/morris.css">
         <!-- jvectormap -->
         <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-
+        <style>
+      
+        </style>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
 
@@ -32,7 +34,7 @@
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="<?= base_url(); ?>Welcome/utilizador" class="logo">
+                <a href="<?= base_url(); ?>utilizador" class="logo">
                     <span class="logo-lg"><b>IPU</b>Minho</span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
@@ -51,7 +53,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" data-toggle="control-sidebar"> <span class="hidden-xs">LOGOUT</span></a>
+                                <a href="<?= base_url(); ?>utilizador/logout" > <span class="hidden-xs">LOGOUT</span></a>                          
                             </li>
                         </ul>
                     </div>    

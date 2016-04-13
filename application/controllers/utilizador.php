@@ -3,8 +3,27 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Utilizador extends CI_Controller {
+    
+//     function __construct() {
+//        parent::__construct();
+//     
+//          if($this->session ->userdata('conectado')==false){
+//            redirect('Welcome');
+//            
+//        }       
+//        
+//    }
+//    
 
     public function index() {
+
+        $this->load->view('includes/header_v');
+         $this->load->view('utilizador_v');
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+    
+    public function criarUtilizador() {
 
         $this->load->view('includes/header_v');
         $this->load->view('criarUtilizador_v');
@@ -37,7 +56,7 @@ class Utilizador extends CI_Controller {
         $this->form_validation->set_rules('nif', 'NIF', 'required|numeric|exact_length[9]');
         $this->form_validation->set_rules('bi', 'BI', 'required|numeric|exact_length[8]');
         $this->form_validation->set_rules('dataNascimento', 'Data de Nascimento', 'required');
-         $this->form_validation->set_rules('dataEntrada', 'Data de Entrada', 'required');
+        $this->form_validation->set_rules('dataEntrada', 'Data de Entrada', 'required');
         $this->form_validation->set_rules('privilegio', 'Privilégio', 'required');
         $this->form_validation->set_rules('foto', 'Imagem', 'callback_validar_foto');
 
@@ -67,12 +86,14 @@ class Utilizador extends CI_Controller {
         //FOTO
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '100';
-        $config['max_width'] = '1024';
-        $config['max_height'] = '768';
+//        $config['max_size'] = '10';
+        $config['max_width'] = '400';
+        $config['max_height'] = '400';
+
 
         $this->load->library('upload', $config);
-
+   
+        
         //isset-Determinar se uma variável está definido e não é NULL
         //empty — Informa se a variável é vazia
         if (isset($_FILES['foto']) && !empty($_FILES['foto']['name'])) {
@@ -87,6 +108,7 @@ class Utilizador extends CI_Controller {
                 return false;
             }
         } else {
+            $_POST['foto'] = 'index.jpg';
             return true;
         }
     }
@@ -186,6 +208,14 @@ class Utilizador extends CI_Controller {
         $this->load->view('ConsultarUtilizadores_v', $dados);
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
+    }
+    
+    //destroi a sessao 
+    public function logout(){
+        $this->session->sess_destroy();
+        redirect('Welcome');
+        
+        
     }
 
 }

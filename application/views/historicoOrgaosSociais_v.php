@@ -16,7 +16,7 @@
             <div class="col-xs-12">
                 <div class="box">
   <!--   ---------------  botão para pesquisar-->
-                    <form action="<?= base_url() ?>OrgaosSociais/pesquisar" method="post" >
+                    <form action="<?= base_url() ?>OrgaosSociais/pesquisarHistorico" method="post" >
                         <div class="box-header">
                             <h3 class="box-title">Histórico Orgãos Sociais</h3>
 

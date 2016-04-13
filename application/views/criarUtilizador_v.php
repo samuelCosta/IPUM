@@ -92,7 +92,7 @@
 
                         <div class="col-md-12 form-group">
                             <label for="exampleInputFile">Foto</label>
-                            <input type="file"  name="foto" size="20">
+                            <input type="file"  name="foto" >
                             <p class="help-block">Se possivel insira uma foto.</p>
                         </div>
 

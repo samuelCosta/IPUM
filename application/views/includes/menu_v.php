@@ -6,7 +6,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= base_url(); ?>assets/dist/img/IPUM.jpg" class="img-circle" alt="User Image">
+                <img src="<?= base_url(); ?>uploads/<?php echo $this->session ->userdata('foto'); ?> "   width="100%" class="img-circle caixa_corte" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>IPUM</p>
@@ -32,7 +32,7 @@
                     <li class="active">
                         <a href="#"><i class="fa fa-circle-o"></i> Elementos <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>utilizador"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>utilizador/criarUtilizador"><i class="fa fa-circle-o"></i> Registar</a></li>
                             <li><a href="<?= base_url() ?>utilizador/consultarUtilizadores"><i class="fa fa-circle-o"></i> Consultar</a></li>
                         </ul>
                     </li>

@@ -1,4 +1,4 @@
-
+<?php $dado= $this->session->all_userdata() ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -19,9 +19,11 @@
               <!-- Profile Image -->
               <div class="box box-primary">
                 <div class="box-body box-profile">
-                  <img class="profile-user-img img-responsive img-circle" src="<?= base_url(); ?>assets/dist/img/IPUM.jpg" alt="User profile picture">
-                  <h3 class="profile-username text-center">Samuel Costa</h3>
-                  <p class="text-muted text-center">Elemento</p>
+                    <img class="profile-user-img img-responsive img-circle" src="<?= base_url(); ?>uploads/<?php echo $dado['foto']?>" width="150" height="150" alt="User profile picture">
+                  <h3 class="profile-username text-center"><?php echo $dado['nome']?></h3>
+                  
+                
+                  <p class="text-muted text-center"><?php echo $dado['email']?></p>
 
                   <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">

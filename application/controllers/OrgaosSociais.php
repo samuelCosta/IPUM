@@ -58,7 +58,7 @@ class OrgaosSociais extends CI_Controller {
             $this->load->view('includes/footer_v');
         }
     }
-    
+//    pesquisa por cargo
       public function pesquisar() {
 
         $this->load->model('OrgaosSociais_m');
@@ -66,6 +66,17 @@ class OrgaosSociais extends CI_Controller {
 
         $this->load->view('includes/header_v');
         $this->load->view('consultarOrgaosSociais_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+//    pesquisar historico dos orgaos socias 
+       public function pesquisarHistorico() {
+
+        $this->load->model('OrgaosSociais_m');
+        $dados['orgaosSociais'] = $this->OrgaosSociais_m->pesquisar_HistoricoOrgaosSociais();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('historicoOrgaosSociais_v', $dados);
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
