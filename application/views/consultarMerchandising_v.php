@@ -49,7 +49,7 @@
 
 
                                     <td><a class="btn-lg" href="<?= base_url('Merchandising/atualizar/' . $merchandising->idStockMerchandising) ?>"><i class="fa fa-edit"></i></a>
-                                        <a class="btn-lg" href="<?= base_url('Merchandising/atualizar/' . $merchandising->idStockMerchandising) ?>"><i class="fa fa-trash-o"></i></a></td> 
+                                        <a class="btn-lg" href="<?= base_url('Merchandising/deleteMerchandising/' . $merchandising->idStockMerchandising) ?>"><i class="fa fa-trash-o"></i></a></td> 
                                 </tr>
                             <?php } ?>
 

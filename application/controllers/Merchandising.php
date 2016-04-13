@@ -56,6 +56,16 @@ class Merchandising extends CI_Controller {
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
+    
+    public function deleteMerchandising($id, $data) {
+        $this->load->model('Merchandising_m');
+        $dados['merchandising'] = $this->Merchandising_m->compararId($id);
+
+        $this->load->view('includes/header_v');
+        $this->load->view('consultarMerchandising_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
 
     public function atualizar($id = null, $indice = null) {
 

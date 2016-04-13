@@ -27,5 +27,11 @@ class Merchandising_m extends CI_Model {
         $this->db->where('idStockMerchandising', $id);
         return $this->db->update('stockmerchandising', $data);
     }
+    
+    public function delete($id, $data) {
+        
+        $this->db->where('idStockMerchandising', $id);
+        return $this->db->delete('stockmerchandising', $data);
+    }
 
 }
