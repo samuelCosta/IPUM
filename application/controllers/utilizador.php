@@ -127,6 +127,14 @@ class Utilizador extends CI_Controller {
         } else if ($indice == 2) {
             $data['msg'] = "Não foi possível atualizar a senha do usuário.";
             $this->load->view('includes/msgSucesso_v', $data);
+            
+        } else if ($indice == 3) {
+            $data['msg'] = "Atualização para sócio com sucesso.";
+            $this->load->view('includes/msgSucesso_v', $data);
+            
+        } else if ($indice == 4) {
+            $data['msg'] = "Não foi possível tornar-se sócio.";
+            $this->load->view('includes/msgSucesso_v', $data); 
         }
         $this->load->view('editarUtilizador_v', $data);
         $this->load->view('includes/menu_v');
@@ -192,9 +200,9 @@ class Utilizador extends CI_Controller {
         $id = $this->input->post('idUtilizador');
         if ($this->utilizador_m->alterarDataSocio()) {
 
-            redirect('utilizador/atualizar/' . $id . '/1');
+            redirect('utilizador/atualizar/' . $id . '/3');
         } else {
-            redirect('utilizador/atualizar/' . $id . '/2');
+            redirect('utilizador/atualizar/' . $id . '/4');
         }
         
     }
