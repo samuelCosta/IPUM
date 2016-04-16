@@ -28,10 +28,10 @@
                     <!--                <form method="post" action="utilizador/registarUtilizador" role="form">-->
                     <div class="box-body">  
 <!--                        passar atributo ativo -->
-                       <input name="idEvento" type="hidden" value="<?= $Ensaios[0]->idEvento; ?>">
-                        
-                      
+                       <input name="idEventos" type="hidden" value="<?= $Ensaios[0]->idEventos; ?>">
                        
+                        
+                                   
                        
                         <div class="col-md-6 form-group">
                             <label>Data de Ensaio</label>
@@ -41,7 +41,7 @@
                        
                         <div class="col-md-6 form-group">
                             <label>Localização</label>
-                            <input type="text" class="form-control" name="local" value="<?= $Ensaios[0]->local; ?>">
+                            <input type="text" class="form-control" name="localizacao" value="<?= $Ensaios[0]->localizacao; ?>">
                         </div>
 
                        
@@ -52,7 +52,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Submit</button>
-                         <a class="btn btn-danger" href="<?= base_url('Ensaios/encerrarEnsaio/' . $Ensaios[0]->idEvento) ?>"  onclick="return confirm('Deseja realmente finalizar o Ensaio?');">Finalizar</a> 
+                         <a class="btn btn-danger" href="<?= base_url('Ensaios/encerrarEnsaio/' . $Ensaios[0]->idEventos) ?>"  onclick="return confirm('Deseja realmente finalizar o Ensaio?');">Finalizar</a> 
                     </div>
                    
                     </form>

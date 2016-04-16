@@ -28,6 +28,7 @@
                     <!--                <form method="post" action="utilizador/registarUtilizador" role="form">-->
                     <div class="box-body">  
                        <input type="hidden"  value="ensaio" name="designacao" >
+                       <input type="hidden"  value="1" name="estado" >
                         <div class="col-md-6 form-group">    
                             <label >Data</label>
                             <input type="date" class="form-control" value="<?php echo set_value('dataEvento'); ?>" name="dataEvento" >                     

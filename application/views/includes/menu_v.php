@@ -99,6 +99,7 @@
                         <ul class="treeview-menu menu-open" style="display: none;">
                             <li><a href="<?= base_url() ?>Ensaios"><i class="fa fa-circle-o"></i> Registar</a></li>
                             <li><a href="<?= base_url() ?>Ensaios/consultarEnsaios"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>Ensaios/historicoEnsaios"><i class="fa fa-circle-o"></i> Historico</a></li>
                         </ul>
                     </li>
                     <li class="active">
