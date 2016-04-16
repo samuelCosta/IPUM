@@ -43,5 +43,56 @@ class Ensaios extends CI_Controller {
         }
     }
     
+    public function consultarEnsaios() {
+        $this->load->model('Ensaios_m');
+        $dados['Ensaios'] = $this->Ensaios_m->get_ensaios();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('consultarEnsaios_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+    
+    //    pesquisa por ensaio
+      public function pesquisar() {
+
+        $this->load->model('Ensaios_m');
+        $dados['Ensaios'] = $this->Ensaios_m->pesquisar_ensaios();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('consultarEnsaios_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+      }
+      
+       //    vai permitar devolver os dados de um determinado ensaio
+    public function atualizar($id = null) {
+
+        $this->load->model('Ensaios_m');
+        $data['Ensaios'] = $this->Ensaios_m->compararId($id);
+        
+         $this->load->model('utilizador_m');
+         $data['utilizadores'] = $this->utilizador_m->get_utilizadores();
+         
+        $this->load->view('includes/header_v');
+        $this->load->view('editarEnsaios_v', $data);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+       public function encerrarEnsaio($id) {
+
+              $this->load->model('Ensaios_m');
+              
+        
+            if($this->Ensaios_m->encerrarEnsaio($id)){
+                redirect('Ensaios/consultarEnsaios');
+            }else{
+                redirect('Ensaios/consultarEnsaios');
+            }
+             
+        }
+        
+    
+    
     
 }

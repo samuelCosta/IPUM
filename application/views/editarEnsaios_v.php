@@ -1,4 +1,4 @@
-<!-- Content Wrapper. Contains page content -->
+!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -19,38 +19,49 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Registar Ensaios</h3>
+                        <h3 class="box-title">Editar Ensaio</h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
 
 
-                    <?php echo form_open_multipart('Ensaios/registarEnsaios'); ?>
+                    <?php echo form_open_multipart('Ensaios/guardarAtualizacao'); ?>
                     <!--                <form method="post" action="utilizador/registarUtilizador" role="form">-->
                     <div class="box-body">  
-                       <input type="hidden"  value="ensaio" name="designacao" >
-                        <div class="col-md-6 form-group">    
-                            <label >Data</label>
-                            <input type="date" class="form-control" value="<?php echo set_value('dataEvento'); ?>" name="dataEvento" >                     
+<!--                        passar atributo ativo -->
+                       <input name="idEvento" type="hidden" value="<?= $Ensaios[0]->idEvento; ?>">
+                        
+                      
+                       
+                       
+                        <div class="col-md-6 form-group">
+                            <label>Data de Ensaio</label>
+                            <input type="date" name="dataEvento" class="form-control" value="<?= $Ensaios[0]->dataEvento; ?>" >
                         </div>
-<!--                        alterar nome para localizaçao na base de dados-->
+                    
+                       
                         <div class="col-md-6 form-group">
                             <label>Localização</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Introduza a localização...">
-                        </div>            
+                            <input type="text" class="form-control" name="local" value="<?= $Ensaios[0]->local; ?>">
+                        </div>
 
+                       
+                      
+                       
                     </div><!-- /.box-body -->
                     <p> <?php echo validation_errors(); ?></p>
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Submit</button>
+                         <a class="btn btn-danger" href="<?= base_url('Ensaios/encerrarEnsaio/' . $Ensaios[0]->idEvento) ?>"  onclick="return confirm('Deseja realmente finalizar o Ensaio?');">Finalizar</a> 
                     </div>
+                   
                     </form>
 
                 </div><!-- /.box -->    
             </div>    
+
+
         </div>  
     </section>
 </div><!-- /.content-wrapper -->
-
-
 
