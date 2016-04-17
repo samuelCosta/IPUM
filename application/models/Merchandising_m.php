@@ -28,10 +28,12 @@ class Merchandising_m extends CI_Model {
         return $this->db->update('stockmerchandising', $data);
     }
     
-    public function delete($id, $data) {
+    public function delete($id) {
+        
+        //$this->db->delete('stockmerchandising', array('idStockMerchandising' => $id));
         
         $this->db->where('idStockMerchandising', $id);
-        return $this->db->delete('stockmerchandising', $data);
+        $this->db->delete('stockmerchandising');
     }
 
 }

@@ -11,18 +11,17 @@ class Merchandising extends CI_Controller {
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
-    
-    public function criarMerchandising(){
-        
+
+    public function criarMerchandising() {
+
         $this->load->view('includes/header_v');
         $this->load->view('registarMerchandising_v');
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
-        
     }
 
     public function registarMerchandising() {
-       
+
         $this->form_validation->set_rules('tipo', 'Tipo', 'required');
         $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
         $this->form_validation->set_rules('localizacao', 'Localização', 'required');
@@ -39,15 +38,16 @@ class Merchandising extends CI_Controller {
             $this->Merchandising_m->do_insert($dados);
 
             $data['msg'] = "Sucesso.";
+            $dados['merchandising'] = $this->Merchandising_m->get_Merchandising();
             $this->load->view('includes/header_v');
             $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('registarMerchandising_v');
+            $this->load->view('consultarMerchandising_v', $dados);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         }
     }
-    
-     public function consultarMerchandising() {
+
+    public function consultarMerchandising() {
         $this->load->model('Merchandising_m');
         $dados['merchandising'] = $this->Merchandising_m->get_Merchandising();
 
@@ -56,15 +56,12 @@ class Merchandising extends CI_Controller {
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
-    
-    public function deleteMerchandising($id, $data) {
-        $this->load->model('Merchandising_m');
-        $dados['merchandising'] = $this->Merchandising_m->compararId($id);
 
-        $this->load->view('includes/header_v');
-        $this->load->view('consultarMerchandising_v', $dados);
-        $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
+    public function deleteMerchandising($id) {
+        $this->load->model('Merchandising_m');
+
+        $this->Merchandising_m->delete($id);
+        redirect('Merchandising/consultarMerchandising');
     }
 
     public function atualizar($id = null, $indice = null) {
@@ -116,5 +113,4 @@ class Merchandising extends CI_Controller {
         }
     }
 
-    
 }
