@@ -24,10 +24,11 @@
                     <!-- form start -->
 
 
-                    <?php echo form_open_multipart('Atuacoes/registarAtuacoes'); ?>
+                    <?php echo form_open('Atuacoes/registarAtuacoes'); ?>
                     <!--                <form method="post" action="utilizador/registarUtilizador" role="form">-->
                     <div class="box-body">  
-                         <input type="hidden"  value="atuação" name="designacao" >
+                         <input type="hidden"  value="atuação" name="tipo" >
+                         <input type="hidden"  value="1" name="estado" >
 
                         <div class="col-md-6 form-group">    
                             <label >Data</label>
@@ -45,7 +46,7 @@
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label>Pessoa Responsável</label>
+                            <label>Pessoa Responsável Pela Atuação</label>
                             <input type="text" class="form-control"  name="responsavel" value="<?php echo set_value('responsavel'); ?>" placeholder="Introduza a pessoa responsavel...">
                         </div>
                         
@@ -54,10 +55,6 @@
                             <input type="text" class="form-control" name="contacto" value="<?php echo set_value('contacto'); ?>" placeholder="Introduza o contacto...">
                         </div>
 
-                        <div class="col-md-6 form-group">
-                            <label>Despesa</label>
-                            <input type="number" step="0.01" class="form-control" name="despesa" value="<?php echo set_value('despesa'); ?>" placeholder="Introduza as despesas...">
-                        </div>
 
                     </div><!-- /.box-body -->
                     <p> <?php echo validation_errors(); ?></p>

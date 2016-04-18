@@ -71,8 +71,6 @@ class Ensaios extends CI_Controller {
         $this->load->model('Ensaios_m');
         $data['Ensaios'] = $this->Ensaios_m->compararId($id);
         
-         $this->load->model('utilizador_m');
-         $data['utilizadores'] = $this->utilizador_m->get_utilizadores();
          
         $this->load->view('includes/header_v');
         $this->load->view('editarEnsaios_v', $data);
@@ -93,7 +91,7 @@ class Ensaios extends CI_Controller {
         }
         
         
-        //guarda os dados iditados dos eventos
+        //guarda os dados editados do ensaio
      public function guardarAtualizacao() {
         //strtolower-colocar tudo em minusculo
         //ucwords-colocar iniciais em maiusculo
