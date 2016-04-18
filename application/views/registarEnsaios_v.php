@@ -27,7 +27,7 @@
                     <?php echo form_open_multipart('Ensaios/registarEnsaios'); ?>
                     <!--                <form method="post" action="utilizador/registarUtilizador" role="form">-->
                     <div class="box-body">  
-                       <input type="hidden"  value="ensaio" name="designacao" >
+                       <input type="hidden"  value="ensaio" name="tipo" >
                        <input type="hidden"  value="1" name="estado" >
                         <div class="col-md-6 form-group">    
                             <label >Data</label>

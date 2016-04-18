@@ -28,7 +28,7 @@
                     <!--                <form method="post" action="utilizador/registarUtilizador" role="form">-->
                     <div class="box-body">  
 
-
+                        <input type="hidden"  value="1" name="estado" >
                         <div class="col-md-6 form-group">    
                             <label >Nome da Atividade</label>
                             <input type="text" class="form-control" value="<?php echo set_value('nomeAtividade'); ?>" name="nomeAtividade" placeholder="Introduza o nome da atividade...">                     
@@ -39,20 +39,6 @@
                             <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Introduza a localização...">
                         </div>
 
-                        <div class="col-md-6 form-group">
-                            <label>Número de Participantes</label>
-                            <input type="number" class="form-control" name="participantes" value="<?php echo set_value('participantes'); ?>" placeholder="Introduza o número de participantes...">
-                        </div>
-
-                        <div class="col-md-6 form-group">
-                            <label>Total de Gastos</label>
-                            <input type="number" class="form-control" step="0.01" name="totalGastos" value="<?php echo set_value('totalGastos'); ?>" placeholder="Introduza o total dos Gastos...">
-                        </div>
-
-                        <div class="col-md-6 form-group">
-                            <label>Notas</label>
-                            <input type="text" class="form-control" name="notas" value="<?php echo set_value('notas'); ?>" placeholder="Introduza as Notas...">
-                        </div>
 
                     </div><!-- /.box-body -->
                     <p> <?php echo validation_errors(); ?></p>

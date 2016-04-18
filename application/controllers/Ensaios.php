@@ -29,7 +29,7 @@ class Ensaios extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             //insere os dados na base de dados
-            $dados = elements(array('designacao', 'dataEvento', 'localizacao','estado'), $this->input->post());
+            $dados = elements(array('tipo', 'dataEvento', 'localizacao','estado'), $this->input->post());
            
             $this->load->model('Ensaios_m');
             $this->Ensaios_m->do_insert($dados);
