@@ -129,6 +129,20 @@ class Atuacoes extends CI_Controller {
             }
              
         }
+        
+        
+        
+  // boatao pesquisar (pesquisa por atuacao onde o seu estado e 1)
+      public function pesquisar() {
+
+        $this->load->model('Atuacoes_m');
+        $dados['atuacoes'] = $this->Atuacoes_m->pesquisar_atuacoes();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('consultarAtuacoes_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+      }
     
     
 }

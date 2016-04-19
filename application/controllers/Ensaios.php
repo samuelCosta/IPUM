@@ -150,6 +150,31 @@ class Ensaios extends CI_Controller {
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
-    
-    
+
+    //    devolve a lista de todos os utilizadores
+    public function consultarUtilizadores($id= null) {
+        $dados['idEventos']=$id;
+        $this->load->model('utilizador_m');
+        $dados['utilizadores'] = $this->utilizador_m->get_utilizadores();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('presencaEnsaios_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+
+    public function marcarPresencas() {
+        $dado['eventos_idEventos'] = $this->input->post('eventos_idEventos');
+
+        if (!empty($_POST['check'])) {
+            foreach ($_POST['check'] as $check) {
+
+                echo $check;
+                $dado['utilizador_idUtilizador'] = $check;
+                $this->load->model('Ensaios_m');
+                $this->Ensaios_m->marcarPresencas($dado);
+            }
+        }
+    }
+
 }

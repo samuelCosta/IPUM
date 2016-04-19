@@ -24,9 +24,10 @@
         <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/morris/morris.css">
         <!-- jvectormap -->
         <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-        <style>
+       
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
       
-        </style>
+        
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
 

@@ -47,7 +47,8 @@
                           
                                    
                                     <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Ensaios/atualizar/' . $ens->idEventos) ?>">Atualizar</a>
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Ensaios/marcarPresencas/' . $ens->idEventos) ?>">Marcar Presenças</a>
+                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Ensaios/consultarUtilizadores/' . $ens->idEventos) ?>">Marcar Presenças</a>
+                              
                                 </tr>
                             <?php } ?>
 

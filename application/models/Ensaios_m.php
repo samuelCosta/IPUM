@@ -13,7 +13,7 @@ class Ensaios_m extends CI_Model {
     public function get_ensaios() {
 
         $this->db->select('*');
-        $this->db->where('designacao', 'ensaio');
+        $this->db->where('tipo', 'ensaio');
         $this->db->where('estado', '1');
         return $this->db->get('eventos')->result();
     }
@@ -70,5 +70,12 @@ class Ensaios_m extends CI_Model {
         return $this->db->get('eventos')->result();
     }
     
+    public function marcarPresencas($dados=NULL){
+if ($dados != NULL):
+        
+         $this->db->insert('presencaseventos', $dados);
+         endif;
+        
+    }
 
 }
