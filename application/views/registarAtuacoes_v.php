@@ -29,6 +29,11 @@
                     <div class="box-body">  
                          <input type="hidden"  value="atuação" name="tipo" >
                          <input type="hidden"  value="1" name="estado" >
+                         
+                        <div class="col-md-6 form-group">
+                            <label>Nome da Atuação</label>
+                            <input type="text" class="form-control" name="designacao" value="<?php echo set_value('designacao'); ?>" placeholder="Introduza o nome da atuação...">
+                        </div>
 
                         <div class="col-md-6 form-group">    
                             <label >Data</label>
@@ -50,6 +55,7 @@
                             <input type="text" class="form-control"  name="responsavel" value="<?php echo set_value('responsavel'); ?>" placeholder="Introduza a pessoa responsavel...">
                         </div>
                         
+
                            <div class="col-md-6 form-group">
                             <label>Contacto</label>
                             <input type="text" class="form-control" name="contacto" value="<?php echo set_value('contacto'); ?>" placeholder="Introduza o contacto...">

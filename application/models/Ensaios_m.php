@@ -77,5 +77,15 @@ if ($dados != NULL):
          endif;
         
     }
+    //total de presencas por evento
+    public function totalPresencas($total,$dado){
+        $to['totalpresencas']=$total;
+        $id['idEventos']= $dado['eventos_idEventos'];
+    
+         $this->db->where('idEventos', $id['idEventos']);
+        return $this->db->update('eventos', $to);
+    
+        
+    }
 
 }

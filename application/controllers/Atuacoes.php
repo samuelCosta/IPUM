@@ -22,6 +22,7 @@ class Atuacoes extends CI_Controller {
         $this->form_validation->set_rules('orcamento', 'Orçamento', 'required');
         $this->form_validation->set_rules('responsavel', 'Responsável', 'required|ucwords');
         $this->form_validation->set_rules('contacto', 'Contacto', 'required|numeric|exact_length[9]');
+        $this->form_validation->set_rules('designacao', 'Designação', 'required|ucwords');
 
         
    
@@ -34,7 +35,7 @@ class Atuacoes extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             //insere os dados na base de dados
-            $dados = elements(array('estado','tipo', 'dataEvento', 'localizacao','orcamento','responsavel','contacto'), $this->input->post());
+            $dados = elements(array('estado','tipo', 'dataEvento', 'localizacao','orcamento','responsavel','contacto','designacao'), $this->input->post());
            
             $this->load->model('Atuacoes_m');
             $this->Atuacoes_m->do_insert($dados);

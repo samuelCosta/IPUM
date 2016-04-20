@@ -164,17 +164,22 @@ class Ensaios extends CI_Controller {
     }
 
     public function marcarPresencas() {
+        $total=0;
         $dado['eventos_idEventos'] = $this->input->post('eventos_idEventos');
 
         if (!empty($_POST['check'])) {
             foreach ($_POST['check'] as $check) {
 
-                echo $check;
+               $total= $total +1;
                 $dado['utilizador_idUtilizador'] = $check;
                 $this->load->model('Ensaios_m');
                 $this->Ensaios_m->marcarPresencas($dado);
             }
+              echo $total;
+         $this->load->model('Ensaios_m');
+         $this->Ensaios_m->totalPresencas($total,$dado);
         }
+      
     }
 
 }
