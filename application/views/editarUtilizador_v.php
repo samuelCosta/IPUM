@@ -88,8 +88,11 @@
                                <select class="form-control" name="socio">                                                            
                                    <option  value="1" <?= $utilizador[0]->socio == '1' ? ' selected ' : ''; ?>> Sócio</option>
                                    <option  value="0" <?= $utilizador[0]->socio == '0' ? ' selected ' : ''; ?>> Não Sócio </option>
-                               </select>     
+                               </select> 
+                               <a class="btn btn-block btn-default active btn-xs" href="<?= base_url('utilizador/comprovativoSocio/') ?> ">Imprimir</a>
+                          
                            </div>
+                        
                        <?php } else { ?>
                            <div class="col-md-3 form-group">
                                <label>Sócio</label>
@@ -245,4 +248,9 @@
         
     
     }
+    
+//    function myFunction() {
+//      
+//         window.location(base_url('utilizador/comprovativoSocio/')?>);
+//    }
 </script>

@@ -225,5 +225,10 @@ class Utilizador extends CI_Controller {
         
         
     }
+    
+    public function comprovativoSocio(){
+        
+         $this->load->view('includes/comprovativoSocio_v');
+    }
 
 }
