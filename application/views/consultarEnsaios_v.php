@@ -44,11 +44,17 @@
                                 <tr>
                                     <td><?= $ens->dataEvento; ?></td>
                                     <td><?= $ens->localizacao; ?></td>
+                                    
+                                 
                           
                                    
                                     <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Ensaios/atualizar/' . $ens->idEventos) ?>">Atualizar</a>
+                                         <?php if($ens->totalpresencas<=0 || $ens->totalpresencas==NULL ){?>
                                     <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Ensaios/consultarUtilizadores/' . $ens->idEventos) ?>">Marcar Presenças</a>
-                              
+                                     <?php }else{?>
+                                         <td><a class="btn btn-block btn-primary btn-xs" disabled href="">Presenças já Marcadas</a>
+                                    <?php  } ?>
+                                    <td><a class="btn btn-danger btn-primary btn-xs" href="<?= base_url('Ensaios/encerrarEnsaio/'. $ens->idEventos ) ?>"  onclick="return confirm('Deseja realmente finalizar o Ensaio?');">Finalizar</a> 
                                 </tr>
                             <?php } ?>
 

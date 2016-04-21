@@ -51,8 +51,7 @@
                     <p> <?php echo validation_errors(); ?></p>
 
                     <div class="box-footer">  
-                        <button type="submit" value="upload" class="btn btn-primary">Submit</button>
-                         <a class="btn btn-danger" href="<?= base_url('Ensaios/encerrarEnsaio/' . $Ensaios[0]->idEventos) ?>"  onclick="return confirm('Deseja realmente finalizar o Ensaio?');">Finalizar</a> 
+                        <button type="submit" value="upload" class="btn btn-primary">Submit</button>                         
                     </div>
                    
                     </form>

@@ -33,14 +33,15 @@
                     <!--                   ------------------------------ ----------------------->
                     <div class="box-body table-responsive no-padding">
                         <?php echo form_open('Ensaios/marcarPresencas'); ?>
-                        <form name="formulario">
+                        <div class="form-group">
+                      
 
                             <input type="hidden"  value="<?php echo $idEventos ?>" name="eventos_idEventos" >
 
                             <table class="table table-hover">
                                 <tr>
                                     <th>Nome </th>
-                                    <th> <input type="checkbox" id="selecctall"/><span>Selecionar todos</span></th>
+                                    <th> <input class="minimal" type="checkbox" id="selecctall"/><span>Selecionar todos</span></th>
 
                                 </tr>
 

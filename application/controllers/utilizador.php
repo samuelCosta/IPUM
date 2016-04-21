@@ -18,18 +18,30 @@ class Utilizador extends CI_Controller {
     public function index() {
 
         $this->load->view('includes/header_v');
-         $this->load->view('utilizador_v');
+         $this->load->view('bemVindo_v');
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+   
+    public function detalheUtilizador($id) {
+        
+        $this->load->model('utilizador_m');
+        $data['utilizador'] = $this->utilizador_m->compararId($id); 
+
+        $this->load->view('includes/header_v');
+        $this->load->view('utilizador_v',$data);
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
     
     public function criarUtilizador() {
-
+        
         $this->load->view('includes/header_v');
         $this->load->view('criarUtilizador_v');
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
+    
     
 
 //    devolve a lista de todos os utilizadores
