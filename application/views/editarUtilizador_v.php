@@ -89,7 +89,7 @@
                                    <option  value="1" <?= $utilizador[0]->socio == '1' ? ' selected ' : ''; ?>> Sócio</option>
                                    <option  value="0" <?= $utilizador[0]->socio == '0' ? ' selected ' : ''; ?>> Não Sócio </option>
                                </select> 
-                               <a class="btn btn-block btn-default active btn-xs" href="<?= base_url('utilizador/comprovativoSocio/') ?> ">Imprimir</a>
+                               <a class="btn btn-block btn-default active btn-xs" onclick="imprimir()">Imprimir</a>
                           
                            </div>
                         
@@ -249,8 +249,7 @@
     
     }
     
-//    function myFunction() {
-//      
-//         window.location(base_url('utilizador/comprovativoSocio/')?>);
-//    }
+function imprimir() {
+    window.open("<?= base_url('utilizador/comprovativoSocio/') ?>");
+}
 </script>

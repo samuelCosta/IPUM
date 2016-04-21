@@ -1,14 +1,17 @@
 <?php
 /**
- * HTML2PDF Library - myPdf class
+ * HTML2PDF Librairy - myPdf class
  *
  * HTML => PDF convertor
  * distributed under the LGPL License
  *
- * @package   Html2pdf
  * @author    Laurent MINGUET <webmaster@html2pdf.fr>
- * @copyright 2016 Laurent MINGUET
+ * @version   4.03
  */
+
+require_once(dirname(__FILE__).'/tcpdfConfig.php');
+require_once(dirname(__FILE__).'/../_tcpdf_'.HTML2PDF_USED_TCPDF_VERSION.'/tcpdf.php');
+
 class HTML2PDF_myPdf extends TCPDF
 {
     protected $_footerParam = array();
@@ -54,8 +57,7 @@ class HTML2PDF_myPdf extends TCPDF
         // prepare the automatic footer
         $this->SetMyFooter();
 
-        $this->setCellPaddings(0, 0, 0, 0);
-        $this->setCellMargins(0,0,0,0);
+        $this->cMargin = 0;
     }
 
     /**
@@ -124,7 +126,7 @@ class HTML2PDF_myPdf extends TCPDF
         }
     }
 
-    /**
+     /**
      * after cloning a object, we does not want to clone all the front informations
      * because it take a lot a time and a lot of memory => we use reference
      *
@@ -133,7 +135,6 @@ class HTML2PDF_myPdf extends TCPDF
      */
     public function cloneFontFrom(&$pdf)
     {
-        $this->n                = &$pdf->getN();
         $this->fonts            = &$pdf->getFonts();
         $this->FontFiles        = &$pdf->getFontFiles();
         $this->diffs            = &$pdf->getDiffs();
@@ -182,10 +183,6 @@ class HTML2PDF_myPdf extends TCPDF
     public function &getAnnotFonts()
     {
         return $this->annotation_fonts;
-    }
-    public function &getN()
-    {
-        return $this->n;
     }
 
     /**

@@ -1,14 +1,14 @@
 <?php
 /**
- * HTML2PDF Library - parsingCss class
+ * HTML2PDF Librairy - parsingCss class
  *
  * HTML => PDF convertor
  * distributed under the LGPL License
  *
- * @package   Html2pdf
- * @author    Laurent MINGUET <webmaster@html2pdf.fr>
- * @copyright 2016 Laurent MINGUET
+ * @author      Laurent MINGUET <webmaster@html2pdf.fr>
+ * @version     4.03
  */
+
 class HTML2PDF_parsingCss
 {
     /**
@@ -94,7 +94,8 @@ class HTML2PDF_parsingCss
     protected function _init()
     {
         // get the Web Colors from TCPDF
-        $this->_htmlColor = TCPDF_COLORS::$webcolor;
+        require(K_PATH_MAIN.'htmlcolors.php');
+        $this->_htmlColor = $webcolor;
 
         // init the Style
         $this->table = array();
@@ -112,14 +113,14 @@ class HTML2PDF_parsingCss
      */
     public function initStyle()
     {
-        $this->value['id_tag']           = 'body';       // tag name
+        $this->value['id_tag']       = 'body';        // tag name
         $this->value['id_name']          = null;         // tag - attribute name
         $this->value['id_id']            = null;         // tag - attribute id
         $this->value['id_class']         = null;         // tag - attribute class
         $this->value['id_lst']           = array('*');   // tag - list of legacy
         $this->value['mini-size']        = 1.;           // specific size report for sup, sub
         $this->value['mini-decal']       = 0;            // specific position report for sup, sub
-        $this->value['font-family']      = defined('PDF_FONT_NAME_MAIN') ? PDF_FONT_NAME_MAIN : 'Arial';
+        $this->value['font-family']      = 'Arial';
         $this->value['font-bold']        = false;
         $this->value['font-italic']      = false;
         $this->value['font-underline']   = false;
@@ -611,7 +612,7 @@ class HTML2PDF_parsingCss
                 case 'font-family':
                     $val = explode(',', $val);
                     $val = trim($val[0]);
-                    if ($val && $val != 'inherit') $this->value['font-family'] = $val;
+                    if ($val) $this->value['font-family'] = $val;
                     break;
 
                 case 'font-weight':
@@ -670,12 +671,8 @@ class HTML2PDF_parsingCss
                     $noWidth = false;
                     break;
 
-                case 'max-width':
-                    $this->value[$nom] = $this->convertToMM($val, $this->getLastWidth());
-                    break;
-
-                case 'height': case 'max-height':
-                    $this->value[$nom] = $this->convertToMM($val, $this->getLastHeight());
+                case 'height':
+                    $this->value['height'] = $this->convertToMM($val, $this->getLastHeight());
                     break;
 
                 case 'line-height':
@@ -1297,11 +1294,8 @@ class HTML2PDF_parsingCss
         $css = explode(' ', $css);
         foreach ($css as $k => $v) {
             $v = trim($v);
-            if ($v !== '') {
-                $css[$k] = $v;
-            } else {
-                unset($css[$k]);
-            }
+            if ($v) $css[$k] = $v;
+            else    unset($css[$k]);
         }
         $css = array_values($css);
 
