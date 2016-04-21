@@ -144,6 +144,60 @@ class Atuacoes extends CI_Controller {
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
       }
+      
+        //    devolve a lista de todos os Eventos que ja foram finalizados
+    public function historicoAtuacoes() {
+        $this->load->model('Atuacoes_m');
+        $dados['atuacoes'] = $this->Atuacoes_m->get_historicoAtuacoes();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('historicoAtuacoes_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+    
+    //  botão pesquisar-  pesquisar historico das atuacoes onde seu estado e 0 
+       public function pesquisarAtuacoes() {
+
+        $this->load->model('Atuacoes_m');
+        $dados['atuacoes'] = $this->Atuacoes_m->pesquisar_HistoricoAtuacoes();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('historicoAtuacoes_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+    
+    //    devolve a lista de todos os utilizadores
+    public function consultarUtilizadores($id= null) {
+        $dados['idEventos']=$id;
+        $this->load->model('utilizador_m');
+        $dados['utilizadores'] = $this->utilizador_m->get_utilizadores();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('presencaAtuacoes_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+
+        public function marcarPresencas() {
+        $total=0;
+        $dado['eventos_idEventos'] = $this->input->post('eventos_idEventos');
+
+        if (!empty($_POST['check'])) {
+            foreach ($_POST['check'] as $check) {
+
+               $total= $total +1;
+                $dado['utilizador_idUtilizador'] = $check;
+                $this->load->model('Atuacoes_m');
+                $this->Atuacoes_m->marcarPresencas($dado);
+            }
+              echo $total;
+         $this->load->model('Atuacoes_m');
+         $this->Atuacoes_m->totalPresencas($total,$dado);
+        }
+      
+    }
     
     
 }

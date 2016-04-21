@@ -1,4 +1,3 @@
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -17,9 +16,9 @@
             <div class="col-xs-12">
                 <div class="box">
   <!--   ---------------  botão para pesquisar-->
-                    <form action="<?= base_url() ?>Atuacoes/pesquisar" method="post" >
+                    <form action="<?= base_url() ?>Atuacoes/pesquisarAtuacoes" method="post" >
                         <div class="box-header">
-                            <h3 class="box-title">Lista de Atuações</h3>
+                            <h3 class="box-title">Histórico Atuações</h3>
 
                             <div class="box-tools">
                                 <div class="input-group" style="width: 400px;">
@@ -35,13 +34,12 @@
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
-                                <th>Data</th>
-                                <th>Localização</th>
-                                 <th>Pessoa Responsavel</th>
-                                  <th>Contacto</th>
-                                   <th>Orçamento</th>
-                                
-                               
+                                <th>Data da Atuação</th>
+                                <th>Localização da Atuação</th>
+                                <th>Responsável</th>
+                                <th>Contacto</th>
+                                <th>Orçamento</th>
+
                               
 
                             </tr>
@@ -49,13 +47,11 @@
                                 <tr>
                                     <td><?= $atu->dataEvento; ?></td>
                                     <td><?= $atu->localizacao; ?></td>
-                                      <td><?= $atu->responsavel; ?></td>
-                                        <td><?= $atu->contacto; ?></td>
-                                        <td><?= $atu->orcamento; ?></td>
-                          
-                                   
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Atuacoes/atualizar/' . $atu->idEventos) ?>">Atualizar</a>
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Atuacoes/consultarUtilizadores/' . $atu->idEventos) ?>">Marcar Presenças</a>
+                                    <td><?= $atu->responsavel; ?></td>
+                                    <td><?= $atu->contacto; ?></td>
+                                    <td><?= $atu->orcamento; ?></td>
+                                             
+                                     
                                 </tr>
                             <?php } ?>
 
@@ -68,6 +64,7 @@
         </div>
     </section>
 </div><!-- /.content-wrapper -->
+
 
 
 
