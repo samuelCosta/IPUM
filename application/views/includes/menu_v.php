@@ -10,7 +10,7 @@
             </div>
             <div class="pull-left info">
                 <p>IPUM</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <a href="<?= base_url(); ?>utilizador/detalheUtilizador/<?php echo $this->session ->userdata('id'); ?>"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
 
@@ -107,6 +107,7 @@
                         <ul class="treeview-menu menu-open" style="display: none;">
                             <li><a href="<?= base_url() ?>Atuacoes"><i class="fa fa-circle-o"></i> Registar</a></li>
                             <li><a href="<?= base_url() ?>Atuacoes/consultarAtuacoes"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>Atuacoes/historicoAtuacoes"><i class="fa fa-circle-o"></i> Historico</a></li>
                         </ul>
                     </li>
                     <li class="active">

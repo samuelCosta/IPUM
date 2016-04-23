@@ -1,18 +1,21 @@
 <?php
 /**
- * HTML2PDF Library - example
+ * HTML2PDF Librairy - example
  *
  * HTML => PDF convertor
  * distributed under the LGPL License
  *
- * @package   Html2pdf
- * @author    Laurent MINGUET <webmaster@html2pdf.fr>
- * @copyright 2016 Laurent MINGUET
+ * @author      Laurent MINGUET <webmaster@html2pdf.fr>
  *
  * isset($_GET['vuehtml']) is not mandatory
  * it allow to display the result in the HTML format
  */
-    require_once(dirname(__FILE__).'/../vendor/autoload.php');
+    require_once(dirname(__FILE__).'/../html2pdf.class.php');
+
+    // get the HTML
+     ob_start();
+     include(dirname('__FILE__').'/res/about.php');
+    $content = ob_get_clean();
 
     try
     {
@@ -21,11 +24,6 @@
 
         // display the full page
         $html2pdf->pdf->SetDisplayMode('fullpage');
-
-        // get the HTML
-        ob_start();
-        include(dirname(__FILE__).'/res/about.php');
-        $content = ob_get_clean();
 
         // convert
         $html2pdf->writeHTML($content, isset($_GET['vuehtml']));

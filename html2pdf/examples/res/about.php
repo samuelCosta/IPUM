@@ -17,7 +17,7 @@
                     A propos de ...
                 </td>
                 <td style="width: 50%; text-align: right">
-                    HTML2PDF v<?php echo $html2pdf->getVersion(); ?>
+                    HTML2PDF v<?php echo __CLASS_HTML2PDF__; ?>
                 </td>
             </tr>
         </table>
@@ -32,7 +32,7 @@
                     page [[page_cu]]/[[page_nb]]
                 </td>
                 <td style="width: 33%; text-align: right">
-                    &copy;Spipu 2008-2015
+                    &copy;Spipu 2008-2011
                 </td>
             </tr>
         </table>
@@ -40,7 +40,7 @@
     <bookmark title="Présentation" level="0" ></bookmark>
     <br><br><br><br><br><br><br><br>
     <h1>HTML2PDF</h1>
-    <h3>v<?php echo $html2pdf->getVersion(); ?></h3><br>
+    <h3>v<?php echo __CLASS_HTML2PDF__; ?></h3><br>
     <br><br><br><br><br>
     <div style="text-align: center; width: 100%;">
         <br>
@@ -106,7 +106,6 @@
         <li>&lt;page&gt;</li>
         <li>&lt;page_header&gt;</li>
         <li>&lt;page_footer&gt;</li>
-        <li>&lt;end_last_page&gt;</li>
         <li>&lt;nobreak&gt;</li>
         <li>&lt;barcode&gt;</li>
         <li>&lt;bookmark&gt;</li>

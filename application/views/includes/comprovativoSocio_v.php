@@ -1,40 +1,66 @@
 <?php
-/**
- * HTML2PDF Library - example
- *
- * HTML => PDF convertor
- * distributed under the LGPL License
- *
- * @package   Html2pdf
- * @author    Laurent MINGUET <webmaster@html2pdf.fr>
- * @copyright 2016 Laurent MINGUET
- *
- * isset($_GET['vuehtml']) is not mandatory
- * it allow to display the result in the HTML format
- */
-
-    // get the HTML
-    ob_start();
-    ?>
- <page>
+# Aqui incluímos a classe html2pdf.
+include('html2pdf/html2pdf.class.php');
+ 
+/* Guardamos na variável $html o html que queremos converter.
+ * Linha 13 - Incluímos o nosso arquivo css (exemploPdf.css)
+ * Linha 15 - Temos uma div de id = logo que formatamos a mesma 
+ *            com uma altura, largura, uma borda azul e uma imagem 
+ *            de background.
+ * Linha 16 - Temos agora um span de id = texto que formatamos 
+ *            usando a fonte arial em negrito. */
+$html = '
+<link rel="stylesheet" type="text/css" href="css/exemploPdf.css" />
+ 
+<page>
     <h1>Aprovação de Sócio</h1><br>
     <br>
    Eu _______________________________________________________ declaro que em reunião foi aprovado o sócio da iPUM – Associação de Percussão Universitária do Minho _______________________________________________________ com o nº de identificação civil ________________, nº de identificação fiscal ________________ e nº de filiação na Universidade do Minho ___________
-</page>
-<?php
-    $content = ob_get_clean();
+</page>';
 
-    // convert in PDF
-    require_once('C:/xampp/htdocs/IPUM/html2pdf/vendor/autoload.php');
-    try
-    {
-        $html2pdf = new HTML2PDF('P', 'A4', 'fr');
-//      $html2pdf->setModeDebug();
-        $html2pdf->setDefaultFont('Arial');
-        $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
-        $html2pdf->Output('exemple00.pdf');
-    }
-    catch(HTML2PDF_exception $e) {
-        echo $e;
-        exit;
-    }
+# Converte o html para pdf.
+try
+{
+    /* Aqui estamos instanciando um novo objeto que irá criar o 
+     * pdf. Então vamos aos parametros passados:
+     * 1º parâmetro: Utilize “P” para exibir o documento no 
+     *               formato retrato e “L” para o formato 
+     *               paisagem. 
+     * 2º parâmetro: Formato da folha A4, A5....... 
+     * 3º parâmetro: Caso ocorra alguma exceção durante a 
+     *               conversão. Em qual idioma é para 
+     *               exibir o erro. No caso o idioma escolhido 
+     *               foi o português “pt”. 
+     * 4º parâmetro: Informe TRUE caso o html de entrada esteja
+     *               no formato unicode e FALSE caso negativo. 
+     * 5º parâmetro: Codificação a ser utilizada. ISO-8859-15, UTF-8 ...... 
+     * 6º parâmetro: Margem do documento. Você pode informa um 
+     *               único valor como no exemplo acima. 
+     *               Outra forma é informa um array setando as 
+     *               margens separadamente.: Exemplo: 
+     * $html2pdf = new HTML2PDF(
+     *   'P',
+     *   'A4',
+     *   'pt',
+     *   false,
+     *   'ISO-8859-15',
+     *   array(5,5,5,8));
+     * Sendo que a primeira posição do array representa a margem esquerda depois      
+     * topo, direita e rodapé. */
+    $html2pdf = new HTML2PDF('P','A4','pt', true, 'UTF-8', 2);
+     
+    # Passamos o html que queremos converte.
+    $html2pdf->writeHTML($html); 
+     
+    /* Exibe o pdf:
+     * 1º parãmetro: Nome do arquivo pdf. O nome que você quer dar ao pdf gerado. 
+     * 2º parâmetro: Tipo de saída: 
+                     I: Abre o pdf gerado no navegador. 
+                     D: Abre a janela para você realizar o download do pdf. 
+                     F: Salva o pdf em alguma pasta do servidor. */
+    $html2pdf->Output('exemploPdf.pdf', 'I');
+}
+catch(HTML2PDF_exception $e) 
+{ 
+	echo $e; 
+}

@@ -55,7 +55,7 @@
                           
                                    
                                     <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Atuacoes/atualizar/' . $atu->idEventos) ?>">Atualizar</a>
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Ensaios/marcarPresencas/' . $atu->idEventos) ?>">Marcar Presenças</a>
+                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Atuacoes/consultarUtilizadores/' . $atu->idEventos) ?>">Marcar Presenças</a>
                                 </tr>
                             <?php } ?>
 

@@ -5,9 +5,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Welcome extends CI_Controller {
 
     public function index() {
-
-        $this->load->view('bemVindo_v');
-        $this->load->view('includes/footer_v');
+         $this->load->view('login_v');
+//        $this->load->view('bemVindo_v');
+//        $this->load->view('includes/footer_v');
     }
 
     public function login() {
@@ -39,7 +39,7 @@ class Welcome extends CI_Controller {
             $this->load->view('includes/header_v');
             $this->load->view('includes/msgSucesso_v',$dados);
             
-            $this->load->view("utilizador_v", $dados);
+            $this->load->view("bemVindo_v", $dados);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         } else {

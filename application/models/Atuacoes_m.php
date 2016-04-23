@@ -54,4 +54,43 @@ class Atuacoes_m extends CI_Model {
         $this->db->where('estado', '1');
         return $this->db->get('eventos')->result();
     }
+    
+    //vai buscar todas as atuacoes onde o seu estado e 0 ou seja eventos finalizado //consultarAtuacoes
+    public function get_historicoAtuacoes() {
+        
+        $this->db->select('*');
+        $this->db->where('estado', '0'); 
+        return $this->db->get('eventos')->result();
+    }
+    
+    //botao de pesquisa do historico de atuacoes onde  
+    public function pesquisar_HistoricoAtuacoes() {
+//like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
+        $pesquisa = $this->input->post('pesquisar');
+
+        $this->db->select('*'); 
+        
+        $this->db->like('localizacao', $pesquisa); 
+         $this->db->where('estado', '0');  
+        return $this->db->get('eventos')->result();
+    }
+    
+    
+     public function marcarPresencas($dados=NULL){
+if ($dados != NULL):
+        
+         $this->db->insert('presencaseventos', $dados);
+         endif;
+        
+    }
+    //total de presencas por evento
+    public function totalPresencas($total,$dado){
+        $to['totalpresencas']=$total;
+        $id['idEventos']= $dado['eventos_idEventos'];
+    
+         $this->db->where('idEventos', $id['idEventos']);
+        return $this->db->update('eventos', $to);
+    
+        
+    }
 }

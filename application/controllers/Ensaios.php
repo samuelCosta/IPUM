@@ -37,7 +37,7 @@ class Ensaios extends CI_Controller {
             $data['msg'] = "Sucesso.";
             $this->load->view('includes/header_v');
             $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('utilizador_v');
+            $this->load->view('bemVindo_v');
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         }
@@ -122,7 +122,7 @@ class Ensaios extends CI_Controller {
             $data['msg'] = "Alterado com Sucesso.";
             $this->load->view('includes/header_v');
             $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('utilizador_v');
+            $this->load->view('bemVindo_v');
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         }

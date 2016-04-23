@@ -41,9 +41,27 @@
                        
                         <div class="col-md-6 form-group">
                             <label>Cargo</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('cargo'); ?>" name="cargo" placeholder="Introduza o cargo...">
-                        </div>
+                            <select class="form-control" name="cargo">
+                                <option value="" <?php echo set_select('cargo', '', TRUE); ?> >---</option>
+                                <option value="Presidente" <?php echo set_select('cargo', 'Presidente'); ?> >Presidente</option>
+                                <option value="Vice-Presidente" <?php echo set_select('cargo', 'Vice-Presidente'); ?> >Vice-Presidente</option>
+                                <option value="Tesoureiro" <?php echo set_select('cargo', 'Tesoureiro'); ?> >Tesoureiro</option>
+                                <option value="Secretário" <?php echo set_select('cargo', 'Secretário'); ?> >Secretário</option>
+                                <option value="1º Secretário" <?php echo set_select('cargo', '1º Secretário'); ?> >1º Secretário</option>
+                                <option value="2º Secretário" <?php echo set_select('cargo', '2º Secretário'); ?> >2º Secretário</option>
+                                <option value="Diretor Financeiro" <?php echo set_select('cargo', 'Diretor Financeiro'); ?> >Diretor Financeiro</option>
+                                <option value="Diretor Secretariado e Burocracia" <?php echo set_select('cargo', 'Diretor Secretariado e Burocracia'); ?> >Diretor Secretariado e Burocracia</option>
+                                <option value="Diretor Património e Administração Interna" <?php echo set_select('cargo', 'Diretor Património e Administração Interna'); ?> >Diretor Património e Administração Interna</option>
+                                <option value="Diretor Marketing e Comunicação" <?php echo set_select('cargo', 'Diretor Marketing e Comunicação'); ?> >Diretor Marketing e Comunicação</option>
+                                <option value="Diretor Social e Recreativo" <?php echo set_select('cargo', 'Diretor Social e Recreativo'); ?> >Diretor Social e Recreativo</option>
+                                <option value="Diretor Prospeção e Arquivo" <?php echo set_select('cargo', 'Diretor Prospeção e Arquivo'); ?> >Diretor Prospeção e Arquivo</option>
+                                <option value="Diretor Relações Externas" <?php echo set_select('cargo', 'Diretor Relações Externas'); ?> >Diretor Relações Externas</option>
 
+                            </select>     
+                        </div>
+                        
+                        
+                        
                         <div class="col-md-6 form-group">
                             <label>Data</label>
                             <input type="date" class="form-control" name="dataInicio" value="<?php echo set_value('participantes'); ?>" >

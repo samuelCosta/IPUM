@@ -47,7 +47,7 @@
                         <ul class="nav navbar-nav">                           
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle">
+                                <a href="<?= base_url(); ?>utilizador" class="dropdown-toggle">
                                     <img src="<?= base_url(); ?>assets/dist/img/IPUM.jpg" class="user-image" alt="User Image">
 
                                     <span class="hidden-xs">Universidade do Minho</span>

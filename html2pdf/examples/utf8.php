@@ -1,22 +1,20 @@
 <?php
 /**
- * HTML2PDF Library - example
+ * HTML2PDF Librairy - example
  *
  * HTML => PDF convertor
  * distributed under the LGPL License
  *
- * @package   Html2pdf
- * @author    Laurent MINGUET <webmaster@html2pdf.fr>
- * @copyright 2016 Laurent MINGUET
+ * @author      Laurent MINGUET <webmaster@html2pdf.fr>
  *
  * isset($_GET['vuehtml']) is not mandatory
  * it allow to display the result in the HTML format
  */
 
-    require_once(dirname(__FILE__).'/../vendor/autoload.php');
+    require_once(dirname(__FILE__).'/../html2pdf.class.php');
 
     // get the HTML
-    $content = file_get_contents(K_PATH_MAIN.'examples/data/utf8test.txt');
+    $content = file_get_contents(dirname(__FILE__).'/../_tcpdf_'.HTML2PDF_USED_TCPDF_VERSION.'/cache/utf8test.txt');
     $content = '<page style="font-family: freeserif"><br />'.nl2br($content).'</page>';
 
     // convert to PDF
