@@ -51,13 +51,25 @@
                        
                        <div class="col-md-6 form-group">
                             <label>Total de Gastos</label>
-                            <input type="number" class="form-control" name="totalGastos" value="<?= $atividades[0]->totalGastos; ?>">
+                            <input type="number" class="form-control" name="totalGastos" value="<?= $atividades[0]->totalGastos;?>">
                         </div>
                        
-                        <div class="col-md-6 form-group">
+                        <div class="col-md-12 form-group">
                             <label>Notas</label>
-                            <input type="text" class="form-control" name="notas" value="<?= $atividades[0]->notas; ?>">
+                            <textarea name="notas" value="<?php $atividades[0]->notas ?>" placeholder="intoduza as suas Notas" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                         </div>
+                       
+              
+                
+             
+            
+                       
+                       
+                       
+                       
+                       
+                       
+                       
                        
                     </div><!-- /.box-body -->
                     <p> <?php echo validation_errors(); ?></p>

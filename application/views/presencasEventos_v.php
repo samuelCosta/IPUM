@@ -16,13 +16,14 @@
             <div class="col-xs-12">
                 <div class="box">
                     <!--   ---------------  botão para pesquisar-->
-                    <form action="<?= base_url() ?>Atuacoes/pesquisar" method="post" >
+                    <form action="<?= base_url() ?>utilizador/eventosUtilizadores" method="post" >
                         <div class="box-header">
-                            <h3 class="box-title">Marcar Presenças de Atuacoes</h3>
+                            <h3 class="box-title">Estatisticas por Eventos</h3>
 
                             <div class="box-tools">
                                 <div class="input-group" style="width: 400px;">
-                                    <input type="text" name="pesquisar" class="form-control input-sm pull-right" placeholder="Pesquisar por...">
+                                   
+                                      <input type="text"  class="form-control input-sm pull-right" name="designacao" id="productname" placeholder="Pesquisar por eventos..." >      
                                     <div class="input-group-btn">
                                         <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                                     </div>
@@ -32,36 +33,40 @@
                     </form>
                     <!--                   ------------------------------ ----------------------->
                     <div class="box-body table-responsive no-padding">
-                        <?php echo form_open('Atuacoes/marcarPresencas'); ?>
-                        <form name="formulario">
+                        
 
-                            <input type="hidden"  value="<?php echo $idEventos ?>" name="eventos_idEventos" >
 
-                            <table class="table table-hover">
+                            <table  class="table table-hover">
                                 <tr>
                                     <th>Nome </th>
-                                    <th> <input type="checkbox" id="selecctall"/><small>Selecionar todos</small></th>
+                                    <th>Email </th>
 
                                 </tr>
-
-                                <?php foreach ($utilizadores as $uti) { ?>
+                              
+                                   <?php    if(isset($utilizadores)){
+                                   
+                                   foreach ($utilizadores as $uti) { ?>
+                            
                                     <tr>
-                                        <td><?= $uti->nome; ?>  </td>
+                                        <td><?= $uti->nome; ?> </td>
                                         <td>       
-                                            <input class="checkbox1" type="checkbox" name="check[]" value="<?= $uti->idUtilizador; ?>" />
+                                           <?= $uti->email; ?>
                                         </td>
                                     </tr>
-                                <?php } ?>
+                          
 
-
+                                   <?php }}else{ ?>
+                                       <td>       
+                                           Nao existe resulados
+                                        </td>
+                                       
+                                   <?php  } ?>
 
                             </table>
-                            <p> <?php echo validation_errors(); ?></p>
+                          
 
-                            <div class="box-footer">  
-                                <button type="submit" value="upload" class="btn btn-primary">Submit</button>
-                            </div>
-                        </form>
+                           
+                        
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div>
@@ -71,22 +76,11 @@
 </div><!-- /.content-wrapper -->
 
 
-
-<script language=javascript>
+<script type="text/javascript">
     $(document).ready(function () {
-        $('#selecctall').click(function (event) {
-            if (this.checked) {
-                $('.checkbox1').each(function () {
-                    this.checked = true;
-                });
-            } else {
-                $('.checkbox1').each(function () {
-                    this.checked = false;
-                });
-            }
-        });
 
+        $('#productname').autocomplete({
+            source: "<?php echo site_url('utilizador/searchEventos/?'); ?>"
+        });
     });
 </script>
-
-

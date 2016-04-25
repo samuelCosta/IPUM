@@ -3,7 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Utilizador extends CI_Controller {
-    
+
 //     function __construct() {
 //        parent::__construct();
 //     
@@ -18,31 +18,29 @@ class Utilizador extends CI_Controller {
     public function index() {
 
         $this->load->view('includes/header_v');
-         $this->load->view('bemVindo_v');
+        $this->load->view('bemVindo_v');
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
-   
+
     public function detalheUtilizador($id) {
-        
+
         $this->load->model('utilizador_m');
-        $data['utilizador'] = $this->utilizador_m->compararId($id); 
+        $data['utilizador'] = $this->utilizador_m->compararId($id);
 
         $this->load->view('includes/header_v');
-        $this->load->view('utilizador_v',$data);
+        $this->load->view('utilizador_v', $data);
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
-    
+
     public function criarUtilizador() {
-        
+
         $this->load->view('includes/header_v');
         $this->load->view('criarUtilizador_v');
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
-    
-    
 
 //    devolve a lista de todos os utilizadores
     public function consultarUtilizadores() {
@@ -80,7 +78,7 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             //insere os dados na base de dados
-            $dados = elements(array('ativo','socio', 'nome', 'alcunha', 'email', 'password', 'nif', 'bi', 'dataNascimento', 'privilegio','dataEntrada', 'foto'), $this->input->post());
+            $dados = elements(array('ativo', 'socio', 'nome', 'alcunha', 'email', 'password', 'nif', 'bi', 'dataNascimento', 'privilegio', 'dataEntrada', 'foto'), $this->input->post());
             $dados['password'] = md5($dados['password']);
             $this->load->model('utilizador_m');
             $this->utilizador_m->do_insert($dados);
@@ -88,7 +86,7 @@ class Utilizador extends CI_Controller {
             $data['msg'] = "Sucesso.";
             $this->load->view('includes/header_v');
             $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('utilizador_v');
+            $this->load->view('bemVindo_v');
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         }
@@ -104,8 +102,8 @@ class Utilizador extends CI_Controller {
 
 
         $this->load->library('upload', $config);
-   
-        
+
+
         //isset-Determinar se uma variável está definido e não é NULL
         //empty — Informa se a variável é vazia
         if (isset($_FILES['foto']) && !empty($_FILES['foto']['name'])) {
@@ -139,14 +137,12 @@ class Utilizador extends CI_Controller {
         } else if ($indice == 2) {
             $data['msg'] = "Não foi possível atualizar a senha do usuário.";
             $this->load->view('includes/msgSucesso_v', $data);
-            
         } else if ($indice == 3) {
             $data['msg'] = "Atualização para sócio com sucesso.";
             $this->load->view('includes/msgSucesso_v', $data);
-            
         } else if ($indice == 4) {
             $data['msg'] = "Não foi possível tornar-se sócio.";
-            $this->load->view('includes/msgSucesso_v', $data); 
+            $this->load->view('includes/msgSucesso_v', $data);
         }
         $this->load->view('editarUtilizador_v', $data);
         $this->load->view('includes/menu_v');
@@ -178,7 +174,7 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             //insere os dados na base de dados
-            $dados = elements(array('socio','ativo','nome', 'alcunha', 'email', 'nif', 'bi', 'dataNascimento', 'privilegio'), $this->input->post());
+            $dados = elements(array('socio', 'ativo', 'nome', 'alcunha', 'email', 'nif', 'bi', 'dataNascimento', 'privilegio'), $this->input->post());
 
 
             $this->load->model('utilizador_m');
@@ -204,10 +200,9 @@ class Utilizador extends CI_Controller {
             redirect('utilizador/atualizar/' . $id . '/2');
         }
     }
-    
-    
-    public function alterarDataSocio(){
-        
+
+    public function alterarDataSocio() {
+
         $this->load->model('utilizador_m');
         $id = $this->input->post('idUtilizador');
         if ($this->utilizador_m->alterarDataSocio()) {
@@ -216,7 +211,6 @@ class Utilizador extends CI_Controller {
         } else {
             redirect('utilizador/atualizar/' . $id . '/4');
         }
-        
     }
 
     public function pesquisar() {
@@ -229,18 +223,61 @@ class Utilizador extends CI_Controller {
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
-    
+
     //destroi a sessao 
-    public function logout(){
+    public function logout() {
         $this->session->sess_destroy();
         redirect('Welcome');
-        
-        
     }
-    
-    public function comprovativoSocio(){
-        
-         $this->load->view('includes/comprovativoSocio_v');
+
+    public function comprovativoSocio() {
+
+        $this->load->view('includes/comprovativoSocio_v');
+    }
+
+    public function presencasAtuacoes() {
+
+
+        $this->load->view('includes/header_v');
+        $this->load->view('presencasEventos_v');
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+
+//    a medida que utilizador o site vai lhe dar opcoes de eventos registados 
+    public function searchEventos() {
+        $this->load->model('utilizador_m');
+
+        if (isset($_GET['term'])) {
+            $result = $this->utilizador_m->searchEventos($_GET['term']);
+
+            if (count($result) > 0) {
+                foreach ($result as $pr)
+                    $arr_result[] = $pr->designacao;
+                echo json_encode($arr_result);
+            }
+        }
+    }
+//tem duas operacoes a base de dados( permite buscar o idEvento atraves da designaçao)( buscar os utilizadores presentes no evento)
+    public function eventosUtilizadores() {
+
+        $designacao = $this->input->post('designacao');
+        $this->load->model('utilizador_m');
+        $result = $this->utilizador_m->eventosUtilizadores($designacao);
+
+        if (count($result) > 0) {
+            foreach ($result as $pr)
+                $dados['utilizadores'] = $this->utilizador_m->utilizadoresPorEvento($pr->idEventos);
+
+
+            $this->load->view('includes/header_v');
+            $this->load->view('presencasEventos_v', $dados);
+            $this->load->view('includes/menu_v');
+            $this->load->view('includes/footer_v');
+        } else {
+
+            redirect('utilizador/presencasAtuacoes');
+        }
     }
 
 }

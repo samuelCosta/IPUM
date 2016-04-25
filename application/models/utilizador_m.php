@@ -85,5 +85,45 @@ class Utilizador_m extends CI_Model {
        
     }
     
+  function searchEventos($dado){
+        
+     
+//         $this->db->like('nome', $dado,'both');
+//         return $query = $this->db->get('utilizador')->result();
+        $this->db->like('designacao', $dado,'both');
+        return $this->db->get('eventos')->result();
+        
+ 
+ 
+    }
+  
+        
+  public function eventosUtilizadores($designacao){
+        
+        $this->db->where('designacao', $designacao);
+        return $this->db->get('eventos')->result();
+        
+
+        
+       
+ 
+ 
+    }
+    
+      public function utilizadoresPorEvento($id){
+
+        $this->db->select('*');
+        $this->db->where('eventos_idEventos', $id);
+        $this->db->join('utilizador', 'utilizador_idUtilizador=idUtilizador', 'inner');       
+        return $this->db->get('presencasEventos')->result();
+        
+
+        
+       
+ 
+ 
+    }
+        
+    
 
 }
