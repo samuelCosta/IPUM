@@ -89,7 +89,7 @@
                                    <option  value="1" <?= $utilizador[0]->socio == '1' ? ' selected ' : ''; ?>> Sócio</option>
                                    <option  value="0" <?= $utilizador[0]->socio == '0' ? ' selected ' : ''; ?>> Não Sócio </option>
                                </select> 
-                               <a class="btn btn-block btn-default active btn-xs" onclick="imprimir()">Imprimir</a>
+                               <a class="btn btn-block btn-default active btn-xs" onclick="imprimir()"><i class="fa fa-download"></i>Imprimir</a>
                           
                            </div>
                         

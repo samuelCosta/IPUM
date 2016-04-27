@@ -98,18 +98,16 @@ class Utilizador_m extends CI_Model {
     }
   
         
-  public function eventosUtilizadores($designacao){
+//  vai buscar o id do evento
+    public function eventosUtilizadores($designacao){
         
         $this->db->where('designacao', $designacao);
         return $this->db->get('eventos')->result();
-        
 
-        
-       
- 
- 
     }
     
+    
+//    retorna os utilizadores que estiveram num determinado evento
       public function utilizadoresPorEvento($id){
 
         $this->db->select('*');
@@ -117,13 +115,25 @@ class Utilizador_m extends CI_Model {
         $this->db->join('utilizador', 'utilizador_idUtilizador=idUtilizador', 'inner');       
         return $this->db->get('presencasEventos')->result();
         
-
-        
-       
- 
  
     }
-        
     
+          public function eventosPorAno($ano) {
+
+        $this->db->select('*');
+        $this->db->where('year(dataEvento)', $ano);
+        $this->db->where('tipo', 'atuação');
+        return $this->db->get('eventos')->result();
+    }
+    
+    
+        public function verDetalhes($id) {
+
+        $this->db->select('*');
+        $this->db->where('eventos_idEventos', $id);
+        $this->db->join('utilizador', 'utilizador_idUtilizador=idUtilizador', 'inner');       
+        return $this->db->get('presencasEventos')->result();
+    }
+
 
 }

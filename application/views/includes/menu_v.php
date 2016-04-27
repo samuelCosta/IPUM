@@ -113,8 +113,8 @@
                     <li class="active">
                         <a href="#"><i class="fa fa-circle-o"></i> PGCUM<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>Merchandising/registarMerchandising"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>Merchandising/consultarMerchandising"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>Tranche"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>Tranche/consultarTranches"><i class="fa fa-circle-o"></i> Consultar</a></li>
                         </ul>
                     </li>    
                 </ul>

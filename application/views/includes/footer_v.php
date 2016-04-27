@@ -10,7 +10,8 @@
     <script src="<?= base_url(); ?>assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    
+
+  
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);
@@ -45,6 +46,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url(); ?>assets/dist/js/demo.js"></script>
     
+   
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
