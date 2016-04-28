@@ -236,10 +236,10 @@ class Utilizador extends CI_Controller {
     }
 
     public function presencasAtuacoes() {
-        $dado['dado']="tab1";
+        $dado['dado'] = "tab1";
 
         $this->load->view('includes/header_v');
-        $this->load->view('presencasEventos_v',$dado);
+        $this->load->view('presencasEventos_v', $dado);
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
@@ -258,13 +258,14 @@ class Utilizador extends CI_Controller {
             }
         }
     }
+
 //tem duas operacoes a base de dados( permite buscar o idEvento atraves da designaçao)( buscar os utilizadores presentes no evento)
     public function eventosUtilizadores() {
 
         $designacao = $this->input->post('designacao');
         $this->load->model('utilizador_m');
         $result = $this->utilizador_m->eventosUtilizadores($designacao);
-         $dados['dado']="tab1";
+        $dados['dado'] = "tab1";
         if (count($result) > 0) {
             foreach ($result as $pr)
                 $dados['utilizadores'] = $this->utilizador_m->utilizadoresPorEvento($pr->idEventos);
@@ -280,17 +281,15 @@ class Utilizador extends CI_Controller {
         }
     }
 
-    
-    
-      public function eventosPorAno() {
+    public function eventosPorAno() {
 
         $ano = $this->input->post('ano');
         $this->load->model('utilizador_m');
         $result['eventos'] = $this->utilizador_m->eventosPorAno($ano);
 
-         $result['dado']="tab2";
+        $result['dado'] = "tab2";
         if (count($result) > 0) {
- 
+
             $this->load->view('includes/header_v');
             $this->load->view('presencasEventos_v', $result);
             $this->load->view('includes/menu_v');
@@ -300,45 +299,20 @@ class Utilizador extends CI_Controller {
 //            redirect('utilizador/presencasAtuacoes');
         }
     }
-    
-        public function t() {
-              $this->load->view('includes/header_v');
-            
-$this->load->view('includes/teste');
- 
-     }
-    
-     public function verDetalhes() {
 
-//          $this->load->model('utilizador_m');
-//          $result['utilizador'] = $this->utilizador_m->verDetalhes($id);  
-         
-//          $this->load->view('includes/teste',$result);
-          $fullname=  $this->input->post('fullname');
-          echo 'Hello'.$fullname;
-       
- 
-     }
-     
-     public function verifyUser($id){
-		$userName =  $_POST['userName'];
-//		$userPassword =  $_POST['userPassword'];
-		$status = array(
+    public function t() {
+        $this->load->view('includes/header_v');
+        $this->load->view('includes/teste');
+    }
 
-'pwd'=>$id
-);
-		echo json_encode ($status) ;	
-	}
-        
-        // This function call from AJAX
-public function user_data_submit($id) {
-$data = array(
-'username' => $this->input->post('name'),
-'pwd'=>$id
-);
+    // This function call from AJAX
+    public function verDetalhesEvento() {
 
-//Either you can print value or you can send value to database
-echo json_encode($data);
-}
-    
+        $this->load->model('utilizador_m');
+        $data = $this->utilizador_m->utilizadoresPorEvento($this->input->post('name'));
+
+// convertemos em json e colocamos na tela
+        echo json_encode($data);
+    }
+
 }
