@@ -18,14 +18,14 @@
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li <?php if ($dado == "tab1"): ?> class="active"><?php else: ?>><?php endif; ?> <a href="#tab_1" data-toggle="tab">Por Eventos</a></li>
-                        <li <?php if ($dado == "tab2"): ?> class="active"><?php else: ?>><?php endif; ?><a href="#tab_2" data-toggle="tab">Por Ano</a></li>
-                        <li><a href="#tab_3" data-toggle="tab">Por Elemento</a></li>
+                        <li class=" <?php echo ($tab == 'tab1') ? 'active' : '';?>"> <a href="#tab_1" data-toggle="tab">Por Eventos</a></li>
+                        <li class=" <?php echo ($tab == 'tab2') ? 'active' : '';?>"><a href="#tab_2" data-toggle="tab">Por Ano</a></li>
+                        <li class=" <?php echo ($tab == 'tab3') ? 'active' : '';?>"><a href="#tab_3" data-toggle="tab">Por Elemento</a></li>
 
 
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
+                        <div class="tab-pane <?php echo ($tab == 'tab1') ? 'active' : ''; ?>" id="tab_1">
 
   <!-- --------------  -------------------  PESQUISAR POR EVENTO----------------------------->
                             <form action="<?= base_url() ?>utilizador/eventosUtilizadores" method="post" >
@@ -35,7 +35,7 @@
                                     <div class="box-tools">
                                         <div class="input-group" style="width: 500px;">
 
-                                            <input type="text"  class="form-control input-sm pull-left" name="designacao" id="productname" placeholder="Pesquisar por eventos..." >      
+                                            <input type="text"  class="form-control input-sm pull-left" name="designacao" id="productname" value="<?php echo set_value('designacao'); ?>"placeholder="Pesquisar por eventos..." >      
                                             <div class="input-group-btn">
                                                 <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                                             </div>
@@ -71,14 +71,14 @@
                             </div><!-- /.box-body -->
 
                         </div><!-- /.tab-pane -->
-                        <div class="tab-pane" id="tab_2">
-
-
-
-
-
-
+                        
+                        
+                        
+                        
+                        
       <!-- ----------- -- ---------------  PESQUISAR POR ANO---------------------------------->
+                        <div class="tab-pane <?php echo ($tab == 'tab2') ? 'active' : ''; ?>" id="tab_2">
+
                             <form action="<?= base_url() ?>utilizador/eventosPorAno" method="post" >
                                 <div class="box-header">
                                     <h3 class="box-title"></h3>
@@ -86,7 +86,7 @@
                                     <div class="box-tools">
                                         <div class="input-group" style="width: 500px;">
 
-                                            <input type="text"  class="form-control input-sm pull-left" name="ano" id="productname" placeholder="Pesquisar por ano..." >      
+                                            <input type="text"  class="form-control input-sm pull-left" name="ano" id="productname" value="<?php echo set_value('ano'); ?>" placeholder="Pesquisar por ano...ex:2016" >      
                                             <div class="input-group-btn">
                                                 <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                                             </div>
@@ -96,7 +96,7 @@
                             </form>
                             <!--                   ------------------------------ ----------------------->
 
-                            <div id='result' class="box-body table-responsive no-padding">    
+                            <div  class="box-body table-responsive no-padding">    
                                 <form name="userForm" id="userForm" action="">
                                     <table  class="table table-hover">
                                         <tr>
@@ -128,18 +128,69 @@
                                     </table>
                                 </form>
                             </div><!-- /.box-body -->
+                             </div><!-- /.tab-pane -->
 
 <!---------------------------------------------------------------------------------->
 
-                        </div><!-- /.tab-pane -->
-                        <div class="tab-pane" id="tab_3">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            It has survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                            sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                            like Aldus PageMaker including versions of Lorem Ipsum.
+                       
+                        <div class="tab-pane <?php echo ($tab == 'tab3') ? 'active' : ''; ?>" id="tab_3">
+            
+                            
+                            
+                            
+                            <form action="<?= base_url() ?>utilizador/utilizadorEventos" method="post" >
+                                <div class="box-header">
+                                    <h3 class="box-title"></h3>
+
+                                    <div class="box-tools">
+                                        <div class="input-group" style="width: 500px;">
+
+                                            <input type="text"  class="form-control input-sm pull-left" name="utilizador"  id="utilizadores" value="<?php echo set_value('utilizador'); ?>" placeholder="Pesquisar por utilizador" >      
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--                   ------------------------------ ----------------------->
+
+                            <div  class="box-body table-responsive no-padding">    
+                                <form name="userForm" id="userForm" action="">
+                                    <table  class="table table-hover">
+                                        <tr>
+                                            <th>Nome </th>
+                                            <th>Data </th>
+
+                                        </tr>
+
+                                        <?php if (isset($presenca)) {
+
+                                            foreach ($presenca as $uti) {
+                                                ?>
+
+                                                <tr>
+                                                    <td >  <?= $uti->designacao; ?> </td>
+                                                    <td >  <?= $uti->dataEvento; ?> </td>
+
+                                                        </tr>
+
+                                                    <?php }
+                                                } else {
+                                                    ?>
+                                                    <td>  Não existe resultados </td>                                      
+                                                <?php } ?>
+
+                                    </table>
+                                </form>
+                            </div><!-- /.box-body -->
+                            
+                                              
+                          
+                            
+                            
+                            
+                            
                         </div><!-- /.tab-pane -->
                     </div><!-- /.tab-content -->
                 </div><!-- nav-tabs-custom -->
@@ -172,6 +223,17 @@
 </script>
 
 
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#utilizadores').autocomplete({
+            source: "<?php echo site_url('utilizador/searchUtilizadores/?'); ?>"
+        });
+    });
+</script>
+
+
+
 
 
 <script>
@@ -182,7 +244,7 @@
             event.preventDefault();
 
             var user_name = $(this).attr('href');
-            alert(user_name);
+           
 
 //var user_name = $("input#name").val();
             var password = $("input#pwd").val();

@@ -135,5 +135,34 @@ class Utilizador_m extends CI_Model {
         return $this->db->get('presencasEventos')->result();
     }
 
+    
+    
+     function searchUtilizadores($dado){
+        
+        $this->db->like('nome', $dado,'both');
+        return $this->db->get('utilizador')->result();
+         
+    }
+    
+    //  vai buscar o id do utilizador
+    public function utilizadorEventos($nome){
+        
+        $this->db->where('nome', $nome);
+        return $this->db->get('utilizador')->result();
+
+    }
+    
+    //    retorna os eventos onde teve determinado utilizador
+      public function eventoPorUtilizador($id){
+
+        $this->db->select('*');
+        $this->db->where('utilizador_idUtilizador', $id);
+        $this->db->join('eventos', 'eventos_idEventos=idEventos', 'inner');       
+        return $this->db->get('presencasEventos')->result();
+        
+ 
+    }
+    
+    
 
 }

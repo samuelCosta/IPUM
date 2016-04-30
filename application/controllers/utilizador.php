@@ -236,7 +236,7 @@ class Utilizador extends CI_Controller {
     }
 
     public function presencasAtuacoes() {
-        $dado['dado'] = "tab1";
+        $dado['tab'] = "tab1";
 
         $this->load->view('includes/header_v');
         $this->load->view('presencasEventos_v', $dado);
@@ -244,7 +244,7 @@ class Utilizador extends CI_Controller {
         $this->load->view('includes/footer_v');
     }
 
-//    a medida que utilizador o site vai lhe dar opcoes de eventos registados 
+//    a medida que utilizador escreve vai lhe dar opcoes de eventos registados na base de dados
     public function searchEventos() {
         $this->load->model('utilizador_m');
 
@@ -265,11 +265,11 @@ class Utilizador extends CI_Controller {
         $designacao = $this->input->post('designacao');
         $this->load->model('utilizador_m');
         $result = $this->utilizador_m->eventosUtilizadores($designacao);
-        $dados['dado'] = "tab1";
+        $dados['tab'] = "tab1";
         if (count($result) > 0) {
-            foreach ($result as $pr)
+            foreach ($result as $pr){
                 $dados['utilizadores'] = $this->utilizador_m->utilizadoresPorEvento($pr->idEventos);
-
+            }
 
             $this->load->view('includes/header_v');
             $this->load->view('presencasEventos_v', $dados);
@@ -287,7 +287,7 @@ class Utilizador extends CI_Controller {
         $this->load->model('utilizador_m');
         $result['eventos'] = $this->utilizador_m->eventosPorAno($ano);
 
-        $result['dado'] = "tab2";
+        $result['tab'] = "tab2";
         if (count($result) > 0) {
 
             $this->load->view('includes/header_v');
@@ -314,5 +314,50 @@ class Utilizador extends CI_Controller {
 // convertemos em json e colocamos na tela
         echo json_encode($data);
     }
+    
+    
+    
+    //    a medida que utilizador escreve vai lhe dar opcoes de utilizadores registados na base de dados
+    public function searchUtilizadores() {
+        $this->load->model('utilizador_m');
+
+        if (isset($_GET['term'])) {
+            $result = $this->utilizador_m->searchUtilizadores($_GET['term']);
+
+            if (count($result) > 0) {
+                foreach ($result as $pr)
+                    $arr_result[] = $pr->nome;
+                echo json_encode($arr_result);
+            }
+        }
+    }
+
+    
+    
+    //tem duas operacoes a base de dados( permite buscar o idUtilizador atraves do nome)( buscar os eventos onde teve presente o utilizador)
+    public function utilizadorEventos() {
+
+        $nome = $this->input->post('utilizador');
+        $this->load->model('utilizador_m');
+        $result = $this->utilizador_m->utilizadorEventos($nome);
+        $dados['tab'] = "tab3";
+        if (count($result) > 0) {
+            foreach ($result as $pr){
+                $dados['presenca'] = $this->utilizador_m->eventoPorUtilizador($pr->idUtilizador);
+            }
+
+            $this->load->view('includes/header_v');
+            $this->load->view('presencasEventos_v', $dados);
+            $this->load->view('includes/menu_v');
+            $this->load->view('includes/footer_v');
+             } else {
+
+             $this->load->view('includes/header_v');
+            $this->load->view('presencasEventos_v', $dados);
+            $this->load->view('includes/menu_v');
+            $this->load->view('includes/footer_v');
+        }
+    }
+
 
 }
