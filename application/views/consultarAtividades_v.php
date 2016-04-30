@@ -46,6 +46,7 @@
                                     <td><?= $ativ->localizacao; ?></td>
                           
                                     <td> <a class="btn-lg" href="<?= base_url('Atividades/atualizar/' . $ativ->idAtividades) ?>"><i class="fa fa-edit"></i></a> </td>
+                                    <td> <a class="btn btn-danger btn-sm" href="<?= base_url('Atividades/encerrarAtividade/' . $atividades[0]->idAtividades) ?>"  onclick="return confirm('Deseja realmente finalizar a Atividade?');"><i class="fa fa-power-off"></i> Encerrar</a> 
                                     
                                    
                                 </tr>

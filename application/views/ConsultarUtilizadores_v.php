@@ -62,7 +62,7 @@
 
                                     <td>
                                         <a class="btn-lg" href="<?= base_url('utilizador/atualizar/' . $uti->idUtilizador) ?>"><i class="fa fa-edit"></i></a>
-<!--                                      
+                                      
                                 </tr>
                             <?php } ?>
 
