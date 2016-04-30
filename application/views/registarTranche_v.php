@@ -48,63 +48,6 @@
                         </div>            
 
                    
-                        <h4 class="box-title">Associar Eventos </h4>
-                 
-                
-<!--   ---------------------------  Atividades------------------------------------------------>
-            <div class="col-md-6 form-group">
-                     <div class="box box-primary">
-                    <table class="table table-hover">
-                                <tr>
-                                    <th>Atividades </th>
-                                    <th> <input class="minimal" type="checkbox" id="selecctall"/><span>Selecionar todos</span></th>
-
-                                </tr>
-
-                                <?php foreach ($atividades as $uti) { ?>
-                                    <tr>
-                                        <td><?= $uti->nomeAtividade; ?>  </td>
-                                        <td>       
-                                            <input class="checkbox1" type="checkbox" name="check[]" value="<?= $uti->idAtividades; ?>" />
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-
-
-
-                     </table> 
-                          </div>  
-</div>
-
-<!--   ---------------------------  Atuacoes------------------------------------------------>
-                   
-                       <div class="col-md-6 form-group">
-                             <div class="box box-primary">
-                    <table class="table table-hover">
-                                <tr>
-                                    <th>Atuacoes </th>
-                                    <th> <input class="minimal" type="checkbox" id="selecctal2"/><span>Selecionar todos</span></th>
-
-                                </tr>
-
-                                <?php foreach ($atuacoes as $atu) { ?>
-                                    <tr>
-                                        <td><?= $atu->designacao; ?>  </td>
-                                        <td>       
-                                            <input class="checkbox2" type="checkbox" name="check[]" value="<?= $atu->idEventos; ?>" />
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-
-
-
-                     </table> 
-                          </div>  
-                       </div>
-                   
-                   
-                   
-                   
                    
                    
                        

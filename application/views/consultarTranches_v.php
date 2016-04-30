@@ -50,7 +50,7 @@
                                    
                                     <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Tranche/associarTranche/' . $tra->idApoios) ?>">Associar</a>
                                         
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Ensaios/consultarUtilizadores/' . $tra->idApoios) ?>">Ver Detalhes</a>
+                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Tranche/editarTranche/' . $tra->idApoios) ?>">Ver Detalhes</a>
                                
                                                                       
                                     
