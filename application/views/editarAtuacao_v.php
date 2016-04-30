@@ -72,7 +72,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Submit</button>
-                         <a class="btn btn-danger" href="<?= base_url('Atuacoes/encerrarAtuacao/' . $atuacao[0]->idEventos) ?>"  onclick="return confirm('Deseja realmente finalizar o Atuacao?');">Finalizar</a> 
+                         
                     </div>
                    
                     </form>

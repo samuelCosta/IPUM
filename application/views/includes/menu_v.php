@@ -92,6 +92,7 @@
                         <ul class="treeview-menu menu-open" style="display: none;">
                             <li><a href="<?= base_url() ?>Atividades"><i class="fa fa-circle-o"></i> Registar</a></li>
                             <li><a href="<?= base_url() ?>Atividades/consultarAtividades"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>Atividades/historicoAtividades"><i class="fa fa-circle-o"></i> Historico</a></li>
                         </ul>
                     </li>
                     <li class="active">

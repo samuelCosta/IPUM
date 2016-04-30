@@ -38,6 +38,25 @@
                             <label>Localização</label>
                             <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Introduza a localização...">
                         </div>
+                        
+                        <div class="col-md-6 form-group">
+                            <label>Data de Início</label>
+                            <input type="date" class="form-control" value="<?php echo set_value('dataInicio'); ?>" name="dataInicio" placeholder="Introduza a data de início...">
+                        </div>
+                        
+                        <div class="col-md-6 form-group">
+                            <label>Duração (em dias)</label>
+                            <input type="number" class="form-control" name="duracao" value="<?php echo set_value('duracao'); ?>" placeholder="Introduza a duração da atividade...">
+                        </div>
+                        
+                        <div class="col-md-6 form-group">
+                            <label>Orçamento</label>
+                            <input type="number" step="0.01" class="form-control" name="orcamento" value="<?php echo set_value('orcamento'); ?>" placeholder="Introduza o orcamento...">
+                        </div>
+                        
+                        
+
+                        
 
 
                     </div><!-- /.box-body -->

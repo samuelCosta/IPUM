@@ -60,7 +60,9 @@
                                         <td><span class="label label-danger">Inativo</span></td>
                                     <?php } ?>   
 
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('utilizador/atualizar/' . $uti->idUtilizador) ?>">Atualizar</a> 
+                                    <td>
+                                        <a class="btn-lg" href="<?= base_url('utilizador/atualizar/' . $uti->idUtilizador) ?>"><i class="fa fa-edit"></i></a>
+<!--                                      
                                 </tr>
                             <?php } ?>
 

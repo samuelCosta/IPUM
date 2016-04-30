@@ -41,7 +41,7 @@
                        
                         <div class="col-md-6 form-group">
                             <label>Cargo</label>
-                            <select class="form-control" name="cargo">
+                            <select class="form-control" name="cargo" data-live-search="true">
                                 <option value="" <?php echo set_select('cargo', '', TRUE); ?> >---</option>
                                 <option value="Presidente" <?php echo set_select('cargo', 'Presidente'); ?> >Presidente</option>
                                 <option value="Vice-Presidente" <?php echo set_select('cargo', 'Vice-Presidente'); ?> >Vice-Presidente</option>

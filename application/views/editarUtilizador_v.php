@@ -94,15 +94,15 @@
                            </div>
                         
                        <?php } else { ?>
-                           <div class="col-md-3 form-group">
+                           <div class="col-md-3 form-group"> <i class="fa fa-check-circle"></i> 
                                <label>Sócio</label>
-                               <input class=" btn btn-default btn-block active" data-target="#myModal2" data-toggle="modal" type="button" value="Tornar Sócio">
+                               <input class=" btn btn-default btn-block active" data-target="#myModal2" data-toggle="modal" type="button" value="Tornar Sócio"> 
                            </div>
                         <input name="socio" type="hidden" value="<?= $utilizador[0]->socio; ?>">
 
                        <?php } ?>
                         
-                        <div class="col-md-3 form-group">
+                        <div class="col-md-3 form-group"> <i class="fa fa-lock"></i> 
                            <label>Password</label>
                            <input class=" btn btn-default btn-block active" data-target="#myModal" data-toggle="modal" type="button" value="Atualizar Password">
                        </div>                       

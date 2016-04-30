@@ -33,7 +33,7 @@
                         
                         <div class="col-md-6 form-group">    
                             <label >Nome</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('nome'); ?>" name="nome" placeholder="Introduza o nome...">                     
+                            <input type="text" class="form-control" value="<?php echo set_value('nome'); ?>" name="nome" placeholder="Introduza o nome completo...">                     
                         </div>
                         
                         <div class="col-md-6 form-group">
@@ -48,18 +48,18 @@
                         
                          <div class="col-md-4 form-group">
                             <label>NIF</label>
-                            <input type="text" class="form-control" name="nif" value="<?php echo set_value('nif'); ?>" placeholder="Introduza o NIF">
+                            <input type="text" class="form-control" name="nif" value="<?php echo set_value('nif'); ?>" placeholder="Introduza o seu NIF">
                         </div>
 
                         <div class="col-md-4 form-group">
                             <label>BI</label>
-                            <input type="text" class="form-control" name="bi" value="<?php echo set_value('bi'); ?>"placeholder="Introduza o numero de BI">
+                            <input type="text" class="form-control" name="bi" value="<?php echo set_value('bi'); ?>"placeholder="Introduza o número de BI">
                         </div>
                         
 
                         <div class="col-md-6 form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" name="password" value="<?php echo set_value('password'); ?>" placeholder="Password">
+                            <input type="password" class="form-control" name="password" value="<?php echo set_value('password'); ?>" placeholder="Introduza uma Password">
                         </div>
 
                         <div class="col-md-6 form-group">

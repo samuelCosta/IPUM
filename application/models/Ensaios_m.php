@@ -70,6 +70,7 @@ class Ensaios_m extends CI_Model {
         return $this->db->get('eventos')->result();
     }
     
+    
     public function marcarPresencas($dados=NULL){
 if ($dados != NULL):
         

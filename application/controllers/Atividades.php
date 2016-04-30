@@ -19,6 +19,9 @@ class Atividades extends CI_Controller {
        
         $this->form_validation->set_rules('nomeAtividade', 'Nome da Atividade', 'required|ucwords');
         $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords');
+        $this->form_validation->set_rules('dataInicio', 'Data de Inicio', 'required');
+        $this->form_validation->set_rules('duracao', 'Duração', 'required');
+        $this->form_validation->set_rules('orcamento', 'Orçamento', 'required');
 
 
         if ($this->form_validation->run() == FALSE) {
@@ -28,7 +31,7 @@ class Atividades extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             //insere os dados na base de dados
-            $dados = elements(array('estado','nomeAtividade', 'localizacao'), $this->input->post());
+            $dados = elements(array('estado','nomeAtividade', 'localizacao','dataInicio','duracao','orcamento'), $this->input->post());
            
             $this->load->model('Atividades_m');
             $this->Atividades_m->do_insert($dados);
@@ -84,7 +87,10 @@ class Atividades extends CI_Controller {
         $this->form_validation->set_rules('participantes', 'Total de Participantes', 'required');
         $this->form_validation->set_rules('totalGastos', 'Total de Gastos', 'required');
         $this->form_validation->set_rules('notas', 'Notas', 'required|ucwords');
-        
+        $this->form_validation->set_rules('dataInicio', 'Data de Inicio', 'required');
+        $this->form_validation->set_rules('duracao', 'Duração', 'required');
+        $this->form_validation->set_rules('orcamento', 'Orçamento', 'required');
+
         $id = $this->input->post('idAtividades');
 
 
@@ -99,7 +105,7 @@ class Atividades extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             //insere os dados na base de dados
-            $dados = elements(array('nomeAtividade','localizacao','participantes','totalGastos','notas'), $this->input->post());
+            $dados = elements(array('nomeAtividade','localizacao','participantes','totalGastos','notas','dataInicio','duracao','orcamento'), $this->input->post());
 
 
             $this->load->model('Atividades_m');
@@ -108,7 +114,7 @@ class Atividades extends CI_Controller {
             $data['msg'] = "Alterado com Sucesso.";
             $this->load->view('includes/header_v');
             $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('utilizador_v');
+            $this->load->view('bemVindo_v');
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         }
@@ -124,6 +130,30 @@ class Atividades extends CI_Controller {
             }else{
                 redirect('Atividades/consultarAtividades');
             }
+           }
+           
+            //    devolve a lista de todos os Eventos que ja foram finalizados
+    public function historicoAtividades() {
+        $this->load->model('Atividades_m');
+        $dados['atividades'] = $this->Atividades_m->get_historicoAtividades();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('historicoAtividades_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
              
+            
+            //  botão pesquisar-  pesquisar historico dos orgaos socias onde seu estado e 0 
+       public function pesquisarHistorico() {
+
+        $this->load->model('Atividades_m');
+        $dados['atividades'] = $this->Atividades_m->pesquisar_HistoricoAtividades();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('historicoAtividades_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
         }
-}
+

@@ -16,9 +16,9 @@
             <div class="col-xs-12">
                 <div class="box">
   <!--   ---------------  botão para pesquisar-->
-                    <form action="<?= base_url() ?>Atividades/pesquisar" method="post" >
+                    <form action="<?= base_url() ?>Atividades/pesquisarHistorico" method="post" >
                         <div class="box-header">
-                            <h3 class="box-title">Lista de Atividades</h3>
+                            <h3 class="box-title">Histórico Atividades</h3>
 
                             <div class="box-tools">
                                 <div class="input-group" style="width: 400px;">
@@ -34,20 +34,29 @@
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
-                                <th>Nome da Atividade</th>
+                                <th>Nome Atividade</th>
                                 <th>Localização</th>
+                                <th>Data Inicio</th>
+                                <th>Duração</th>
+                                <th>Participantes</th>
+                                <th>Total de Gastos</th>
+                                <th>Orçamento</th>
                                
+
                               
 
                             </tr>
-                            <?php foreach ($atividades as $ativ) { ?>
+                            <?php foreach ($atividades as $atu) { ?>
                                 <tr>
-                                    <td><?= $ativ->nomeAtividade; ?></td>
-                                    <td><?= $ativ->localizacao; ?></td>
-                          
-                                    <td> <a class="btn-lg" href="<?= base_url('Atividades/atualizar/' . $ativ->idAtividades) ?>"><i class="fa fa-edit"></i></a> </td>
-                                    
-                                   
+                                    <td><?= $atu->nomeAtividade; ?></td>
+                                    <td><?= $atu->localizacao; ?></td>
+                                    <td><?= $atu->dataInicio; ?></td>
+                                    <td><?= $atu->duracao; ?></td>
+                                    <td><?= $atu->participantes; ?></td>
+                                    <td><?= $atu->totalGastos; ?></td>
+                                    <td><?= $atu->orcamento; ?></td>
+                                             
+                                     
                                 </tr>
                             <?php } ?>
 
@@ -60,6 +69,8 @@
         </div>
     </section>
 </div><!-- /.content-wrapper -->
+
+
 
 
 

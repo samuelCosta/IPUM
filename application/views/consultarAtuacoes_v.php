@@ -54,8 +54,16 @@
                                         <td><?= $atu->orcamento; ?></td>
                           
                                    
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Atuacoes/atualizar/' . $atu->idEventos) ?>">Atualizar</a>
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Atuacoes/consultarUtilizadores/' . $atu->idEventos) ?>">Marcar Presenças</a>
+
+                                        
+                                         <td><a class="btn-lg" href="<?= base_url('Atuacoes/atualizar/' . $atu->idEventos) ?>"><i class="fa fa-edit"></i></a> </td>
+                                         <?php if($atu->totalpresencas<=0 || $atu->totalpresencas==NULL ){?>
+                                   
+                                        <td><a class="btn-lg" href="<?= base_url('Atuacoes/consultarUtilizadores/' . $atu->idEventos) ?>"><i class="fa fa-tasks"></i> Marcar Presenças</a> </td>
+                                     <?php }else{?>
+                                         <td><a class="btn btn-sm" disabled href="">Presenças já Marcadas</a>
+                                    <?php  } ?>
+                                    <td><a class="btn btn-danger btn-sm" href="<?= base_url('Atuacoes/encerrarAtuacao/'. $atu->idEventos ) ?>"  onclick="return confirm('Deseja realmente finalizar a atuação?');"> <i class="fa fa-power-off"></i> Encerrar</a> 
                                 </tr>
                             <?php } ?>
 

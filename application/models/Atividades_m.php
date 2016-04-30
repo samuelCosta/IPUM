@@ -48,5 +48,23 @@ class Atividades_m extends CI_Model {
         return $this->db->update('atividades', $data);
     }
     
+    public function get_historicoAtividades() {
+        
+        $this->db->select('*');
+        $this->db->where('estado', '0'); 
+        return $this->db->get('atividades')->result();
+    }
+    public function pesquisar_HistoricoAtividades() {
+//like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
+        $pesquisa = $this->input->post('pesquisar');
+
+        $this->db->select('*'); 
+        
+        $this->db->like('nomeAtividade', $pesquisa); 
+         $this->db->where('estado', '0');  
+        return $this->db->get('atividades')->result();
+    }
+    
+    
 }
 

@@ -48,7 +48,9 @@
                                     <td><?= $org->dataInicio; ?></td>
                                     <td><?= $org->nome; ?></td>
                                    
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('OrgaosSociais/atualizar/' . $org->idorgaosSociais) ?>">Atualizar</a> 
+                                   
+                                        <td> <a class="btn-lg" href="<?= base_url('OrgaosSociais/atualizar/' . $org->idorgaosSociais) ?>"><i class="fa fa-edit"></i></a> </td>
+                                        <td> <a class="btn btn-danger btn-sm" href="<?= base_url('OrgaosSociais/encerrarMandato/' . $orgaosSociais[0]->idorgaosSociais) ?>"  onclick="return confirm('Deseja realmente encerrar seu mandato?');"> <i class="fa fa-power-off"></i> Encerrar</a> </td>
                                 </tr>
                             <?php } ?>
 

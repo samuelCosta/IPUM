@@ -75,7 +75,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Submit</button>
-                         <a class="btn btn-danger" href="<?= base_url('OrgaosSociais/encerrarMandato/' . $orgaosSociais[0]->idorgaosSociais) ?>"  onclick="return confirm('Deseja realmente encerrar seu mandato?');">Encerrar</a> 
+                          
                     </div>
                    
                     </form>

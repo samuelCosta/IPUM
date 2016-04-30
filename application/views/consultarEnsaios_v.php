@@ -45,16 +45,15 @@
                                     <td><?= $ens->dataEvento; ?></td>
                                     <td><?= $ens->localizacao; ?></td>
                                     
-                                 
-                          
-                                   
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Ensaios/atualizar/' . $ens->idEventos) ?>">Atualizar</a>
+
+                                    <td><a class="btn-lg" href="<?= base_url('Ensaios/atualizar/' . $ens->idEventos) ?>"><i class="fa fa-edit"></i></a> </td>
                                          <?php if($ens->totalpresencas<=0 || $ens->totalpresencas==NULL ){?>
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Ensaios/consultarUtilizadores/' . $ens->idEventos) ?>">Marcar Presenças</a>
+                                   
+                                        <td><a class="btn-lg" href="<?= base_url('Ensaios/consultarUtilizadores/' . $ens->idEventos) ?>"><i class="fa fa-tasks"></i> Marcar Presenças</a> </td>
                                      <?php }else{?>
-                                         <td><a class="btn btn-block btn-primary btn-xs" disabled href="">Presenças já Marcadas</a>
+                                         <td><a class="btn btn-sm" disabled href="">Presenças já Marcadas</a>
                                     <?php  } ?>
-                                    <td><a class="btn btn-danger btn-primary btn-xs" href="<?= base_url('Ensaios/encerrarEnsaio/'. $ens->idEventos ) ?>"  onclick="return confirm('Deseja realmente finalizar o Ensaio?');">Finalizar</a> 
+                                    <td><a class="btn btn-danger btn-sm" href="<?= base_url('Ensaios/encerrarEnsaio/'. $ens->idEventos ) ?>"  onclick="return confirm('Deseja realmente finalizar o Ensaio?');"> <i class="fa fa-power-off"></i> Encerrar</a> 
                                 </tr>
                             <?php } ?>
 
