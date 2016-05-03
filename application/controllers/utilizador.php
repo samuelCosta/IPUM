@@ -26,10 +26,12 @@ class Utilizador extends CI_Controller {
     public function detalheUtilizador($id) {
 
         $this->load->model('utilizador_m');
-        $data['utilizador'] = $this->utilizador_m->compararId($id);
+        $totalAtuacoes= $this->utilizador_m->totalAtuacoesElemento($id);
+        $totalEnsaios= $this->utilizador_m->totalEnsaiosElemento($id);
+        $dados = $this->utilizador_m->compararId($id);
 
         $this->load->view('includes/header_v');
-        $this->load->view('utilizador_v', $data);
+        $this->load->view('utilizador_v',array('totalAtuacoes' => $totalAtuacoes, 'utilizador'=>$dados,'totalEnsaios'=>$totalEnsaios));
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
@@ -43,12 +45,24 @@ class Utilizador extends CI_Controller {
     }
 
 //    devolve a lista de todos os utilizadores
-    public function consultarUtilizadores() {
+    public function consultarUtilizadoresAtivos() {
         $this->load->model('utilizador_m');
-        $dados['utilizadores'] = $this->utilizador_m->get_utilizadores();
+        $dados['utilizadoresAtivos'] = $this->utilizador_m->get_utilizadoresAtivos();
+           
+      
 
         $this->load->view('includes/header_v');
         $this->load->view('ConsultarUtilizadores_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+    //    devolve a lista de todos os utilizadores ativos
+    public function consultarUtilizadoresInativos() {
+        $this->load->model('utilizador_m');
+        $dados['utilizadoresInativos'] = $this->utilizador_m->get_utilizadoresInativos(); 
+
+        $this->load->view('includes/header_v');
+        $this->load->view('historicoUtilizadores_v', $dados);
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
@@ -57,14 +71,14 @@ class Utilizador extends CI_Controller {
         //strtolower-colocar tudo em minusculo
         //ucwords-colocar iniciais em maiusculo
 
-        $this->form_validation->set_rules('nome', 'Nome', 'required|ucwords');
+        $this->form_validation->set_rules('nome', 'Nome', 'required|ucwords|is_unique[utilizador.nome]');
         $this->form_validation->set_rules('alcunha', 'Alcunha', 'required|alpha');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|strtolower|valid_email|is_unique[utilizador.email]');
         $this->form_validation->set_rules('password', 'Password', 'required|strtolower');
         $this->form_validation->set_message('matches', 'O campo %s esta diferente do campo %s');
         $this->form_validation->set_rules('password2', 'Repita Password', 'required|strtolower|matches[password]');
-        $this->form_validation->set_rules('nif', 'NIF', 'required|numeric|exact_length[9]');
-        $this->form_validation->set_rules('bi', 'BI', 'required|numeric|exact_length[8]');
+        $this->form_validation->set_rules('nif', 'NIF', 'required|numeric|exact_length[9]|is_unique[utilizador.nif]');
+        $this->form_validation->set_rules('bi', 'BI', 'required|numeric|exact_length[8]|is_unique[utilizador.bi]');
         $this->form_validation->set_rules('dataNascimento', 'Data de Nascimento', 'required');
         $this->form_validation->set_rules('dataEntrada', 'Data de Entrada', 'required');
         $this->form_validation->set_rules('privilegio', 'Privilégio', 'required');
@@ -213,16 +227,30 @@ class Utilizador extends CI_Controller {
         }
     }
 
-    public function pesquisar() {
+    //botao pesquisar utilizadores ativos(consultarUtilizadores_v)
+    public function pesquisarAtivos() {
 
         $this->load->model('utilizador_m');
-        $dados['utilizadores'] = $this->utilizador_m->pesquisar_utlizadores();
+        $dados['utilizadoresAtivos'] = $this->utilizador_m->pesquisar_utlizadoresAtivos();
+   
 
         $this->load->view('includes/header_v');
         $this->load->view('ConsultarUtilizadores_v', $dados);
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
+       //botao pesquisar utilizadores inativos(historicoUtilizadores_v)
+        public function pesquisarInativos() {
+
+        $this->load->model('utilizador_m');
+        $dados['utilizadoresInativos'] = $this->utilizador_m->pesquisar_utlizadoresInativos();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('historicoUtilizadores_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+
 
     //destroi a sessao 
     public function logout() {
@@ -280,7 +308,8 @@ class Utilizador extends CI_Controller {
             redirect('utilizador/presencasAtuacoes');
         }
     }
-
+ 
+//atuacoes num determinado ano 
     public function eventosPorAno() {
 
         $ano = $this->input->post('ano');
@@ -300,18 +329,15 @@ class Utilizador extends CI_Controller {
         }
     }
 
-    public function t() {
-        $this->load->view('includes/header_v');
-        $this->load->view('includes/teste');
-    }
 
     // This function call from AJAX
+    //vai dando sugestões de atuações registadas na base de dados
     public function verDetalhesEvento() {
-
-        $this->load->model('utilizador_m');
+       
+        $this->load->model('utilizador_m');     
         $data = $this->utilizador_m->utilizadoresPorEvento($this->input->post('name'));
 
-// convertemos em json e colocamos na tela
+    // convertemos em json e colocamos na tela
         echo json_encode($data);
     }
     

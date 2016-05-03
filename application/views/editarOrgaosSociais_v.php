@@ -19,7 +19,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Novo Elemento</h3>
+                        <h3 class="box-title">Editar Orgãos Sociais</h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
 
@@ -45,7 +45,26 @@
                        
                         <div class="col-md-6 form-group">
                             <label>Cargo</label>
-                            <input type="text" class="form-control" name="cargo" value="<?= $orgaosSociais[0]->cargo; ?>">
+                         
+                            
+                              <select class="form-control" name="cargo" data-live-search="true">
+                           
+                                <option value="Presidente"<?= $orgaosSociais[0]->cargo == 'Presidente' ? ' selected ' : ''; ?>>Presidente</option>
+                                <option value="Vice-Presidente" <?= $orgaosSociais[0]->cargo == 'Vice-Presidente' ? ' selected ' : ''; ?> >Vice-Presidente</option>
+                                <option value="Tesoureiro" <?= $orgaosSociais[0]->cargo == 'Tesoureiro' ? ' selected ' : ''; ?>  >Tesoureiro</option>
+                                <option value="Secretário" <?= $orgaosSociais[0]->cargo == 'Secretário' ? ' selected ' : ''; ?>  >Secretário</option>
+                                <option value="1º Secretário" <?= $orgaosSociais[0]->cargo == '1º Secretário' ? ' selected ' : ''; ?> >1º Secretário</option>
+                                <option value="2º Secretário" <?= $orgaosSociais[0]->cargo == '2º Secretário' ? ' selected ' : ''; ?> >2º Secretário</option>
+                                <option value="Diretor Financeiro" <?= $orgaosSociais[0]->cargo == 'Diretor Financeiro' ? ' selected ' : ''; ?> >Diretor Financeiro</option>
+                                <option value="Diretor Secretariado e Burocracia" <?= $orgaosSociais[0]->cargo == 'Diretor Secretariado e Burocracia' ? ' selected ' : ''; ?>  >Diretor Secretariado e Burocracia</option>
+                                <option value="Diretor Património e Administração Interna" <?= $orgaosSociais[0]->cargo == 'Diretor Património e Administração Interna' ? ' selected ' : ''; ?> >Diretor Património e Administração Interna</option>
+                                <option value="Diretor Marketing e Comunicação" <?= $orgaosSociais[0]->cargo == 'Diretor Marketing e Comunicação' ? ' selected ' : ''; ?>  >Diretor Marketing e Comunicação</option>
+                                <option value="Diretor Social e Recreativo" <?= $orgaosSociais[0]->cargo == 'Diretor Social e Recreativo' ? ' selected ' : ''; ?>  >Diretor Social e Recreativo</option>
+                                <option value="Diretor Prospeção e Arquivo" <?= $orgaosSociais[0]->cargo == 'Diretor Prospeção e Arquivo' ? ' selected ' : ''; ?>  >Diretor Prospeção e Arquivo</option>
+                                <option value="Diretor Relações Externas" <?= $orgaosSociais[0]->cargo == 'Diretor Relações Externas' ? ' selected ' : ''; ?>  >Diretor Relações Externas</option>
+
+                              </select>
+                            
                         </div>
 
                        

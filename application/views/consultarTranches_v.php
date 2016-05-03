@@ -16,13 +16,13 @@
             <div class="col-xs-12">
                 <div class="box">
   <!--   ---------------  botão para pesquisar-->
-                    <form action="<?= base_url() ?>Ensaios/pesquisar" method="post" >
+                    <form action="<?= base_url() ?>Tranche/pesquisar" method="post" >
                         <div class="box-header">
                             <h3 class="box-title">Lista de Tranches</h3>
 
                             <div class="box-tools">
                                 <div class="input-group" style="width: 400px;">
-                                    <input type="text" name="pesquisar" class="form-control input-sm pull-right" placeholder="Pesquisar por...">
+                                    <input type="text" name="pesquisar" class="form-control input-sm pull-right" placeholder="Pesquisar por ano...">
                                     <div class="input-group-btn">
                                         <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                                     </div>

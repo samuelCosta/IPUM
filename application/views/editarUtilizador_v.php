@@ -32,7 +32,7 @@
                         
                         <div class="col-md-6 form-group">    
                             <label >Nome</label>
-                            <input type="text" class="form-control" value="<?= $utilizador[0]->nome; ?>" name="nome" >                     
+                            <input disabled="" type="text" class="form-control" value="<?= $utilizador[0]->nome; ?>" name="nome" >                     
                         </div>
                        
                         <div class="col-md-6 form-group">
@@ -49,12 +49,12 @@
 
                         <div class="col-md-4 form-group">
                             <label>NIF</label>
-                            <input type="text" class="form-control" name="nif" value="<?= $utilizador[0]->nif; ?>" placeholder="Introduza o NIF">
+                            <input disabled="" type="text" class="form-control" name="nif" value="<?= $utilizador[0]->nif; ?>" placeholder="Introduza o NIF">
                         </div>
 
                         <div class="col-md-4 form-group">
                             <label>BI</label>
-                            <input type="text" class="form-control" name="bi" value="<?= $utilizador[0]->bi; ?>"placeholder="Introduza o numero de BI">
+                            <input disabled="" type="text" class="form-control" name="bi" value="<?= $utilizador[0]->bi; ?>"placeholder="Introduza o numero de BI">
                         </div>
 
                         <div class="col-md-4 form-group">

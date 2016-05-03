@@ -13,12 +13,13 @@
 
     <section class="content">
         <div class="row">
-            <div class="col-xs-12">
+            
+                        <div class="col-xs-12">
                 <div class="box">
   <!--   ---------------  botão para pesquisar-->
-                    <form action="<?= base_url() ?>utilizador/pesquisarAtivos" method="post" >
+                    <form action="<?= base_url() ?>utilizador/pesquisarInativos" method="post" >
                         <div class="box-header">
-                            <h3 class="box-title">Lista de elementos Ativos</h3>
+                            <h3 class="box-title">Histtorico</h3>
 
                             <div class="box-tools">
                                 <div class="input-group" style="width: 400px;">
@@ -41,7 +42,7 @@
                                 <th>Estado</th>
 
                             </tr>
-                            <?php foreach ($utilizadoresAtivos as $uti) { ?>
+                            <?php foreach ($utilizadoresInativos as $uti) { ?>
                                 <tr  onclick= script:location.href="<?= base_url(); ?>utilizador/detalheUtilizador/<?php echo $uti->idUtilizador; ?>">
                                     <td><?= $uti->nome; ?></td>
                                     <td><?= $uti->alcunha; ?></td>
@@ -54,24 +55,26 @@
                                     <?php } ?>    
 
 
-                                  
-
                                     <td>
                                         <a class="btn-lg" href="<?= base_url('utilizador/atualizar/' . $uti->idUtilizador) ?>"><i class="fa fa-edit"></i></a>
                                       
                                 </tr>
+                                
+                                
                             <?php } ?>
-                                
-                                
-                            
-         
-                                
-                                
+
+
+
                         </table>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
+            </div>      
+            
+            
+            
+            
+           
             </div>
-    
         </div>
     </section>
 </div><!-- /.content-wrapper -->

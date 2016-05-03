@@ -33,7 +33,8 @@
                         <a href="#"><i class="fa fa-circle-o"></i> Elementos <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
                             <li><a href="<?= base_url() ?>utilizador/criarUtilizador"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>utilizador/consultarUtilizadores"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>utilizador/consultarUtilizadoresAtivos"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>utilizador/consultarUtilizadoresInativos"><i class="fa fa-circle-o"></i> Historico</a></li>
                         </ul>
                     </li>
                 </ul>

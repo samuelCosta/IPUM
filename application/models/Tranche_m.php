@@ -89,5 +89,14 @@ class Tranche_m extends CI_Model {
         return $this->db->update('apoios', $data);
     }
     
+       public function pesquisar_tranches() {
+//like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
+        $pesquisa = $this->input->post('pesquisar');
+
+        $this->db->select('*');
+        $this->db->like('ano', $pesquisa);     
+        return $this->db->get('apoios')->result();
+    }
+    
 
 }

@@ -35,6 +35,7 @@
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
+                                 <th>Nome</th>
                                 <th>Data</th>
                                 <th>Localização</th>
                                  <th>Pessoa Responsavel</th>
@@ -47,6 +48,7 @@
                             </tr>
                             <?php foreach ($atuacoes as $atu) { ?>
                                 <tr>
+                                    <td><?= $atu->designacao; ?></td>
                                     <td><?= $atu->dataEvento; ?></td>
                                     <td><?= $atu->localizacao; ?></td>
                                       <td><?= $atu->responsavel; ?></td>

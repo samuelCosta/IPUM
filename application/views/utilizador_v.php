@@ -29,10 +29,10 @@
 
                   <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
-                      <b>Nº Eventos Presentes</b> <a class="pull-right">50</a>
+                      <b>Nº Atuações Presentes</b> <a class="pull-right"><?php echo $totalAtuacoes; ?></a>
                     </li>
                     <li class="list-group-item">
-                      <b>Nº Ensaios Presentes</b> <a class="pull-right">100</a>
+                      <b>Nº Ensaios Presentes</b> <a class="pull-right"><?php echo $totalEnsaios ?></a>
                     </li>
                     <li class="list-group-item">
                       <b>Próximo Pagamento</b> <a class="pull-right">15-07-2016</a>
@@ -57,37 +57,48 @@
                   <h3 class="box-title">Sobre Mim</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <strong><i class="fa fa-book margin-r-5"></i>Nome</strong>
+                  <strong><i class=" margin-r-5"></i>Nome</strong>
                   <p class="text-muted">
                     <?= $utilizador[0]->nome; ?>
                   </p>
 
-                  <hr>
-                  <strong><i class="fa fa-book margin-r-5"></i>Alcunha</strong>
+                
+                  <strong><i class=" margin-r-5"></i>Alcunha</strong>
                   <p class="text-muted">
                     <?= $utilizador[0]->alcunha; ?>
                   </p>
 
-                  <hr>
+              
 
-                  <strong><i class=" fa fa-caret-square-o-right margin-r-5"></i> Data Entrada</strong>
+                  <strong><i class="  margin-r-5"></i> Data Entrada</strong>
                   <p class="text-muted">  <?= $utilizador[0]->dataEntrada; ?></p>
                    
+                  <strong><i class="  margin-r-5"></i>NIF</strong>
+                  <p class="text-muted">  <?= $utilizador[0]->nif; ?></p>
+                  
+                  <strong><i class="  margin-r-5"></i>BI</strong>
+                  <p class="text-muted">  <?= $utilizador[0]->bi; ?></p>
+                
+                  <strong><i class="  margin-r-5"></i> Data Nascimento</strong>
+                  <p class="text-muted">  <?= $utilizador[0]->dataNascimento; ?></p>
+                  
+                   <strong><i class="  margin-r-5"></i> Email</strong>
+                  <p class="text-muted">  <?= $utilizador[0]->email; ?></p>
+                  
+                   <strong><i class="  margin-r-5"></i> Data Sócio</strong>
+                  <p class="text-muted">  <?= $utilizador[0]->dataSocio; ?></p>
+                  
                   <hr>
+                   <strong><i class="  margin-r-5"></i> Traje</strong>
+                  <p class="text-muted">  </p>
+                  
+                   <strong><i class="  margin-r-5"></i> Instrumento</strong>
+                  <p class="text-muted"> </p>
 
-                  <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-                  <p>
-                    <span class="label label-danger">UI Design</span>
-                    <span class="label label-success">Coding</span>
-                    <span class="label label-info">Javascript</span>
-                    <span class="label label-warning">PHP</span>
-                    <span class="label label-primary">Node.js</span>
-                  </p>
+                
 
-                  <hr>
+                 
 
-                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
               

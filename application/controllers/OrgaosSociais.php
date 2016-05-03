@@ -6,7 +6,7 @@ class OrgaosSociais extends CI_Controller {
     
     public function index(){
         $this->load->model('utilizador_m');
-        $dados['utilizador']=  $this->utilizador_m->get_utilizadores();
+        $dados['utilizador']=  $this->utilizador_m->get_utilizadoresAtivos();
         $this->load->view('includes/header_v');
         $this->load->view('registarOrgaosSociais_v',$dados);
         $this->load->view('includes/menu_v');
@@ -38,7 +38,7 @@ class OrgaosSociais extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->model('utilizador_m');
-            $dados['utilizadores'] = $this->utilizador_m->get_utilizadores();
+            $dados['utilizadores'] = $this->utilizador_m->get_utilizadoresAtivos();
             $this->load->view('includes/header_v');
             $this->load->view('registarOrgaosSociais_v',$dados);
             $this->load->view('includes/menu_v');
@@ -88,7 +88,7 @@ class OrgaosSociais extends CI_Controller {
         $data['orgaosSociais'] = $this->OrgaosSociais_m->compararId($id);
         
          $this->load->model('utilizador_m');
-         $data['utilizadores'] = $this->utilizador_m->get_utilizadores();
+         $data['utilizadores'] = $this->utilizador_m->get_utilizadoresAtivos();
          
         $this->load->view('includes/header_v');
         $this->load->view('editarOrgaosSociais_v', $data);
@@ -101,10 +101,8 @@ class OrgaosSociais extends CI_Controller {
         //ucwords-colocar iniciais em maiusculo
 
         
-        $this->form_validation->set_rules('cargo', 'Cargo', 'required|alpha|ucwords');
-
-        $this->form_validation->set_rules('dataInicio', 'Data de Inicio', 'required');
- 
+        $this->form_validation->set_rules('cargo', 'Cargo', 'required|ucwords');
+        $this->form_validation->set_rules('dataInicio', 'Data de Inicio', 'required'); 
         $id = $this->input->post('idorgaosSociais');
 
 
@@ -114,7 +112,7 @@ class OrgaosSociais extends CI_Controller {
             $data['orgaosSociais'] = $this->OrgaosSociais_m->compararId($id);
 
             $this->load->model('utilizador_m');
-            $data['utilizadores'] = $this->utilizador_m->get_utilizadores();
+            $data['utilizadores'] = $this->utilizador_m->get_utilizadoresAtivos();
 
             $this->load->view('includes/header_v');
             $this->load->view('editarOrgaosSociais_v', $data);
@@ -131,7 +129,7 @@ class OrgaosSociais extends CI_Controller {
             $data['msg'] = "Alterado com Sucesso.";
             $this->load->view('includes/header_v');
             $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('utilizador_v');
+            $this->load->view('bemVindo_v');
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         }

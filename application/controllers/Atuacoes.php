@@ -22,7 +22,7 @@ class Atuacoes extends CI_Controller {
         $this->form_validation->set_rules('orcamento', 'Orçamento', 'required');
         $this->form_validation->set_rules('responsavel', 'Responsável', 'required|ucwords');
         $this->form_validation->set_rules('contacto', 'Contacto', 'required|numeric|exact_length[9]');
-        $this->form_validation->set_rules('designacao', 'Designação', 'required|ucwords');
+        $this->form_validation->set_rules('designacao', 'Designação', 'required|ucwords|is_unique[eventos.designacao]');
 
         
    
@@ -102,7 +102,7 @@ class Atuacoes extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             //insere os dados na base de dados
-            $dados = elements(array('dataEvento','localizacao','responsavel','contacto','orcamento','despesa'), $this->input->post());
+            $dados = elements(array('dataEvento','localizacao','responsavel','contacto','orcamento','despesa','notas'), $this->input->post());
 
 
             $this->load->model('Atuacoes_m');
@@ -172,7 +172,7 @@ class Atuacoes extends CI_Controller {
     public function consultarUtilizadores($id= null) {
         $dados['idEventos']=$id;
         $this->load->model('utilizador_m');
-        $dados['utilizadores'] = $this->utilizador_m->get_utilizadores();
+        $dados['utilizadores'] = $this->utilizador_m->get_utilizadoresAtivos();
 
         $this->load->view('includes/header_v');
         $this->load->view('presencaAtuacoes_v', $dados);

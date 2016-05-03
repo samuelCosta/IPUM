@@ -20,10 +20,19 @@ class Utilizador_m extends CI_Model {
         
     }
 
-//vai buscar todos os utilizadores
-    public function get_utilizadores() {
+//vai buscar todos os utilizadores ativos
+    public function get_utilizadoresAtivos() {
 
         $this->db->select('*');
+        $this->db->where("ativo", 1);
+        return $this->db->get('utilizador')->result();
+    }
+    
+    //vai buscar todos os utilizadores inativos
+    public function get_utilizadoresInativos() {
+
+        $this->db->select('*');
+        $this->db->where("ativo", 0);
         return $this->db->get('utilizador')->result();
     }
 
@@ -41,12 +50,22 @@ class Utilizador_m extends CI_Model {
         return $this->db->update('utilizador', $data);
     }
 
-//    permite pesquisar consoante o que é digitado
-    public function pesquisar_utlizadores() {
+//    permite pesquisar consoante o que é digitado 
+    public function pesquisar_utlizadoresAtivos() {
 //like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
         $pesquisa = $this->input->post('pesquisar');
-
         $this->db->select('*');
+        $this->db->where("ativo", 1);
+        $this->db->like('nome', $pesquisa);
+        return $this->db->get('utilizador')->result();
+    }
+    
+    //    permite pesquisar consoante o que é digitado
+    public function pesquisar_utlizadoresInativos() {
+//like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
+        $pesquisa = $this->input->post('pesquisar');
+        $this->db->select('*');
+        $this->db->where("ativo", 0);
         $this->db->like('nome', $pesquisa);
         return $this->db->get('utilizador')->result();
     }
@@ -140,6 +159,7 @@ class Utilizador_m extends CI_Model {
      function searchUtilizadores($dado){
         
         $this->db->like('nome', $dado,'both');
+         $this->db->where('ativo', 1);
         return $this->db->get('utilizador')->result();
          
     }
@@ -152,11 +172,12 @@ class Utilizador_m extends CI_Model {
 
     }
     
-    //    retorna os eventos onde teve determinado utilizador
+    //    retorna as atuacoes onde teve determinado utilizador
       public function eventoPorUtilizador($id){
 
         $this->db->select('*');
         $this->db->where('utilizador_idUtilizador', $id);
+        $this->db->where('eventos.tipo', 'atuação');
         $this->db->join('eventos', 'eventos_idEventos=idEventos', 'inner');       
         return $this->db->get('presencasEventos')->result();
         
@@ -164,5 +185,26 @@ class Utilizador_m extends CI_Model {
     }
     
     
+        //    conta o total de atuacoes
+    public function totalAtuacoesElemento($id) {
 
+        $this->db->select('*');
+        $this->db->where('utilizador_idUtilizador', $id);
+        $this->db->where('eventos.tipo', 'atuação');
+        $this->db->join('eventos', 'eventos_idEventos=idEventos', 'inner');
+        $query = $this->db->get('presencasEventos');
+        return $query->num_rows();
+    }
+
+            //    conta o total de ensaios
+    public function totalEnsaiosElemento($id) {
+
+        $this->db->select('*');
+        $this->db->where('utilizador_idUtilizador', $id);
+        $this->db->where('eventos.tipo', 'ensaio');
+        $this->db->join('eventos', 'eventos_idEventos=idEventos', 'inner');
+        $query = $this->db->get('presencasEventos');
+        return $query->num_rows();
+    }
+    
 }

@@ -155,7 +155,7 @@ class Ensaios extends CI_Controller {
     public function consultarUtilizadores($id= null) {
         $dados['idEventos']=$id;
         $this->load->model('utilizador_m');
-        $dados['utilizadores'] = $this->utilizador_m->get_utilizadores();
+        $dados['utilizadores'] = $this->utilizador_m->get_utilizadoresAtivos();
 
         $this->load->view('includes/header_v');
         $this->load->view('presencaEnsaios_v', $dados);

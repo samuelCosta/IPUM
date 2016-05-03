@@ -141,5 +141,18 @@ class Tranche extends CI_Controller {
         $data = $this->Tranche_m->guardarAtualizacao($id, $dados);
         redirect('Tranche/consultarTranches');
     }
+    
+    
+      // boatao pesquisar (pesquisa por ano)
+      public function pesquisar() {
+
+         $this->load->model('Tranche_m');   
+        $dados['tranches'] = $this->Tranche_m->pesquisar_tranches();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('consultarTranches_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+      }
 
 }
