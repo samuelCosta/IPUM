@@ -1,39 +1,81 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Merchandising_m extends CI_Model {
 
-    public function do_insert($dados = NULL) {
-        if ($dados != NULL):
-            $this->db->insert('stockmerchandising', $dados);
-        endif;
-    }
     
-    public function get_Merchandising() {
-
-        $this->db->select('*');
-        return $this->db->get('stockmerchandising')->result();
-    }
-    
-    public function compararId($id) {
-
-        $this->db->where('idStockMerchandising', $id);
-        return $this->db->get('stockmerchandising')->result();
-    }
-    
-    public function guardarAtualizacao($id, $data) {
-
-        $this->db->where('idStockMerchandising', $id);
-        return $this->db->update('stockmerchandising', $data);
-    }
-    
-    public function delete($id) {
+    public function get_merchandising_stock() {
+        $this->db->select('sm.*, ts.descricao as tipo_selecao_descricao');
+        $this->db->from('stock_merchandising sm');
+        $this->db->join('tipo_selecao ts', 'sm.ts_tipo_id=ts.id', 'left');
         
-        //$this->db->delete('stockmerchandising', array('idStockMerchandising' => $id));
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function get_merchandising() {
+        $this->db->select('m.*, ts_m.descricao as motivo, ts_t.descricao as tipo_merchandising' );
+        $this->db->from('merchandising m');
+        $this->db->join('tipo_selecao ts_m', 'm.ts_motivo_id=ts_m.id', 'left');
+        $this->db->join('stock_merchandising sm', 'm.sm_id=sm.id', 'left');
+        $this->db->join('tipo_selecao ts_t', 'sm.ts_tipo_id=ts_t.id', 'left');
         
-        $this->db->where('idStockMerchandising', $id);
-        $this->db->delete('stockmerchandising');
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function get_merchandising_id($id) {
+        $this->db->select('sm.*');
+        $this->db->from('stock_merchandising sm');
+        $this->db->where('sm.id', $id);
+
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    
+    public function registar() {
+
+        $data = array(
+            'ts_tipo_id' => $this->input->post('tipo_merchandising'),
+            'quantidade' => $this->input->post('quantidade'),
+            'custo_uni' => $this->input->post('custo_uni'),
+            'localizacao' => $this->input->post('localizacao'),
+            'data_compra' => $this->input->post('data_compra')
+        );
+
+        return $this->db->insert('stock_merchandising', $data);
+    }
+    
+    public function editar($id) {
+        $data = array(
+            'ts_tipo_id' => $this->input->post('tipo_merchandising_hidden'),
+            'quantidade' => $this->input->post('quantidade'),
+            'data_compra' => $this->input->post('data_compra'),
+            'localizacao' => $this->input->post('localizacao'),
+            'custo_uni' => $this->input->post('custo_uni'),
+        );
+
+        $this->db->where('id', $id);
+        return $this->db->update('stock_merchandising', $data);
+    }
+    
+    public function atribuir_merchandising($id) {
+        $data = array(
+            'data' => $this->input->post('data'),
+            'custo' => $this->input->post('custo'),
+            'quantidade' => $this->input->post('quantidade'),
+            'ts_motivo_id' => $this->input->post('motivo'),
+            'elemento' => $this->input->post('elemento'),
+            'sm_id' => $id           
+        );
+        
+        return $this->db->insert('merchandising', $data);
+    }
+    
+    public function atualiza_quantidade($id, $quantidade) {
+        $this->db->set('quantidade', $quantidade);
+        $this->db->where('id', $id);
+        return $this->db->update('stock_merchandising');
     }
 
 }

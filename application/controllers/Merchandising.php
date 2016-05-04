@@ -1,116 +1,108 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Merchandising extends CI_Controller {
-
+class Merchandising extends CI_Controller{
+    
+    function __construct() {
+        parent::__construct();
+        $this->load->model('merchandising_m');
+        $this->load->model('tiposelecao_m');
+    }
+    
     public function index() {
-
+        $data['merchandising_stock'] = $this->merchandising_m->get_merchandising_stock();
+        $data['merchandising'] = $this->merchandising_m->get_merchandising();
+        
         $this->load->view('includes/header_v');
-        $this->load->view('registarMerchandising_v');
+        $this->load->view('merchandising/index', $data);
         $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
     }
+    
+    public function registar() {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
 
-    public function criarMerchandising() {
-
-        $this->load->view('includes/header_v');
-        $this->load->view('registarMerchandising_v');
-        $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
-    }
-
-    public function registarMerchandising() {
-
-        $this->form_validation->set_rules('tipo', 'Tipo', 'required');
+        $data['tipos_merchandising'] = $this->tiposelecao_m->get_tiposelecao('TIPO_MERCHANDISING');
+        
+        $this->form_validation->set_rules('tipo_merchandising', 'Tipo de Merchandising', 'required');
         $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
+        $this->form_validation->set_rules('custo_uni', 'Custo Unitário', 'required');
         $this->form_validation->set_rules('localizacao', 'Localização', 'required');
-
+        $this->form_validation->set_rules('data_compra', 'Data de Compra', 'required');
+        
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
-            $this->load->view('registarMerchandising_v');
+            $this->load->view('merchandising/registar', $data);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         } else {
-            //insere os dados na base de dados
-            $dados = elements(array('tipo', 'quantidade', 'localizacao'), $this->input->post());
-            $this->load->model('Merchandising_m');
-            $this->Merchandising_m->do_insert($dados);
-
-            $data['msg'] = "Sucesso.";
-            $dados['merchandising'] = $this->Merchandising_m->get_Merchandising();
-            $this->load->view('includes/header_v');
-            $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('consultarMerchandising_v', $dados);
-            $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
+            $this->merchandising_m->registar();
+            redirect('merchandising', 'refresh');
         }
     }
-
-    public function consultarMerchandising() {
-        $this->load->model('Merchandising_m');
-        $dados['merchandising'] = $this->Merchandising_m->get_Merchandising();
-
-        $this->load->view('includes/header_v');
-        $this->load->view('consultarMerchandising_v', $dados);
-        $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
-    }
-
-    public function deleteMerchandising($id) {
-        $this->load->model('Merchandising_m');
-
-        $this->Merchandising_m->delete($id);
-        redirect('Merchandising/consultarMerchandising');
-    }
-
-    public function atualizar($id = null, $indice = null) {
-
-        $this->load->model('Merchandising_m');
-        $data['merchandising'] = $this->Merchandising_m->compararId($id);
+    
+    public function editar($id) {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
 
 
-        $this->load->view('includes/header_v');
-        $this->load->view('editarMerchandising_v', $data);
-        $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
-    }
+        $data['edit_data'] = $this->merchandising_m->get_merchandising_id($id);
+        $data['tipos_merchandising'] = $this->tiposelecao_m->get_tiposelecao('TIPO_MERCHANDISING');
 
-    public function guardarAtualizacao() {
-        //strtolower-colocar tudo em minusculo
-        //ucwords-colocar iniciais em maiusculo
-
-        $this->form_validation->set_rules('tipo', 'Tipo', 'required');
         $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
+        $this->form_validation->set_rules('custo_uni', 'Custo Unitário', 'required');
         $this->form_validation->set_rules('localizacao', 'Localização', 'required');
-        $id = $this->input->post('idStockMerchandising');
-
+        $this->form_validation->set_rules('data_compra', 'Data de Compra', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-
-            $this->load->model('Merchandising_m');
-            $data['merchandising'] = $this->Merchandising_m->compararId($id);
-
             $this->load->view('includes/header_v');
-            $this->load->view('editarMerchandising_v', $data);
+            $this->load->view('merchandising/editar', $data);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         } else {
-            //insere os dados na base de dados
-            $dados = elements(array('tipo', 'quantidade', 'localizacao'), $this->input->post());
-
-            $this->load->model('Merchandising_m');
-            $this->Merchandising_m->guardarAtualizacao($id, $dados);
-
-            $data['msg'] = "Alterado com Sucesso.";
-            $this->load->model('Merchandising_m');
-            $dados['merchandising'] = $this->Merchandising_m->get_Merchandising();
-            $this->load->view('includes/header_v');
-            $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('consultarMerchandising_v', $dados);
-            $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
+            $this->merchandising_m->editar($id);
+            redirect('merchandising', 'refresh');
         }
     }
+    
+    public function atribuir_merchandising($id) {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
 
+        $data['edit_data'] = $this->merchandising_m->get_merchandising_id($id);
+        $data['tipos_motivo'] = $this->tiposelecao_m->get_tiposelecao('TIPO_MOTIVO');
+        $data['merchandising'] = $this->merchandising_m->get_merchandising_stock();
+        
+        $this->form_validation->set_rules('motivo', 'Motivo', 'required');
+        $this->form_validation->set_rules('elemento', 'Elemento');
+        $this->form_validation->set_rules('data', 'Data', 'required');
+        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required|callback_check_quantidade');
+        $this->form_validation->set_rules('custo', 'Custo');
+        
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('includes/header_v');
+            $this->load->view('merchandising/atribuir', $data);
+            $this->load->view('includes/menu_v');
+            $this->load->view('includes/footer_v');
+        } else {
+            $this->merchandising_m->atribuir_merchandising($id);
+            $result = $this->merchandising_m->get_merchandising_id($id);
+            $result['quantidade'] = $result['quantidade'] - $this->input->post('quantidade');
+            $this->merchandising_m->atualiza_quantidade($result['id'], $result['quantidade']);
+
+            redirect('merchandising', 'refresh');
+        }
+        
+    }
+    
+    function check_quantidade($quantidade) {
+        $tipo_merchandising = $this->input->post('tipo_merchandising_hidden');
+        $result = $this->merchandising_m->get_merchandising_id($tipo_merchandising);
+        if ($result['quantidade'] >= $quantidade) {
+            return true;
+        }
+
+        $this->form_validation->set_message('check_quantidade', 'Quantidade inserida é superior à quantidade em Stock');
+        return false;
+    }
+        
 }
