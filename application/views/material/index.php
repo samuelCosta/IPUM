@@ -17,6 +17,9 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Stock de Material</h3>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-block btn-primary" onclick="location.href = 'material/registar'">Registar</button>
+                        </div>
                     </div>
                     <div class="box-body">
                         <table id="materiais_dt" class="table table-bordered table-hover">
@@ -53,7 +56,7 @@
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                             <a class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('material/delete_material/' . $mat['id']); ?>');" deleteConfirm href="#"/>
-                                                <i class="fa fa-trash-o"></i>
+                                            <i class="fa fa-trash-o"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -89,35 +92,35 @@
 <script src="<?php echo base_url() . 'assets/plugins/fastclick/fastclick.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
 <script>
-    $(function () {
-        $("#materiais_dt").DataTable({
-            "initComplete": function () {
-                this.api().columns().every(function () {
-                    var column = this;
-                    if (column.index() < 5) {
-                        var select = $('<select><option value=""></option></select>')
-                                .appendTo($(column.footer()).empty())
-                                .on('change', function () {
-                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                                                $(function () {
+                                                    $("#materiais_dt").DataTable({
+                                                        "initComplete": function () {
+                                                            this.api().columns().every(function () {
+                                                                var column = this;
+                                                                if (column.index() < 5) {
+                                                                    var select = $('<select><option value=""></option></select>')
+                                                                            .appendTo($(column.footer()).empty())
+                                                                            .on('change', function () {
+                                                                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
-                                    column.search(val ? '^' + val + '$' : '', true, false).draw();
-                                });
+                                                                                column.search(val ? '^' + val + '$' : '', true, false).draw();
+                                                                            });
 
-                        column.data().unique().sort().each(function (d, j) {
-                            select.append('<option value="' + d + '">' + d + '</option>')
-                        });
-                    }
-                });
-            },
-            "language": {
-                "lengthMenu": "Ver _MENU_ registos",
-                "info": "_START_ - _END_ de _TOTAL_ registos"
-            },
-            "columnDefs": [
-                { targets: 5, orderable: false}
-            ]
-        });
-    });
+                                                                    column.data().unique().sort().each(function (d, j) {
+                                                                        select.append('<option value="' + d + '">' + d + '</option>')
+                                                                    });
+                                                                }
+                                                            });
+                                                        },
+                                                        "language": {
+                                                            "lengthMenu": "Ver _MENU_ registos",
+                                                            "info": "_START_ - _END_ de _TOTAL_ registos"
+                                                        },
+                                                        "columnDefs": [
+                                                            {targets: 5, orderable: false}
+                                                        ]
+                                                    });
+                                                });
 </script>
 <script>
     function deleteConfirm(url)

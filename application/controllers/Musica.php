@@ -1,6 +1,5 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Musica extends CI_Controller {
 
@@ -20,5 +19,23 @@ class Musica extends CI_Controller {
 //        }  else {
 //            redirect('Welcome', 'refresh');
 //        }
+    }
+    
+    public function registar($id) {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('link', 'Link', 'required');
+        $this->form_validation->set_rules('nome', 'Descrição', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('includes/header_v');
+            $this->load->view('musica/registar');
+            $this->load->view('includes/menu_v');
+            $this->load->view('includes/footer_v');
+        } else {
+            $this->musica_m->registar($id);
+            redirect('musica', 'refresh');
+        }
     }
 }

@@ -52,29 +52,30 @@
                     <li class="active">
                         <a href="#"><i class="fa fa-circle-o"></i> Instrumentos <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>Instrumentos/registarInstrumento"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>Instrumentos/consultarInstrumentos"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>instrumento/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>instrumento/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>material/index"><i class="fa fa-circle-o"></i>Stock Material</a></li>
                         </ul>
                     </li>
                     <li class="active">
                         <a href="#"><i class="fa fa-circle-o"></i> Traje<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>Traje/registarTraje"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>Traje/consultarTraje"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>traje/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>traje/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
                         </ul>
                     </li>
                     <li class="active">
                         <a href="#"><i class="fa fa-circle-o"></i> Música<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>Musica/registarMusica"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>Musica/consultarMusica"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>musica/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>musica/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
                         </ul>
                     </li>
                     <li class="active">
                         <a href="#"><i class="fa fa-circle-o"></i> Merchandising<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>Merchandising/registarMerchandising"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>Merchandising/consultarMerchandising"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>merchandising/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
+                            <li><a href="<?= base_url() ?>merchandising/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
                         </ul>
                     </li>
 
