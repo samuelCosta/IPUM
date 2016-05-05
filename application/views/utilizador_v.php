@@ -1,6 +1,7 @@
 
 <!--//vai buscar os dados todos da sessao e mete no array-->
-<?php // $dado= $this->session->all_userdata() ?>
+<?php // $dado= $this->session->all_userdata()?>
+<?php // echo $this->session->userdata('foto'); ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -21,7 +22,7 @@
                 <!-- Profile Image -->
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-                        <img class="profile-user-img img-responsive img-circle" src="<?= base_url(); ?>uploads/<?php echo $this->session->userdata('foto'); ?>" width="150" height="150" alt="User profile picture">
+                        <img class="profile-user-img img-responsive img-circle" src="<?= base_url(); ?>uploads/<?php echo $utilizador['foto']; ?>" width="150" height="150" alt="User profile picture">
                         <h3 class="profile-username text-center">  <?php echo $utilizador['nome']; ?> </h3>
 
 

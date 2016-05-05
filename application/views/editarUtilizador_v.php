@@ -49,7 +49,7 @@
 
                         <div class="col-md-4 form-group">
                             <label>NIF</label>
-                            <input disabled="" type="text" class="form-control" name="nif" value="<?= $utilizador[0]->nif; ?>" placeholder="Introduza o NIF">
+                            <input  disabled="" type="text" class="form-control" name="nif" value="<?= $utilizador[0]->nif; ?>" placeholder="Introduza o NIF">
                         </div>
 
                         <div class="col-md-4 form-group">

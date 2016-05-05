@@ -115,8 +115,8 @@ class Utilizador extends CI_Controller {
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png';
 //        $config['max_size'] = '10';
-        $config['max_width'] = '400';
-        $config['max_height'] = '400';
+//        $config['max_width'] = '1000';
+//        $config['max_height'] = '1000';
 
 
         $this->load->library('upload', $config);
@@ -171,11 +171,8 @@ class Utilizador extends CI_Controller {
         //strtolower-colocar tudo em minusculo
         //ucwords-colocar iniciais em maiusculo
 
-        $this->form_validation->set_rules('nome', 'Nome', 'required|ucwords');
         $this->form_validation->set_rules('alcunha', 'Alcunha', 'required|alpha');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|strtolower|valid_email');
-        $this->form_validation->set_rules('nif', 'NIF', 'required|numeric|exact_length[9]');
-        $this->form_validation->set_rules('bi', 'BI', 'required|numeric|exact_length[8]');
         $this->form_validation->set_rules('dataNascimento', 'Data Nascimento', 'required');
         $this->form_validation->set_rules('privilegio', 'Privilegio', 'required');
         $id = $this->input->post('idUtilizador');
@@ -192,7 +189,7 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             //insere os dados na base de dados
-            $dados = elements(array('socio', 'ativo', 'nome', 'alcunha', 'email', 'nif', 'bi', 'dataNascimento', 'privilegio'), $this->input->post());
+            $dados = elements(array('socio', 'ativo', 'alcunha', 'email', 'dataNascimento', 'privilegio'), $this->input->post());
 
 
             $this->load->model('utilizador_m');
@@ -201,7 +198,7 @@ class Utilizador extends CI_Controller {
             $data['msg'] = "Alterado com Sucesso.";
             $this->load->view('includes/header_v');
             $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('utilizador_v');
+            $this->load->view('bemVindo_v');
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         }

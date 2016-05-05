@@ -175,11 +175,11 @@ class Ensaios extends CI_Controller {
                 $this->load->model('Ensaios_m');
                 $this->Ensaios_m->marcarPresencas($dado);
             }
-              echo $total;
+             
          $this->load->model('Ensaios_m');
          $this->Ensaios_m->totalPresencas($total,$dado);
         }
-      
+        redirect('Ensaios/consultarEnsaios');
     }
 
 }

@@ -192,11 +192,12 @@ class Atuacoes extends CI_Controller {
                 $this->load->model('Atuacoes_m');
                 $this->Atuacoes_m->marcarPresencas($dado);
             }
-              echo $total;
+            
          $this->load->model('Atuacoes_m');
          $this->Atuacoes_m->totalPresencas($total,$dado);
+         
         }
-      
+        redirect('Atuacoes/consultarAtuacoes');
     }
     
     
