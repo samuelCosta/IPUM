@@ -22,16 +22,20 @@ class Utilizador extends CI_Controller {
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
-
+ 
     public function detalheUtilizador($id) {
 
         $this->load->model('utilizador_m');
         $totalAtuacoes= $this->utilizador_m->totalAtuacoesElemento($id);
         $totalEnsaios= $this->utilizador_m->totalEnsaiosElemento($id);
-        $dados = $this->utilizador_m->compararId($id);
-
+        $dados = $this->utilizador_m->compararIdDetalhes($id);
+        
+        if($dados['dataSocio']!=0){       
+        $dataPagamento= date('Y/m/d', strtotime("+365 days",strtotime( $dados['dataSocio'])));
+        }else{ $dataPagamento="Não é Sócio";}
+      
         $this->load->view('includes/header_v');
-        $this->load->view('utilizador_v',array('totalAtuacoes' => $totalAtuacoes, 'utilizador'=>$dados,'totalEnsaios'=>$totalEnsaios));
+        $this->load->view('utilizador_v',array('totalAtuacoes' => $totalAtuacoes, 'utilizador'=>$dados,'totalEnsaios'=>$totalEnsaios,'pagamento'=>$dataPagamento));
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }

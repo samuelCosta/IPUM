@@ -40,7 +40,15 @@ class Utilizador_m extends CI_Model {
     public function compararId($id) {
 
         $this->db->where('idUtilizador', $id);
-        return $this->db->get('utilizador')->result();
+            return $this->db->get('utilizador')->result();
+    }
+    
+    // devolve os dados de um determinado utilizador (view-editarUtilizador)   
+    public function compararIdDetalhes($id) {
+
+        $this->db->where('idUtilizador', $id);
+        $query=$this->db->get('utilizador');
+        return $query->row_array();
     }
 
 // depois de editado o utilizador faz update desses dados novos   
@@ -207,4 +215,18 @@ class Utilizador_m extends CI_Model {
         return $query->num_rows();
     }
     
+    public function dataPagamento($id){
+                
+        $this->db->select('dataSocio');
+        
+        $this->db->where('idUtilizador', $id);
+        $this->db->query('DATEADD(year,1,@dataSocio)');
+        $query=$this->db->get('utilizador');
+     
+        return $query->row_array();
+    
+        
+    }
+    
+
 }
