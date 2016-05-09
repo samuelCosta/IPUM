@@ -12,8 +12,8 @@
     <!-- listar utilizador-->
 
     <section class="content">
-        <div class="row">
-            <div class="col-xs-12">
+        <div  class="row">
+            <div  class="col-xs-12">
                 <div class="box">
   <!--   ---------------  botão para pesquisar-->
                     <form action="<?= base_url() ?>Tranche/pesquisar" method="post" >
@@ -31,33 +31,49 @@
                         </div>
                     </form>
 <!--                   ------------------------------ ----------------------->
-                    <div class="box-body table-responsive no-padding">
-                        <table class="table table-hover">
+                    <div class="box-body " >
+                        <table  class="table table-bordered table-striped">
+                              <thead>
                             <tr>
                                 <th>Tranche</th>
                                 <th>Ano</th>
+                                <th></th>
                                
                               
 
                             </tr>
+                              </thead>
+                               <tbody>
                             <?php foreach ($tranches as $tra) { ?>
+                             
                                 <tr>
                                     <td><?= $tra->tranche; ?></td>
                                     <td><?= $tra->ano; ?></td>
-                                    
                                  
+                                    <td>
                           
-                                   
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Tranche/associarTranche/' . $tra->idApoios) ?>">Associar</a>
-                                        
-                                    <td><a class="btn btn-block btn-primary btn-xs" href="<?= base_url('Tranche/editarTranche/' . $tra->idApoios) ?>">Ver Detalhes</a>
-                               
-                                                                      
+                                   <?php if($tra->associado ==0 && $tra->tranche== "1ªTranche"){?>
+                                    <a class="btn-sm" href="<?= base_url('Tranche/editarPrimeiraTranche/' . $tra->idApoios) ?>"><i class="fa fa-info"></i></a>
+                                        <a class="btn-sm" href="<?= base_url('Tranche/associarTranche/' . $tra->idApoios.'/'.$tra->ano) ?>"><i class="fa fa-check-square-o"></i></a>
+                                         
                                     
+                                             <?php }else if($tra->tranche== "2ªTranche"){ ?> 
+                                    
+                                             <a class="btn-sm" href="<?= base_url('Tranche/editarTranche/' . $tra->idApoios.'/'.$tra->ano) ?>"><i class="fa fa-info"></i></a>
+                                         
+                                                 <?php } else{ ?> 
+                                                                               
+                                   <a class="btn-sm" href="<?= base_url('Tranche/editarPrimeiraTranche/' . $tra->idApoios) ?>"><i class="fa fa-info"></i></a>
+                                       <a disabled class="btn-sm" href="#"><i class="fa fa-ban"></i></a>
+                                        
+                                   
+                                               <?php } ?>                          
+                                    </td>
                                 </tr>
+                               
                             <?php } ?>
 
-
+                    </tbody>   
 
                         </table>
                     </div><!-- /.box-body -->
@@ -66,8 +82,3 @@
         </div>
     </section>
 </div><!-- /.content-wrapper -->
-
-
-
-
-

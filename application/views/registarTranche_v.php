@@ -29,11 +29,7 @@
                         
                         <div class="col-md-4 form-group">
                             <label>Tranche</label>
-                            <select class="form-control" name="tranche" required="">
-                                <option value="1ª Tranche">1ª Tranche</option>
-                                <option value="2ª Tranche " >2ª Tranche</option>
-                              
-                            </select>
+                            <input disabled="" type="text" class="form-control" value="1ªTranche e 2ªTranche" name="tranche" >
                         </div>
                         
                       <div class="col-md-4 form-group">

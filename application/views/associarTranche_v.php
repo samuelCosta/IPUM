@@ -29,7 +29,7 @@
                         
                         
                    <input  type="hidden" value="<?php echo $idApoios ?>" name="apoios_idApoios" >
-                
+                    <input  type="hidden" value="<?php echo $ano ?>" name="ano" >
 <!--   ---------------------------  Atividades------------------------------------------------>
             <div class="col-md-6 form-group">
                      

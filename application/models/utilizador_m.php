@@ -51,32 +51,40 @@ class Utilizador_m extends CI_Model {
         return $query->row_array();
     }
 
-// depois de editado o utilizador faz update desses dados novos   
+// ativa o utilizador  
+    public function ativarUtilizador($id,$ativo) {
+       
+        $this->db->where('idUtilizador', $id);       
+        return $this->db->update('utilizador', $ativo);        
+     
+    }
+    
+    // depois de editado o utilizador faz update desses dados novos   
     public function guardarAtualizacao($id, $data) {
 
         $this->db->where('idUtilizador', $id);
         return $this->db->update('utilizador', $data);
     }
 
-//    permite pesquisar consoante o que é digitado 
-    public function pesquisar_utlizadoresAtivos() {
-//like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
-        $pesquisa = $this->input->post('pesquisar');
-        $this->db->select('*');
-        $this->db->where("ativo", 1);
-        $this->db->like('nome', $pesquisa);
-        return $this->db->get('utilizador')->result();
-    }
+////    permite pesquisar consoante o que é digitado 
+//    public function pesquisar_utlizadoresAtivos() {
+////like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
+//        $pesquisa = $this->input->post('pesquisar');
+//        $this->db->select('*');
+//        $this->db->where("ativo", 1);
+//        $this->db->like('nome', $pesquisa);
+//        return $this->db->get('utilizador')->result();
+//    }
     
-    //    permite pesquisar consoante o que é digitado
-    public function pesquisar_utlizadoresInativos() {
-//like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
-        $pesquisa = $this->input->post('pesquisar');
-        $this->db->select('*');
-        $this->db->where("ativo", 0);
-        $this->db->like('nome', $pesquisa);
-        return $this->db->get('utilizador')->result();
-    }
+//    //    permite pesquisar consoante o que é digitado
+//    public function pesquisar_utlizadoresInativos() {
+////like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
+//        $pesquisa = $this->input->post('pesquisar');
+//        $this->db->select('*');
+//        $this->db->where("ativo", 0);
+//        $this->db->like('nome', $pesquisa);
+//        return $this->db->get('utilizador')->result();
+//    }
 
 //verifica se a password digitada e igual a antiga se for guarda na base de dados
     public function salvar_senha() {

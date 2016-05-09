@@ -16,11 +16,46 @@ class Tranche extends CI_Controller {
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
+    
+    public function vericaTranche(){
+        $this->load->model('Tranche_m');       
+              
+        $verifica=$this->Tranche_m->verificaTranche( $this->input->post('ano'));
+   
+  
+        
+       if(count($verifica)==0){
+            return true;
+            
+        }
+//        if(count($verifica) ==1 && $verifica[0]->associado){            
+//             $dados = array(
+//            'tranche' => '2ªTranche',
+//            'ano' => $this->input->post('ano'),
+//                 
+//        );
+//             $this->Tranche_m->do_insert($dados);
+//             
+//                   $data['msg'] = "Sucesso 2.";
+//                   return TRUE;
+//        }
+//        
+        else{
+              
+         $this->form_validation->set_message('vericaTranche', 'ano mal');
+             return FALSE;
+        }
+         
+        
+    }
 
     public function registarTranche() {
+         
+       $this->form_validation->set_rules('ano', 'Ano', 'callback_vericaTranche');
+    
+        
 
-
-        $this->form_validation->set_rules('ano', 'Ano', 'required');
+//        $this->form_validation->set_rules('ano', 'Ano', 'required');
 
 
 
@@ -30,17 +65,23 @@ class Tranche extends CI_Controller {
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         } else {
-            //insere os dados na base de dados
-            $dados = elements(array('tranche', 'ano', 'fundos'), $this->input->post());
-            $this->load->model('Tranche_m');
-            $this->Tranche_m->do_insert($dados);
+//            insere os dados na base de dados
+//            $dados = elements(array('tranche', 'ano', 'fundos'), $this->input->post());
+//            $this->load->model('Tranche_m');
+//            $this->Tranche_m->do_insert($dados);
+               $dados1 = array(
+            'tranche' => '1ªTranche',
+            'ano' => $this->input->post('ano'),
+        );
+                $this->Tranche_m->do_insert($dados1);
+                
+                  $dados2 = array(
+            'tranche' => '2ªTranche',
+            'ano' => $this->input->post('ano'),
+        );
+             $this->Tranche_m->do_insert($dados2);   
 
-            $data['msg'] = "Sucesso.";
-            $this->load->view('includes/header_v');
-            $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('registarTranche_v');
-            $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
+             redirect('Tranche/consultarTranches','refresh');
         }
     }
 
@@ -54,12 +95,13 @@ class Tranche extends CI_Controller {
         $this->load->view('includes/footer_v');
     }
 
-    public function associarTranche($idApoios) {
+    public function associarTranche($idApoios,$ano) {
+        $dados['ano']=$ano;
         $dados['idApoios'] = $idApoios;
         $this->load->model('Atividades_m');
         $this->load->model('Atuacoes_m');
-        $dados['atividades'] = $this->Atividades_m->get_atividades();
-        $dados['atuacoes'] = $this->Atuacoes_m->get_atuacoes();
+        $dados['atividades'] = $this->Atividades_m->get_atividadesAno($ano);
+        $dados['atuacoes'] = $this->Atuacoes_m->get_atuacoesAno($ano);
 
         $this->load->view('includes/header_v');
         $this->load->view('associarTranche_v', $dados);
@@ -69,17 +111,31 @@ class Tranche extends CI_Controller {
 
     public function eventosTranche() {
           $this->load->model('Tranche_m');
-        $dadoA['apoios_idApoios'] = $this->input->post('apoios_idApoios');
-        $dadoE['apoios_idApoios'] = $this->input->post('apoios_idApoios');
+          
+          $this->Tranche_m->finalizarAssociar();
+          
+          
+          $idApoios= $this->Tranche_m->idTranches();
+          
+         
+          
+          
+          foreach($idApoios as $id){  
+        $dadoA['apoios_idApoios'] = $id->idApoios;
+     
       
         if (!empty($_POST['check'])) {
             foreach ($_POST['check'] as $check) {
 
                 $dadoA['atividades_idAtividades'] = $check;              
                 $this->Tranche_m->atividadesTranche($dadoA);
+                           
             }
         }
+          }
       
+          foreach ($idApoios as $id){
+                 $dadoE['apoios_idApoios'] = $id->idApoios;
         if (!empty($_POST['check1'])) {
             foreach ($_POST['check1'] as $check) {
 
@@ -87,27 +143,94 @@ class Tranche extends CI_Controller {
                 $this->Tranche_m->eventosTranche($dadoE);
             }
         }
+          }
+          redirect('Tranche/consultarTranches','refresh');
+          
     }
     
     
-     public function editarTranche($idApoios) {
+     public function editarTranche($idApoios,$ano) {
       
         $this->load->model('Tranche_m');
         //dados do apoio
-        $dados['tranche'] = $this->Tranche_m->compararId($idApoios );
+        $dadosTranche= $this->Tranche_m->compararId($idApoios );
         //atividade do apoio
-        $dados['atividades'] = $this->Tranche_m->atividadesDoApoio($idApoios );
+        $atividadesApoio = $this->Tranche_m->atividadesDoApoio($idApoios );
+
+//        atividades que nao estao no apoio
+        $atividadesNaoApoio = $this->Tranche_m->atividadesNaoApoio($atividadesApoio,$ano);
+          
         //actuacoes do apoio
-        $dados['atuacoes'] = $this->Tranche_m->atuacoesPorEvento($idApoios );
-        
-//        $dados['atuacoes'] = $this->Atuacoes_m->get_atuacoes();
+        $atuacoesApoio = $this->Tranche_m->atuacoesDoApoio($idApoios );
+        //actuacoes nao do apoio
+        $atuacoesNaoApoio = $this->Tranche_m->atuacoesNaoApoio($atuacoesApoio,$ano );
 
         $this->load->view('includes/header_v');
-        $this->load->view('editarTranche_v', $dados);
+        $this->load->view('editarTranche_v',array('tranche' => $dadosTranche, 
+            'atividadesApoio'=>$atividadesApoio,'atividadesNaoApoio'=>  $atividadesNaoApoio,'atuacoesApoio'=>  $atuacoesApoio,'atuacoesNaoApoio'=>  $atuacoesNaoApoio));
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
     
+   
+     public function  editarPrimeiraTranche($idApoios) {
+      
+        $this->load->model('Tranche_m');
+        //dados do apoio
+        $dadosTranche= $this->Tranche_m->compararId($idApoios );
+        //atividade do apoio
+        $atividadesApoio = $this->Tranche_m->atividadesDoApoio($idApoios );
+
+
+          
+        //actuacoes do apoio
+        $atuacoes = $this->Tranche_m->atuacoesDoApoio($idApoios );
+
+        $this->load->view('includes/header_v');
+        $this->load->view('editarPrimeiraTranche_v',array('tranche' => $dadosTranche, 
+            'atividadesApoio'=>$atividadesApoio,'atuacoes'=>  $atuacoes));
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
+    
+    
+    
+//    elimina a atividade associada a tranche
+    public function eliminarAtividadeTranche($idapoiosAtividades,$idApoio, $ano){
+     
+        $this->load->model('Tranche_m');
+        $this->Tranche_m->eliminarAtividadeTranche($idapoiosAtividades);        
+        redirect('Tranche/editarTranche/'.$idApoio.'/'.$ano);
+        
+   
+    }
+    
+//    associa uma actividade a tranche
+      public function associarAtividadeTranche($idAtividade,$idApoio,$ano){
+        
+         $this->load->model('Tranche_m');
+         $this->Tranche_m->associarAtividadeTranche($idAtividade,$idApoio);
+         redirect('Tranche/editarTranche/'.$idApoio.'/'.$ano);
+    }
+
+    //    elimina a atuacao associada a tranche
+    public function eliminarAtuacaoTranche($idapoiosEventos,$idApoio, $ano){
+     
+        $this->load->model('Tranche_m');
+        $this->Tranche_m->eliminarAtuacaoTranche($idapoiosEventos);        
+        redirect('Tranche/editarTranche/'.$idApoio.'/'.$ano);
+        
+   
+    }
+    
+    //    associa uma atuacao a tranche
+      public function associarAtuacaoTranche($idEventos,$idApoio,$ano){
+        
+         $this->load->model('Tranche_m');
+         $this->Tranche_m->associarAtuacaoTranche($idEventos,$idApoio);
+         redirect('Tranche/editarTranche/'.$idApoio.'/'.$ano);
+    }
+
     
           // funcao AJAX
     public function verDetalhesAtividade() {

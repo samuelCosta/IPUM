@@ -40,19 +40,81 @@ class Tranche_m extends CI_Model {
         return $this->db->get('apoios')->result();
     }
     
+        // devolve a tranche desse ano    
+    public function verificaTranche($ano) {
+
+        $this->db->where('ano', $ano);
+        return $this->db->get('apoios')->result();
+    
+//        if ($query->num_rows() == 0)
+//    {
+//        return  $query->row(); 
+//    }
+//    elseif ($query->num_rows() == 1)
+//    {
+//        return $query->result_array(); //This returns an array of results which you can whatever you need with it
+//    }
+//    else 
+//    {
+//         
+//    }
+//        
+    }
+    
+    public function atividadesNaoApoio($dados,$ano){
+      
+           $this->db->select('*');
+           $this->db->where('year(dataInicio)',$ano);
+           foreach ($dados as $id){
+           $this->db->where_not_in('idAtividades',$id->atividades_idAtividades);
+           }
+           return $this->db->get('atividades')->result();
+       
+    }
+
+
     
         //    retorna as actividades de um determinado apoio
-      public function atividadesDoApoio($id){
+      public function atividadesDoApoio($id) {
 
         $this->db->select('*');
         $this->db->where('apoios_idApoios', $id);
-        $this->db->join('atividades', 'atividades_idAtividades=idAtividades', 'inner');       
+        $this->db->join('atividades', 'atividades_idAtividades = idAtividades', 'inner');
         return $this->db->get('apoiosatividades')->result();
-        
- 
     }
-        //    retorna as atuacoes um determinado apoio
-      public function atuacoesPorEvento($id){
+        //   associar a atuacao a tranche
+    public function associarAtuacaoTranche($idEventos, $idApoio) {
+        $dados = array(
+            'eventos_idEventos' => $idEventos,
+            'apoios_idApoios' => $idApoio,
+        );
+        return $this->db->insert('apoioseventos', $dados);
+    }
+    //    eliminar atuacao da tranche
+    public function eliminarAtuacaoTranche($idApoiosEventos) {
+
+        $this->db->where('idapoiosEventos', $idApoiosEventos);
+        return $this->db->delete('apoioseventos');
+    }
+    
+//    eliminar atividade da tranche
+    public function eliminarAtividadeTranche($idApoiosAtividades) {
+
+        $this->db->where('idapoiosAtividades', $idApoiosAtividades);
+        return $this->db->delete('apoiosatividades');
+    }
+
+    //   associar a ativiade a tranche
+    public function associarAtividadeTranche($idAtividade, $idApoio) {
+        $dados = array(
+            'atividades_idAtividades' => $idAtividade,
+            'apoios_idApoios' => $idApoio,
+        );
+        return $this->db->insert('apoiosatividades', $dados);
+    }
+
+    //    retorna as atuacoes um determinado apoio
+      public function atuacoesDoApoio($id){
 
         $this->db->select('*');
         $this->db->where('apoios_idApoios', $id);
@@ -62,6 +124,17 @@ class Tranche_m extends CI_Model {
  
     }
     
+      public function atuacoesNaoApoio($dados,$ano){
+      
+           $this->db->select('*');
+           $this->db->where('year(dataEvento)',$ano);
+           foreach ($dados as $id){
+           $this->db->where_not_in('idEventos',$id->eventos_idEventos);
+           }
+           return $this->db->get('eventos')->result();
+       
+    }
+
  
     
     //    retorna os detalhes da atividade
@@ -98,5 +171,25 @@ class Tranche_m extends CI_Model {
         return $this->db->get('apoios')->result();
     }
     
-
+    
+        public function idTranches() {
+        $ano = $this->input->post('ano');
+        $this->db->select('idApoios');
+        $this->db->where('ano', $ano);     
+        return $this->db->get('apoios')->result();
+    }
+    
+    
+        public function finalizarAssociar() {
+            
+            $associado=array(
+                'associado'=>1
+                
+            );
+      
+        
+        $this->db->where('idApoios', $this->input->post('apoios_idApoios')); 
+        return $this->db->update('apoios', $associado);
+       
+    }
 }

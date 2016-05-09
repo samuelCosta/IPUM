@@ -22,6 +22,13 @@ class Utilizador extends CI_Controller {
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
+     public function teste() {
+
+//        $this->load->view('includes/header_v');
+        $this->load->view('teste');
+//        $this->load->view('includes/menu_v');
+//        $this->load->view('includes/footer_v');
+    }
  
     public function detalheUtilizador($id) {
 
@@ -70,6 +77,21 @@ class Utilizador extends CI_Controller {
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
+       //    ativar Utilizador
+    public function ativarUtilizador($id) {
+        $this->load->model('utilizador_m');
+        $ativo['ativo']=1;
+        $result=$this->utilizador_m->ativarUtilizador($id,$ativo);
+        if($result == 1){
+            
+            redirect('Utilizador/consultarUtilizadoresAtivos');
+        }else{
+            
+            redirect('Utilizador/consultarUtilizadoresInativos');
+        }
+
+    }
+    
 
     public function registarUtilizador() {
         //strtolower-colocar tudo em minusculo

@@ -19,6 +19,15 @@ class Atuacoes_m extends CI_Model {
         return $this->db->get('eventos')->result();
     }
     
+           public function get_atuacoesAno($ano) {
+
+        $this->db->select('*');
+        $this->db->where('tipo', 'atuação');
+        $this->db->where('estado', '1');
+        $this->db->where('year(dataEvento)', $ano);
+        return $this->db->get('eventos')->result();
+    }
+    
     //devolve os dados de uma atuacao
         public function compararId($id) {
 
