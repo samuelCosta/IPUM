@@ -63,9 +63,9 @@ class Traje_m extends CI_Model {
             'ts_tipo_id' => $this->input->post('tipo_peca_hidden'),
             'ts_genero_id' => $this->input->post('tipo_genero_hidden'),
             'ts_tamanho_id' => $this->input->post('tipo_tamanho_hidden'),
-            'quantidade' => $this->input->post('quantidade'),
+            'quantidade' => $this->input->post('quantidade_hidden'),
             'localizacao' => $this->input->post('localizacao'),
-            'custo_uni' => $this->input->post('custo_uni'),
+            'custo_uni' => $this->input->post('custo_uni_hidden'),
         );
 
         $this->db->where('id', $id);

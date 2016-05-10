@@ -49,10 +49,8 @@ class Material extends CI_Controller{
         $data['edit_data'] = $this->material_m->get_material_id($id);
         $data['tipos_material'] = $this->tiposelecao_m->get_tiposelecao('TIPO_MATERIAL');
 
-        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
-        $this->form_validation->set_rules('custo_uni', 'Custo Unitário', 'required');
+        
         $this->form_validation->set_rules('localizacao', 'Localização', 'required');
-        $this->form_validation->set_rules('data_compra', 'Data de Compra', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');

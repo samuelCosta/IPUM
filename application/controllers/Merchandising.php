@@ -9,11 +9,18 @@ class Merchandising extends CI_Controller{
     }
     
     public function index() {
-        $data['merchandising_stock'] = $this->merchandising_m->get_merchandising_stock();
         $data['merchandising'] = $this->merchandising_m->get_merchandising();
         
         $this->load->view('includes/header_v');
         $this->load->view('merchandising/index', $data);
+        $this->load->view('includes/menu_v');
+    }
+    
+    public function stock() {
+        $data['merchandising_stock'] = $this->merchandising_m->get_merchandising_stock();
+        
+        $this->load->view('includes/header_v');
+        $this->load->view('merchandising/stock', $data);
         $this->load->view('includes/menu_v');
     }
     
@@ -47,11 +54,8 @@ class Merchandising extends CI_Controller{
 
         $data['edit_data'] = $this->merchandising_m->get_merchandising_id($id);
         $data['tipos_merchandising'] = $this->tiposelecao_m->get_tiposelecao('TIPO_MERCHANDISING');
-
-        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
-        $this->form_validation->set_rules('custo_uni', 'Custo Unitário', 'required');
+        
         $this->form_validation->set_rules('localizacao', 'Localização', 'required');
-        $this->form_validation->set_rules('data_compra', 'Data de Compra', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');

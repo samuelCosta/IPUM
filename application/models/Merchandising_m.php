@@ -49,10 +49,10 @@ class Merchandising_m extends CI_Model {
     public function editar($id) {
         $data = array(
             'ts_tipo_id' => $this->input->post('tipo_merchandising_hidden'),
-            'quantidade' => $this->input->post('quantidade'),
-            'data_compra' => $this->input->post('data_compra'),
+            'quantidade' => $this->input->post('quantidade_hidden'),
+            'data_compra' => $this->input->post('data_compra_hidden'),
             'localizacao' => $this->input->post('localizacao'),
-            'custo_uni' => $this->input->post('custo_uni'),
+            'custo_uni' => $this->input->post('custo_uni_hidden'),
         );
 
         $this->db->where('id', $id);

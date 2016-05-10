@@ -62,11 +62,13 @@
                         <div class="row">
                         <div class="col-md-3 form-group">
                             <label>Custo Unitário</label>
-                            <input type="text" class="form-control" value="<?php echo $edit_data['custo_uni']; ?>" name="custo_uni" />
+                            <input type="text" class="form-control" value="<?php echo $edit_data['custo_uni']; ?>" name="custo_uni" disabled="true"/>
+                            <input type="hidden" value="<?php echo $edit_data['custo_uni']; ?>" name="custo_uni_hidden" />
                         </div>
                         <div class="col-md-3 form-group">
                             <label>Quantidade</label>
-                            <input type="text" class="form-control" value="<?php echo $edit_data['quantidade']; ?>" name="quantidade" />
+                            <input type="text" class="form-control" value="<?php echo $edit_data['quantidade']; ?>" name="quantidade" disabled="true" />
+                            <input type="hidden" value="<?php echo $edit_data['quantidade']; ?>" name="quantidade_hidden" />
                         </div>
                         </div>
                         <div class="row">

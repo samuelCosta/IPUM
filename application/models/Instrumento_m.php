@@ -60,8 +60,8 @@ class Instrumento_m extends CI_Model {
     public function editar($id) {
         $data = array(
             'tipo_selecao_id' => $this->input->post('tipo_instrumento_hidden'),
-            'numero' => $this->input->post('numero'),
-            'tamanho' => $this->input->post('tamanho'),
+            'numero' => $this->input->post('numero_hidden'),
+            'tamanho' => $this->input->post('tamanho_hidden'),
             'localizacao' => $this->input->post('localizacao'),
             'estado' => $this->input->post('estado'),
         );

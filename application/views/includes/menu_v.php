@@ -6,11 +6,11 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= base_url(); ?>uploads/<?php echo $this->session ->userdata('foto'); ?> "   width="100%" class="img-circle caixa_corte" alt="User Image">
+                <img src="<?= base_url(); ?>uploads/<?php echo $this->session->userdata('foto'); ?> "   width="100%" class="img-circle caixa_corte" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>IPUM</p>
-                <a href="<?= base_url(); ?>utilizador/detalheUtilizador/<?php echo $this->session ->userdata('id'); ?>"><i class="fa fa-circle text-success"></i> Online</a>
+                <a href="<?= base_url(); ?>utilizador/detalheUtilizador/<?php echo $this->session->userdata('id'); ?>"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
 
@@ -27,7 +27,7 @@
                 <ul class="treeview-menu">
                     <li><a href="<?= base_url() ?>utilizador/presencasAtuacoes"><i class="fa fa-circle-o"></i> Presenças</a></li>
                     <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Quotas</a></li>
-                 
+
 
                     <li class="active">
                         <a href="#"><i class="fa fa-circle-o"></i> Elementos <i class="fa fa-angle-left pull-right"></i></a>
@@ -52,16 +52,17 @@
                     <li class="active">
                         <a href="#"><i class="fa fa-circle-o"></i> Instrumentos <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>instrumento/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>instrumento/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
-                            <li><a href="<?= base_url() ?>material/index"><i class="fa fa-circle-o"></i>Stock Material</a></li>
+                            <li><a href="<?= base_url() ?>instrumento/registar"><i class="fa fa-circle-o"></i>Registar</a></li>
+                            <li><a href="<?= base_url() ?>instrumento"><i class="fa fa-circle-o"></i>Consultar</a></li>
+                            <li><a href="<?= base_url() ?>material"><i class="fa fa-circle-o"></i>Stock Material</a></li>
                         </ul>
                     </li>
                     <li class="active">
                         <a href="#"><i class="fa fa-circle-o"></i> Traje<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>traje/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>traje/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>traje/registar"><i class="fa fa-circle-o"></i>Registar</a></li>
+                            <li><a href="<?= base_url() ?>traje/"><i class="fa fa-circle-o"></i>Consultar</a></li>
+                            <li><a href="<?= base_url() ?>traje/stock"><i class="fa fa-circle-o"></i>Stock</a></li>
                         </ul>
                     </li>
                     <li class="active">
@@ -76,6 +77,7 @@
                         <ul class="treeview-menu menu-open" style="display: none;">
                             <li><a href="<?= base_url() ?>merchandising/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
                             <li><a href="<?= base_url() ?>merchandising/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>merchandising/stock"><i class="fa fa-circle-o"></i>Stock</a></li>
                         </ul>
                     </li>
 

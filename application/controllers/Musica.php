@@ -1,12 +1,10 @@
 <?php
 
-
 class Musica extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('instrumento_m');
-        $this->load->model('tiposelecao_m');
+        $this->load->model('musica_m');
     }
 
     public function index() {
@@ -20,13 +18,18 @@ class Musica extends CI_Controller {
 //            redirect('Welcome', 'refresh');
 //        }
     }
-    
-    public function registar($id) {
+
+    public function registar($id = NULL) {
         $this->load->helper('form');
         $this->load->library('form_validation');
-
+        
         $this->form_validation->set_rules('link', 'Link', 'required');
-        $this->form_validation->set_rules('nome', 'Descrição', 'required');
+        $this->form_validation->set_rules('nome', 'Título', 'required');
+        
+//        if ($id === NULL) {
+//            $data['titulo'] = 'Inserir música';
+//            $data['label'] = 'Nome da música';
+//        }
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
@@ -38,4 +41,5 @@ class Musica extends CI_Controller {
             redirect('musica', 'refresh');
         }
     }
+
 }

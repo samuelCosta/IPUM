@@ -100,8 +100,6 @@ class Instrumento extends CI_Controller {
         $data['edit_data'] = $this->instrumento_m->get_instrumento_id($id);
         $data['tipos_instrumento'] = $this->tiposelecao_m->get_tiposelecao('TIPO_INSTRUMENTO');
 
-        $this->form_validation->set_rules('numero', 'Numero do Instrumento', 'required');
-        $this->form_validation->set_rules('tamanho', 'Tamanho', 'required');
         $this->form_validation->set_rules('localizacao', 'Localização', 'required');
         $this->form_validation->set_rules('estado', 'Estado', 'required');
 
