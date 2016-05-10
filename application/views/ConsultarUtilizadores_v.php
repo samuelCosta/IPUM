@@ -46,7 +46,7 @@
                                         <?php } ?>    
 
                                         <td>
-                                            <a class="btn-lg" href="<?= base_url('utilizador/atualizar/' . $uti->idUtilizador) ?>"><i class="fa fa-edit"></i></a>
+                                            <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?= base_url('utilizador/atualizar/' . $uti->idUtilizador) ?>"> <i class="fa fa-edit"></i></a>
                                         </td>
                                         
                                     </tr>

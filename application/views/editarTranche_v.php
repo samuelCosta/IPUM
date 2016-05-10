@@ -20,6 +20,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Editar Tranche</h3>
+                        <a data-toggle="tooltip" title="Voltar" class="btn-lg" href="<?php echo site_url('Tranche/consultarTranches'); ?>"><i class="fa  fa-arrow-circle-left"></i></a>
                     </div><!-- /.box-header -->
                     <!-- form start -->
 
@@ -67,7 +68,7 @@
                         <div class="col-md-6 form-group">
                             
                             <table class="table table-hover">
-                                <tr> <th>Atividades do apoio </th> 
+                                <tr> <th>Eliminar as Atividades </th> 
                                   
                                 </tr>
 
@@ -75,8 +76,8 @@
                                     <tr>
                                         <td><?= $uti->nomeAtividade; ?>  </td>
                                         
-                                        <td ><a  id="<?= $uti->idAtividades; ?>" type="button" class="submit btn"   data-target="#myModal" data-toggle="modal" class=" btn btn-default btn-block active" > <i class="fa fa-info"></i></a>
-                                        <td> <a class="btn btn-danger btn-sm" href="<?= base_url('Tranche/eliminarAtividadeTranche/'.$uti->idapoiosAtividades.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>"  onclick="return confirm('Deseja realmente desassociar a Atividade?');"><i class="fa fa-hand-o-right"></i> </a> 
+                                        <td ><a  id="<?= $uti->idAtividades; ?>" type="button" class="submit btn-sm"   data-target="#myModal" data-toggle="modal" class=" btn btn-default btn-block active" > <i class="fa fa-info"></i></a>
+                                        <td> <a data-toggle="tooltip" title="Eliminar" class="btn-sm" href="<?= base_url('Tranche/eliminarAtividadeTranche/'.$uti->idapoiosAtividades.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>"  onclick="return confirm('Deseja realmente desassociar a Atividade?');"><i class="fa fa-arrow-right"></i> </a> 
                                     </tr>
                                     
                                 <?php } ?>
@@ -87,13 +88,15 @@
 
                            <div class="col-md-6 form-group">                     
                                <table class="table table-hover">
-                                <tr> <th>Atividades </th> </tr>
+                                <tr> <th>Associar as Atividades </th> 
+                                  
+                                </tr>
 
                                 <?php foreach ($atividadesNaoApoio as $uti) { ?>
                                     <tr>
                                         <td><?= $uti->nomeAtividade; ?>  </td>
-                                        <td ><a  id="<?= $uti->idAtividades; ?>" type="button" class="submit btn" value="Ver Detalhes"  data-target="#myModal" data-toggle="modal" class=" btn btn-default btn-block active"><i class="fa fa-info"></i> </a>
-                                        <td> <a  class="btn btn-default btn-sm" href="<?= base_url('Tranche/associarAtividadeTranche/' . $uti->idAtividades.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>"  onclick="return confirm('Deseja realmente associar a Atividade?');"> <i class="fa fa-hand-o-left"></i></a> 
+                                        <td ><a  id="<?= $uti->idAtividades; ?>" type="button" class="submit btn-sm" value="Ver Detalhes"  data-target="#myModal" data-toggle="modal" class=" btn btn-default btn-block active"><i class="fa fa-info"></i> </a>
+                                        <td> <a  data-toggle="tooltip" title="Associar" class="btn-sm" href="<?= base_url('Tranche/associarAtividadeTranche/' . $uti->idAtividades.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>"  onclick="return confirm('Deseja realmente associar a Atividade?');"> <i class="fa fa-arrow-left"></i></a> 
                                     </tr>
                                 <?php } ?>
                             </table>                   
@@ -109,12 +112,12 @@
                             
                         <div class="col-md-6 form-group">                     
                             <table class="table table-hover">
-                                <tr> <th>Atuacoes do Apoio</th> </tr>
+                                <tr> <th>Eliminar as Atuações</th> </tr>
                                 <?php foreach ($atuacoesApoio as $atu) { ?>
                                     <tr>
                                         <td><?= $atu->designacao; ?>  </td>
-                                        <td ><a  id="<?= $atu->idEventos; ?>" type="button" class="submit1 btn" value="Ver Detalhes"  data-target="#myModal" data-toggle="modal" class=" btn btn-default btn-block active"> <i class="fa fa-info"></i></a>
-                                        <td> <a class="btn btn-danger btn-sm" href="<?= base_url('Tranche/eliminarAtuacaoTranche/'.$atu->idapoiosEventos.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>"  onclick="return confirm('Deseja realmente desassociar a Atuação?');"><i class="fa fa-hand-o-right"></i> </a> 
+                                        <td ><a  id="<?= $atu->idEventos; ?>" type="button" class="submit1 btn-sm" value="Ver Detalhes"  data-target="#myModal" data-toggle="modal" class=" btn btn-default btn-block active"> <i class="fa fa-info"></i></a>
+                                        <td> <a data-toggle="tooltip" title="Eliminar" class="btn-sm" href="<?= base_url('Tranche/eliminarAtuacaoTranche/'.$atu->idapoiosEventos.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>"  onclick="return confirm('Deseja realmente desassociar a Atuação?');"><i class="fa fa-arrow-right"></i> </a> 
                                     </tr>
                                 <?php } ?>
                             </table>                       
@@ -122,12 +125,12 @@
                             
                               <div class="col-md-6 form-group">                     
                             <table class="table table-hover">
-                                <tr> <th>Atuacoes  </th> </tr>
+                                <tr> <th>Associar as Atuacoes  </th> </tr>
                                 <?php foreach ($atuacoesNaoApoio as $atu) { ?>
                                     <tr>
                                         <td><?= $atu->designacao; ?>  </td>
-                                        <td ><a  id="<?= $atu->idEventos; ?>" type="button" class="submit1 btn" value="Ver Detalhes"  data-target="#myModal" data-toggle="modal"  class=" btn btn-default btn-block active"> <i class="fa fa-info"></i></a>
-                                        <td> <a  class="btn btn-success btn-sm" href="<?= base_url('Tranche/associarAtuacaoTranche/' . $atu->idEventos.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>"  onclick="return confirm('Deseja realmente associar a atuação?');"> <i class="fa fa-hand-o-left"></i></a> 
+                                        <td ><a  id="<?= $atu->idEventos; ?>" type="button" class="submit1 btn-sm" value="Ver Detalhes"  data-target="#myModal" data-toggle="modal"  class=" btn btn-default btn-block active"> <i class="fa fa-info"></i></a>
+                                        <td> <a  data-toggle="tooltip" title="Associar" class="btn-sm" href="<?= base_url('Tranche/associarAtuacaoTranche/' . $atu->idEventos.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>"  onclick="return confirm('Deseja realmente associar a atuação?');"> <i class="fa fa-arrow-left"></i></a> 
                                     </tr>
                                 <?php } ?>
                             </table>                       
@@ -251,4 +254,10 @@
         });
     });
 
+</script>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
 </script>

@@ -94,6 +94,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Submit</button>
+                         <a class="btn" href="<?php echo site_url('OrgaosSociais/consultarOrgaosSociais'); ?>">Cancelar</a>
                           
                     </div>
                    
