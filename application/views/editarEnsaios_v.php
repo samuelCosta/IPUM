@@ -51,7 +51,8 @@
                     <p> <?php echo validation_errors(); ?></p>
 
                     <div class="box-footer">  
-                        <button type="submit" value="upload" class="btn btn-primary">Submit</button>                         
+                        <button type="submit" value="upload" class="btn btn-primary">Submit</button>
+                         <a class="btn" href="<?php echo site_url('Ensaios/consultarEnsaios'); ?>">Cancelar</a>
                     </div>
                    
                     </form>

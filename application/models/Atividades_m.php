@@ -16,6 +16,15 @@ class Atividades_m extends CI_Model {
          $this->db->where('estado', '1');
         return $this->db->get('atividades')->result();
     }
+     
+    public function get_atividadesAno($ano) {
+
+        $this->db->select('*');
+         $this->db->where('estado', '1');
+         $this->db->where('year(dataInicio)', $ano);
+        return $this->db->get('atividades')->result();
+    }
+    
     // pesquisa as atividades por nome
     public function pesquisar_atividades() {
 //like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .

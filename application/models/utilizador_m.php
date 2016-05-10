@@ -40,35 +40,51 @@ class Utilizador_m extends CI_Model {
     public function compararId($id) {
 
         $this->db->where('idUtilizador', $id);
-        return $this->db->get('utilizador')->result();
+            return $this->db->get('utilizador')->result();
+    }
+    
+    // devolve os dados de um determinado utilizador (view-editarUtilizador)   
+    public function compararIdDetalhes($id) {
+
+        $this->db->where('idUtilizador', $id);
+        $query=$this->db->get('utilizador');
+        return $query->row_array();
     }
 
-// depois de editado o utilizador faz update desses dados novos   
+// ativa o utilizador  
+    public function ativarUtilizador($id,$ativo) {
+       
+        $this->db->where('idUtilizador', $id);       
+        return $this->db->update('utilizador', $ativo);        
+     
+    }
+    
+    // depois de editado o utilizador faz update desses dados novos   
     public function guardarAtualizacao($id, $data) {
 
         $this->db->where('idUtilizador', $id);
         return $this->db->update('utilizador', $data);
     }
 
-//    permite pesquisar consoante o que é digitado 
-    public function pesquisar_utlizadoresAtivos() {
-//like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
-        $pesquisa = $this->input->post('pesquisar');
-        $this->db->select('*');
-        $this->db->where("ativo", 1);
-        $this->db->like('nome', $pesquisa);
-        return $this->db->get('utilizador')->result();
-    }
+////    permite pesquisar consoante o que é digitado 
+//    public function pesquisar_utlizadoresAtivos() {
+////like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
+//        $pesquisa = $this->input->post('pesquisar');
+//        $this->db->select('*');
+//        $this->db->where("ativo", 1);
+//        $this->db->like('nome', $pesquisa);
+//        return $this->db->get('utilizador')->result();
+//    }
     
-    //    permite pesquisar consoante o que é digitado
-    public function pesquisar_utlizadoresInativos() {
-//like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
-        $pesquisa = $this->input->post('pesquisar');
-        $this->db->select('*');
-        $this->db->where("ativo", 0);
-        $this->db->like('nome', $pesquisa);
-        return $this->db->get('utilizador')->result();
-    }
+//    //    permite pesquisar consoante o que é digitado
+//    public function pesquisar_utlizadoresInativos() {
+////like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
+//        $pesquisa = $this->input->post('pesquisar');
+//        $this->db->select('*');
+//        $this->db->where("ativo", 0);
+//        $this->db->like('nome', $pesquisa);
+//        return $this->db->get('utilizador')->result();
+//    }
 
 //verifica se a password digitada e igual a antiga se for guarda na base de dados
     public function salvar_senha() {
@@ -207,4 +223,18 @@ class Utilizador_m extends CI_Model {
         return $query->num_rows();
     }
     
+    public function dataPagamento($id){
+                
+        $this->db->select('dataSocio');
+        
+        $this->db->where('idUtilizador', $id);
+        $this->db->query('DATEADD(year,1,@dataSocio)');
+        $query=$this->db->get('utilizador');
+     
+        return $query->row_array();
+    
+        
+    }
+    
+
 }

@@ -71,7 +71,7 @@
                        
                         <div class="col-md-12 form-group">
                             <label>Notas</label>
-                            <textarea name="notas"  placeholder="intoduza as suas Notas" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php $atividades[0]->notas ?></textarea>
+                            <textarea name="notas"  placeholder="intoduza as suas Notas" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?=  $atividades[0]->notas ?></textarea>
                         </div>
                        
               
@@ -91,6 +91,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Submit</button>
+                         <a class="btn" href="<?php echo site_url('Atividades/consultarAtividades'); ?>">Cancelar</a>
                          
                     </div>
                    
