@@ -114,7 +114,7 @@
                                                     <td >  <?= $uti->designacao; ?> </td>
                                                     <td >  <?= $uti->dataEvento; ?> </td>
 
-                                                    <td ><input href="<?= $uti->idEventos; ?>" type="submit" class="submit" value="Ver Detalhes" class="input_box" > 
+                                                    <td ><a href="<?= $uti->idEventos; ?>" type="submit" class="submit btn-lg" value="Ver Detalhes" class="input_box" > <i class="fa fa-info"></i> </a>
                                                     </td> 
 
                                                         </tr>
