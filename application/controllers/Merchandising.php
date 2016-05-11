@@ -9,11 +9,18 @@ class Merchandising extends CI_Controller{
     }
     
     public function index() {
-        $data['merchandising_stock'] = $this->merchandising_m->get_merchandising_stock();
         $data['merchandising'] = $this->merchandising_m->get_merchandising();
         
         $this->load->view('includes/header_v');
         $this->load->view('merchandising/index', $data);
+        $this->load->view('includes/menu_v');
+    }
+    
+    public function stock() {
+        $data['merchandising_stock'] = $this->merchandising_m->get_merchandising_stock();
+        
+        $this->load->view('includes/header_v');
+        $this->load->view('merchandising/stock', $data);
         $this->load->view('includes/menu_v');
     }
     
@@ -36,7 +43,7 @@ class Merchandising extends CI_Controller{
             $this->load->view('includes/footer_v');
         } else {
             $this->merchandising_m->registar();
-            redirect('merchandising', 'refresh');
+            redirect('merchandising/stock', 'refresh');
         }
     }
     
@@ -47,11 +54,8 @@ class Merchandising extends CI_Controller{
 
         $data['edit_data'] = $this->merchandising_m->get_merchandising_id($id);
         $data['tipos_merchandising'] = $this->tiposelecao_m->get_tiposelecao('TIPO_MERCHANDISING');
-
-        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
-        $this->form_validation->set_rules('custo_uni', 'Custo Unitário', 'required');
+        
         $this->form_validation->set_rules('localizacao', 'Localização', 'required');
-        $this->form_validation->set_rules('data_compra', 'Data de Compra', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
@@ -60,16 +64,18 @@ class Merchandising extends CI_Controller{
             $this->load->view('includes/footer_v');
         } else {
             $this->merchandising_m->editar($id);
-            redirect('merchandising', 'refresh');
+            redirect('merchandising/stock', 'refresh');
         }
     }
     
     public function atribuir_merchandising($id) {
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->load->model('traje_m');
 
         $data['edit_data'] = $this->merchandising_m->get_merchandising_id($id);
         $data['tipos_motivo'] = $this->tiposelecao_m->get_tiposelecao('TIPO_MOTIVO');
+        $data['elementos'] = $this->traje_m->get_utilizadores();
         $data['merchandising'] = $this->merchandising_m->get_merchandising_stock();
         
         $this->form_validation->set_rules('motivo', 'Motivo', 'required');
@@ -77,6 +83,7 @@ class Merchandising extends CI_Controller{
         $this->form_validation->set_rules('data', 'Data', 'required');
         $this->form_validation->set_rules('quantidade', 'Quantidade', 'required|callback_check_quantidade');
         $this->form_validation->set_rules('custo', 'Custo');
+        $this->form_validation->set_rules('descricao', 'Descrição');
         
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
@@ -89,7 +96,7 @@ class Merchandising extends CI_Controller{
             $result['quantidade'] = $result['quantidade'] - $this->input->post('quantidade');
             $this->merchandising_m->atualiza_quantidade($result['id'], $result['quantidade']);
 
-            redirect('merchandising', 'refresh');
+            redirect('merchandising/stock', 'refresh');
         }
         
     }

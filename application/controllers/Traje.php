@@ -9,11 +9,18 @@ class Traje extends CI_Controller {
     }
 
     public function index() {
-        $data['pecas'] = $this->traje_m->get_pecas();
         $data['traje'] = $this->traje_m->get_traje();
 
         $this->load->view('includes/header_v');
         $this->load->view('traje/index', $data);
+        $this->load->view('includes/menu_v');
+    }
+    
+    public function stock() {
+        $data['pecas'] = $this->traje_m->get_pecas();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('traje/stock', $data);
         $this->load->view('includes/menu_v');
     }
     
@@ -32,6 +39,7 @@ class Traje extends CI_Controller {
         $this->form_validation->set_rules('localizacao', 'Localização', 'required');
         $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
         $this->form_validation->set_rules('custo_uni', 'Custo Unitário', 'required');
+        $this->form_validation->set_rules('data_compra', 'Data de Compra', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
@@ -40,7 +48,7 @@ class Traje extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             $this->traje_m->registar();
-            redirect('traje', 'refresh');
+            redirect('traje/stock', 'refresh');
         }
     }
 
@@ -54,8 +62,6 @@ class Traje extends CI_Controller {
         $data['tipos_tamanho'] = $this->tiposelecao_m->get_tiposelecao('TIPO_TAMANHO');
 
         $this->form_validation->set_rules('localizacao', 'Localização', 'required');
-        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
-        $this->form_validation->set_rules('custo_uni', 'Custo Unitário', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
@@ -64,7 +70,7 @@ class Traje extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             $this->traje_m->editar($id);
-            redirect('traje', 'refresh');
+            redirect('traje/stock', 'refresh');
         }
     }
 
@@ -100,7 +106,7 @@ class Traje extends CI_Controller {
             $result['quantidade'] = $result['quantidade'] - $this->input->post('quantidade');
             $this->traje_m->atualiza_quantidade($result['id'], $result['quantidade']);
 
-            redirect('traje', 'refresh');
+            redirect('traje/stock', 'refresh');
         }
         
     }
@@ -116,18 +122,18 @@ class Traje extends CI_Controller {
         return false;
     }
     
-    public function aumenta_stock($id) {
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        
-        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
-        
-        $result= $this->traje_m->get_traje_id($id);
-        $result['quantidade'] = $result['quantidade'] + $this->input->post('quantidade');
-        
-        $this->traje_m->atualiza_quantidade($result['id'], $result['quantidade']);
-        
-        redirect('traje', 'refresh');
-    }
+//    public function aumenta_stock($id) {
+//        $this->load->helper('form');
+//        $this->load->library('form_validation');
+//        
+//        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
+//        
+//        $result= $this->traje_m->get_traje_id($id);
+//        $result['quantidade'] = $result['quantidade'] + $this->input->post('quantidade');
+//        
+//        $this->traje_m->atualiza_quantidade($result['id'], $result['quantidade']);
+//        
+//        redirect('traje', 'refresh');
+//    }
 
 }

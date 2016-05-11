@@ -55,7 +55,7 @@
                                         </td>
                                         <td><?php echo $instrumento['localizacao']; ?></td>
                                         <td>
-                                            <a class="btn-lg" href="<?php echo site_url('instrumento/editar/' . $instrumento['id']); ?>">
+                                            <a class="btn-lg"  href="<?php echo site_url('instrumento/editar/' . $instrumento['id']); ?>">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                             <a class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('instrumento/delete_instrumento/' . $instrumento['id']); ?>');" deleteConfirm href="#"/>
@@ -65,7 +65,7 @@
                                                 <i class="fa fa-wrench"></i>
                                             </a>
                                             <a class="btn-lg" href="<?php echo site_url('instrumento/historico/' . $instrumento['id']); ?>">
-                                                <i class="fa fa-info"></i>
+                                                <i class="fa fa-info" ></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -134,7 +134,7 @@
 <script>
     function deleteConfirm(url)
     {
-        if (confirm('Do you want to Delete this record ?'))
+        if (confirm('Deseja eliminar o resgisto?'))
         {
             window.location.href = url;
         }

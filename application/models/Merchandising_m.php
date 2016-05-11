@@ -13,8 +13,9 @@ class Merchandising_m extends CI_Model {
     }
     
     public function get_merchandising() {
-        $this->db->select('m.*, ts_m.descricao as motivo, ts_t.descricao as tipo_merchandising' );
+        $this->db->select('m.*, u.nome as elemento, ts_m.descricao as motivo, ts_t.descricao as tipo_merchandising' );
         $this->db->from('merchandising m');
+        $this->db->join('utilizador u', 'm.elemento=u.idUtilizador', 'left');
         $this->db->join('tipo_selecao ts_m', 'm.ts_motivo_id=ts_m.id', 'left');
         $this->db->join('stock_merchandising sm', 'm.sm_id=sm.id', 'left');
         $this->db->join('tipo_selecao ts_t', 'sm.ts_tipo_id=ts_t.id', 'left');
@@ -49,10 +50,10 @@ class Merchandising_m extends CI_Model {
     public function editar($id) {
         $data = array(
             'ts_tipo_id' => $this->input->post('tipo_merchandising_hidden'),
-            'quantidade' => $this->input->post('quantidade'),
-            'data_compra' => $this->input->post('data_compra'),
+            'quantidade' => $this->input->post('quantidade_hidden'),
+            'data_compra' => $this->input->post('data_compra_hidden'),
             'localizacao' => $this->input->post('localizacao'),
-            'custo_uni' => $this->input->post('custo_uni'),
+            'custo_uni' => $this->input->post('custo_uni_hidden'),
         );
 
         $this->db->where('id', $id);
@@ -66,6 +67,7 @@ class Merchandising_m extends CI_Model {
             'quantidade' => $this->input->post('quantidade'),
             'ts_motivo_id' => $this->input->post('motivo'),
             'elemento' => $this->input->post('elemento'),
+            'descricao' => $this->input->post('descricao'),
             'sm_id' => $id           
         );
         

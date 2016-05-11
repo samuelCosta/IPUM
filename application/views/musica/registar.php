@@ -20,32 +20,24 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Novo Musica</h3>
+                        <h3 class="box-title">Novo Tutorial</h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
 
 
-                    <?php echo form_open('musica/registar'); ?>
+                    <?php echo form_open( ); ?>
                     <div class="box-body">
                         <div class="row">
-                        <div class="col-md-2 form-group">    
-                            <label >Tipo de Peça</label>
-                        </div>
-                        </div>
-                        <div class="row">
-                        <div class="col-md-3 form-group">
-                            <label>Quantidade</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('quantidade'); ?>" name="quantidade" placeholder="Insira a quantidade">
-                        </div>
-                        <div class="col-md-3 form-group">
-                            <label>Custo Unitário</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('custo_uni'); ?>" name="custo_uni" placeholder="Insira o custo">
+                        <div class="col-md-6 form-group">
+                            <label>Título da Música</label>
+                            <input type="text" class="form-control" value="<?php echo set_value('nome'); ?>" name="nome" placeholder="Insira o título da música">
                         </div>
                         </div>
                         <div class="row">
                         <div class="col-md-6 form-group">
-                            <label>Localização</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Insira a Localização">
+                            <label>Link</label>
+                            <input type="text" class="form-control" value="<?php echo set_value('link'); ?>" name="link" placeholder="Insira o link da música">
+                        </div>
                         </div>
                         </div>
 

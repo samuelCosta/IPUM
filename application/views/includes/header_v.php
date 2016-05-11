@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.css">
+        <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/iCheck/all.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="<?= base_url(); ?>assets/dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -24,20 +26,20 @@
         <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/morris/morris.css">
         <!-- jvectormap -->
         <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-       
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-            
-        
 
- 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-<script type="text/javascript">
-    $('.selectpicker').selectpicker({
-      });
-</script>
-    
-      
-        
+
+
+        <script src="<?= base_url(); ?>assets/bootstrap/js/bootstrap-select.js"></script>
+
+        <script type="text/javascript">
+            $('.selectpicker').selectpicker({
+            });
+        </script>
+
+
+
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
 

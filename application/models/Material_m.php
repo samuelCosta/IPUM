@@ -27,10 +27,10 @@ class Material_m extends CI_Model {
     public function editar($id) {
         $data = array(
             'ts_tipo_material_id' => $this->input->post('tipo_material_hidden'),
-            'custo_uni' => $this->input->post('custo_uni'),
-            'quantidade' => $this->input->post('quantidade'),
+            'custo_uni' => $this->input->post('custo_uni_hidden'),
+            'quantidade' => $this->input->post('quantidade_hidden'),
             'localizacao' => $this->input->post('localizacao'),
-            'data_compra' => $this->input->post('data_compra'),
+            'data_compra' => $this->input->post('data_compra_hidden'),
         );
 
         $this->db->where('id', $id);

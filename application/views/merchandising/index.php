@@ -24,9 +24,10 @@
                                 <tr>
                                     <th>Tipo</th>
                                     <th>Data</th>
-                                    <th>Quantidade</th>
                                     <th>Motivo</th>
+                                    <th>Descrição</th>
                                     <th>Elemento</th>
+                                    <th>Quantidade</th>
                                     <th>Custo</th>
                                 </tr>
                             </thead>
@@ -34,10 +35,11 @@
                                 <tr>
                                     <th>Tipo</th>
                                     <th>Data</th>
-                                    <th>Quantidade</th>
                                     <th>Motivo</th>
+                                    <th>Descrição</th>
                                     <th>Elemento</th>
-                                    <th></th>
+                                    <th>Quantidade</th>
+                                    <th>Custo</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -45,61 +47,11 @@
                                     <tr>
                                         <td><?php echo $tipo['tipo_merchandising']; ?></td>
                                         <td><?php echo $tipo['data']; ?></td>
-                                        <td><?php echo $tipo['quantidade']; ?></td>
                                         <td><?php echo $tipo['motivo']; ?></td>
+                                        <td><?php echo $tipo['descricao']; ?></td>
                                         <td><?php echo $tipo['elemento']; ?></td>
-                                        <td><?php echo $tipo['custo'] . '€'; ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Stock</h3>
-                    </div>
-                    <div class="box-body">
-                        <table id="stock_dt" class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Tipo</th>
-                                    <th>Quantidade</th>
-                                    <th>Custo Unitário</th>
-                                    <th>Data de Compra</th>
-                                    <th>Localização</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Tipo</th>
-                                    <th>Quantidade</th>
-                                    <th>Custo Unitário</th>
-                                    <th>Localização</th>
-                                    <th>Data de Compra</th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                <?php foreach ($merchandising_stock as $stock): ?>
-                                    <tr>
-                                        <td><?php echo $stock['tipo_selecao_descricao']; ?></td>
-                                        <td><?php echo $stock['quantidade']; ?></td>
-                                        <td><?php echo $stock['custo_uni'] . '€'; ?></td>
-                                        <td><?php echo $stock['data_compra']; ?></td>
-                                        <td><?php echo $stock['localizacao']; ?></td>
-                                        <td>
-                                            <a class="btn-lg" href="<?php echo site_url('merchandising/editar/' . $stock['id']); ?>">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('merchandising/delete/' . $stock['id']); ?>');" deleteConfirm href="#">
-                                                <i class="fa fa-trash-o"></i>
-                                            </a>
-                                            <a class="btn-lg" href="<?php echo site_url('merchandising/atribuir_merchandising/' . $stock['id']); ?>">
-                                                <i class="fa fa-share-square-o"></i>
-                                            </a>
-                                        </td>
+                                        <td><?php echo $tipo['quantidade']; ?></td>
+                                        <td><?php echo $tipo['custo'] . ' €'; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -128,67 +80,40 @@
 <script src="<?php echo base_url() . 'assets/plugins/fastclick/fastclick.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
 <script>
-                $(function () {
-                    $("#merchandising_dt").DataTable({
-                        "initComplete": function () {
-                            this.api().columns().every(function () {
-                                var column = this;
-                                
-                                    var select = $('<select><option value=""></option></select>')
-                                            .appendTo($(column.footer()).empty())
-                                            .on('change', function () {
-                                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
+    $(function () {
+        $("#merchandising_dt").DataTable({
+            "initComplete": function () {
+                this.api().columns().every(function () {
+                    var column = this;
 
-                                                column.search(val ? '^' + val + '$' : '', true, false).draw();
-                                            });
+                    var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
-                                    column.data().unique().sort().each(function (d, j) {
-                                        select.append('<option value="' + d + '">' + d + '</option>')
-                                    });
-                                
+                                column.search(val ? '^' + val + '$' : '', true, false).draw();
                             });
-                        },
-                        "language": {
-                            "lengthMenu": "Ver _MENU_ registos",
-                            "info": "_START_ - _END_ de _TOTAL_ registos"
-                        },
-                        "columnDefs": [
-                            {targets: 5, orderable: true}
-                        ]
-                    });
-                    $("#stock_dt").DataTable({
-                        "initComplete": function () {
-                            this.api().columns().every(function () {
-                                var column = this;
-                                if (column.index() < 5) {
-                                    var select = $('<select><option value=""></option></select>')
-                                            .appendTo($(column.footer()).empty())
-                                            .on('change', function () {
-                                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
-                                                column.search(val ? '^' + val + '$' : '', true, false).draw();
-                                            });
-
-                                    column.data().unique().sort().each(function (d, j) {
-                                        select.append('<option value="' + d + '">' + d + '</option>')
-                                    });
-                                }
-                            });
-                        },
-                        "language": {
-                            "lengthMenu": "Ver _MENU_ registos",
-                            "info": "_START_ - _END_ de _TOTAL_ registos"
-                        },
-                        "columnDefs": [
-                            {targets: 5, orderable: false}
-                        ]
+                    column.data().unique().sort().each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d + '</option>')
                     });
+
                 });
+            },
+            "language": {
+                "lengthMenu": "Ver _MENU_ registos",
+                "info": "_START_ - _END_ de _TOTAL_ registos"
+            },
+            "columnDefs": [
+                {targets: 6, orderable: true}
+            ]
+        });
+    });
 </script>
 <script>
     function deleteConfirm(url)
     {
-        if (confirm('Do you want to Delete this record ?'))
+        if (confirm('Deseja eliminar o resgisto?'))
         {
             window.location.href = url;
         }
