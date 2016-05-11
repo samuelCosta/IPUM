@@ -38,9 +38,14 @@
                             <li class="list-group-item">
                                 <b><i class="fa fa-warning"></i>Próximo Pagamento</b> <a class="pull-right "><?php echo $pagamento ?></a>
                             </li>
+                            
+              
+                         
+                            
                         </ul>
-
-                      
+                            <?php if($orgaosSociais!=NULL){ ?>
+                            <a onclick="imprimir(<?php echo  $utilizador['idUtilizador'] ?>)" class="btn btn-primary btn-block"><i class="fa fa-download"></i><b>  Imprimir Certificado de Orgão Social</b></a>
+                            <?php }else {} ?>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
 
@@ -114,7 +119,13 @@
 
 
 
-
+ <script> 
+function imprimir($id) {
+   
+ 
+    window.open("<?= base_url('utilizador/comprovativoOrgaosSociais/') ?>"+ "/"+ $id);
+}
+</script>
 
 
 

@@ -31,21 +31,23 @@
                         <input type="hidden"  value="1" name="ativo" >
                         <input type="hidden"  value="0" name="socio" >
                         
-                        <div class="col-md-6 form-group">    
+                        <div class="col-md-4 form-group">    
                             <label >Nome</label>
                             <input type="text" class="form-control" value="<?php echo set_value('nome'); ?>" name="nome" placeholder="Introduza o nome completo...">                     
                         </div>
                         
-                        <div class="col-md-6 form-group">
-                            <label>Email address</label>
-                            <input type="email" class="form-control" name="email" value="<?php echo set_value('email'); ?>" placeholder="Introduza email">
-                        </div>
-
-                        <div class="col-md-4 form-group">
+                           <div class="col-md-4 form-group">
                             <label>Alcunha</label>
                             <input type="text" class="form-control" value="<?php echo set_value('alcunha'); ?>" name="alcunha" placeholder="Introduza o alcunha...">
                         </div>
                         
+                        
+                        <div class="col-md-4 form-group">
+                            <label>Email address</label>
+                            <input type="email" class="form-control" name="email" value="<?php echo set_value('email'); ?>" placeholder="Introduza email">
+                        </div>
+
+                     
                          <div class="col-md-4 form-group">
                             <label>NIF</label>
                             <input type="text" class="form-control" name="nif" value="<?php echo set_value('nif'); ?>" placeholder="Introduza o seu NIF">
@@ -55,6 +57,12 @@
                             <label>BI</label>
                             <input type="text" class="form-control" name="bi" value="<?php echo set_value('bi'); ?>"placeholder="Introduza o número de BI">
                         </div>
+                        
+                        <div class="col-md-4 form-group">
+                            <label>Nª aluno</label>
+                            <input type="text" class="form-control" name="nAluno" value="<?php echo set_value('nAluno'); ?>" placeholder="Introduza o numero de aluno">
+                        </div>
+
                         
 
                         <div class="col-md-6 form-group">

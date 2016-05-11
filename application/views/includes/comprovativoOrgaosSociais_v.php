@@ -10,25 +10,26 @@ include('html2pdf/html2pdf.class.php');
  * Linha 16 - Temos agora um span de id = texto que formatamos 
  *            usando a fonte arial em negrito. */
 
+
    ob_start(); ?>
   <img src="<?= base_url(); ?>assets/dist/img/IPUM.jpg" class="user-image" alt="User Image">
-<h1>Aprovação de Sócio</h1>
+<h1>Aprovação de Orgãos Social</h1>
 <br>
 <br>
 <br>
-<p>Eu _______________________________________________________ declaro que em reunião foi aprovado
-    o sócio da iPUM – Associação de Percussão Universitária 
-    do Minho <?php echo $utilizador['nome']?> com o nº de identificação
-    civil <?php echo $utilizador['bi']?>, 
-    nº de identificação fiscal <?php echo $utilizador['nif']?> e nº de filiação na Universidade do Minho <?php echo $utilizador['nAluno']?>.</p>
+<p>A Assembleia Geral da Associação de Percussão Universitária do Minho – iPUM – certifica que <?php echo $utilizador['nome']?>, 
+    portadora do cartão 
+    de cidadão nº <?php echo $utilizador['bi']?>, ocupou os seguintes cargos nos corpos gerentes desta Associação:</p>
+       <?php foreach($comprovativo as $p){?>
+
+       <p>•	<?php echo $p['cargo']?> da <?php echo $p['categoria'] ?> desde <?php echo $p['dataInicio'] ?>  <?php  if($p['dataFim'] ==null){echo "até à presente data.";}else{ echo "a ".$p['dataFim'];} ?>;</p>
+       <?php } ?>
+ <br>
 <br>
 <br>
 
-<p>Aprovado a ___-___-20___</p>
-<p>O Sócio</p>
 <p>__________________________________</p>
-<p>A Direção</p>
-<p>__________________________________</p>
+<p>Vice-Presidente da Assembleia Geral da iPUM</p>
 
 
 <?php 

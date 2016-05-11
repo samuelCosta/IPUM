@@ -236,5 +236,16 @@ class Utilizador_m extends CI_Model {
         
     }
     
+      
+//    verifica se representa algum orgao social 
+    public function imprimirOrgaoSocial($id){
+                 
+        $this->db->where('utilizador_idUtilizador', $id);
+        $query=$this->db->get('orgaossociais');     
+        return $query->result_array();
+    
+        
+    }
+    
 
 }

@@ -40,11 +40,19 @@ class Utilizador extends CI_Controller {
         if($dados['dataSocio']!=0){       
         $dataPagamento= date('Y/m/d', strtotime("+365 days",strtotime( $dados['dataSocio'])));
         }else{ $dataPagamento="Não é Sócio";}
-      
+        
+        
+       $imprimirOrgaoSocial= $this->utilizador_m->imprimirOrgaoSocial($id);
+        
+        
         $this->load->view('includes/header_v');
-        $this->load->view('utilizador_v',array('totalAtuacoes' => $totalAtuacoes, 'utilizador'=>$dados,'totalEnsaios'=>$totalEnsaios,'pagamento'=>$dataPagamento));
+        $this->load->view('utilizador_v',array('totalAtuacoes' => $totalAtuacoes, 'utilizador'=>$dados,
+            'totalEnsaios'=>$totalEnsaios,'pagamento'=>$dataPagamento,'orgaosSociais'=>$imprimirOrgaoSocial));
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
+        
+        
+        
     }
 
     public function criarUtilizador() {
@@ -105,6 +113,7 @@ class Utilizador extends CI_Controller {
         $this->form_validation->set_rules('password2', 'Repita Password', 'required|strtolower|matches[password]');
         $this->form_validation->set_rules('nif', 'NIF', 'required|numeric|exact_length[9]|is_unique[utilizador.nif]');
         $this->form_validation->set_rules('bi', 'BI', 'required|numeric|exact_length[8]|is_unique[utilizador.bi]');
+        $this->form_validation->set_rules('nAluno', 'NUmero Aluno', 'required|numeric');
         $this->form_validation->set_rules('dataNascimento', 'Data de Nascimento', 'required');
         $this->form_validation->set_rules('dataEntrada', 'Data de Entrada', 'required');
         $this->form_validation->set_rules('privilegio', 'Privilégio', 'required');
@@ -118,15 +127,17 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/footer_v');
         } else {
             //insere os dados na base de dados
-            $dados = elements(array('ativo', 'socio', 'nome', 'alcunha', 'email', 'password', 'nif', 'bi', 'dataNascimento', 'privilegio', 'dataEntrada', 'foto'), $this->input->post());
+            $dados = elements(array('ativo','nAluno', 'socio', 'nome', 'alcunha', 'email', 'password', 'nif', 'bi', 'dataNascimento', 'privilegio', 'dataEntrada', 'foto'), $this->input->post());
             $dados['password'] = md5($dados['password']);
             $this->load->model('utilizador_m');
             $this->utilizador_m->do_insert($dados);
 
+            //            envia utilizadores ativos
+            $dados['utilizadoresAtivos'] = $this->utilizador_m->get_utilizadoresAtivos();
             $data['msg'] = "Sucesso.";
             $this->load->view('includes/header_v');
             $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('bemVindo_v');
+            $this->load->view('consultarUtilizadores_v',$dados);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         }
@@ -197,8 +208,14 @@ class Utilizador extends CI_Controller {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|strtolower|valid_email');
         $this->form_validation->set_rules('dataNascimento', 'Data Nascimento', 'required');
         $this->form_validation->set_rules('privilegio', 'Privilegio', 'required');
+        $this->form_validation->set_rules('nAluno', 'Numero de Aluno', 'required|numeric');
         $id = $this->input->post('idUtilizador');
 
+
+    
+    
+        
+        
 
         if ($this->form_validation->run() == FALSE) {
 
@@ -210,26 +227,43 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         } else {
+            
+   
+            
             //insere os dados na base de dados
-            $dados = elements(array('socio', 'ativo', 'alcunha', 'email', 'dataNascimento', 'privilegio'), $this->input->post());
-
-
+            $dados = elements(array('nAluno','ativo', 'alcunha', 'email', 'dataNascimento', 'privilegio'), $this->input->post());
+               if($this->input->post('ativo') == 0){
+                $dados['socio']=0;
+            }else if($this->input->post('socio')==1){
+                 $dados['socio']=1;
+            }else {
+                 $dados['socio']=0;
+    }
+    
+            
             $this->load->model('utilizador_m');
             $this->utilizador_m->guardarAtualizacao($id, $dados);
+            
+//            envia utilizadores ativos
+            $dados['utilizadoresAtivos'] = $this->utilizador_m->get_utilizadoresAtivos();
 
+              
             $data['msg'] = "Alterado com Sucesso.";
             $this->load->view('includes/header_v');
             $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('bemVindo_v');
+            $this->load->view('ConsultarUtilizadores_v',$dados);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         }
     }
 
     public function salvar_senha() {
+        
+        
 
         $this->load->model('utilizador_m');
         $id = $this->input->post('idUtilizador');
+        
         if ($this->utilizador_m->salvar_senha()) {
 
             redirect('utilizador/atualizar/' . $id . '/1');
@@ -239,10 +273,14 @@ class Utilizador extends CI_Controller {
     }
 
     public function alterarDataSocio() {
-
+        $this->load->model('quotas_m');
         $this->load->model('utilizador_m');
+        
+        
         $id = $this->input->post('idUtilizador');
-        if ($this->utilizador_m->alterarDataSocio()) {
+//        $this->quotas_m->do_insert();
+        
+        if ($this->utilizador_m->alterarDataSocio() && $this->quotas_m->do_insert()) {
 
             redirect('utilizador/atualizar/' . $id . '/3');
         } else {
@@ -281,11 +319,22 @@ class Utilizador extends CI_Controller {
         redirect('Welcome');
     }
 
-    public function comprovativoSocio() {
-
-        $this->load->view('includes/comprovativoSocio_v');
+    //    manda para a view onde imprime o certificado de socio
+    public function comprovativoSocio($id) {
+        $this->load->model('utilizador_m');        
+        $dados['utilizador']=$this->utilizador_m->compararIdDetalhes($id); 
+        $this->load->view('includes/comprovativoSocio_v',$dados);
     }
-
+    
+//    manda para a view onde imprime o certificado dos seus cargos
+    public function comprovativoOrgaosSociais($id) {
+        
+        $this->load->model('utilizador_m');
+        $dados['utilizador']=$this->utilizador_m->compararIdDetalhes($id);  
+        $dados['comprovativo']=$this->utilizador_m->imprimirOrgaoSocial($id);        
+       
+        $this->load->view('includes/comprovativoOrgaosSociais_v',$dados);
+    }
     public function presencasAtuacoes() {
         $dado['tab'] = "tab1";
 

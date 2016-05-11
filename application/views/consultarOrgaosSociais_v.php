@@ -42,7 +42,7 @@
 
                             </tr>
                             <?php foreach ($orgaosSociais as $org) { ?>
-                                <tr>
+                                <tr onclick=script:location.href="<?= base_url(); ?>utilizador/detalheUtilizador/<?php echo $org->utilizador_idUtilizador; ?>">
                                     <td><?= $org->categoria; ?></td>
                                     <td><?= $org->cargo; ?></td>
                                     <td><?= $org->dataInicio; ?></td>

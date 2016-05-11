@@ -30,22 +30,20 @@
 <!--                        passar atributo ativo -->
                        <input name="idUtilizador" type="hidden" value="<?= $utilizador[0]->idUtilizador; ?>">
                         
-                        <div class="col-md-6 form-group">    
+                        <div class="col-md-4 form-group">    
                             <label >Nome</label>
                             <input disabled="" type="text" class="form-control" value="<?= $utilizador[0]->nome; ?>" name="nome" >                     
                         </div>
                        
-                        <div class="col-md-6 form-group">
-                            <label>Email address</label>
-                            <input type="email" class="form-control" name="email" value="<?= $utilizador[0]->email; ?>" placeholder="Introduza email">
-                        </div>
-
-
                         <div class="col-md-4 form-group">
                             <label>Alcunha</label>
                             <input type="text" class="form-control" value="<?= $utilizador[0]->alcunha; ?>" name="alcunha" placeholder="Introduza o alcunha...">
                         </div>
                        
+                        <div class="col-md-4 form-group">
+                            <label>Email address</label>
+                            <input type="email" class="form-control" name="email" value="<?= $utilizador[0]->email; ?>" placeholder="Introduza email">
+                        </div>                                         
 
                         <div class="col-md-4 form-group">
                             <label>NIF</label>
@@ -56,6 +54,12 @@
                             <label>BI</label>
                             <input disabled="" type="text" class="form-control" name="bi" value="<?= $utilizador[0]->bi; ?>"placeholder="Introduza o numero de BI">
                         </div>
+                       
+                         <div class="col-md-4 form-group">
+                            <label>Numero de Aluno</label>
+                            <input type="text" class="form-control" name="nAluno" value="<?= $utilizador[0]->nAluno; ?>">
+                        </div>
+
 
                         <div class="col-md-4 form-group">
                             <label>Data Nascimento</label>
@@ -89,7 +93,7 @@
                                    <option  value="1" <?= $utilizador[0]->socio == '1' ? ' selected ' : ''; ?>> Sócio</option>
                                    <option  value="0" <?= $utilizador[0]->socio == '0' ? ' selected ' : ''; ?>> Não Sócio </option>
                                </select> 
-                               <a class="btn btn-block btn-default active btn-xs" onclick="imprimir()"><i class="fa fa-download"></i>Imprimir</a>
+                               <a class="btn btn-block btn-default active btn-xs" onclick="imprimir(<?php echo $utilizador[0]->idUtilizador ?>)"><i class="fa fa-download"></i>Imprimir</a>
                           
                            </div>
                         
@@ -249,7 +253,10 @@
     
     }
     
-function imprimir() {
-    window.open("<?= base_url('utilizador/comprovativoSocio/') ?>");
+function imprimir($id) {
+   
+    window.open("<?= base_url('utilizador/comprovativoSocio/') ?>"+ "/"+ $id);
 }
 </script>
+
+
