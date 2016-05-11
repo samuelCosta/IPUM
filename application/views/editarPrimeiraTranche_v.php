@@ -60,7 +60,7 @@
                                     <tr>
                                         <td><?= $uti->nomeAtividade; ?>  </td>
                                         
-                                        <td ><input  id="<?= $uti->idAtividades; ?>" type="button" class="submit" value="Ver Detalhes"  data-target="#myModal" data-toggle="modal" class=" btn btn-default btn-block active"> 
+                                        <td ><a  id="<?= $uti->idAtividades; ?>" type="button" class="submit"  data-target="#myModal" data-toggle="modal" class=" btn btn-default btn-block active"><i class="fa fa-info pull-left"></i></a>
                              
                                     </tr>
                                     
@@ -77,7 +77,7 @@
                                 <?php foreach ($atuacoes as $atu) { ?>
                                     <tr>
                                         <td><?= $atu->designacao; ?>  </td>
-                                        <td ><input  id="<?= $atu->idEventos; ?>" type="button" class="submit1" value="Ver Detalhes"  data-target="#myModal" data-toggle="modal" class=" btn btn-default btn-block active"> 
+                                        <td ><a  id="<?= $atu->idEventos; ?>" type="button" class="submit1"   data-target="#myModal" data-toggle="modal" class=" btn btn-default btn-block active"><i class="fa fa-info pull-left"></i></a>
                                     </tr>
                                 <?php } ?>
                             </table>                       
