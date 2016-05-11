@@ -62,7 +62,7 @@
                         <div class="row">
                         <div class="col-md-3 form-group">
                             <label>Quantidade</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('quantidade'); ?>" name="quantidade"/>
+                            <input type="text" class="form-control" value="<?php echo set_value('quantidade'); ?>" name="quantidade" placeholder="Insira a quantidade..."/>
                         </div>
                         <div class="col-md-3 form-group">
                             <label>Custo</label>
@@ -89,7 +89,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Registar</button>
-                        <a class="btn" href="<?php echo site_url('traje'); ?>">Cancelar</a>
+                        <a class="btn" href="<?php echo site_url('traje/stock'); ?>">Cancelar</a>
                     </div>
                     </form>
 
@@ -101,7 +101,7 @@
     </section>
 </div><!-- /.content-wrapper -->
 
-<script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.2.0.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.1.4.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/bootstrap/js/bootstrap.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/plugins/select2/select2.full.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/plugins/slimScroll/jquery.slimscroll.min.js' ?>"></script>

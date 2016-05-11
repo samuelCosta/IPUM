@@ -66,7 +66,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Registar</button>
-                        <a class="btn" href="<?php echo site_url('merchandising'); ?>">Cancelar</a>
+                        <a class="btn" href="<?php echo site_url('merchandising/stock'); ?>">Cancelar</a>
                     </div>
                     </form>
 

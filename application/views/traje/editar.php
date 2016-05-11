@@ -60,15 +60,20 @@
                         </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-3 form-group">
+                        <div class="col-md-2 form-group">
                             <label>Custo Unitário</label>
                             <input type="text" class="form-control" value="<?php echo $edit_data['custo_uni']; ?>" name="custo_uni" disabled="true"/>
                             <input type="hidden" value="<?php echo $edit_data['custo_uni']; ?>" name="custo_uni_hidden" />
                         </div>
-                        <div class="col-md-3 form-group">
+                        <div class="col-md-2 form-group">
                             <label>Quantidade</label>
                             <input type="text" class="form-control" value="<?php echo $edit_data['quantidade']; ?>" name="quantidade" disabled="true" />
                             <input type="hidden" value="<?php echo $edit_data['quantidade']; ?>" name="quantidade_hidden" />
+                        </div>
+                            <div class="col-md-2 form-group">
+                            <label>Data de Compra</label>
+                            <input type="date" class="form-control" value="<?php echo $edit_data['data_compra']; ?>" name="data_compra" disabled="true" />
+                            <input type="hidden" value="<?php echo $edit_data['data_compra']; ?>" name="data_compra_hidden" />
                         </div>
                         </div>
                         <div class="row">
@@ -86,7 +91,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Editar</button>
-                        <a class="btn" href="<?php echo site_url('traje'); ?>">Cancelar</a>
+                        <a class="btn" href="<?php echo site_url('traje/stock'); ?>">Cancelar</a>
                     </div>
                     </form>
 

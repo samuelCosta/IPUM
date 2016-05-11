@@ -54,6 +54,12 @@
                             </div>
                         </div>
                         <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Descrição</label>
+                            <textarea  class="form-control" value="<?php echo set_value('descricao'); ?>" rows="5" name="descricao" placeholder="Insira uma descrição..."></textarea>
+                        </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-3 form-group">
                                 <label>Quantidade</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('quantidade'); ?>" name="quantidade" placeholder="Insira a quantidade"/>
@@ -64,10 +70,15 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label>Elemento</label>
-                                <input type="text" class="form-control" value="<?php echo set_value('elemento'); ?>" name="elemento" placeholder="Insira o nome do elemento">
-                            </div>
+                        <div class="col-md-6 form-group">
+                            <label>Elemento</label>
+                            <select class="form-control" name="elemento" >
+                                <option value="">Selecione uma opção</option>
+                                <?php foreach ($elementos as $elemento): ?>
+                                    <option value="<?php echo $elemento['idUtilizador']; ?>"><?php echo $elemento['nome']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                         </div>
 
 
@@ -78,7 +89,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Registar</button>
-                        <a class="btn" href="<?php echo site_url('merchandising'); ?>">Cancelar</a>
+                        <a class="btn" href="<?php echo site_url('merchandising/stock'); ?>">Cancelar</a>
                     </div>
                     </form>
 

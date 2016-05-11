@@ -49,10 +49,15 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label>Elemento</label>
-                                <input type="text" class="form-control" value="<?php echo set_value('elemento'); ?>" name="elemento" placeholder="Insira o Elemento">
-                            </div>
+                        <div class="col-md-6 form-group">
+                            <label>Elemento</label>
+                            <select class="form-control" name="elemento" >
+                                <option value="">Selecione uma opção</option>
+                                <?php foreach ($elementos as $elemento): ?>
+                                    <option value="<?php echo $elemento['idUtilizador']; ?>"><?php echo $elemento['nome']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                         </div>
                     </div><!-- /.box-body -->
                     <p> <?php echo validation_errors(); ?></p>

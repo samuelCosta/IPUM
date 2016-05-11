@@ -26,6 +26,7 @@
                                     <th>Género</th>
                                     <th>Tamanho</th>
                                     <th>Quantidade</th>
+                                    <th>Data de Compra</th>
                                     <th>Custo Unitário</th>
                                     <th>Localização</th>
                                     <th></th>
@@ -37,6 +38,7 @@
                                     <th>Género</th>
                                     <th>Tamanho</th>
                                     <th>Quantidade</th>
+                                    <th>Data de Compra</th>
                                     <th>Custo Unitário</th>
                                     <th>Localização</th>
                                     <th></th>
@@ -49,6 +51,7 @@
                                         <td><?php echo $peca['ts_genero']; ?></td>
                                         <td><?php echo $peca['ts_tamanho']; ?></td>
                                         <td><?php echo $peca['quantidade']; ?></td>
+                                        <td><?php echo $peca['data_compra']; ?></td>
                                         <td><?php echo $peca['custo_uni'] . '€'; ?></td>
                                         <td><?php echo $peca['localizacao']; ?></td>
                                         <td>
@@ -100,7 +103,7 @@
                                                         "initComplete": function () {
                                                             this.api().columns().every(function () {
                                                                 var column = this;
-                                                                if (column.index() < 6) {
+                                                                if (column.index() < 7) {
                                                                     var select = $('<select><option value=""></option></select>')
                                                                             .appendTo($(column.footer()).empty())
                                                                             .on('change', function () {
@@ -120,7 +123,7 @@
                                                             "info": "_START_ - _END_ de _TOTAL_ registos"
                                                         },
                                                         "columnDefs": [
-                                                            {targets: 6, orderable: false}
+                                                            {targets: 7, orderable: false}
                                                         ]
                                                     });
                                                 });

@@ -38,8 +38,9 @@ class Instrumento_m extends CI_Model {
     }
 
     public function get_historico($id) {
-        $this->db->select('im.*, ts.descricao as tipo_material_descricao');
+        $this->db->select('im.*, u.nome as elemento, ts.descricao as tipo_material_descricao');
         $this->db->from('instrumento_manutencao im');
+        $this->db->join('utilizador u', 'im.elemento=u.idUtilizador', 'left');
         $this->db->join('stock_produto sp', 'im.sp_material_id=sp.id', 'left');
         $this->db->join('tipo_selecao ts', 'sp.ts_tipo_material_id=ts.id', 'left');
         $this->db->where('im.instrumento_id', $id);

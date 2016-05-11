@@ -43,7 +43,8 @@ class Traje_m extends CI_Model {
             'ts_tamanho_id' => $this->input->post('tipo_tamanho'),
             'quantidade' => $this->input->post('quantidade'),
             'custo_uni' => $this->input->post('custo_uni'),
-            'localizacao' => $this->input->post('localizacao')
+            'localizacao' => $this->input->post('localizacao'),
+            'data_compra' => $this->input->post('data_compra')
         );
 
         return $this->db->insert('stock_traje', $data);
@@ -66,6 +67,7 @@ class Traje_m extends CI_Model {
             'quantidade' => $this->input->post('quantidade_hidden'),
             'localizacao' => $this->input->post('localizacao'),
             'custo_uni' => $this->input->post('custo_uni_hidden'),
+            'data_compra' => $this->input->post('data_compra_hidden')
         );
 
         $this->db->where('id', $id);
@@ -84,6 +86,7 @@ class Traje_m extends CI_Model {
             'descricao' => $this->input->post('descricao'),
             'ts_motivo_id' => $this->input->post('motivo'),
             'elemento' => $this->input->post('elemento'),
+            'quantidade' => $this->input->post('quantidade'),
             'st_id' => $id           
         );
         

@@ -24,9 +24,10 @@
                                 <tr>
                                     <th>Tipo</th>
                                     <th>Data</th>
-                                    <th>Quantidade</th>
                                     <th>Motivo</th>
+                                    <th>Descrição</th>
                                     <th>Elemento</th>
+                                    <th>Quantidade</th>
                                     <th>Custo</th>
                                 </tr>
                             </thead>
@@ -34,10 +35,11 @@
                                 <tr>
                                     <th>Tipo</th>
                                     <th>Data</th>
-                                    <th>Quantidade</th>
                                     <th>Motivo</th>
+                                    <th>Descrição</th>
                                     <th>Elemento</th>
-                                    <th></th>
+                                    <th>Quantidade</th>
+                                    <th>Custo</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -45,10 +47,11 @@
                                     <tr>
                                         <td><?php echo $tipo['tipo_merchandising']; ?></td>
                                         <td><?php echo $tipo['data']; ?></td>
-                                        <td><?php echo $tipo['quantidade']; ?></td>
                                         <td><?php echo $tipo['motivo']; ?></td>
+                                        <td><?php echo $tipo['descricao']; ?></td>
                                         <td><?php echo $tipo['elemento']; ?></td>
-                                        <td><?php echo $tipo['custo'] . '€'; ?></td>
+                                        <td><?php echo $tipo['quantidade']; ?></td>
+                                        <td><?php echo $tipo['custo'] . ' €'; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -102,7 +105,7 @@
                 "info": "_START_ - _END_ de _TOTAL_ registos"
             },
             "columnDefs": [
-                {targets: 5, orderable: true}
+                {targets: 6, orderable: true}
             ]
         });
     });

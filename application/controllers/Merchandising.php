@@ -43,7 +43,7 @@ class Merchandising extends CI_Controller{
             $this->load->view('includes/footer_v');
         } else {
             $this->merchandising_m->registar();
-            redirect('merchandising', 'refresh');
+            redirect('merchandising/stock', 'refresh');
         }
     }
     
@@ -64,16 +64,18 @@ class Merchandising extends CI_Controller{
             $this->load->view('includes/footer_v');
         } else {
             $this->merchandising_m->editar($id);
-            redirect('merchandising', 'refresh');
+            redirect('merchandising/stock', 'refresh');
         }
     }
     
     public function atribuir_merchandising($id) {
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->load->model('traje_m');
 
         $data['edit_data'] = $this->merchandising_m->get_merchandising_id($id);
         $data['tipos_motivo'] = $this->tiposelecao_m->get_tiposelecao('TIPO_MOTIVO');
+        $data['elementos'] = $this->traje_m->get_utilizadores();
         $data['merchandising'] = $this->merchandising_m->get_merchandising_stock();
         
         $this->form_validation->set_rules('motivo', 'Motivo', 'required');
@@ -81,6 +83,7 @@ class Merchandising extends CI_Controller{
         $this->form_validation->set_rules('data', 'Data', 'required');
         $this->form_validation->set_rules('quantidade', 'Quantidade', 'required|callback_check_quantidade');
         $this->form_validation->set_rules('custo', 'Custo');
+        $this->form_validation->set_rules('descricao', 'Descrição');
         
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
@@ -93,7 +96,7 @@ class Merchandising extends CI_Controller{
             $result['quantidade'] = $result['quantidade'] - $this->input->post('quantidade');
             $this->merchandising_m->atualiza_quantidade($result['id'], $result['quantidade']);
 
-            redirect('merchandising', 'refresh');
+            redirect('merchandising/stock', 'refresh');
         }
         
     }

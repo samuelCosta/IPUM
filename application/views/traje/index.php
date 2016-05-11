@@ -27,6 +27,7 @@
                                     <th>Motivo</th>
                                     <th>Descrição</th>
                                     <th>Elemento</th>
+                                    <th>Quantidade</th>
                                     <th>Custo</th>
                                 </tr>
                             </thead>
@@ -37,7 +38,8 @@
                                     <th>Motivo</th>
                                     <th>Descrição</th>
                                     <th>Elemento</th>
-                                    <th></th>
+                                    <th>Quantidade</th>
+                                    <th>Custo</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -48,7 +50,8 @@
                                         <td><?php echo $atribuido['motivo']; ?></td>
                                         <td><?php echo $atribuido['descricao']; ?></td>
                                         <td><?php echo $atribuido['elemento']; ?></td>
-                                        <td><?php echo $atribuido['custo'] . '€'; ?></td>
+                                        <td><?php echo $atribuido['quantidade']; ?></td>
+                                        <td><?php echo $atribuido['custo'] . ' €'; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -105,7 +108,7 @@
                 "info": "_START_ - _END_ de _TOTAL_ registos"
             },
             "columnDefs": [
-                {targets: 5, orderable: true}
+                {targets: 6, orderable: true}
             ]
         });
     });
