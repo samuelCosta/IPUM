@@ -28,7 +28,7 @@
                                     <th>Data Aviso</th>
                                     <th>Data De pagamento</th>
                                     <th>Utilizador</th>
-                                    <th>Tipo</th>
+                                    <th>Estado</th>
                                     <th></th>
                                   
 
@@ -44,12 +44,15 @@
                                         <td><?= $quo->tipo; ?></td>
                                         
                                         <td>
-                                            <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?= base_url('utilizador/atualizar/' . $quo->idQuota) ?>"><i class="fa fa-edit"></i></a>
+                                          
                                             <?php if($quo->tipo == 'Não Pago'){ ?>
                                             <a data-toggle="tooltip" title="Pagar Quota" class="btn-lg" href="<?= base_url('Quotas/pagarQuota/' . $quo->idQuota.'/'.$quo->idUtilizador.'/'.$quo->dataAviso ) ?>"><i class="fa fa-euro" onclick="return confirm('Deseja realmente regostar o pagamento ?');"></i></a>
-                                            <?php }else{ ?>
+                                              <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?= base_url('Quotas/atualizarQuota/' . $quo->idQuota) ?>"><i class="fa fa-edit"></i></a>
+                                                <?php }else{ ?>
                                             <a data-toggle="tooltip" title="Pagamento já Efectuado" disabled class="btn-lg" ><i class="fa fa-euro" ></i></a>
-                                            <?php } ?>
+                                             <a data-toggle="tooltip" title="Pagamento já Efectuado" class="btn-lg" disabled><i class="fa fa-edit"></i></a>
+
+ <?php } ?>
                                         </td>
                                         
                                      

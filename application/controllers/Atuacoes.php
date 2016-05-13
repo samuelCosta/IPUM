@@ -39,11 +39,13 @@ class Atuacoes extends CI_Controller {
            
             $this->load->model('Atuacoes_m');
             $this->Atuacoes_m->do_insert($dados);
+            
+            $dados['atuacoes'] = $this->Atuacoes_m->get_atuacoes();
 
             $data['msg'] = "Sucesso.";
             $this->load->view('includes/header_v');
             $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('bemVindo_v');
+            $this->load->view('consultarAtuacoes_v',$dados);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         }

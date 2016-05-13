@@ -16,9 +16,31 @@ class Utilizador extends CI_Controller {
 //    
 
     public function index() {
+//        estatistica 
+        $this->load->model('utilizador_m');
+        $data=date('Y');
+       
+        $totalAtuacoes=$this->utilizador_m->totalAtuacoes($data);
+        
+        $totalAtividades=$this->utilizador_m->totalAtividades($data);
+        
+        $totalEnsaios=$this->utilizador_m->totalEnsaios($data);
+        
+        $totalAtivos=$this->utilizador_m->totalAtivos();
+        
+        $proximaAtuacao=$this->utilizador_m->proximaAtuacao();
+        
+        $proximaAtividade=$this->utilizador_m->proximaAtividade();
+        
+        $proximoEnsaio=$this->utilizador_m->proximaAtividade();
+    
+
 
         $this->load->view('includes/header_v');
-        $this->load->view('bemVindo_v');
+        $this->load->view('bemVindo_v',array('totalAtuacoes'=>$totalAtuacoes,
+            'totalAtividades'=>$totalAtividades,'totalEnsaios'=>$totalEnsaios,
+                'totalAtivos'=>$totalAtivos,'proximaAtuacao'=>$proximaAtuacao,
+                'proximaAtividade' => $proximaAtividade,'proximoEnsaio' => $proximoEnsaio));
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }

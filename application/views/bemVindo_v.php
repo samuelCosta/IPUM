@@ -3,6 +3,22 @@
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
+                
+                 <div class="alert alert-warning alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <i class="icon fa fa-warning"></i> <Strong>Alert!</strong> Proxima Atuação: <?php if($proximaAtuacao['dataEvento'] == Null ){ echo " Não existe próxima Atuação"; } else {echo $proximaAtuacao['dataEvento'];}  ?> 
+                    <br>
+               
+                
+                    <i class="icon fa fa-warning"></i> <Strong>Alert!</strong> Proxima Atividade: <?php if($proximaAtividade['dataInicio'] == Null ){ echo " Não existe próxima Atividade"; } else {echo $proximaAtividade['dataInicio'];}  ?> 
+                    
+                    <br>
+              
+                    <i class="icon fa fa-warning"></i> <Strong>Alert!</strong> Proximo Ensaio: <?php if($proximoEnsaio['dataEvento'] == Null ){ echo " Não existe próximo Ensaio"; } else {echo $proximoEnsaio['dataEvento'];}  ?> 
+                    
+                  </div>
+                    
+                
                 <section class="content-header">
                     <h1>
                         Bem Vindo
@@ -13,68 +29,83 @@
                 </section>
 
                 <!---------------------------------------------------------------------------------->
-
+       
                 <!-- Main content -->
                 <section class="content">
+                    <h4> Dados em <?php echo date('Y');?> </h4>
                     <!-- corpo horizontal -->
                     <div class="row">
+                        
                        
+                      <div class="col-lg-3 col-xs-6 ">
+                            <!-- small box -->
+                            <div class="small-box bg-gray box box-primary">
+                                <div class="inner">
+                                    <h3><?php echo $totalAtuacoes ?></h3>
+                                    <p>Atuações</p>
+                                </div>
+                                
+                               
+                                <div class="icon">
+                                    <i class="ion ion-information-circled"></i>
+                                </div>
+                               
+                            </div>
+                            
+                       
+                      </div>
                         <div class="col-lg-3 col-xs-6 ">
                             <!-- small box -->
                             <div class="small-box bg-gray box box-primary">
                                 <div class="inner">
-                                    <h3>150</h3>
-                                    <p>Eventos</p>
+                                    <h3><?php echo $totalAtividades ?></h3>
+                                    <p>Atividades</p>
                                 </div>
+                                
+                               
                                 <div class="icon">
-                                    <i class="ion ion-bag"></i>
+                                    <i class="ion ion-information-circled"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                               
                             </div>
-                        </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
+                            
+                       
+                      </div>
+                        <div class="col-lg-3 col-xs-6 ">
                             <!-- small box -->
                             <div class="small-box bg-gray box box-primary">
                                 <div class="inner">
-                                    <h3>53<sup style="font-size: 20px">%</sup></h3>
-                                    <p>utilizadores</p>
+                                    <h3><?php echo $totalEnsaios ?></h3>
+                                    <p>Ensaios</p>
                                 </div>
+                                
+                               
                                 <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
+                                    <i class="ion ion-information-circled"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                               
                             </div>
-                        </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
+                            
+                       
+                      </div>
+                        <div class="col-lg-3 col-xs-6 ">
                             <!-- small box -->
                             <div class="small-box bg-gray box box-primary">
                                 <div class="inner">
-                                    <h3>44</h3>
-                                    <p>User Registrations</p>
+                                    <h3><?php echo $totalAtivos ?></h3>
+                                    <p>Elementos Ativos</p>
                                 </div>
+                                
+                               
                                 <div class="icon">
-                                    <i class="ion ion-person-add"></i>
+                                    <i class="ion ion-android-people"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                               
                             </div>
-                        </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-gray box box-primary">
-                                <div class="inner">
-                                    <h3>65</h3>
-                                    <p>Unique Visitors</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-pie-graph"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div><!-- ./col -->
-                    </div><!-- /.row -->
-                    <!-- Main row -->
-
-
+                            
+                       
+                      </div>
+                        </div>
                     <!--                    ---------------------------------------------------------->
 
 

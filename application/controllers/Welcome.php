@@ -35,13 +35,14 @@ class Welcome extends CI_Controller {
                         
             $this->session->set_userdata($dados);
 //            $this->session->set_userdata("usuario_logado", $usuario); session vai permitir navegar com o utilizador que iniciar sessao
-            $dados['msg'] = "Login feito com sucesso!";
-            $this->load->view('includes/header_v');
-            $this->load->view('includes/msgSucesso_v',$dados);
-            
-            $this->load->view("bemVindo_v", $dados);
-            $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
+//            $dados['msg'] = "Login feito com sucesso!";
+//            $this->load->view('includes/header_v');
+//            $this->load->view('includes/msgSucesso_v',$dados);
+//                        
+            redirect('utilizador','refresh');
+//            $this->load->view("bemVindo_v");
+//            $this->load->view('includes/menu_v');
+//            $this->load->view('includes/footer_v');
         } else {
     
             $this->load->view('login_v');

@@ -247,5 +247,68 @@ class Utilizador_m extends CI_Model {
         
     }
     
+    
+        //   estatisca na pagina Inicial 
+    public function totalAtuacoes($data) {
 
+        $this->db->select('*');
+        $this->db->where('tipo', 'atuação'); 
+        $this->db->where('year(dataEvento)',$data); 
+        $query = $this->db->get('Eventos');
+        return $query->num_rows();
+    }
+    
+           //   estatisca na pagina Inicial 
+    public function totalAtividades($data) {
+
+        $this->db->select('*');   
+        $this->db->where('year(dataInicio)',$data); 
+        $query = $this->db->get('Atividades');
+        return $query->num_rows();
+    }
+    
+               //   estatisca na pagina Inicial 
+    public function totalEnsaios($data) {
+
+        $this->db->select('*');   
+        $this->db->where('tipo', 'ensaio');
+         $this->db->where('year(dataEvento)',$data); 
+        $query = $this->db->get('Eventos');
+        return $query->num_rows();
+    }
+    
+                   //   estatisca na pagina Inicial 
+    public function totalAtivos() {
+
+        $this->db->select('*');   
+        $this->db->where('ativo', 1);
+        $query = $this->db->get('Utilizador');
+        return $query->num_rows();
+    }
+    
+    public function proximaAtuacao(){
+    $today = date('Y-m-d');  
+    $query = $this->db->query(
+        "SELECT * FROM eventos WHERE tipo = 'atuacao' AND dataEvento >= '{$today}'");
+    return $query->row_array();
+    
+            
+    }
+        public function proximaAtividade(){
+    $today = date('Y-m-d');  
+    $query = $this->db->query(
+        "SELECT * FROM atividades WHERE dataInicio >= '{$today}'");
+    return $query->row_array();
+    
+            
+    }
+        public function proximoEnsaio(){
+    $today = date('Y-m-d');  
+    $query = $this->db->query(
+        "SELECT * FROM eventos WHERE tipo = 'ensaio' AND dataEvento >= '{$today}'");
+    return $query->row_array();
+    
+            
+    }
+    
 }

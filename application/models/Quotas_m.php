@@ -64,5 +64,20 @@ class Quotas_m extends CI_Model {
         $this->db->join('utilizador', 'idUtilizador=utilizador_idUtilizador', 'inner');
         return $this->db->get('quota')->result();
     }
+    
+//    devolve os dados de uma quota   
+    public function compararId($id) {
+
+        $this->db->where('idQuota', $id);
+        $this->db->join('utilizador', 'idUtilizador=utilizador_idUtilizador', 'inner');
+        return $this->db->get('quota')->result();
+    }
+
+        // depois de editado a quota faz update desses dados novos   
+    public function guardarAtualizacao($id, $data) {
+
+        $this->db->where('idQuota', $id);
+        return $this->db->update('quota', $data);
+    }
 
 }
