@@ -80,5 +80,11 @@ class Instrumento_m extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete('instrumento');
     }
+    
+    public function atualiza_estado($id, $estado) {
+        $this->db->set('estado', $estado);
+        $this->db->where('id', $id);
+        return $this->db->update('instrumento');
+    }
 
 }

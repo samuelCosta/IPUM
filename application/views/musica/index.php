@@ -9,70 +9,70 @@
         <!-- listar utilizador-->
 
         <section class="content">
-            <div class="row">
-                <?php foreach ($musicas as $musica) : ?>
+            <?php foreach ($musicas as $musica) : ?>
                 <?php if ($musica['parent_id'] === NULL): ?>
-                <div class="col-md-6">
-                    <!-- Box Comment -->
-                    
-                        <div class="box box-primary box-solid collapsed-box" >
-                            <div class="box-header with-border">
-                                <div class="user-block">
-                                    <h3 class="box-title">Música: <?php echo $musica['nome']; ?></h3>
-                                </div>
-                                <!-- /.user-block -->
-                                <div class="box-tools">
-                                    <div class="btn-group ">
-                                        <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
-                                        <ul class="dropdown-menu pull-right" role="menu">
-                                            <li><a href="#" style="color:#777;">Editar</a></li>
-                                            <li><a href="<?php echo site_url('musica/registar/' . $musica['id']); ?>" style="color:#777;">Adicionar instrumento</a></li>
-                                        </ul>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Box Comment -->
+
+                            <div class="box box-primary box-solid collapsed-box" >
+                                <div class="box-header with-border">
+                                    <div class="user-block">
+                                        <h3 class="box-title">Música: <?php echo $musica['nome']; ?></h3>
                                     </div>
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                                    <button type="button" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
-                                </div>
-                                <!-- /.box-tools -->
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="<?php echo $musica['link']; ?>" allowfullscreen="true"></iframe>
-                                </div>
-                            </div>
-                            <div class="box-footer">
-                                <div class="row">
-                                    <?php foreach ($musicas as $instrumento) : ?>
-                                    <?php if ($instrumento['parent_id'] === $musica['id']): ?>
-                                    <div class="col-md-6">
-                                        <div class="box box-widget">
-                                            <div class="box-header with-border">
-                                                <div class="user-block">
-                                                    <h3 class="box-title">Instrumento: <?php echo $instrumento['nome']; ?></h3>
-                                                </div>
-                                                <div class="box-tools">
-                                                    <button type="button" class="btn btn-box-tool"><i class="fa fa-pencil"></i></button>
-                                                    <button type="button" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
-                                                </div>
-                                            </div>
-                                            <div class="box-body">
-                                                <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe class="embed-responsive-item" src="<?php echo $instrumento['link']; ?>"></iframe>
-                                                </div>
-                                            </div>
+                                    <!-- /.user-block -->
+                                    <div class="box-tools">
+                                        <div class="btn-group ">
+                                            <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li><a href="<?php echo site_url('musica/editar/' . $musica['id']); ?>" style="color:#777;">Editar</a></li>
+                                                <li><a href="<?php echo site_url('musica/registar/' . $musica['id']); ?>" style="color:#777;">Adicionar instrumento</a></li>
+                                            </ul>
                                         </div>
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                        <a type="btn" onclick="javascript:deleteConfirm('<?php echo site_url('musica/delete/' . $musica['id']); ?>');" deleteConfirm href="#" class="btn btn-box-tool"><i class="fa fa-times"></i></a>
                                     </div>
-                                    <?php endif; ?>
-                                    <?php endforeach; ?>
+                                    <!-- /.box-tools -->
                                 </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="<?php echo $musica['link']; ?>" allowfullscreen="true"></iframe>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <div class="row">
+                                        <?php foreach ($musicas as $instrumento) : ?>
+                                            <?php if ($instrumento['parent_id'] === $musica['id']): ?>
+                                                <div class="col-md-6">
+                                                    <div class="box box-widget">
+                                                        <div class="box-header with-border">
+                                                            <div class="user-block">
+                                                                <h3 class="box-title">Instrumento: <?php echo $instrumento['nome']; ?></h3>
+                                                            </div>
+                                                            <div class="box-tools">
+                                                                <a type="btn" href="" class="btn btn-box-tool"><i class="fa fa-pencil"></i></a>
+                                                                <button type="button" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="box-body">
+                                                            <div class="embed-responsive embed-responsive-16by9">
+                                                                <iframe class="embed-responsive-item" src="<?php echo $instrumento['link']; ?>"></iframe>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                                <!-- /.box-footer -->
                             </div>
-                            <!-- /.box-footer -->
+                            <!-- /.box -->
                         </div>
-                    <?php endif; ?>
-                    <?php endforeach; ?>
-                    <!-- /.box -->
-                </div>
-            </div>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </section>
 </div>
 
@@ -92,4 +92,12 @@
 </section>
 </div>
 
-
+<script>
+                                    function deleteConfirm(url)
+                                    {
+                                        if (confirm('Deseja eliminar o resgisto?'))
+                                        {
+                                            window.location.href = url;
+                                        }
+                                    }
+</script>

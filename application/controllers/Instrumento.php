@@ -58,6 +58,7 @@ class Instrumento extends CI_Controller {
         $this->form_validation->set_rules('custo_total', 'Custo', 'required');
         $this->form_validation->set_rules('data_manutencao', 'Data da Manutenção', 'required');
         $this->form_validation->set_rules('elemento', 'Elemento', 'required');
+        $this->form_validation->set_rules('estado', 'Estado', 'required');
 
 
         if ($this->form_validation->run() == FALSE) {
@@ -69,7 +70,9 @@ class Instrumento extends CI_Controller {
             $result = $this->material_m->get_material($this->input->post('tipo_material'));
             $result['quantidade'] = $result['quantidade'] - $this->input->post('quantidade');
             $this->material_m->atualiza_quantidade($result['id'], $result['quantidade']);
-
+            
+            $this->instrumento_m->atualiza_estado($id, $this->input->post('estado'));
+            
             redirect('instrumento', 'refresh');
         }
     }

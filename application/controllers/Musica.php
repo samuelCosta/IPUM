@@ -41,5 +41,31 @@ class Musica extends CI_Controller {
             redirect('musica', 'refresh');
         }
     }
+    
+    public function editar($id) {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['edit_data'] = $this->musica_m->get_musica_id($id);
+
+        $this->form_validation->set_rules('link', 'Link', 'required');
+        $this->form_validation->set_rules('nome', 'Título', 'required');
+        
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('includes/header_v');
+            $this->load->view('musica/editar', $data);
+            $this->load->view('includes/menu_v');
+            $this->load->view('includes/footer_v');
+        } else {
+            $this->musica_m->editar($id);
+            redirect('musica', 'refresh');
+        }
+    }
+    
+    public function delete($id) {
+        $this->musica_m->delete($id);
+        redirect('musica', 'refresh');
+    }
 
 }

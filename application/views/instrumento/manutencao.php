@@ -43,9 +43,21 @@
                                 <label>Custo</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('custo_total'); ?>" name="custo_total" placeholder="Insira o custo">
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-2 form-group">
                                 <label>Data da Manutenção</label>
                                 <input type="date" class="form-control" value="<?php echo set_value('data_manutencao'); ?>" name="data_manutencao">
+                            </div>
+                        <div class="col-md-2 form-group">
+                                <label>Estado</label>
+                                <div class="row">
+                                    <label class="radio-inline"><input type="radio" name="estado" value="1" class="minimal" />1</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="2" class="minimal" />2</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="3" class="minimal" />3</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="4" class="minimal" />4</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="5" class="minimal" />5</label>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
