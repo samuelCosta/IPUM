@@ -32,7 +32,7 @@ class Utilizador extends CI_Controller {
         
         $proximaAtividade=$this->utilizador_m->proximaAtividade();
         
-        $proximoEnsaio=$this->utilizador_m->proximaAtividade();
+        $proximoEnsaio=$this->utilizador_m->proximoEnsaio();
     
 
 
@@ -359,7 +359,7 @@ class Utilizador extends CI_Controller {
     }
     public function presencasAtuacoes() {
         $dado['tab'] = "tab1";
-
+//
         $this->load->view('includes/header_v');
         $this->load->view('presencasEventos_v', $dado);
         $this->load->view('includes/menu_v');

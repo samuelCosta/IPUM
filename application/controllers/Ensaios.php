@@ -35,9 +35,10 @@ class Ensaios extends CI_Controller {
             $this->Ensaios_m->do_insert($dados);
 
             $data['msg'] = "Sucesso.";
+            $dados['Ensaios'] = $this->Ensaios_m->get_ensaios();
             $this->load->view('includes/header_v');
             $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('bemVindo_v');
+            $this->load->view('consultarEnsaios_v',$dados);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         }

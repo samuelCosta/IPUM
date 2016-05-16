@@ -31,7 +31,7 @@
                         </div>
                     </form>-->
 <!--                   ------------------------------ ----------------------->
-                    <div class="box-body table-responsive no-padding">
+                    <div class="box-body ">
                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%" >
                              <thead>
                             <tr>

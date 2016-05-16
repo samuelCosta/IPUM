@@ -13,7 +13,7 @@
 
     <section class="content">
         <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-12">
 
                 <!-- Custom Tabs -->
                 <div class="nav-tabs-custom">
@@ -44,13 +44,17 @@
                                 </div>
                             </form>
                             <!--                   ------------------------------ ----------------------->
-                            <div class="box-body table-responsive no-padding">                       
-                                <table  class="table table-hover">
+                            <div class="box-body">                       
+                                <table  id="eventos" class="table table-bordered table-hover">
+                                    <thead>
                                     <tr>
                                         <th>Nome </th>
                                         <th>Email </th>
+                                      
                                     </tr>
-
+                                     </thead>
+                                     <tbody>
+                                        
                                     <?php if (isset($utilizadores)) {
 
                                         foreach ($utilizadores as $uti) {
@@ -63,8 +67,14 @@
 
                                         <?php }
                                     } else { ?>
-                                        <td>  Não existe resultados </td>                                      
+                                            <tr>
+                                        <td>  Não existe resultados </td> 
+                                        <td></td>
+                                            </tr>
                                 <?php } ?>
+                                            
+                                        </tbody>
+               
 
                                 </table>
 
@@ -96,14 +106,17 @@
                             </form>
                        
 
-                            <div  class="box-body table-responsive no-padding">    
-                                <form name="userForm" id="userForm" action="">
-                                    <table  class="table table-hover">
+                            <div  class="box-body ">    
+<!--                                <form name="userForm" id="userForm" action="">-->
+                                    <table id="ano" class="table table-bordered table-hover">
+                                         <thead>
                                         <tr>
                                             <th>Nome </th>
                                             <th>Data </th>
-
+                                              
                                         </tr>
+                                         </thead>
+                                             <tbody>
 
                                         <?php if (isset($eventos)) {
 
@@ -114,7 +127,7 @@
                                                     <td >  <?= $uti->designacao; ?> </td>
                                                     <td >  <?= $uti->dataEvento; ?> </td>
 
-                                                    <td ><a href="<?= $uti->idEventos; ?>" type="submit" class="submit btn-lg" value="Ver Detalhes" class="input_box" > <i class="fa fa-info"></i> </a>
+                                                    <td ><a href="<?= $uti->idEventos; ?>" type="submit" class="submit btn-lg" data-target="#myModal" data-toggle="modal" value="Ver Detalhes" class="input_box" > <i class="fa fa-info"></i> </a>
                                                     </td> 
 
                                                         </tr>
@@ -122,11 +135,15 @@
                                                     <?php }
                                                 } else {
                                                     ?>
-                                                    <td>  Não existe resultados </td>                                      
+                                                        <tr>
+                                                    <td>  Não existe resultados </td>  
+                                                    <td></td>
+                                                        </tr>
                                                 <?php } ?>
+                                    </tbody>
 
                                     </table>
-                                </form>
+                                <!--</form>-->
                             </div><!-- /.box-body -->
                              </div><!-- /.tab-pane -->
 
@@ -201,10 +218,7 @@
 
             <!--             --------------------------------------UTILAZADORES DO EVENTO     ----- ---->
 
-            <div class="col-xs-6"> 
-                <div id="listaUtilizadores" class="box-body table-responsive no-padding" >
-                </div>
-            </div>
+
 
         </div>
     </section>
@@ -212,6 +226,31 @@
 </div><!-- /.content-wrapper -->
 
 
+<!-------------------------------------Detalhes por ano------------------------------>
+
+
+<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <form action="<?= base_url() ?>utilizador/salvar_senha" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Utilizadores Presentes na Atuação </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div id="listaUtilizadores"  >
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" type="button">Fechar</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -272,4 +311,35 @@
     });
 
 </script>
+<script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.1.4.min.js' ?>"></script>
+ <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/plugins/datatables/jquery.datatables.css"/>
+<script src="<?php echo base_url() . 'assets/plugins/datatables/jquery.dataTables.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/datatables/dataTables.bootstrap.min.js' ?>"></script>
 
+<script>
+      $(function () {
+    
+        $('#eventos').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+    </script>
+    
+    <script>
+      $(function () {
+      
+        $('#ano').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+    </script>

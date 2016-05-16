@@ -1,8 +1,10 @@
 
 
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="col-sm-1 col-sm-offset-1 col-md-10 col-md-offset-2 main">
 <div class="alert alert-success" role="alert">
     
- <h3>   <?= $msg; ?></h3>
+ <h6>  <?= $msg; ?></h6>
+ 
+ 
 </div>
 </div>

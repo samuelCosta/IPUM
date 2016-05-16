@@ -118,6 +118,7 @@ class Tranche_m extends CI_Model {
 
         $this->db->select('*');
         $this->db->where('apoios_idApoios', $id);
+        $this->db->where('tipo','atuacao');
         $this->db->join('eventos', 'eventos_idEventos=idEventos', 'inner');       
         return $this->db->get('apoioseventos')->result();
         
@@ -128,6 +129,7 @@ class Tranche_m extends CI_Model {
       
            $this->db->select('*');
            $this->db->where('year(dataEvento)',$ano);
+           $this->db->where('tipo','atuacao');
            foreach ($dados as $id){
            $this->db->where_not_in('idEventos',$id->eventos_idEventos);
            }
