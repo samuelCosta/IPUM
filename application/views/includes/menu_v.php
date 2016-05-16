@@ -62,6 +62,7 @@
                         <ul class="treeview-menu menu-open" style="display: none;">
                             <li><a href="<?= base_url() ?>traje/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
                             <li><a href="<?= base_url() ?>traje/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>traje/index"><i class="fa fa-circle-o"></i>Stock</a></li>
                         </ul>
                     </li>
                     <li class="active">
@@ -76,6 +77,7 @@
                         <ul class="treeview-menu menu-open" style="display: none;">
                             <li><a href="<?= base_url() ?>merchandising/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
                             <li><a href="<?= base_url() ?>merchandising/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>merchandising/stock"><i class="fa fa-circle-o"></i>Stock</a></li>
                         </ul>
                     </li>
 
