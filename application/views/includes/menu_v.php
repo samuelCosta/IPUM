@@ -62,7 +62,7 @@
                         <ul class="treeview-menu menu-open" style="display: none;">
                             <li><a href="<?= base_url() ?>traje/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
                             <li><a href="<?= base_url() ?>traje/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
-                            <li><a href="<?= base_url() ?>traje/index"><i class="fa fa-circle-o"></i>Stock</a></li>
+                            <li><a href="<?= base_url() ?>traje/stock"><i class="fa fa-circle-o"></i>Stock</a></li>
                         </ul>
                     </li>
                     <li class="active">
