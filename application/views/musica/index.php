@@ -51,8 +51,8 @@
                                                                 <h3 class="box-title">Instrumento: <?php echo $instrumento['nome']; ?></h3>
                                                             </div>
                                                             <div class="box-tools">
-                                                                <a type="btn" href="" class="btn btn-box-tool"><i class="fa fa-pencil"></i></a>
-                                                                <button type="button" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
+                                                                <a type="btn" href="<?php echo site_url('musica/editar/' . $instrumento['id']) ?>" class="btn btn-box-tool"><i class="fa fa-pencil"></i></a>
+                                                                <a type="btn" onclick="javascript:deleteConfirm('<?php echo site_url('musica/delete/' . $instrumento['id']); ?>');" deleteConfirm href="#" class="btn btn-box-tool"><i class="fa fa-times"></i></a>
                                                             </div>
                                                         </div>
                                                         <div class="box-body">
