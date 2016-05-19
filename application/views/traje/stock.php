@@ -46,7 +46,7 @@
                             </tfoot>
                             <tbody>
                                 <?php foreach ($pecas as $peca): ?>
-                                    <tr>
+                                <tr>
                                         <td><?php echo $peca['ts_tipo']; ?></td>
                                         <td><?php echo $peca['ts_genero']; ?></td>
                                         <td><?php echo $peca['ts_tamanho']; ?></td>
@@ -54,7 +54,7 @@
                                         <td><?php echo $peca['data_compra']; ?></td>
                                         <td><?php echo $peca['custo_uni'] . '€'; ?></td>
                                         <td><?php echo $peca['localizacao']; ?></td>
-                                        <td>
+                                        <td <?php if ($peca['quantidade'] != 0) { ?>>
                                             <a class="btn-lg" href="<?php echo site_url('traje/editar/' . $peca['id']); ?>">
                                                 <i class="fa fa-edit"></i>
                                             </a>
@@ -64,7 +64,7 @@
                                             <a class="btn-lg" href="<?php echo site_url('traje/atribuir_traje/' . $peca['id']); ?>">
                                                 <i class="fa fa-share-square-o"></i>
                                             </a>
-                                        </td>
+                                        </td <?php } ?> >
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
