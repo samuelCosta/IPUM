@@ -19,6 +19,7 @@
 <!--                    <form action="<?= base_url() ?>Atuacoes/pesquisarAtuacoes" method="post" >-->
                         <div class="box-header">
                             <h3 class="box-title">Histórico Atuações</h3>
+                            <a data-toggle="tooltip" title="Voltar" class="btn-lg" href="<?php echo site_url('Atuacoes/consultarAtuacoes'); ?>"><i class="fa  fa-arrow-circle-left"></i></a>
 
 <!--                            <div class="box-tools">
                                 <div class="input-group" style="width: 400px;">
@@ -35,6 +36,7 @@
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%" >
                              <thead>
                             <tr>
+                                <th>Nome da Atuação</th>
                                 <th>Data da Atuação</th>
                                 <th>Localização da Atuação</th>
                                 <th>Responsável</th>
@@ -48,6 +50,7 @@
                              <tbody>
                             <?php foreach ($atuacoes as $atu) { ?>
                                 <tr>
+                                    <td><?= $atu->designacao; ?></td>
                                     <td><?= $atu->dataEvento; ?></td>
                                     <td><?= $atu->localizacao; ?></td>
                                     <td><?= $atu->responsavel; ?></td>

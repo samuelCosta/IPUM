@@ -18,6 +18,7 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Histórico Utilizadores</h3>
+                         <a data-toggle="tooltip" title="Voltar" class="btn-lg" href="<?php echo site_url('Utilizador/consultarUtilizadoresAtivos'); ?>"><i class="fa  fa-arrow-circle-left"></i></a>
 
                     </div>
 

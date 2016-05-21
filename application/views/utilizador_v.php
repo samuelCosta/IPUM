@@ -43,6 +43,16 @@
                          
                             
                         </ul>
+                        <h3>Histórico de Orgãos Sociais:</h3>
+                         <?php foreach ($orgaosSociais as $p) { ?>
+
+                            - <?php echo $p['cargo'] ?> da <?php echo $p['categoria'] ?> desde <?php echo $p['dataInicio'] ?>  <?php if ($p['dataFim'] == null) {
+                            echo "até à presente data.";
+                        } else {
+                            echo "a " . $p['dataFim'];
+                        } ?>
+<?php } ?>
+                            
                             <?php if($orgaosSociais!=NULL){ ?>
                             <a onclick="imprimir(<?php echo  $utilizador['idUtilizador'] ?>)" class="btn btn-primary btn-block"><i class="fa fa-download"></i><b>  Imprimir Certificado de Orgão Social</b></a>
                             <?php }else {} ?>

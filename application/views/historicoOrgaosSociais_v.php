@@ -19,6 +19,7 @@
 <!--                    <form action="<?= base_url() ?>OrgaosSociais/pesquisarHistorico" method="post" >-->
                         <div class="box-header">
                             <h3 class="box-title">Histórico Orgãos Sociais</h3>
+                            <a data-toggle="tooltip" title="Voltar" class="btn-lg" href="<?php echo site_url('OrgaosSociais/consultarOrgaosSociais'); ?>"><i class="fa  fa-arrow-circle-left"></i></a>
 
 <!--                            <div class="box-tools">
                                 <div class="input-group" style="width: 400px;">

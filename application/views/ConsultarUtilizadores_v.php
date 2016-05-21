@@ -17,6 +17,8 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Consultar Utilizadores</h3>
+                        <a  data-toggle="tooltip" title="Ver Histórico" href="<?= base_url('Utilizador/consultarUtilizadoresInativos/')?>" class="btn-lg pull-right" ><i class="fa fa-info pull-right" ></i> </a>
+
 
                     </div>
                     <div class="box-body  "> 

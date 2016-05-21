@@ -19,6 +19,8 @@
 <!--                    <form action="<?= base_url() ?>OrgaosSociais/pesquisar" method="post" >-->
                         <div class="box-header">
                             <h3 class="box-title">Lista de Orgãos Sociais</h3>
+                         <a  data-toggle="tooltip" title="Ver Histórico" href="<?= base_url('OrgaosSociais/historicoOrgaosSociais/')?>" class="btn-lg pull-right" ><i class="fa fa-info pull-right" ></i> </a>
+
 
 <!--                            <div class="box-tools">
                                 <div class="input-group" style="width: 400px;">
