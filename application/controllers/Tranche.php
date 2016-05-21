@@ -111,10 +111,10 @@ class Tranche extends CI_Controller {
 
     public function eventosTranche() {
           $this->load->model('Tranche_m');
-          
+//          finaliza a tranche
           $this->Tranche_m->finalizarAssociar();
           
-          
+//          retorna os dois id dos apoios ao ocorridos no ano
           $idApoios= $this->Tranche_m->idTranches();
           
          

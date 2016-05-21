@@ -17,17 +17,17 @@ class OrgaosSociais_m extends CI_Model {
         $this->db->join('utilizador', 'utilizador_idUtilizador=idUtilizador', 'inner');       
         return $this->db->get('orgaosSociais')->result();
     }
-//pesquisar por cargo onde a data e null
-    public function pesquisar_orgaosSociais() {
-//like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
-        $pesquisa = $this->input->post('pesquisar');
-
-        $this->db->select('*');
-        $this->db->join('utilizador', 'utilizador_idUtilizador=idUtilizador', 'inner');
-        $this->db->where('dataFim', Null);
-        $this->db->like('cargo', $pesquisa);
-        return $this->db->get('orgaosSociais')->result();
-    }
+////pesquisar por cargo onde a data e null
+//    public function pesquisar_orgaosSociais() {
+////like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
+//        $pesquisa = $this->input->post('pesquisar');
+//
+//        $this->db->select('*');
+//        $this->db->join('utilizador', 'utilizador_idUtilizador=idUtilizador', 'inner');
+//        $this->db->where('dataFim', Null);
+//        $this->db->like('cargo', $pesquisa);
+//        return $this->db->get('orgaosSociais')->result();
+//    }
 
     //pesquisar por cargo onde existe uma data do fim
     public function pesquisar_HistoricoOrgaosSociais() {
@@ -58,23 +58,36 @@ class OrgaosSociais_m extends CI_Model {
     }
 
     //colocar data de Fim no mandato
-    public function encerrarMandato($id = null) {
-        $this->load->helper('date');
-        $data['dataFim']=date('y-m-d');
-        
-        $this->db->where('idorgaosSociais', $id);
-        return $this->db->update('orgaossociais', $data);
+    public function encerrarMandato($dataInicio,$dataFim) {
+               
+        $data['dataFim']=$dataFim;        
+        $this->db->where('dataInicio', $dataInicio);
+        return $this->db->update('orgaosSociais', $data);
      
     }
     
-       //vai buscar todos os nomes dos utilizadores a partir do ID que tem data de Fim
+       //vai buscar todos os orgaos sociais na qual tem data de Fim
     public function get_historicoOrgaosSociais() {
         $this->db->select('*');
         $where="dataFim is NOT NULL";
         $this->db->where($where);
+        $this->db->group_by("DataFim"); 
         $this->db->join('utilizador', 'utilizador_idUtilizador=idUtilizador', 'inner');       
         return $this->db->get('orgaosSociais')->result();
     }
 
+    public function anoOrgaosSociais($ano){
+        $this->db->select('*');
+        $this->db->where('dataInicio',$ano);
+        $this->db->join('utilizador', 'utilizador_idUtilizador=idUtilizador', 'inner');   
+        return $this->db->get('orgaosSociais')->result();
+    }
+    
+    public function validar_data() {
+        $this->db->select('*');       
+        $this->db->where('dataFim', Null);
+        return $this->db->get('orgaosSociais')->result_array();
+        
+    }
 
 }

@@ -21,66 +21,423 @@
                         <h3 class="box-title">Registar Orgãos Sociais </h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
-
+   <div class="box-body">  
 
                     <?php echo form_open_multipart('OrgaosSociais/registarOrgaosSociais'); ?>
                     <!--                <form method="post" action="utilizador/registarUtilizador" role="form">-->
-                    <div class="box-body">  
-                        
-                           <div class="col-md-6 form-group">
-                            <label>Categoria</label>
-                            <select class="form-control" name="categoria">
-                                <option value="" <?php echo set_select('categoria', '', TRUE); ?> >---</option>
-                                <option value="Direção" <?php echo set_select('categoria', 'Direção'); ?> >Direção</option>
-                                <option value="Mesa da Assembleia" <?php echo set_select('categoria', 'Mesa da Assembleia'); ?> >Mesa da Assembleia</option>
-                                <option value="Conselho Fiscal e Jurisdicional" <?php echo set_select('categoria', 'Conselho Fiscal e Jurisdicional'); ?> >Conselho Fiscal e Jurisdicional</option>
-                                 
-                            </select>     
-                        </div>
-                        
-                       
-                        <div class="col-md-6 form-group">
-                            <label>Cargo</label>
-                            <select class="form-control" name="cargo" data-live-search="true">
-                                <option value="" <?php echo set_select('cargo', '', TRUE); ?> >---</option>
-                                <option value="Presidente" <?php echo set_select('cargo', 'Presidente'); ?> >Presidente</option>
-                                <option value="Vice-Presidente" <?php echo set_select('cargo', 'Vice-Presidente'); ?> >Vice-Presidente</option>
-                                <option value="Tesoureiro" <?php echo set_select('cargo', 'Tesoureiro'); ?> >Tesoureiro</option>
-                                <option value="Secretário" <?php echo set_select('cargo', 'Secretário'); ?> >Secretário</option>
-                                <option value="1º Secretário" <?php echo set_select('cargo', '1º Secretário'); ?> >1º Secretário</option>
-                                <option value="2º Secretário" <?php echo set_select('cargo', '2º Secretário'); ?> >2º Secretário</option>
-                                <option value="Diretor Financeiro" <?php echo set_select('cargo', 'Diretor Financeiro'); ?> >Diretor Financeiro</option>
-                                <option value="Diretor Secretariado e Burocracia" <?php echo set_select('cargo', 'Diretor Secretariado e Burocracia'); ?> >Diretor Secretariado e Burocracia</option>
-                                <option value="Diretor Património e Administração Interna" <?php echo set_select('cargo', 'Diretor Património e Administração Interna'); ?> >Diretor Património e Administração Interna</option>
-                                <option value="Diretor Marketing e Comunicação" <?php echo set_select('cargo', 'Diretor Marketing e Comunicação'); ?> >Diretor Marketing e Comunicação</option>
-                                <option value="Diretor Social e Recreativo" <?php echo set_select('cargo', 'Diretor Social e Recreativo'); ?> >Diretor Social e Recreativo</option>
-                                <option value="Diretor Prospeção e Arquivo" <?php echo set_select('cargo', 'Diretor Prospeção e Arquivo'); ?> >Diretor Prospeção e Arquivo</option>
-                                <option value="Diretor Relações Externas" <?php echo set_select('cargo', 'Diretor Relações Externas'); ?> >Diretor Relações Externas</option>
+                 
 
-                            </select>     
-                        </div>
-                        
-                        
-                        
-                        <div class="col-md-6 form-group">
-                            <label>Data</label>
+
+                    <div class="col-md-6 form-group">
+                        <label class="col-sm-2 control-label">Data</label>
+                        <div class="col-sm-8">
                             <input type="date" class="form-control" name="dataInicio" value="<?php echo set_value('participantes'); ?>" >
                         </div>
+                    </div>
 
-                      
 
-                        <div class="col-md-6 form-group">
-                            <label>Utilizadores:</label>
-                            <select class="form-control" name="utilizador_idUtilizador" required="">
-                                <option value="" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
-                                <?php foreach ($utilizador as $utilizador) { ?>
-                                    <option value=" <?= $utilizador->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizador->idUtilizador ); ?>><?php echo $utilizador->nome; ?></option>
-                                <?php } ?>
-                            </select>
+
+
+
+
+                        <div class="col-md-12">
+
+                            <div class="box collapsed-box">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">
+                                        Direcção
+
+                                    </h3>
+                                    <div class="box-tools pull-right">
+                                        <button data-widget="collapse" class="btn btn-box-tool"><i class="fa fa-plus"></i></button>
+                                    </div><!-- /.box-tools -->
+                                </div><!-- /.box-header -->
+                                <div class="box-body" >
+
+
+                                    <div class="col-md-4 form-group">
+                                        <label>Presidente:</label>
+                                        <select class="form-control" name="check[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>"  <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label>Vice-Presidente:</label>
+                                        <select class="form-control" name="check[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                      <div class="col-md-4 form-group">
+                                        <label>Tesoureiro:</label>
+                                        <select class="form-control" name="check[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                      <div class="col-md-4 form-group">
+                                        <label>1ªSecretario:</label>
+                                        <select class="form-control" name="check[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                     <div class="col-md-4 form-group">
+                                        <label>2ªSecretario:</label>
+                                        <select class="form-control" name="check[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                     <div class="col-md-4 form-group">
+                                        <label>Diretor Financeiro:</label>
+                                        <select class="form-control" name="check[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                      <div class="col-md-4 form-group">
+                                        <label>Director Secretariado e Burocracia:</label>
+                                        <select class="form-control" name="check[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                     <div class="col-md-4 form-group">
+                                        <label>Director Património e Administração Interna:</label>
+                                        <select class="form-control" name="check[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                     <div class="col-md-4 form-group">
+                                        <label>Director Marketing e Comunicação:</label>
+                                        <select class="form-control" name="check[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                      <div class="col-md-4 form-group">
+                                        <label>Director Social e Recreativo:</label>
+                                        <select class="form-control" name="check[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label>Director Prospecção e Arquivo:</label>
+                                        <select class="form-control" name="check[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label>Director Relações Externas:</label>
+                                        <select class="form-control" name="check[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                  
+                                    
+                                   
+                                    
+                                  
+
+
+
+
+
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+
+
+                            <!--   ---------------- Mesa da assembleia----------------------->
+                            <div class="box collapsed-box">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">
+                                        Mesa Assembleia
+                                    </h3>
+                                    <div class="box-tools pull-right">
+                                        <button data-widget="collapse" class="btn btn-box-tool"><i class="fa fa-plus"></i></button>
+                                    </div><!-- /.box-tools -->
+                                </div><!-- /.box-header -->
+                                <div class="box-body" >
+                                    <div class="col-md-4 form-group">
+                                        <label>Presidente:</label>
+                                        <select class="form-control" name="check1[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label>Vice-Presidente:</label>
+                                        <select class="form-control" name="check1[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label>Tesoureiro:</label>
+                                        <select class="form-control" name="check1[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                      <div class="col-md-4 form-group">
+                                        <label>1ªSecretario:</label>
+                                        <select class="form-control" name="check1[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                     <div class="col-md-4 form-group">
+                                        <label>2ªSecretario:</label>
+                                        <select class="form-control" name="check1[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                     <div class="col-md-4 form-group">
+                                        <label>Diretor Financeiro:</label>
+                                        <select class="form-control" name="check1[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                      <div class="col-md-4 form-group">
+                                        <label>Director Secretariado e Burocracia:</label>
+                                        <select class="form-control" name="check1[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                     <div class="col-md-4 form-group">
+                                        <label>Director Património e Administração Interna:</label>
+                                        <select class="form-control" name="check1[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                     <div class="col-md-4 form-group">
+                                        <label>Director Marketing e Comunicação:</label>
+                                        <select class="form-control" name="check1[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                      <div class="col-md-4 form-group">
+                                        <label>Director Social e Recreativo:</label>
+                                        <select class="form-control" name="check1[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label>Director Prospecção e Arquivo:</label>
+                                        <select class="form-control" name="check1[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label>Director Relações Externas:</label>
+                                        <select class="form-control" name="check1[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                  
+                                    
+                                    
+                                  
+                                  
+
+
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+
+
+                            <!----------------conselho fiscal----------------------->
+                            <div class="box collapsed-box">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">
+                                        Conselho Fiscal e Jurisdicional
+                                    </h3>
+                                    <div class="box-tools pull-right">
+                                        <button data-widget="collapse" class="btn btn-box-tool"><i class="fa fa-plus"></i></button>
+                                    </div><!-- /.box-tools -->
+                                </div><!-- /.box-header -->
+                                <div class="box-body" >
+                                    <div class="col-md-4 form-group">
+                                        <label>Presidente:</label>
+                                        <select class="form-control" name="check2[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label>Vice-Presidente:</label>
+                                        <select class="form-control" name="check2[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                   <div class="col-md-4 form-group">
+                                        <label>Tesoureiro:</label>
+                                        <select class="form-control" name="check2[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                      <div class="col-md-4 form-group">
+                                        <label>1ªSecretario:</label>
+                                        <select class="form-control" name="check2[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                     <div class="col-md-4 form-group">
+                                        <label>2ªSecretario:</label>
+                                        <select class="form-control" name="check2[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                     <div class="col-md-4 form-group">
+                                        <label>Diretor Financeiro:</label>
+                                        <select class="form-control" name="check2[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                      <div class="col-md-4 form-group">
+                                        <label>Director Secretariado e Burocracia:</label>
+                                        <select class="form-control" name="check2[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                     <div class="col-md-4 form-group">
+                                        <label>Director Património e Administração Interna:</label>
+                                        <select class="form-control" name="check2[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                     <div class="col-md-4 form-group">
+                                        <label>Director Marketing e Comunicação:</label>
+                                        <select class="form-control" name="check2[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                      <div class="col-md-4 form-group">
+                                        <label>Director Social e Recreativo:</label>
+                                        <select class="form-control" name="check2[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label>Director Prospecção e Arquivo:</label>
+                                        <select class="form-control" name="check2[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label>Director Relações Externas:</label>
+                                        <select class="form-control" name="check2[]" required="">
+                                            <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
+                                            <?php foreach ($utilizador as $utilizadore) { ?>
+                                                <option value=" <?= $utilizadore->idUtilizador ?>" <?php echo set_select('utilizador_idUtilizador', $utilizadore->idUtilizador); ?>><?php echo $utilizadore->nome; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                  
+                                   
+                                    
+
+
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+
+
                         </div>
-                        
-                    
-                       
+
+
                     </div><!-- /.box-body -->
                     <p> <?php echo validation_errors(); ?></p>
 
@@ -89,9 +446,17 @@
                     </div>
                     </form>
 
+
+
+
                 </div><!-- /.box -->    
             </div>    
-        </div>  
+
+
+
+        </div><!-- /.box-body -->
+
+
     </section>
 </div><!-- /.content-wrapper -->
 
