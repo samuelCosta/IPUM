@@ -18,7 +18,8 @@
   <!--   ---------------  botão para pesquisar-->
 <!--                    <form action="<?= base_url() ?>Ensaios/pesquisarHistorico" method="post" >-->
                         <div class="box-header">
-                            <h3 class="box-title">Histórico Eventos</h3>
+                            <h3 class="box-title">Histórico Ensaios</h3>
+                            <a data-toggle="tooltip" title="Voltar" class="btn-lg" href="<?php echo site_url('Ensaios/consultarEnsaios'); ?>"><i class="fa  fa-arrow-circle-left"></i></a>
 
 <!--                            <div class="box-tools">
                                 <div class="input-group" style="width: 400px;">

@@ -357,6 +357,18 @@ class Utilizador extends CI_Controller {
        
         $this->load->view('includes/comprovativoOrgaosSociais_v',$dados);
     }
+    
+        public function OrgaosSociais($id) {
+        
+        $this->load->model('utilizador_m');
+        $dados['utilizador']=$this->utilizador_m->compararIdDetalhes($id);  
+        $dados['comprovativos']=$this->utilizador_m->imprimirOrgaoSocial($id);        
+       
+        $this->load->view('includes/header_v');
+        $this->load->view('utilizador_v', $dados);
+        $this->load->view('includes/menu_v');
+        $this->load->view('includes/footer_v');
+    }
     public function presencasAtuacoes() {
         $dado['tab'] = "tab1";
 //

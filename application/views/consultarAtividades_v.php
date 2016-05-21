@@ -19,6 +19,7 @@
 <!--                    <form action="<?= base_url() ?>Atividades/pesquisar" method="post" >-->
                         <div class="box-header">
                             <h3 class="box-title">Lista de Atividades</h3>
+                             <a  data-toggle="tooltip" title="Ver Histórico" href="<?= base_url('Atividades/historicoAtividades/')?>" class="btn-lg pull-right" ><i class="fa fa-info pull-right" ></i> </a>
 
 <!--                            <div class="box-tools">
                                 <div class="input-group" style="width: 400px;">
@@ -38,7 +39,7 @@
                                 <th>Nome da Atividade</th>
                                 <th>Localização</th>
                                 <th></th>
-                                <th></th>
+                            
                                
                               
 
@@ -50,9 +51,7 @@
                                     <td><?= $ativ->nomeAtividade; ?></td>
                                     <td><?= $ativ->localizacao; ?></td>
                           
-                                    <td> <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?= base_url('Atividades/atualizar/' . $ativ->idAtividades) ?>"><i class="fa fa-edit"></i></a> </td>
-                                    <td> <a data-toggle="tooltip" title="Encerrar"  class="btn-lg" href="<?= base_url('Atividades/encerrarAtividade/' . $atividades[0]->idAtividades) ?>"  onclick="return confirm('Deseja realmente finalizar a Atividade?');"><i class="fa fa-power-off"></i></a> 
-                                    
+                                    <td> <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?= base_url('Atividades/atualizar/' . $ativ->idAtividades) ?>"><i class="fa fa-edit"></i></a> </td>                                    
                                    
                                 </tr>
                             <?php } ?>
