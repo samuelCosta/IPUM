@@ -70,22 +70,20 @@
                                         </div><!-- /.box-body -->
                                     </div><!-- /.box -->
                                 </div><!-- ./col -->
-                            </div>
-
-
-                        
-                   
+            
+                </div>
+              
                      </div>
                  </div>
                      </div>
 
                         </div>
+          </div>
+        
               
             
     </section>
 </div><!-- /.content-wrapper -->
-
-
 
 
 <!--------------------------------FORMULARIO PARA  encerrar Orgaos------------------------------>
