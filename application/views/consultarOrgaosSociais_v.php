@@ -1,3 +1,7 @@
+<?php setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');?>
+
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -22,15 +26,17 @@
                         <h3 class="box-title">Lista de Orgãos Sociais</h3>
                     </div><!-- /.box-header -->
                     
-                   
+         
                         
                         <div class="box-body">
 
                             <div class="btn-group">
                                 <?php if ($orgaosSociais != Null) { ?>
-                                <button value=" <?= $orgaosSociais[0]->dataInicio; ?>" type="button" class="org btn btn-default"> <strong> Data Atual do Mandato:</strong> <?= $orgaosSociais[0]->dataInicio; ?> </button>
-                                <?php } else { ?>
-                                    <button value="" disabled="" type="button" class="org btn btn-default">Não Existe Orgaos Sociais</button>
+                                <button value=" <?= $orgaosSociais[0]->dataInicio; ?>" type="button" class="org btn btn-default"> <strong> Data de Posse do Mandato:</strong> <?= strftime(' %d de %B de %Y', strtotime($orgaosSociais[0]->dataInicio)); ?> </button>
+
+
+ <?php } else { ?>
+                                    <button value="" disabled="" type="button" class="org btn btn-default">Não Existe Orgaos Sociais em Execução</button>
                                 <?php } ?>
 
 
@@ -51,7 +57,9 @@
 
 
                             </div>
-
+                            <br>
+                            <br>
+                            <br>
                             
                            
 
@@ -65,7 +73,7 @@
                                         <div class="box-body">
                                             <dl class="dl-horizontal">
                                                 <dt>Nota</dt>
-                                                <dd>Cada elemento pode imprimir seu certificado na pagina repectiva.</dd>
+                                                <dd>Cada elemento pode imprimir seu certificado na sua pagina de Utilizador.</dd>
                                             </dl>
                                         </div><!-- /.box-body -->
                                     </div><!-- /.box -->
@@ -78,7 +86,7 @@
                      </div>
 
                         </div>
-          </div>
+        
         
               
             
@@ -152,7 +160,7 @@
                     if (res[0].dataFim == null) {
                         html += "<a  title='Encerrar' data-target='#myModal2' data-toggle='modal' class='btn-lg pull-right'> <i class='fa fa-power-off'></i> Encerrar </a>";
                     }
-                    html += " <h3 class='box-title col-md-4'>Data de Inicio: " + res[0].dataInicio + "</h3>";
+                    html += " <h4 class='box-title col-md-4'>Data de Inicio: " + res[0].dataInicio + "</h4>";
 //                    if (res[0].dataFim == null) {
 //                        html += "<div class='col-md-4'> <a  title='Encerrar' data-target='#myModal2' data-toggle='modal' class='btn-lg'> <i class='fa fa-power-off'></i> </a></div>";
 //                    }

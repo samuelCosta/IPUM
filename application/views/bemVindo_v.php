@@ -1,4 +1,5 @@
-
+<!--colocar a data em portugues por extenso-->
+<?php setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');?>
             <!--CORPO da PAGINA-->
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -6,15 +7,15 @@
                 
                  <div class="alert alert-warning alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <i class="icon fa fa-warning"></i> <Strong>Alert!</strong> Proxima Atuação: <?php if($proximaAtuacao['dataEvento'] == Null ){ echo " Não existe próxima Atuação"; } else {echo $proximaAtuacao['dataEvento'];}  ?> 
+                    <i class="icon fa fa-warning"></i> <Strong>Alert!</strong> Proxima Atuação: <?php if($proximaAtuacao['dataEvento'] == Null ){ echo " Não existe próxima Atuação"; } else {echo strftime(' %d de %B de %Y', strtotime($proximaAtuacao['dataEvento']));}  ?> 
                     <br>
                
                 
-                    <i class="icon fa fa-warning"></i> <Strong>Alert!</strong> Proxima Atividade: <?php if($proximaAtividade['dataInicio'] == Null ){ echo " Não existe próxima Atividade"; } else {echo $proximaAtividade['dataInicio'];}  ?> 
+                    <i class="icon fa fa-warning"></i> <Strong>Alert!</strong> Proxima Atividade: <?php if($proximaAtividade['dataInicio'] == Null ){ echo " Não existe próxima Atividade"; } else {echo strftime(' %d de %B de %Y', strtotime($proximaAtividade['dataInicio']));}  ?> 
                     
                     <br>
               
-                    <i class="icon fa fa-warning"></i> <Strong>Alert!</strong> Proximo Ensaio: <?php if($proximoEnsaio['dataEvento'] == Null ){ echo " Não existe próximo Ensaio"; } else {echo $proximoEnsaio['dataEvento'];}  ?> 
+                    <i class="icon fa fa-warning"></i> <Strong>Alert!</strong> Proximo Ensaio: <?php if($proximoEnsaio['dataEvento'] == Null ){ echo " Não existe próximo Ensaio"; } else {echo strftime(' %d de %B de %Y', strtotime($proximoEnsaio['dataEvento']));}  ?> 
                     
                   </div>
                     

@@ -442,7 +442,7 @@
                     <p> <?php echo validation_errors(); ?></p>
 
                     <div class="box-footer">  
-                        <button type="submit" value="upload" class="btn btn-primary">Submit</button>
+                        <button type="submit" value="upload" onclick="return confirm('Depois de submeter não sera possivel voltar atrás, tem acerteza que pretende proseguir?');"class="btn btn-primary">Submit</button>
                     </div>
                     </form>
 
