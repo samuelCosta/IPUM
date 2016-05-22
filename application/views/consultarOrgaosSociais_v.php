@@ -28,14 +28,14 @@
 
                             <div class="btn-group">
                                 <?php if ($orgaosSociais != Null) { ?>
-                                    <button value=" <?= $orgaosSociais[0]->dataInicio; ?>" type="button" class="org btn btn-default"><?= $orgaosSociais[0]->dataInicio; ?></button>
+                                <button value=" <?= $orgaosSociais[0]->dataInicio; ?>" type="button" class="org btn btn-default"> <strong> Data Atual do Mandato:</strong> <?= $orgaosSociais[0]->dataInicio; ?> </button>
                                 <?php } else { ?>
                                     <button value="" disabled="" type="button" class="org btn btn-default">Não Existe Orgaos Sociais</button>
                                 <?php } ?>
 
 
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <button type="button" class="btn btn-info-outline dropdown-toggle" data-toggle="dropdown">
                                         Historico Orgãos Sociais  <span class="caret"></span>
                                     </button>
 
@@ -148,39 +148,55 @@
 
                     html = "<div class='col-md-12'>";
                     html += "<div class='box box-solid'>";
-                    html += " <i class='fa fa-text-width'></i>";
-                    html += " <h3 class='box-title'>Data de Inicio: " + res[0].dataInicio + "</h3></div>";
+//                    html += " <i class='fa fa-text-width'></i>";
                     if (res[0].dataFim == null) {
-                        html += "<a  title='Encerrar' data-target='#myModal2' data-toggle='modal' class='btn-lg'> <i class='fa fa-power-off'></i> </a>";
+                        html += "<a  title='Encerrar' data-target='#myModal2' data-toggle='modal' class='btn-lg pull-right'> <i class='fa fa-power-off'></i> Encerrar </a>";
                     }
-                    html += "<div class='box-body'>";
-                    html += " <dl class='dl-horizontal'>";
-                    html += " <dt>Direcção</dt>";
+                    html += " <h3 class='box-title col-md-4'>Data de Inicio: " + res[0].dataInicio + "</h3>";
+//                    if (res[0].dataFim == null) {
+//                        html += "<div class='col-md-4'> <a  title='Encerrar' data-target='#myModal2' data-toggle='modal' class='btn-lg'> <i class='fa fa-power-off'></i> </a></div>";
+//                    }
+                    html += "<div class='box-body col-md-12'>"; 
+                      html += "<div class='col-md-4'>";
+//                    html += " <dl class='dl-horizontal col-md-4'>";
+                    html += " <ul> <dt><u> <h4> Direcção </h4></u></dt>";
                     for ($i = 0; $i < res.length; $i++) {
                         if (res[$i].categoria == "Direcção") {
 
-                            html += "   <dd><strong>" + res[$i].cargo + ": </strong>" + res[$i].nome + ".</dd>";
+                            html += "  <li> <dd ><strong>" + res[$i].cargo + ": </strong>" + res[$i].nome + ".</dd> </li>";
                             //  html += "<tr><td>" + res[$i].categoria + "</td><td>" + res[$i].cargo +"</td><td>" + res[$i].nome + "</td>";
                             //  html += "<td> <a data-toggle='tooltip' title='Encerrar' class='btn-lg'> <i class='fa fa-power-off'></i> </a> </td></tr>";
                         }
+                       
                     }
-                    html += " <dt>Mesa Assembleia</dt>";
+                     html += "</dl></div></ul>"
+                    
+//                    html += " <dl class='dl-horizontal col-md-4'>";
+                    html += "<div class='col-md-4'>";
+                    html += "<ul> <dt ><u> <h4>Mesa Assembleia</h4></u></dt>";
                     for ($i = 0; $i < res.length; $i++) {
                         if (res[$i].categoria == "Mesa Assembleia") {
-                            html += "   <dd><strong>" + res[$i].cargo + ": </strong>" + res[$i].nome + ".</dd>";
+                            html += "  <li> <dd ><strong>" + res[$i].cargo + ": </strong>" + res[$i].nome + ".</dd> </li>";
 
                         }
+                          
                     }
-                    html += " <dt>Conselho Fiscal e Jurisdicional</dt>";
+                    html += "</dl></div></ul>"
+//                
+//                    html += " <dl class='dl-horizontal col-md-4'>";
+                    html += "<div class='col-md-4'>";
+                    html += " <ul> <dt ><u> <h4>Conselho Fiscal e Jurisdicional</h4></u></dt>";
                     for ($i = 0; $i < res.length; $i++) {
                         if (res[$i].categoria == "Conselho Fiscal e Jurisdicional") {
-                            html += "   <dd><strong>" + res[$i].cargo + ": </strong>" + res[$i].nome + ".</dd>";
+                            html += "  <li> <dd><strong>" + res[$i].cargo + ": </strong>" + res[$i].nome + ".</dd></li>";
 
                         }
+                       
 
 
                     }//fim do laço
-                    html += "</dl></div></div></div>";
+                       html += "</dl></div></ul>"
+                    html += "</div></div></div>";
 
 
                     $("#listaOrgaosSociais").html(html);

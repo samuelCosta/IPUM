@@ -19,6 +19,7 @@ class OrgaosSociais extends CI_Controller {
         $this->load->model('OrgaosSociais_m');
         $orgaosSociaisHistorico = $this->OrgaosSociais_m->get_historicoOrgaosSociais();
         $orgaosSociais = $this->OrgaosSociais_m->get_orgaosSociais();
+        
 
         $this->load->view('includes/header_v');
         $this->load->view('consultarOrgaosSociais_v', array('orgaosSociais'=> $orgaosSociais,

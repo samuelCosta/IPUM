@@ -38,21 +38,20 @@
                             <li class="list-group-item">
                                 <b><i class="fa fa-warning"></i>Próximo Pagamento</b> <a class="pull-right "><?php echo $pagamento ?></a>
                             </li>
-                            
-              
-                         
+ 
+
                             
                         </ul>
                         <h3>Histórico de Orgãos Sociais:</h3>
                          <?php foreach ($orgaosSociais as $p) { ?>
-
-                            - <?php echo $p['cargo'] ?> da <?php echo $p['categoria'] ?> desde <?php echo $p['dataInicio'] ?>  <?php if ($p['dataFim'] == null) {
-                            echo "até à presente data.";
+                        <ul>
+                            <li><?php echo $p['cargo'] ?> da <?php echo $p['categoria'] ?> desde <?php echo $p['dataInicio'] ?>  <?php if ($p['dataFim'] == null) {
+                                echo "até à presente data. <br>"; ?>   </li> </ul> <?php
                         } else {
-                            echo "a " . $p['dataFim'];
-                        } ?>
+                            echo "a " . $p['dataFim']; ?>   </ul> <?php
+                            } ?> 
 <?php } ?>
-                            
+                       
                             <?php if($orgaosSociais!=NULL){ ?>
                             <a onclick="imprimir(<?php echo  $utilizador['idUtilizador'] ?>)" class="btn btn-primary btn-block"><i class="fa fa-download"></i><b>  Imprimir Certificado de Orgão Social</b></a>
                             <?php }else {} ?>
@@ -85,7 +84,10 @@
                             <p class="text-muted">  <?php echo $utilizador['bi'];  ?></p>
 
                             <strong><i class="  margin-r-5"></i> Data Nascimento</strong>
-                            <p class="text-muted"> <?php echo $utilizador['dataNascimento'];  ?></p>                      
+                            <p class="text-muted"> <?php echo $utilizador['dataNascimento'];  ?></p>  
+                            
+   
+
 
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->               

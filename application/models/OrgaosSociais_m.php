@@ -17,6 +17,7 @@ class OrgaosSociais_m extends CI_Model {
         $this->db->join('utilizador', 'utilizador_idUtilizador=idUtilizador', 'inner');       
         return $this->db->get('orgaosSociais')->result();
     }
+
 ////pesquisar por cargo onde a data e null
 //    public function pesquisar_orgaosSociais() {
 ////like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
