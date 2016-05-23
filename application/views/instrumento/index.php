@@ -53,7 +53,7 @@
                                         ?>">
                                                 <?php echo $instrumento['estado']; ?>
                                         </td>
-                                        <td><?php echo $instrumento['localizacao']; ?></td>
+                                        <td><?php if ($instrumento['localizacao'] != NULL){ echo $instrumento['localizacao'];} else { echo $instrumento['elemento']; } ?></td>
                                         <td>
                                             <a class="btn-lg"  href="<?php echo site_url('instrumento/editar/' . $instrumento['id']); ?>">
                                                 <i class="fa fa-edit"></i>

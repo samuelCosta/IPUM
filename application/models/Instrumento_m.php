@@ -3,9 +3,10 @@
 class Instrumento_m extends CI_Model {
 
     public function get_instrumentos() {
-        $this->db->select('i.*, ts.descricao as tipo_selecao_descricao');
+        $this->db->select('i.*, u.nome as elemento, ts.descricao as tipo_selecao_descricao');
         $this->db->from('instrumento i');
         $this->db->join('tipo_selecao ts', 'i.tipo_selecao_id=ts.id', 'left');
+        $this->db->join('utilizador u', 'i.elemento=u.idUtilizador', 'left');
 
         $query = $this->db->get();
         return $query->result_array();
@@ -18,6 +19,7 @@ class Instrumento_m extends CI_Model {
             'numero' => $this->input->post('numero'),
             'tamanho' => $this->input->post('tamanho'),
             'localizacao' => $this->input->post('localizacao'),
+            'elemento' => $this->input->post('elemento'),
             'estado' => $this->input->post('estado')
         );
 

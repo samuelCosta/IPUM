@@ -23,14 +23,17 @@ class Instrumento extends CI_Controller {
     public function registar() {
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->load->model('traje_m');
 
         $data['tipos_instrumento'] = $this->tiposelecao_m->get_tiposelecao('TIPO_INSTRUMENTO');
+        $data['elementos'] = $this->traje_m->get_utilizadores();
 
 
         $this->form_validation->set_rules('tipo_instrumento', 'Tipo de Instrmuento', 'required');
         $this->form_validation->set_rules('numero', 'Numero do Instrumento', 'required');
         $this->form_validation->set_rules('tamanho', 'Tamanho', 'required');
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required');
+        $this->form_validation->set_rules('localizacao', 'Localização');
+        $this->form_validation->set_rules('elemento', 'Elemento');
         $this->form_validation->set_rules('estado', 'Estado', 'required');
 
         if ($this->form_validation->run() == FALSE) {
