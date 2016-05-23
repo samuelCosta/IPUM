@@ -30,7 +30,7 @@
                                             </ul>
                                         </div>
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                                        <a type="btn" onclick="javascript:deleteConfirm('<?php echo site_url('musica/delete/' . $musica['id']); ?>');" deleteConfirm href="#" class="btn btn-box-tool"><i class="fa fa-times"></i></a>
+                                        <a data-toggle="tooltip" title="Elminar" type="btn" onclick="javascript:deleteConfirm('<?php echo site_url('musica/delete/' . $musica['id']); ?>');" deleteConfirm href="#" class="btn btn-box-tool"><i class="fa fa-times"></i></a>
                                     </div>
                                     <!-- /.box-tools -->
                                 </div>
@@ -51,8 +51,8 @@
                                                                 <h3 class="box-title">Instrumento: <?php echo $instrumento['nome']; ?></h3>
                                                             </div>
                                                             <div class="box-tools">
-                                                                <a type="btn" href="<?php echo site_url('musica/editar/' . $instrumento['id']) ?>" class="btn btn-box-tool"><i class="fa fa-pencil"></i></a>
-                                                                <a type="btn" onclick="javascript:deleteConfirm('<?php echo site_url('musica/delete/' . $instrumento['id']); ?>');" deleteConfirm href="#" class="btn btn-box-tool"><i class="fa fa-times"></i></a>
+                                                                <a data-toggle="tooltip" title="Editar" type="btn" href="<?php echo site_url('musica/editar/' . $instrumento['id']) ?>" class="btn btn-box-tool"><i class="fa fa-pencil"></i></a>
+                                                                <a data-toggle="tooltip" title="Eliminar" type="btn" onclick="javascript:deleteConfirm('<?php echo site_url('musica/delete/' . $instrumento['id']); ?>');" deleteConfirm href="#" class="btn btn-box-tool"><i class="fa fa-times"></i></a>
                                                             </div>
                                                         </div>
                                                         <div class="box-body">

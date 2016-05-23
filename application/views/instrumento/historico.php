@@ -17,7 +17,7 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Histórico de Manutenções</h3>
-                        <a class="btn-lg" href="<?php echo site_url('instrumento'); ?>">
+                        <a data-toggle="tooltip" title="Retroceder" class="btn-lg" href="<?php echo site_url('instrumento'); ?>">
                             <i class="fa fa-arrow-left"></i>
                         </a>
                     </div>
@@ -40,7 +40,7 @@
                                         <td><?php echo $hist['custo_total']; ?></td>
                                         <td><?php echo $hist['elemento']; ?></td>
                                         <td>
-                                            <a class="btn-lg" href="<?php echo site_url('instrumento/delete_manutencao/' . $hist['id']); ?>">
+                                            <a data-toggle="tooltip" title="Eliminar" class="btn-lg" href="<?php echo site_url('instrumento/delete_manutencao/' . $hist['id']); ?>">
                                                 <i class="fa fa-trash-o"></i>
                                             </a>
                                         </td>

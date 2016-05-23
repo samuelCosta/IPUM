@@ -49,13 +49,13 @@
                                         <td><?php echo $stock['data_compra']; ?></td>
                                         <td><?php echo $stock['localizacao']; ?></td>
                                         <td>
-                                            <a class="btn-lg" href="<?php echo site_url('merchandising/editar/' . $stock['id']); ?>">
+                                            <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?php echo site_url('merchandising/editar/' . $stock['id']); ?>">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('merchandising/delete/' . $stock['id']); ?>');" deleteConfirm href="#">
+                                            <a data-toggle="tooltip" title="Eliminar" class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('merchandising/delete/' . $stock['id']); ?>');" deleteConfirm href="#">
                                                 <i class="fa fa-trash-o"></i>
                                             </a>
-                                            <a class="btn-lg" href="<?php echo site_url('merchandising/atribuir_merchandising/' . $stock['id']); ?>">
+                                            <a data-toggle="tooltip" title="Atribuir Merchandising" class="btn-lg" href="<?php echo site_url('merchandising/atribuir_merchandising/' . $stock['id']); ?>">
                                                 <i class="fa fa-share-square-o"></i>
                                             </a>
                                         </td>

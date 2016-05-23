@@ -52,10 +52,10 @@
                                         <td><?php echo $mat['data_compra']; ?></td>
                                         <td><?php echo $mat['localizacao']; ?></td>
                                         <td>
-                                            <a class="btn-lg" href="<?php echo site_url('material/editar/' . $mat['id']); ?>">
+                                            <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?php echo site_url('material/editar/' . $mat['id']); ?>">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('material/delete_material/' . $mat['id']); ?>');" deleteConfirm href="#"/>
+                                            <a data-toggle="tooltip" title="Eliminar" class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('material/delete_material/' . $mat['id']); ?>');" deleteConfirm href="#"/>
                                             <i class="fa fa-trash-o"></i>
                                             </a>
                                         </td>

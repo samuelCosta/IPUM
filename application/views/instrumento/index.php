@@ -55,16 +55,16 @@
                                         </td>
                                         <td><?php if ($instrumento['localizacao'] != NULL){ echo $instrumento['localizacao'];} else { echo $instrumento['elemento']; } ?></td>
                                         <td>
-                                            <a class="btn-lg"  href="<?php echo site_url('instrumento/editar/' . $instrumento['id']); ?>">
+                                            <a data-toggle="tooltip" title="Editar" class="btn-lg"  href="<?php echo site_url('instrumento/editar/' . $instrumento['id']); ?>">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('instrumento/delete_instrumento/' . $instrumento['id']); ?>');" deleteConfirm href="#"/>
+                                            <a data-toggle="tooltip" title="Eliminar" class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('instrumento/delete_instrumento/' . $instrumento['id']); ?>');" deleteConfirm href="#"/>
                                                 <i class="fa fa-trash-o"></i>
                                             </a>
-                                            <a class="btn-lg" href="<?php echo site_url('instrumento/manutencao/' . $instrumento['id']); ?>">
+                                            <a data-toggle="tooltip" title="Manutenção" class="btn-lg" href="<?php echo site_url('instrumento/manutencao/' . $instrumento['id']); ?>">
                                                 <i class="fa fa-wrench"></i>
                                             </a>
-                                            <a class="btn-lg" href="<?php echo site_url('instrumento/historico/' . $instrumento['id']); ?>">
+                                            <a data-toggle="tooltip" title="Histórico" class="btn-lg" href="<?php echo site_url('instrumento/historico/' . $instrumento['id']); ?>">
                                                 <i class="fa fa-info" ></i>
                                             </a>
                                         </td>
