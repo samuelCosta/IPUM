@@ -11,24 +11,51 @@ include('html2pdf/html2pdf.class.php');
  *            usando a fonte arial em negrito. */
 
    ob_start(); ?>
-  <img src="<?= base_url(); ?>assets/dist/img/IPUM.jpg" class="user-image" alt="User Image">
-<h1>Aprovação de Sócio</h1>
+<!--<img src="html5.gif" alt="HTML5 Icon" style="width:128px;height:128px;">-->
+<style>
+p {
+    line-height:200%;
+    text-align: justify;
+    margin: 50px 50px 50px 50px;
+}
+
+
+</style>
+<img src="<?= base_url(); ?>assets/dist/img/IPUM.jpg" class="user-image" alt="User Image" style="width:100px;height:100px;  margin: 10px 0px 0px 10px;"> 
+  
+  <h5 style="color:gray;">Universidade do Minho</h5>
+<br>
+
+<h1 style="text-align:center; color:black;">  Aprovação de Sócio</h1>
 <br>
 <br>
 <br>
-<p>Eu _______________________________________________________ declaro que em reunião foi aprovado
-    o sócio da iPUM – Associação de Percussão Universitária 
-    do Minho <?php echo $utilizador['nome']?> com o nº de identificação
-    civil <?php echo $utilizador['bi']?>, 
-    nº de identificação fiscal <?php echo $utilizador['nif']?> e nº de filiação na Universidade do Minho <?php echo $utilizador['nAluno']?>.</p>
+ <p style="font-size:120%;">Eu _______________________________________________________ declaro que em reunião foi aprovado
+    o sócio da iPUM – Associação de Percussão Universitária do Minho <?php echo $utilizador['nome']?> com o nº de identificação
+    civil <?php echo $utilizador['bi']?>,nº de identificação fiscal <?php echo $utilizador['nif']?> e nº de filiação na Universidade do Minho 
+   <?php echo $utilizador['nAluno']?>.</p>
 <br>
 <br>
 
-<p>Aprovado a ___-___-20___</p>
-<p>O Sócio</p>
-<p>__________________________________</p>
-<p>A Direção</p>
-<p>__________________________________</p>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+
+<pre >
+        Aprovado a ___-___-20___
+
+
+        O Sócio                                          A Direção
+        __________________________________               __________________________________
+
+</pre>
+
 
 
 <?php 

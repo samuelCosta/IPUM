@@ -12,24 +12,38 @@ include('html2pdf/html2pdf.class.php');
 
 
    ob_start(); ?>
-  <img src="<?= base_url(); ?>assets/dist/img/IPUM.jpg" class="user-image" alt="User Image">
-<h1>Aprovação de Orgãos Social</h1>
-<br>
-<br>
-<br>
-<p>A Assembleia Geral da Associação de Percussão Universitária do Minho – iPUM – certifica que <?php echo $utilizador['nome']?>, 
+
+<style>
+p  {
+    line-height:100%;
+    text-align: justify;
+ 
+      margin: 50px 50px 50px 50px;
+}
+
+
+</style>
+ <img src="<?= base_url(); ?>assets/dist/img/IPUM.jpg" class="user-image" alt="User Image" style="width:100px;height:100px;  margin: 10px 0px 0px 10px;"> 
+<h5 style="color:gray;">Universidade do Minho</h5>
+<h1 style="text-align:center; color:black;">  Aprovação de Orgãos Sociais</h1>
+
+
+<p style="line-height:200%; text-align: justify; margin: 50px 50px 50px 50px;">A Assembleia Geral da Associação de Percussão Universitária do Minho – iPUM – certifica que <?php echo $utilizador['nome']?>, 
     portadora do cartão 
     de cidadão nº <?php echo $utilizador['bi']?>, ocupou os seguintes cargos nos corpos gerentes desta Associação:</p>
        <?php foreach($comprovativo as $p){?>
 
-       <p>•	<?php echo $p['cargo']?> da <?php echo $p['categoria'] ?> desde <?php echo $p['dataInicio'] ?>  <?php  if($p['dataFim'] ==null){echo "até à presente data.";}else{ echo "a ".$p['dataFim'];} ?>;</p>
+<!--<h5 style="line-height:20%; margin: 20px 20px 20px 20px;">-->
+    <p style="line-height:90%; text-align: justify; margin: 20px 0px 0px 80px;">•	<?php echo $p['cargo']?> da <?php echo $p['categoria'] ?> desde <?php echo $p['dataInicio'] ?>  <?php  if($p['dataFim'] ==null){echo "até à presente data.";}else{ echo "a ".$p['dataFim'];} ?></p>
        <?php } ?>
  <br>
 <br>
-<br>
+<br><br><br><br><br><br><br>
 
-<p>__________________________________</p>
-<p>Vice-Presidente da Assembleia Geral da iPUM</p>
+
+<pre>                            __________________________________
+                            
+                        Vice-Presidente da Assembleia Geral da iPUM</pre>
 
 
 <?php 
@@ -37,6 +51,7 @@ include('html2pdf/html2pdf.class.php');
 
 
     $content = ob_get_clean();
+    
 # Converte o html para pdf.
 try
 {
