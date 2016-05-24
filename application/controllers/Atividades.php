@@ -111,11 +111,12 @@ class Atividades extends CI_Controller {
 
                 $this->load->model('Atividades_m');
                 $this->Atividades_m->guardarAtualizacao($id, $dados);
-
+                
+                $dados['atividades'] = $this->Atividades_m->get_atividades();
                 $data['msg'] = "Alterado com Sucesso.";
                 $this->load->view('includes/header_v');
                 $this->load->view('includes/msgSucesso_v', $data);
-                $this->load->view('consultarAtividades_v');
+                $this->load->view('consultarAtividades_v',$dados);
                 $this->load->view('includes/menu_v');
                 $this->load->view('includes/footer_v');
             }
