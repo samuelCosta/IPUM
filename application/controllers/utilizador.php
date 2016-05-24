@@ -46,10 +46,10 @@ class Utilizador extends CI_Controller {
     }
      public function teste() {
 
-        $this->load->view('includes/header_v');
+//        $this->load->view('includes/header_v');
         $this->load->view('teste');
 //        $this->load->view('includes/menu_v');
-       $this->load->view('includes/footer_v');
+//       $this->load->view('includes/footer_v');
     }
  
     public function detalheUtilizador($id) {
@@ -491,5 +491,31 @@ class Utilizador extends CI_Controller {
         }
     }
 
+    
+     //    total de eventos por utilizador 
+    public function totalEventos() {
+        $this->load->model('utilizador_m');
+        $ano = $this->input->post('ano');
+    
+        $utilizadores1=$this->utilizador_m->todosUtilizadores();
+     
+        
+        foreach ($utilizadores1 as $as){
+        //total atuacoes por utlizador
+        $totalAtuacoes[]=$this->utilizador_m->totalAtuacaoPorAnoUtilizador($as->idUtilizador,$ano);
+        
+        //total de ensaios por utilizador       
+        $totalEnsaios[]=$this->utilizador_m->totalEnsaioPorAnoUtilizador($as->idUtilizador,$ano);//        $array=array(
+
+    
+        }
+            $dados = "tab4";
+           
+            $this->load->view('includes/header_v');
+            $this->load->view('presencasEventos_v', array("tab"=>$dados,"totalAtuacoes"=>$totalAtuacoes,
+                "utilizadores1"=>$utilizadores1,"totalEnsaios"=>$totalEnsaios));
+            $this->load->view('includes/menu_v');
+            $this->load->view('includes/footer_v');
+    }
 
 }

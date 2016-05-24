@@ -70,7 +70,7 @@
                                    
                                         <td><a data-toggle="tooltip" title="Marcar Presenças" class="btn-lg" href="<?= base_url('Atuacoes/consultarUtilizadores/' . $atu->idEventos) ?>"><i class="fa fa-tasks"></i></a> </td>
                                      <?php }else{?>
-                                         <td><a data-toggle="tooltip" title="Presenças Marcadas" class="btn-lg" disabled href=""><i class="fa fa-ban"></i></a>
+                                        <td><a data-toggle="tooltip" title="Presenças Marcadas" class="btn-lg" disabled ><i class="fa fa-ban"></i></a>
                                     <?php  } ?>
                                     <td><a data-toggle="tooltip" title="Encerrar" class="btn-lg" href="<?= base_url('Atuacoes/encerrarAtuacao/'. $atu->idEventos ) ?>"  onclick="return confirm('Deseja realmente finalizar a atuação?');"> <i class="fa fa-power-off"></i></a> 
                                 </tr>

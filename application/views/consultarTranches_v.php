@@ -53,22 +53,10 @@
                                  
                                     <td>
                           
-                                   <?php if($tra->associado ==0 && $tra->tranche== "1ªTranche"){?>
-                                    <a data-toggle="tooltip" title="Detalhes" class="btn-lg" href="<?= base_url('Tranche/editarPrimeiraTranche/' . $tra->idApoios) ?>"><i class="fa fa-info"></i></a>
-                                        <a data-toggle="tooltip" title="Associar" class="btn-lg" href="<?= base_url('Tranche/associarTranche/' . $tra->idApoios.'/'.$tra->ano) ?>"><i class="fa fa-check-square-o"></i></a>
+                                  
+                                    <a data-toggle="tooltip" title="Detalhes" class="btn-lg" href="<?=base_url('Tranche/editarTranche/' . $tra->idApoios.'/'.$tra->ano) ?>"><i class="fa fa-info"></i></a>
                                          
-                                    
-                                             <?php }else if($tra->tranche== "2ªTranche"){ ?> 
-                                    
-                                             <a data-toggle="tooltip" title="Detalhes" class="btn-lg" href="<?= base_url('Tranche/editarTranche/' . $tra->idApoios.'/'.$tra->ano) ?>"><i class="fa fa-info"></i></a>
-                                         
-                                                 <?php } else{ ?> 
-                                                                               
-                                   <a data-toggle="tooltip" title="Detalhes"class="btn-lg" href="<?= base_url('Tranche/editarPrimeiraTranche/' . $tra->idApoios) ?>"><i class="fa fa-info"></i></a>
-                                       <a data-toggle="tooltip" title="Associado" disabled class="btn-lg" href="#"><i class="fa fa-ban"></i></a>
-                                        
-                                   
-                                               <?php } ?>                          
+                                                          
                                     </td>
                                 </tr>
                                

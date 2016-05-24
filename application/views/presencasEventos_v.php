@@ -21,7 +21,7 @@
                         <li class=" <?php echo ($tab == 'tab1') ? 'active' : '';?>"> <a href="#tab_1" data-toggle="tab">Por Eventos</a></li>
                         <li class=" <?php echo ($tab == 'tab2') ? 'active' : '';?>"><a href="#tab_2" data-toggle="tab">Por Ano</a></li>
                         <li class=" <?php echo ($tab == 'tab3') ? 'active' : '';?>"><a href="#tab_3" data-toggle="tab">Por Elemento</a></li>
-
+                         <li class=" <?php echo ($tab == 'tab4') ? 'active' : '';?>"><a href="#tab_4" data-toggle="tab">Total Eventos</a></li>
 
                     </ul>
                     <div class="tab-content">
@@ -106,12 +106,12 @@
                             </form>
                        
 
-                            <div  class="box-body ">    
+                            <div  class="box-body table-responsive no-padding ">    
 <!--                                <form name="userForm" id="userForm" action="">-->
                                     <table id="ano" class="table table-bordered table-hover">
                                          <thead>
                                         <tr>
-                                            <th>Nome </th>
+                                            <th>Nome Atuação </th>
                                             <th>Data </th>
                                               
                                         </tr>
@@ -147,7 +147,7 @@
                             </div><!-- /.box-body -->
                              </div><!-- /.tab-pane -->
 
-<!---------------------------------------------------------------------------------->
+<!------------------------------------------------------------POR ELEMENTO---------------------->
 
                        
                         <div class="tab-pane <?php echo ($tab == 'tab3') ? 'active' : ''; ?>" id="tab_3">
@@ -181,7 +181,7 @@
 
                                         </tr>
 
-                                        <?php if (isset($presenca)) {
+                                        <?php if (isset($presenca )) {
 
                                             foreach ($presenca as $uti) {
                                                 ?>
@@ -209,6 +209,80 @@
                             
                             
                         </div><!-- /.tab-pane -->
+                        
+                        
+<!--   ------------------------------------------TOTAL Eventos------------------------                     -->
+
+    <div class="tab-pane <?php echo ($tab == 'tab4') ? 'active' : ''; ?>" id="tab_4">
+            
+
+                            <form action="<?= base_url() ?>utilizador/totalEventos" method="post" >
+                                <div class="box-header">
+                                    <h3 class="box-title"></h3>
+
+                                    <div class="box-tools">
+                                        <div class="input-group" style="width: 500px;">
+
+                                            <input type="text"  class="form-control input-sm pull-left" name="ano"  id="utilizadores" value="<?php echo set_value('ano'); ?>" placeholder="Pesquisar por ano" >      
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--                   ------------------------------ ----------------------->
+
+                            <div  class="box-body table-responsive no-padding">    
+                                <form name="userForm" id="userForm" action="">
+                                    <table  id="an"  class="table table-hover">
+                                         <thead>
+                                        <tr>
+                                            <th>Nome </th>
+                                            <th>Total de Atuações </th>
+                                             
+                                             <th>Total de Ensaios </th>
+                                        </tr>
+                                         </thead>
+                                          <tbody>
+
+                                        <?php if (isset($utilizadores1,$totalAtuacoes,$totalEnsaios)) {
+
+                                            foreach ($utilizadores1 as $ind =>$uti ) {
+                                             
+                                                    
+                                                
+                                                ?>
+
+                                                <tr>
+                                                    <td >  <?= $uti->nome; ?> </td>                                                   
+                                                    <td >  <?= $totalAtuacoes[$ind]; ?> </td>
+                                                    <td >  <?= $totalEnsaios[$ind]; ?> </td>
+
+                                                        </tr>
+
+                                        <?php }
+                                                } else {
+                                                    ?>
+                                                    <td>  Não existe resultados </td>                                      
+                                                <?php } ?>
+                                    </tbody>
+                                    </table>
+                                </form>
+                            </div><!-- /.box-body -->
+                            
+                                              
+                          
+                            
+                            
+                            
+                            
+                        </div><!-- /.tab-pane -->
+
+
+
+
+                        
                     </div><!-- /.tab-content -->
                 </div><!-- nav-tabs-custom -->
 
@@ -319,7 +393,7 @@
 <script>
       $(function () {
     
-        $('#eventos').DataTable({
+        $('#evetos').DataTable({
           "paging": true,
           "lengthChange": false,
           "searching": false,
@@ -333,7 +407,7 @@
     <script>
       $(function () {
       
-        $('#ano').DataTable({
+        $('#ao').DataTable({
           "paging": true,
           "lengthChange": false,
           "searching": false,
@@ -343,3 +417,4 @@
         });
       });
     </script>
+    

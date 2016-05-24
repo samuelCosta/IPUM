@@ -17,32 +17,20 @@ class Tranche extends CI_Controller {
         $this->load->view('includes/footer_v');
     }
     
+  
     public function vericaTranche(){
         $this->load->model('Tranche_m');       
               
         $verifica=$this->Tranche_m->verificaTranche( $this->input->post('ano'));
-   
-  
-        
+       
        if(count($verifica)==0){
             return true;
             
         }
-//        if(count($verifica) ==1 && $verifica[0]->associado){            
-//             $dados = array(
-//            'tranche' => '2ªTranche',
-//            'ano' => $this->input->post('ano'),
-//                 
-//        );
-//             $this->Tranche_m->do_insert($dados);
-//             
-//                   $data['msg'] = "Sucesso 2.";
-//                   return TRUE;
-//        }
-//        
+
         else{
               
-         $this->form_validation->set_message('vericaTranche', 'ano mal');
+         $this->form_validation->set_message('vericaTranche', 'Já foram registadas a duas Tranches para esse ano');
              return FALSE;
         }
          
@@ -52,12 +40,6 @@ class Tranche extends CI_Controller {
     public function registarTranche() {
          
        $this->form_validation->set_rules('ano', 'Ano', 'callback_vericaTranche');
-    
-        
-
-//        $this->form_validation->set_rules('ano', 'Ano', 'required');
-
-
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
@@ -65,10 +47,7 @@ class Tranche extends CI_Controller {
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         } else {
-//            insere os dados na base de dados
-//            $dados = elements(array('tranche', 'ano', 'fundos'), $this->input->post());
-//            $this->load->model('Tranche_m');
-//            $this->Tranche_m->do_insert($dados);
+
                $dados1 = array(
             'tranche' => '1ªTranche',
             'ano' => $this->input->post('ano'),
@@ -109,44 +88,44 @@ class Tranche extends CI_Controller {
         $this->load->view('includes/footer_v');
     }
 
-    public function eventosTranche() {
-          $this->load->model('Tranche_m');
-//          finaliza a tranche
-          $this->Tranche_m->finalizarAssociar();
-          
-//          retorna os dois id dos apoios ao ocorridos no ano
-          $idApoios= $this->Tranche_m->idTranches();
-          
-         
-          
-          
-          foreach($idApoios as $id){  
-        $dadoA['apoios_idApoios'] = $id->idApoios;
-     
-      
-        if (!empty($_POST['check'])) {
-            foreach ($_POST['check'] as $check) {
-
-                $dadoA['atividades_idAtividades'] = $check;              
-                $this->Tranche_m->atividadesTranche($dadoA);
-                           
-            }
-        }
-          }
-      
-          foreach ($idApoios as $id){
-                 $dadoE['apoios_idApoios'] = $id->idApoios;
-        if (!empty($_POST['check1'])) {
-            foreach ($_POST['check1'] as $check) {
-
-                $dadoE['eventos_idEventos'] = $check;         
-                $this->Tranche_m->eventosTranche($dadoE);
-            }
-        }
-          }
-          redirect('Tranche/consultarTranches','refresh');
-          
-    }
+//    public function eventosTranche() {
+//          $this->load->model('Tranche_m');
+////          finaliza a tranche
+//          $this->Tranche_m->finalizarAssociar();
+//          
+////          retorna os dois id dos apoios ao ocorridos no ano
+//          $idApoios= $this->Tranche_m->idTranches();
+//          
+//         
+//          
+//          
+//          foreach($idApoios as $id){  
+//        $dadoA['apoios_idApoios'] = $id->idApoios;
+//     
+//      
+//        if (!empty($_POST['check'])) {
+//            foreach ($_POST['check'] as $check) {
+//
+//                $dadoA['atividades_idAtividades'] = $check;              
+//                $this->Tranche_m->atividadesTranche($dadoA);
+//                           
+//            }
+//        }
+//          }
+//      
+//          foreach ($idApoios as $id){
+//                 $dadoE['apoios_idApoios'] = $id->idApoios;
+//        if (!empty($_POST['check1'])) {
+//            foreach ($_POST['check1'] as $check) {
+//
+//                $dadoE['eventos_idEventos'] = $check;         
+//                $this->Tranche_m->eventosTranche($dadoE);
+//            }
+//        }
+//          }
+//          redirect('Tranche/consultarTranches','refresh');
+//          
+//    }
     
     
      public function editarTranche($idApoios,$ano) {

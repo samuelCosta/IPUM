@@ -174,8 +174,7 @@ class Utilizador_m extends CI_Model {
     
      function searchUtilizadores($dado){
         
-        $this->db->like('nome', $dado,'both');
-         $this->db->where('ativo', 1);
+        $this->db->like('nome', $dado,'both');        
         return $this->db->get('utilizador')->result();
          
     }
@@ -309,6 +308,35 @@ class Utilizador_m extends CI_Model {
     return $query->row_array();
     
             
+    }
+    
+            public function todosUtilizadores (){
+    
+     $this->db->select('*'); 
+     $query=$this->db->get('utilizador');     
+     return $query->result();
+     
+            
+    }
+    
+    public function totalAtuacaoPorAnoUtilizador($id,$ano) {
+        $this->db->select('*');
+        $this->db->where('utilizador_idUtilizador', $id);        
+        $this->db->where('eventos.tipo', 'atuação');
+        $this->db->where('year(dataEvento)', $ano);
+        $this->db->join('eventos', 'eventos_idEventos=idEventos', 'inner');
+        $query = $this->db->get('presencasEventos');
+        return $query->num_rows();
+    }
+    
+        public function totalEnsaioPorAnoUtilizador($id,$ano) {
+        $this->db->select('*');
+        $this->db->where('utilizador_idUtilizador', $id);        
+        $this->db->where('eventos.tipo', 'ensaio');
+        $this->db->where('year(dataEvento)', $ano);
+        $this->db->join('eventos', 'eventos_idEventos=idEventos', 'inner');
+        $query = $this->db->get('presencasEventos');
+        return $query->num_rows();
     }
     
 }

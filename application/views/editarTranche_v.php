@@ -77,7 +77,7 @@
                                         <td><?= $uti->nomeAtividade; ?>  </td>
                                         
                                         <td ><a  id="<?= $uti->idAtividades; ?>" type="button" class="submit btn-sm"   data-target="#myModal" data-toggle="modal" class=" btn btn-default btn-block active" > <i class="fa fa-info"></i></a>
-                                        <td> <a data-toggle="tooltip" title="Eliminar" class="btn-sm" href="<?= base_url('Tranche/eliminarAtividadeTranche/'.$uti->idapoiosAtividades.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>"  onclick="return confirm('Deseja realmente desassociar a Atividade?');"><i class="fa fa-arrow-right"></i> </a> 
+                                        <td> <a data-toggle="tooltip" title="Eliminar" class="btn-sm" href="<?= base_url('Tranche/eliminarAtividadeTranche/'.$uti->idapoiosAtividades.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>" ><i class="fa fa-arrow-right"></i> </a> 
                                     </tr>
                                     
                                 <?php } ?>
@@ -96,7 +96,7 @@
                                     <tr>
                                         <td><?= $uti->nomeAtividade; ?>  </td>
                                         <td ><a  id="<?= $uti->idAtividades; ?>" type="button" class="submit btn-sm" value="Ver Detalhes"  data-target="#myModal" data-toggle="modal" class=" btn btn-default btn-block active"><i class="fa fa-info"></i> </a>
-                                        <td> <a  data-toggle="tooltip" title="Associar" class="btn-sm" href="<?= base_url('Tranche/associarAtividadeTranche/' . $uti->idAtividades.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>"  onclick="return confirm('Deseja realmente associar a Atividade?');"> <i class="fa fa-arrow-left"></i></a> 
+                                        <td> <a  data-toggle="tooltip" title="Associar" class="btn-sm" href="<?= base_url('Tranche/associarAtividadeTranche/' . $uti->idAtividades.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>" > <i class="fa fa-arrow-left"></i></a> 
                                     </tr>
                                 <?php } ?>
                             </table>                   
@@ -117,7 +117,7 @@
                                     <tr>
                                         <td><?= $atu->designacao; ?>  </td>
                                         <td ><a  id="<?= $atu->idEventos; ?>" type="button" class="submit1 btn-sm" value="Ver Detalhes"  data-target="#myModal1" data-toggle="modal" class=" btn btn-default btn-block active"> <i class="fa fa-info"></i></a>
-                                        <td> <a data-toggle="tooltip" title="Eliminar" class="btn-sm" href="<?= base_url('Tranche/eliminarAtuacaoTranche/'.$atu->idapoiosEventos.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>"  onclick="return confirm('Deseja realmente desassociar a Atuação?');"><i class="fa fa-arrow-right"></i> </a> 
+                                        <td> <a data-toggle="tooltip" title="Eliminar" class="btn-sm" href="<?= base_url('Tranche/eliminarAtuacaoTranche/'.$atu->idapoiosEventos.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>"  ><i class="fa fa-arrow-right"></i> </a> 
                                     </tr>
                                 <?php } ?>
                             </table>                       
@@ -130,7 +130,7 @@
                                     <tr>
                                         <td><?= $atu->designacao; ?>  </td>
                                         <td ><a  id="<?= $atu->idEventos; ?>" type="button" class="submit1 btn-sm" value="Ver Detalhes"  data-target="#myModal1" data-toggle="modal"  class=" btn btn-default btn-block active"> <i class="fa fa-info"></i></a>
-                                        <td> <a  data-toggle="tooltip" title="Associar" class="btn-sm" href="<?= base_url('Tranche/associarAtuacaoTranche/' . $atu->idEventos.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>"  onclick="return confirm('Deseja realmente associar a atuação?');"> <i class="fa fa-arrow-left"></i></a> 
+                                        <td> <a  data-toggle="tooltip" title="Associar" class="btn-sm" href="<?= base_url('Tranche/associarAtuacaoTranche/' . $atu->idEventos.'/'.$tranche[0]->idApoios.'/'.$tranche[0]->ano) ?>" > <i class="fa fa-arrow-left"></i></a> 
                                     </tr>
                                 <?php } ?>
                             </table>                       
@@ -169,7 +169,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div id="listaUtilizadores"  >
+                        <div id="detalhesAti"  >
                         </div>
                     </div>
                 </div>
@@ -193,11 +193,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title" id="myModalLabel1">Detalhes da Atução</h4>
+                    <h4 class="modal-title" id="myModalLabel1">Detalhes da Atuação</h4>
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div id="listaUtilizadoresA"  >
+                        <div id="detalhesA"  >
                         </div>
                     </div>
                 </div>
@@ -228,6 +228,10 @@
                 data: {id: id},
                 success: function (res) {
 
+
+
+
+
                     html = "<table class='table table-hover'><thead>";
                     html += "<tr><th>Nome</th><th>Localizacao</th><th>Orçamento</th><th>Notas</th></tr>";
                     html += "</thead><tbody>";
@@ -237,7 +241,7 @@
 
                     }//fim do laço
                     html += "</tbody></table>";
-                    $("#listaUtilizadores").html(html);
+                    $("#detalhesAti").html(html);
                     //coloco a variável html na tela
 
                 }
@@ -274,7 +278,7 @@
 
                     }//fim do laço
                     html += "</tbody></table>";
-                    $("#listaUtilizadoresA").html(html);
+                    $("#detalhesA").html(html);
                     //coloco a variável html na tela
 
                 }

@@ -110,7 +110,7 @@
 
 
                     <h4 class="modal-title" id="myModalLabel2">
-                        Sócio</h4>
+                        Orgãos Sociais</h4>
                 </div>
                 <div class="modal-body">
                     <div class="row">
