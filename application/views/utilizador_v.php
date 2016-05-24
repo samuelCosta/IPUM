@@ -22,7 +22,7 @@
                 <!-- Profile Image -->
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-                        <img class="profile-user-img img-responsive img-circle" src="<?= base_url(); ?>uploads/<?php echo $utilizador['foto']; ?>" width="150" height="150" alt="User profile picture">
+                        <img class="profile-user-img img-responsive img-circle" src="<?= base_url(); ?>uploads/<?php echo $utilizador['foto']; ?>"  alt="User profile picture" style="width:90px;height:90px;">
                         <h3 class="profile-username text-center">  <?php echo $utilizador['nome']; ?> </h3>
 
 

@@ -6,7 +6,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= base_url(); ?>uploads/<?php echo $this->session ->userdata('foto'); ?> "   width="100%" class="img-circle caixa_corte" alt="User Image">
+                <img src="<?= base_url(); ?>uploads/<?php echo $this->session ->userdata('foto'); ?> "  class="img-circle caixa_corte" alt="User Image" style="width:90px;height:50px;">
             </div>
             <div class="pull-left info">
                 <p>IPUM</p>

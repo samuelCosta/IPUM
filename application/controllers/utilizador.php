@@ -168,10 +168,11 @@ class Utilizador extends CI_Controller {
     public function validar_foto() {
         //FOTO
         $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'gif|jpg|png';
-//        $config['max_size'] = '10';
-//        $config['max_width'] = '1000';
-//        $config['max_height'] = '1000';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = '3000';
+   
+
+
 
 
         $this->load->library('upload', $config);
