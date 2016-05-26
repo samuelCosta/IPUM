@@ -43,13 +43,13 @@ class Quotas_m extends CI_Model {
     }
 
     //    cria outra linha em sistema de quotas 
-    public function criarLinhaQuota($idUtilizador, $dataAviso) {
+    public function criarLinhaQuota($idUtilizador, $dataAviso, $estado) {
 
         $dataAviso1 = date('Y/m/d', strtotime("+365 days", strtotime($dataAviso)));
 
         $dados = array(
             'dataAviso' => $dataAviso1,
-            'tipo' => 'Não Pago',
+            'tipo' => $estado,
             'dataPagamento' => null,
             'utilizador_idUtilizador' => $idUtilizador,
         );

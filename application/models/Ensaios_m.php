@@ -54,6 +54,7 @@ class Ensaios_m extends CI_Model {
     public function get_historicoEnsaios() {
         
         $this->db->select('*');
+        $this->db->where('tipo', 'ensaio');
         $this->db->where('estado', '0'); 
         return $this->db->get('eventos')->result();
     }

@@ -68,6 +68,7 @@ class Atuacoes_m extends CI_Model {
     public function get_historicoAtuacoes() {
         
         $this->db->select('*');
+        $this->db->where('tipo', 'atuação');
         $this->db->where('estado', '0'); 
         return $this->db->get('eventos')->result();
     }
