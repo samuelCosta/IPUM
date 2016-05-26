@@ -58,6 +58,10 @@ class Utilizador extends CI_Controller {
         $totalAtuacoes= $this->utilizador_m->totalAtuacoesElemento($id);
         $totalEnsaios= $this->utilizador_m->totalEnsaiosElemento($id);
         $dados = $this->utilizador_m->compararIdDetalhes($id);
+        $traje = $this->utilizador_m->get_traje_id($id);
+        $instrumento = $this->utilizador_m->get_instrumento_id($id);
+        $manutencao = $this->utilizador_m->get_manutencoes($id);
+        
         
         if($dados['dataSocio']!=0){       
         $dataPagamento= date('Y/m/d', strtotime("+365 days",strtotime( $dados['dataSocio'])));
@@ -69,7 +73,7 @@ class Utilizador extends CI_Controller {
         
         $this->load->view('includes/header_v');
         $this->load->view('utilizador_v',array('totalAtuacoes' => $totalAtuacoes, 'utilizador'=>$dados,
-            'totalEnsaios'=>$totalEnsaios,'pagamento'=>$dataPagamento,'orgaosSociais'=>$imprimirOrgaoSocial));
+            'totalEnsaios'=>$totalEnsaios,'pagamento'=>$dataPagamento,'orgaosSociais'=>$imprimirOrgaoSocial, 'traje'=>$traje, 'instrumento'=>$instrumento, 'manutencao'=>$manutencao));
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
         

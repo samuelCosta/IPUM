@@ -40,7 +40,6 @@ class Merchandising extends CI_Controller{
             $this->load->view('includes/header_v');
             $this->load->view('merchandising/registar', $data);
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
         } else {
             $this->merchandising_m->registar();
             redirect('merchandising/stock', 'refresh');
@@ -61,7 +60,6 @@ class Merchandising extends CI_Controller{
             $this->load->view('includes/header_v');
             $this->load->view('merchandising/editar', $data);
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
         } else {
             $this->merchandising_m->editar($id);
             redirect('merchandising/stock', 'refresh');
@@ -89,7 +87,6 @@ class Merchandising extends CI_Controller{
             $this->load->view('includes/header_v');
             $this->load->view('merchandising/atribuir', $data);
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
         } else {
             $this->merchandising_m->atribuir_merchandising($id);
             $result = $this->merchandising_m->get_merchandising_id($id);

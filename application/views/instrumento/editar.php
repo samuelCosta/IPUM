@@ -33,8 +33,12 @@
                                 <select class="form-control" name="tipo_instrumento" disabled="true">
                                     <option value="">Selecione uma opção</option>
                                     <?php foreach ($tipos_instrumento as $tipo): ?>
-                                        <option value="<?php echo $tipo['id']; ?>" <?php if ($edit_data['tipo_selecao_id'] === $tipo['id']) { echo 'selected';} ?>><?php echo $tipo['descricao']; ?></option>
-                                    <?php endforeach; ?>
+                                        <option value="<?php echo $tipo['id']; ?>" <?php
+                                        if ($edit_data['tipo_selecao_id'] === $tipo['id']) {
+                                            echo 'selected';
+                                        }
+                                        ?>><?php echo $tipo['descricao']; ?></option>
+                                            <?php endforeach; ?>
                                 </select>
                                 <input type="hidden" name="tipo_instrumento_hidden" value="<?php echo $edit_data['tipo_selecao_id']; ?>"/>
                             </div>
@@ -53,18 +57,54 @@
                             <div class="col-md-2 form-group">
                                 <label> Estado </label>
                                 <div class="row">
-                                    <label class="radio-inline"><input type="radio" name="estado" value="1" class="minimal" <?php if ($edit_data['estado'] === '1') {echo 'checked';} ?>/>1</label>
-                                    <label class="radio-inline"><input type="radio" name="estado" value="2" class="minimal" <?php if ($edit_data['estado'] === '2') {echo 'checked';} ?>/>2</label>
-                                    <label class="radio-inline"><input type="radio" name="estado" value="3" class="minimal" <?php if ($edit_data['estado'] === '3') {echo 'checked';} ?>/>3</label>
-                                    <label class="radio-inline"><input type="radio" name="estado" value="4" class="minimal" <?php if ($edit_data['estado'] === '4') {echo 'checked';} ?>/>4</label>
-                                    <label class="radio-inline"><input type="radio" name="estado" value="5" class="minimal" <?php if ($edit_data['estado'] === '5') {echo 'checked';} ?>/>5</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="1" class="minimal" <?php
+                                        if ($edit_data['estado'] === '1') {
+                                            echo 'checked';
+                                        }
+                                        ?>/>1</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="2" class="minimal" <?php
+                                        if ($edit_data['estado'] === '2') {
+                                            echo 'checked';
+                                        }
+                                        ?>/>2</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="3" class="minimal" <?php
+                                        if ($edit_data['estado'] === '3') {
+                                            echo 'checked';
+                                        }
+                                        ?>/>3</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="4" class="minimal" <?php
+                                        if ($edit_data['estado'] === '4') {
+                                            echo 'checked';
+                                        }
+                                        ?>/>4</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="5" class="minimal" <?php
+                                        if ($edit_data['estado'] === '5') {
+                                            echo 'checked';
+                                        }
+                                        ?>/>5</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-2" id="choice">
                                 <label>Localização</label>
-                                <input type="text" class="form-control" value="<?php echo $edit_data['localizacao']; ?>" name="localizacao" />
+                                <div class="row">
+                                    <label class="radio-inline"><input type="radio" name="local" id="armazenado" value="armazenado" class="minimal"/> Armazém </label>
+                                    <label class="radio-inline"><input type="radio" name="local" id="emprestado" value="emprestar" class="minimal"/> Emprestado </label>
+                                </div>
+                            </div>
+                            <div id="localizacao" style="display: none" class="col-md-4 form-group">
+                                <label>Local de Armazenamento</label>
+                                <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Insira o Local de Armazenamento" />
+                            </div>
+                            <div id="elemento" style="display: none" class="col-md-4 form-group">
+                                <label>Elemento</label>
+                                <select class="form-control" name="elemento" >
+                                    <option value="">Selecione uma opção</option>
+                                    <?php foreach ($elementos as $elemento): ?>
+                                        <option value="<?php echo $elemento['idUtilizador']; ?>"><?php echo $elemento['nome']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                         </div>
 
@@ -100,6 +140,17 @@
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
         checkboxClass: 'icheckbox_minimal-blue',
         radioClass: 'iradio_minimal-blue'
+    });
+
+    $(document).ready(function () {
+        $('#armazenado').on('ifChanged', function () {
+            $('#localizacao').show();
+            $('#elemento').hide();
+        });
+        $('#emprestado').on('ifChanged', function () {
+            $('#elemento').show();
+            $('#localizacao').hide();
+        });
     });
 </script>
 

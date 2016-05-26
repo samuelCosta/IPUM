@@ -40,7 +40,6 @@ class Instrumento extends CI_Controller {
             $this->load->view('includes/header_v');
             $this->load->view('instrumento/registar', $data);
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
         } else {
             $this->instrumento_m->registar();
             redirect('instrumento', 'refresh');
@@ -103,19 +102,22 @@ class Instrumento extends CI_Controller {
     public function editar($id) {
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->load->model('traje_m');
 
 
         $data['edit_data'] = $this->instrumento_m->get_instrumento_id($id);
         $data['tipos_instrumento'] = $this->tiposelecao_m->get_tiposelecao('TIPO_INSTRUMENTO');
+        $data['elementos'] = $this->traje_m->get_utilizadores();
 
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required');
+
+        $this->form_validation->set_rules('localizacao', 'Localização');
+        $this->form_validation->set_rules('elemento', 'Elemento');
         $this->form_validation->set_rules('estado', 'Estado', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
             $this->load->view('instrumento/editar', $data);
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
         } else {
             $this->instrumento_m->editar($id);
             redirect('instrumento', 'refresh');

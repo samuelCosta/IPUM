@@ -66,6 +66,7 @@ class Instrumento_m extends CI_Model {
             'numero' => $this->input->post('numero_hidden'),
             'tamanho' => $this->input->post('tamanho_hidden'),
             'localizacao' => $this->input->post('localizacao'),
+            'elemento' => $this->input->post('elemento'),
             'estado' => $this->input->post('estado'),
         );
 

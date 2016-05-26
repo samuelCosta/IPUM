@@ -45,7 +45,6 @@ class Traje extends CI_Controller {
             $this->load->view('includes/header_v');
             $this->load->view('traje/registar', $data);
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
         } else {
             $this->traje_m->registar();
             redirect('traje/stock', 'refresh');
@@ -67,7 +66,6 @@ class Traje extends CI_Controller {
             $this->load->view('includes/header_v');
             $this->load->view('traje/editar', $data);
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
         } else {
             $this->traje_m->editar($id);
             redirect('traje/stock', 'refresh');
@@ -99,7 +97,6 @@ class Traje extends CI_Controller {
             $this->load->view('includes/header_v');
             $this->load->view('traje/atribuir', $data);
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
         } else {
             $this->traje_m->atribuir_traje($id);
             $result = $this->traje_m->get_traje_id($id);

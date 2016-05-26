@@ -246,6 +246,42 @@ class Utilizador_m extends CI_Model {
         
     }
     
+    public function get_traje_id($id) {
+        $this->db->select('t.*, ts_p.descricao as ts_tipo, ts_g.descricao as ts_genero, ts_t.descricao as ts_tamanho');
+        $this->db->from('traje t');
+        $this->db->where('t.elemento', $id);
+        $this->db->join('stock_traje st', 't.st_id=st.id', 'left');
+        $this->db->join('tipo_selecao ts_p', 'st.ts_tipo_id=ts_p.id', 'left');
+        $this->db->join('tipo_selecao ts_g', 'st.ts_genero_id=ts_g.id', 'left');
+        $this->db->join('tipo_selecao ts_t', 'st.ts_tamanho_id=ts_t.id', 'left');
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function get_instrumento_id($id) {
+        $this->db->select('i.*, ts.descricao as instrumento');
+        $this->db->from('instrumento i');
+        $this->db->where('i.elemento', $id);
+        $this->db->join('tipo_selecao ts', 'i.tipo_selecao_id=ts.id', 'left');
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function get_manutencoes($id) {
+        $this->db->select('im.*, i.numero as numero, ts_i.descricao as instrumento, ts.descricao as material');
+        $this->db->from('instrumento_manutencao im');
+        $this->db->where('im.elemento', $id);
+        $this->db->join('instrumento i', 'im.instrumento_id=i.id', 'left');
+        $this->db->join('stock_produto sp', 'im.sp_material_id=sp.id', 'left');
+        $this->db->join('tipo_selecao ts', 'sp.ts_tipo_material_id=ts.id', 'left');
+        $this->db->join('tipo_selecao ts_i', 'i.tipo_selecao_id=ts_i.id', 'left');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
     
         //   estatisca na pagina Inicial 
     public function totalAtuacoes($data) {
@@ -338,5 +374,7 @@ class Utilizador_m extends CI_Model {
         $query = $this->db->get('presencasEventos');
         return $query->num_rows();
     }
+    
+    
     
 }

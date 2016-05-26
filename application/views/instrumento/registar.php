@@ -58,18 +58,18 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6" id="choice">
+                            <div class="col-md-2" id="choice">
                                 <label>Localização</label>
                                 <div class="row">
-                                    <label class="radio-inline"><input type="radio" name="local" id="armazenado" value="armazenado"/> Armazém </label>
-                                    <label class="radio-inline"><input type="radio" name="local" id="emprestar" value="emprestar"/> Emprestado </label>
+                                    <label class="radio-inline"><input type="radio" name="local" id="armazenado" value="armazenado" class="minimal"/> Armazém </label>
+                                    <label class="radio-inline"><input type="radio" name="local" id="emprestado" value="emprestar" class="minimal"/> Emprestado </label>
                                 </div>
                             </div>
-                            <div id="localizacao" style="display: none" class="col-md-6 form-group">
-                                <label>Localização</label>
+                            <div id="localizacao" style="display: none" class="col-md-4 form-group">
+                                <label>Local de Armazenamento</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Insira a Localização" />
                             </div>
-                            <div id="elemento" style="display: none" class="col-md-6 form-group">
+                            <div id="elemento" style="display: none" class="col-md-4 form-group">
                                 <label>Elemento</label>
                                 <select class="form-control" name="elemento" >
                                     <option value="">Selecione uma opção</option>
@@ -115,14 +115,13 @@
     });
 
     $(document).ready(function () {
-        $('input[type="radio"]').click(function () {
-            if ($(this).attr('id') == 'armazenado') {
-                $('#localizacao').show();
-                $('#choice').hide();
-            } else {
-                $('#elemento').show();
-                $('#choice').hide();
-            }
+        $('#armazenado').on('ifChanged', function () {
+            $('#localizacao').show();
+            $('#elemento').hide();
+        });
+        $('#emprestado').on('ifChanged', function () {
+            $('#elemento').show();
+            $('#localizacao').hide();
         });
     });
 </script>

@@ -33,7 +33,6 @@ class Material extends CI_Controller{
             $this->load->view('includes/header_v');
             $this->load->view('material/registar', $data);
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
         } else {
             $this->material_m->registar();
             redirect('material', 'refresh');
@@ -56,7 +55,6 @@ class Material extends CI_Controller{
             $this->load->view('includes/header_v');
             $this->load->view('material/editar', $data);
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
         } else {
             $this->material_m->editar($id);
             redirect('material', 'refresh');

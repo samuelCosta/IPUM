@@ -114,11 +114,19 @@
                             <p class="text-muted"> <?php if($utilizador['dataSocio']!=0) { echo $utilizador['dataSocio'];}else{ echo "Não é Sócio";} ?></p>
 
                             <hr>
+                            
                             <strong><i class="  margin-r-5"></i> Traje</strong>
-                            <p class="text-muted">  </p>
-
+                            <?php foreach ($traje as $atribuido): ?>
+                            <p class="text-muted"><?php echo $atribuido['ts_tipo'] . ' - ' . $atribuido['ts_genero'] . ' - ' . $atribuido['ts_tamanho']; ?>  </p>
+                            <?php endforeach; ?>
                             <strong><i class="  margin-r-5"></i> Instrumento</strong>
-                            <p class="text-muted"> </p>
+                            <?php foreach ($instrumento as $emprestado): ?>
+                            <p class="text-muted"><?php echo $emprestado['instrumento']. ' - ' . $emprestado['numero']; ?> </p>
+                            <?php endforeach; ?>
+                            <strong><i class="  margin-r-5"></i> Manutenções</strong>
+                            <?php foreach ($manutencao as $manu): ?>
+                            <p class="text-muted"><?php echo $manu['instrumento'] . ' - ' . $manu['numero'] . ' - ' . $manu['material']; ?> </p>
+                            <?php endforeach; ?>
 
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->               
