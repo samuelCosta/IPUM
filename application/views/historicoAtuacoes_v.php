@@ -42,6 +42,7 @@
                                 <th>Responsável</th>
                                 <th>Contacto</th>
                                 <th>Orçamento</th>
+                                <th>Presenças</th>
 
                               
 
@@ -56,6 +57,7 @@
                                     <td><?= $atu->responsavel; ?></td>
                                     <td><?= $atu->contacto; ?></td>
                                     <td><?= $atu->orcamento; ?></td>
+                                    <td><?= $atu->totalpresencas; ?></td>
                                              
                                      
                                 </tr>

@@ -24,21 +24,30 @@
 
                     <!--                   ------------------------------ ----------------------->
                     <div class="box-body  "> 
-                        <table id="historicoUtilizadores" class="table table-bordered table-hover">
+                        <table id="utilizadoresInativos"class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>Nome</th>
                                     <th>Alcunha</th>
                                     <th>Email</th>
-                                    <th>Sócio</th>
+                                    <th></th>
                                     <th></th>
 
                                 </tr>
                             </thead>
-
+                               <tfoot>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Alcunha</th>
+                                    <th>Email</th>
+                                    <th></th>
+                                    <th></th>
+                                   
+                                </tr>
+                            </tfoot>
                             <tbody>
                                 <?php foreach ($utilizadoresInativos as $uti) { ?>
-                                    <tr  onclick= script:location.href = "<?= base_url(); ?>utilizador/detalheUtilizador/<?php echo $uti->idUtilizador; ?>">
+                                    <tr  onclick= script:location.href="<?= base_url(); ?>utilizador/detalheUtilizador/<?php echo $uti->idUtilizador; ?>">
                                         <td><?= $uti->nome; ?></td>
                                         <td><?= $uti->alcunha; ?></td>
                                         <td><?= $uti->email; ?></td>
@@ -70,24 +79,49 @@
 </div><!-- /.content-wrapper -->
 
 
-<!--            para as tabelas-->
-       <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/plugins/datatables/datatables.min.css"/>
- <!--           para as tabelas-->
-       <script type="text/javascript" src="<?= base_url(); ?>assets/plugins/datatables/datatables.min.js"></script>
-            
-            
-<script>
 
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0.0
+    </div>
+    <strong>INOV Webdesign &copy; 2015-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+</footer>
 
-    $(document).ready(function () {
-        $('#historicoUtilizadores').DataTable({
+<script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.1.4.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/bootstrap/js/bootstrap.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/datatables/jquery.dataTables.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/datatables/dataTables.bootstrap.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/slimScroll/jquery.slimscroll.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/fastclick/fastclick.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
+  <script>
+    $(function () {
+        $("#utilizadoresInativos").DataTable({
+            "initComplete": function () {
+                this.api().columns().every(function () {
+                    var column = this;
+                    if (column.index() < 3) {
+                        var select = $('<select><option value=""></option></select>')
+                                .appendTo($(column.footer()).empty())
+                                .on('change', function () {
+                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+                                    column.search(val ? '^' + val + '$' : '', true, false).draw();
+                                });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            select.append('<option value="' + d + '">' + d + '</option>')
+                        });
+                    }
+                });
+            },
             "language": {
-                "lengthMenu": "Procurar _MENU_ records per page",
-                "zeroRecords": "Não foram encontardos resultados - desculpe",
-                "info": "Showing page _PAGE_ of _PAGES_",
-                "infoEmpty": "No records available",
-                "infoFiltered": "(filtered from _MAX_ total records)"
-            }
+                "lengthMenu": "Ver _MENU_ registos",
+                "info": "_START_ - _END_ de _TOTAL_ registos"
+            },
+            "columnDefs": [
+                { targets: 3, orderable: false}
+            ]
         });
     });
 </script>

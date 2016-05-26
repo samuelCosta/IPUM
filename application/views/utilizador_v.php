@@ -42,7 +42,8 @@
 
                             
                         </ul>
-                        <h3>Histórico de Orgãos Sociais:</h3>
+                        <?php if($orgaosSociais!=NULL){ ?>
+                        <h4>Histórico de Orgãos Sociais:</h4>
                          <?php foreach ($orgaosSociais as $p) { ?>
                         <ul>
                             <li><?php echo $p['cargo'] ?> da <?php echo $p['categoria'] ?> desde <?php echo $p['dataInicio'] ?>  <?php if ($p['dataFim'] == null) {
@@ -52,9 +53,16 @@
                             } ?> 
 <?php } ?>
                        
-                            <?php if($orgaosSociais!=NULL){ ?>
+                    
+                    
+                          
                             <a onclick="imprimir(<?php echo  $utilizador['idUtilizador'] ?>)" class="btn btn-primary btn-block"><i class="fa fa-download"></i><b>  Imprimir Certificado de Orgão Social</b></a>
-                            <?php }else {} ?>
+                            <?php }else {}
+                            
+                            
+                        ?>
+                            
+                            
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
 
@@ -80,7 +88,7 @@
                             <strong><i class="  margin-r-5"></i>NIF</strong>
                             <p class="text-muted"> <?php echo $utilizador['nif'];  ?></p>
 
-                            <strong><i class="  margin-r-5"></i>BI</strong>
+                            <strong><i class="  margin-r-5"></i>Cartão de Cidadão</strong>
                             <p class="text-muted">  <?php echo $utilizador['bi'];  ?></p>
 
                             <strong><i class="  margin-r-5"></i> Data Nascimento</strong>
@@ -113,16 +121,18 @@
                             <strong><i class="  margin-r-5"></i> Data Sócio</strong>
                             <p class="text-muted"> <?php if($utilizador['dataSocio']!=0) { echo $utilizador['dataSocio'];}else{ echo "Não é Sócio";} ?></p>
 
-                            <hr>
+                           
                             
                             <strong><i class="  margin-r-5"></i> Traje</strong>
                             <?php foreach ($traje as $atribuido): ?>
                             <p class="text-muted"><?php echo $atribuido['ts_tipo'] . ' - ' . $atribuido['ts_genero'] . ' - ' . $atribuido['ts_tamanho']; ?>  </p>
                             <?php endforeach; ?>
+                            
                             <strong><i class="  margin-r-5"></i> Instrumento</strong>
                             <?php foreach ($instrumento as $emprestado): ?>
                             <p class="text-muted"><?php echo $emprestado['instrumento']. ' - ' . $emprestado['numero']; ?> </p>
                             <?php endforeach; ?>
+                            
                             <strong><i class="  margin-r-5"></i> Manutenções</strong>
                             <?php foreach ($manutencao as $manu): ?>
                             <p class="text-muted"><?php echo $manu['instrumento'] . ' - ' . $manu['numero'] . ' - ' . $manu['material']; ?> </p>

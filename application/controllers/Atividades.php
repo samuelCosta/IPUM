@@ -36,7 +36,7 @@ class Atividades extends CI_Controller {
             $this->Atividades_m->do_insert($dados);
             $dados['atividades'] = $this->Atividades_m->get_atividades();
 
-            $data['msg'] = "Sucesso.";
+            $data['msg'] = "Novo Atividade Registada.";
             $this->load->view('includes/header_v');
             $this->load->view('includes/msgSucesso_v', $data);
             $this->load->view('consultarAtividades_v',$dados);

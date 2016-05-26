@@ -30,7 +30,7 @@ class Tranche extends CI_Controller {
 
         else{
               
-         $this->form_validation->set_message('vericaTranche', 'Já foram registadas a duas Tranches para esse ano');
+         $this->form_validation->set_message('vericaTranche', 'Já foram registadas as duas Tranches para esse ano');
              return FALSE;
         }
          

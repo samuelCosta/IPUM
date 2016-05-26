@@ -38,7 +38,7 @@
                             <tr>
                                 <th>Data</th>
                                 <th>Localização</th>
-                                <th></th>
+                                <th>Presenças</th>
                                 <th></th>
                                 <th></th>
                                
@@ -53,13 +53,14 @@
                                     <td><?= $ens->localizacao; ?></td>
                                     
 
-                                    <td><a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?= base_url('Ensaios/atualizar/' . $ens->idEventos) ?>"><i class="fa fa-edit"></i></a> </td>
+                                    
                                          <?php if($ens->totalpresencas<=0 || $ens->totalpresencas==NULL ){?>
                                    
                                         <td><a data-toggle="tooltip" title="Marcar Presenças" class="btn-lg" href="<?= base_url('Ensaios/consultarUtilizadores/' . $ens->idEventos) ?>"><i class="fa fa-tasks"></i></a> </td>
                                      <?php }else{?>
-                                        <td><a data-toggle="tooltip" title="Presenças Marcadas"class="btn-lg" disabled ><i class="fa fa-ban"></i></a>
+                                        <td><?= $ens->totalpresencas; ?></a>
                                     <?php  } ?>
+                                    <td><a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?= base_url('Ensaios/atualizar/' . $ens->idEventos) ?>"><i class="fa fa-edit"></i></a> </td>
                                     <td><a data-toggle="tooltip" title="Encerrar"class="btn-lg" href="<?= base_url('Ensaios/encerrarEnsaio/'. $ens->idEventos ) ?>"  onclick="return confirm('Deseja realmente finalizar o Ensaio?');"> <i class="fa fa-power-off"></i></a> 
                                 </tr>
                             <?php } ?>

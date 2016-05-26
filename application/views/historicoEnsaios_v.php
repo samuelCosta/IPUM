@@ -38,6 +38,7 @@
                             <tr>
                                 <th>Data do Evento</th>
                                 <th>Localização</th>
+                                 <th>Presenças</th>
 
                               
 
@@ -48,6 +49,7 @@
                                 <tr>
                                     <td><?= $ens->dataEvento; ?></td>
                                     <td><?= $ens->localizacao; ?></td>
+                                    <td><?= $ens->totalpresencas; ?></td>
                                              
                                      
                                 </tr>

@@ -43,7 +43,7 @@
                                  <th>Pessoa Responsavel</th>
                                   <th>Contacto</th>
                                    <th>Orçamento</th>
-                                   <th></th>
+                                   <th>Presenças</th>
                                    <th></th>
                                    <th></th>
                                 
@@ -65,13 +65,14 @@
                                    
 
                                         
-                                         <td><a  data-toggle="tooltip" title="Editar" class="btn-lg" href="<?= base_url('Atuacoes/atualizar/' . $atu->idEventos) ?>"><i class="fa fa-edit"></i></a> </td>
+                                        
                                          <?php if($atu->totalpresencas<=0 || $atu->totalpresencas==NULL ){?>
                                    
                                         <td><a data-toggle="tooltip" title="Marcar Presenças" class="btn-lg" href="<?= base_url('Atuacoes/consultarUtilizadores/' . $atu->idEventos) ?>"><i class="fa fa-tasks"></i></a> </td>
                                      <?php }else{?>
-                                        <td><a data-toggle="tooltip" title="Presenças Marcadas" class="btn-lg" disabled ><i class="fa fa-ban"></i></a>
+                                        <td><?= $atu->totalpresencas?></a>
                                     <?php  } ?>
+                                        <td><a  data-toggle="tooltip" title="Editar" class="btn-lg" href="<?= base_url('Atuacoes/atualizar/' . $atu->idEventos) ?>"><i class="fa fa-edit"></i></a> </td>     
                                     <td><a data-toggle="tooltip" title="Encerrar" class="btn-lg" href="<?= base_url('Atuacoes/encerrarAtuacao/'. $atu->idEventos ) ?>"  onclick="return confirm('Deseja realmente finalizar a atuação?');"> <i class="fa fa-power-off"></i></a> 
                                 </tr>
                             <?php } ?>
