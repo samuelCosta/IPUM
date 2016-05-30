@@ -25,7 +25,7 @@ class Quotas extends CI_Controller {
     public function pagarQuota($id, $idUtilizador, $dataAviso) {
         $this->load->model('utilizador_m');
 
-        $estado = 'Não Pago';
+//        $estado = 'Não Pago';
         $tensaios = $this->utilizador_m->totalEnsaios(date('Y'));
         $tatuacoes = $this->utilizador_m->totalAtuacoes(date('Y'));
         $tensaiosu = $this->utilizador_m->totalEnsaiosElemento($idUtilizador);
@@ -48,7 +48,7 @@ class Quotas extends CI_Controller {
 
 //       insere a data de pagamento 
         //    cria outra linha em sistema de quotas 
-        if ($this->quotas_m->pagarQuota($id, $estado) && $this->quotas_m->criarLinhaQuota($idUtilizador, $dataAviso)) {
+        if ($this->quotas_m->pagarQuota($id,$estado) && $this->quotas_m->criarLinhaQuota($idUtilizador, $dataAviso)) {
 
             redirect('Quotas/index'.'/1');
         }

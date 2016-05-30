@@ -31,8 +31,11 @@ class Quotas_m extends CI_Model {
     }
 
     //    Pagar Quota
-    public function pagarQuota($id, $estado) {
-
+    public function pagarQuota($id,$estado) {
+        if($estado==Null){
+            $estado='Pago';
+        }
+        
         $dados = array(
             'tipo' => $estado
         );
