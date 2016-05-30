@@ -34,14 +34,14 @@
 
                                 </tr>
                             </thead>
-                             <tfoot>
+                            <tfoot>
                                 <tr>
-                                  <th>Data Aviso</th>
+                                    <th>Data Aviso</th>
                                     <th>Data De pagamento</th>
                                     <th>Utilizador</th>
                                     <th>Estado</th>
                                     <th></th>
-                                   
+
                                 </tr>
                             </tfoot>
 
@@ -51,25 +51,25 @@
                                         <td><?= $quo->dataAviso; ?></td>
                                         <td><?= $quo->dataPagamento; ?></td>
                                         <td><?= $quo->nome; ?></td>
-                                       
-                                      
-                                     
-                                            
-                                            
-                                             <td class="<?php
+
+
+
+
+
+                                        <td class="<?php
                                         if ($quo->tipo == "Pago") {
                                             echo 'bg-green-active';
-                                        } else if($quo->tipo == "Não Pago"){
-                                             echo 'bg-red-active';
-                                        }else {
-                                             echo 'bg-yellow-active';
+                                        } else if ($quo->tipo == "Não Pago") {
+                                            echo 'bg-red-active';
+                                        } else {
+                                            echo 'bg-yellow-active';
                                         }
                                         ?>">
                                                 <?php echo $quo->tipo ?>
                                         </td>
-                                        
-                                        
-                                        
+
+
+
 
                                         <td>
 
@@ -115,33 +115,42 @@
 <script src="<?php echo base_url() . 'assets/plugins/fastclick/fastclick.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
 <script>
-    $(function () {
-        $("#quotas").DataTable({
-            "initComplete": function () {
-                this.api().columns().every(function () {
-                    var column = this;
-                    if (column.index() < 4) {
-                        var select = $('<select><option value=""></option></select>')
-                                .appendTo($(column.footer()).empty())
-                                .on('change', function () {
-                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                                                    $(function () {
+                                                        $("#quotas").DataTable({
+                                                            "initComplete": function () {
+                                                                this.api().columns().every(function () {
+                                                                    var column = this;
+                                                                    if (column.index() < 4) {
+                                                                        var select = $('<select><option value=""></option></select>')
+                                                                                .appendTo($(column.footer()).empty())
+                                                                                .on('change', function () {
+                                                                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
-                                    column.search(val ? '^' + val + '$' : '', true, false).draw();
-                                });
+                                                                                    column.search(val ? '^' + val + '$' : '', true, false).draw();
+                                                                                });
 
-                        column.data().unique().sort().each(function (d, j) {
-                            select.append('<option value="' + d + '">' + d + '</option>')
-                        });
-                    }
-                });
-            },
-            "language": {
-                "lengthMenu": "Ver _MENU_ registos",
-                "info": "_START_ - _END_ de _TOTAL_ registos"
-            },
-            "columnDefs": [
-                { targets: 4, orderable: false}
-            ]
-        });
-    });
+                                                                        column.data().unique().sort().each(function (d, j) {
+                                                                            select.append('<option value="' + d + '">' + d + '</option>')
+                                                                        });
+                                                                    }
+                                                                });
+                                                            },
+                                                            "language": {
+                                                                "lengthMenu": "Ver _MENU_ registos",
+                                                                "info": "_START_ - _END_ de _TOTAL_ registos",
+                                                                "infoEmpty": "0 - 0 de 0 registos",
+                                                                "infoFiltered": "(selecionado de _MAX_ registos totais)",
+                                                                "search": "Pesquisar:",
+                                                                "zeroRecords": "Não existem registos correspondentes",
+                                                                "emptyTable": "Não existem registos disponíveis",
+                                                                "paginate": {
+                                                                    "previous": "Anterior",
+                                                                    "next": "Seguinte"
+                                                                }
+                                                            },
+                                                            "columnDefs": [
+                                                                {targets: 4, orderable: false}
+                                                            ]
+                                                        });
+                                                    });
 </script>

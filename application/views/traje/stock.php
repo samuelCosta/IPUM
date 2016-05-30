@@ -46,7 +46,7 @@
                             </tfoot>
                             <tbody>
                                 <?php foreach ($pecas as $peca): ?>
-                                <tr>
+                                    <tr>
                                         <td><?php echo $peca['ts_tipo']; ?></td>
                                         <td><?php echo $peca['ts_genero']; ?></td>
                                         <td><?php echo $peca['ts_tamanho']; ?></td>
@@ -55,16 +55,16 @@
                                         <td><?php echo $peca['custo_uni'] . '€'; ?></td>
                                         <td><?php echo $peca['localizacao']; ?></td>
                                         <td <?php if ($peca['quantidade'] != 0) { ?>>
-                                            <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?php echo site_url('traje/editar/' . $peca['id']); ?>">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a data-toggle="tooltip" title="Eliminar" class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('traje/delete_traje/' . $peca['id']); ?>');" deleteConfirm href="#"/>
-                                            <i class="fa fa-trash-o"></i>
-                                            </a>
-                                            <a data-toggle="tooltip" title="Atribuir Traje" class="btn-lg" href="<?php echo site_url('traje/atribuir_traje/' . $peca['id']); ?>">
-                                                <i class="fa fa-share-square-o"></i>
-                                            </a>
-                                        </td <?php } ?> >
+                                                <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?php echo site_url('traje/editar/' . $peca['id']); ?>">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a data-toggle="tooltip" title="Eliminar" class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('traje/delete_traje/' . $peca['id']); ?>');" deleteConfirm href="#"/>
+                                                <i class="fa fa-trash-o"></i>
+                                                </a>
+                                                <a data-toggle="tooltip" title="Atribuir Traje" class="btn-lg" href="<?php echo site_url('traje/atribuir_traje/' . $peca['id']); ?>">
+                                                    <i class="fa fa-share-square-o"></i>
+                                                </a>
+                                            </td <?php } ?> >
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -120,7 +120,16 @@
                                                         },
                                                         "language": {
                                                             "lengthMenu": "Ver _MENU_ registos",
-                                                            "info": "_START_ - _END_ de _TOTAL_ registos"
+                                                            "info": "_START_ - _END_ de _TOTAL_ registos",
+                                                            "infoEmpty": "0 - 0 de 0 registos",
+                                                            "infoFiltered": "(selecionado de _MAX_ registos totais)",
+                                                            "search": "Pesquisar:",
+                                                            "zeroRecords": "Não existem registos correspondentes",
+                                                            "emptyTable": "Não existem registos disponíveis",
+                                                            "paginate": {
+                                                                "previous": "Anterior",
+                                                                "next": "Seguinte"
+                                                            }
                                                         },
                                                         "columnDefs": [
                                                             {targets: 7, orderable: false}

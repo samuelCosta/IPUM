@@ -102,10 +102,8 @@
                                                                             .appendTo($(column.footer()).empty())
                                                                             .on('change', function () {
                                                                                 var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
                                                                                 column.search(val ? '^' + val + '$' : '', true, false).draw();
                                                                             });
-
                                                                     column.data().unique().sort().each(function (d, j) {
                                                                         select.append('<option value="' + d + '">' + d + '</option>')
                                                                     });
@@ -114,14 +112,22 @@
                                                         },
                                                         "language": {
                                                             "lengthMenu": "Ver _MENU_ registos",
-                                                            "info": "_START_ - _END_ de _TOTAL_ registos"
+                                                            "info": "_START_ - _END_ de _TOTAL_ registos",
+                                                            "infoEmpty": "0 - 0 de 0 registos",
+                                                            "infoFiltered": "(selecionado de _MAX_ registos totais)",
+                                                            "search": "Pesquisar:",
+                                                            "zeroRecords": "Não existem registos correspondentes",
+                                                            "emptyTable": "Não existem registos disponíveis",
+                                                            "paginate": {
+                                                                "previous": "Anterior",
+                                                                "next": "Seguinte"
+                                                            }
                                                         },
                                                         "columnDefs": [
                                                             {targets: 5, orderable: false}
                                                         ]
                                                     });
-                                                });
-</script>
+                                                });</script>
 <script>
     function deleteConfirm(url)
     {

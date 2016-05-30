@@ -103,7 +103,16 @@
             },
             "language": {
                 "lengthMenu": "Ver _MENU_ registos",
-                "info": "_START_ - _END_ de _TOTAL_ registos"
+                "info": "_START_ - _END_ de _TOTAL_ registos",
+                "infoEmpty": "0 - 0 de 0 registos",
+                "infoFiltered": "(selecionado de _MAX_ registos totais)",
+                "search": "Pesquisar:",
+                "zeroRecords": "Não existem registos correspondentes",
+                "emptyTable": "Não existem registos disponíveis",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Seguinte"
+                }
             },
             "columnDefs": [
                 {targets: 4, orderable: false}

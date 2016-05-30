@@ -17,7 +17,7 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Consultar Utilizadores</h3>
-                        <a  data-toggle="tooltip" title="Ver Histórico" href="<?= base_url('Utilizador/consultarUtilizadoresInativos/')?>" class="btn-lg pull-right" ><i class="fa fa-info pull-right" ></i> </a>
+                        <a  data-toggle="tooltip" title="Ver Histórico" href="<?= base_url('Utilizador/consultarUtilizadoresInativos/') ?>" class="btn-lg pull-right" ><i class="fa fa-info pull-right" ></i> </a>
 
 
                     </div>
@@ -30,8 +30,8 @@
                                     <th>Email</th>
                                     <td></td>
                                     <th></th>
-                                   
-                                  
+
+
 
                                 </tr>
                             </thead>
@@ -40,15 +40,15 @@
                                     <th>Nome</th>
                                     <th>Alcunha</th>
                                     <th>Email</th>
-                                  <td></td>
-                                      <th></th>
-                                   
+                                    <td></td>
+                                    <th></th>
+
                                 </tr>
                             </tfoot>
-                        
+
                             <tbody>
                                 <?php foreach ($utilizadoresAtivos as $uti): ?>
-                                    <tr style="cursor: pointer" onclick= script:location.href="<?= base_url(); ?>utilizador/detalheUtilizador/<?php echo $uti->idUtilizador; ?>">
+                                    <tr style="cursor: pointer" onclick= script:location.href = "<?= base_url(); ?>utilizador/detalheUtilizador/<?php echo $uti->idUtilizador; ?>">
                                         <td><?= $uti->nome; ?></td>
                                         <td><?= $uti->alcunha; ?></td>
                                         <td><?= $uti->email; ?></td>
@@ -62,7 +62,7 @@
                                         <td>
                                             <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?= base_url('utilizador/atualizar/' . $uti->idUtilizador) ?>"> <i class="fa fa-edit"></i></a>
                                         </td>
-                                        
+
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -91,33 +91,42 @@
 <script src="<?php echo base_url() . 'assets/plugins/fastclick/fastclick.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
 <script>
-    $(function () {
-        $("#utilizadoresAtivos").DataTable({
-            "initComplete": function () {
-                this.api().columns().every(function () {
-                    var column = this;
-                    if (column.index() < 3) {
-                        var select = $('<select><option value=""></option></select>')
-                                .appendTo($(column.footer()).empty())
-                                .on('change', function () {
-                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                                        $(function () {
+                                            $("#utilizadoresAtivos").DataTable({
+                                                "initComplete": function () {
+                                                    this.api().columns().every(function () {
+                                                        var column = this;
+                                                        if (column.index() < 3) {
+                                                            var select = $('<select><option value=""></option></select>')
+                                                                    .appendTo($(column.footer()).empty())
+                                                                    .on('change', function () {
+                                                                        var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
-                                    column.search(val ? '^' + val + '$' : '', true, false).draw();
-                                });
+                                                                        column.search(val ? '^' + val + '$' : '', true, false).draw();
+                                                                    });
 
-                        column.data().unique().sort().each(function (d, j) {
-                            select.append('<option value="' + d + '">' + d + '</option>')
-                        });
-                    }
-                });
-            },
-            "language": {
-                "lengthMenu": "Ver _MENU_ registos",
-                "info": "_START_ - _END_ de _TOTAL_ registos"
-            },
-            "columnDefs": [
-                { targets: 3, orderable: false}
-            ]
-        });
-    });
+                                                            column.data().unique().sort().each(function (d, j) {
+                                                                select.append('<option value="' + d + '">' + d + '</option>')
+                                                            });
+                                                        }
+                                                    });
+                                                },
+                                                "language": {
+                                                    "lengthMenu": "Ver _MENU_ registos",
+                                                    "info": "_START_ - _END_ de _TOTAL_ registos",
+                                                    "infoEmpty": "0 - 0 de 0 registos",
+                                                    "infoFiltered": "(selecionado de _MAX_ registos totais)",
+                                                    "search": "Pesquisar:",
+                                                    "zeroRecords": "Não existem registos correspondentes",
+                                                    "emptyTable": "Não existem registos disponíveis",
+                                                    "paginate": {
+                                                        "previous": "Anterior",
+                                                        "next": "Seguinte"
+                                                    }
+                                                },
+                                                "columnDefs": [
+                                                    {targets: 3, orderable: false}
+                                                ]
+                                            });
+                                        });
 </script>

@@ -55,7 +55,7 @@
                                             <td><?= $atu->localizacao; ?></td>
                                             <td><?= $atu->responsavel; ?></td>
                                             <td><?= $atu->contacto; ?></td>
-                                            <td><?= $atu->orcamento.'€'; ?></td>
+                                            <td><?= $atu->orcamento . '€'; ?></td>
                                             <td><?= $atu->totalpresencas; ?></td>
 
                                         </tr>
@@ -107,7 +107,16 @@
             },
             "language": {
                 "lengthMenu": "Ver _MENU_ registos",
-                "info": "_START_ - _END_ de _TOTAL_ registos"
+                "info": "_START_ - _END_ de _TOTAL_ registos",
+                "infoEmpty": "0 - 0 de 0 registos",
+                "infoFiltered": "(selecionado de _MAX_ registos totais)",
+                "search": "Pesquisar:",
+                "zeroRecords": "Não existem registos correspondentes",
+                "emptyTable": "Não existem registos disponíveis",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Seguinte"
+                }
             },
             "columnDefs": [
                 {targets: 6, orderable: false}
