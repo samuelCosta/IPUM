@@ -31,10 +31,10 @@ class Quotas_m extends CI_Model {
     }
 
     //    Pagar Quota
-    public function pagarQuota($id) {
+    public function pagarQuota($id, $estado) {
 
         $dados = array(
-            'tipo' => 'Pago'
+            'tipo' => $estado
         );
         $this->db->where('idQuota', $id);
         $this->db->set('dataPagamento', 'NOW()', FALSE);
@@ -43,13 +43,13 @@ class Quotas_m extends CI_Model {
     }
 
     //    cria outra linha em sistema de quotas 
-    public function criarLinhaQuota($idUtilizador, $dataAviso, $estado) {
+    public function criarLinhaQuota($idUtilizador, $dataAviso) {
 
         $dataAviso1 = date('Y/m/d', strtotime("+365 days", strtotime($dataAviso)));
 
         $dados = array(
             'dataAviso' => $dataAviso1,
-            'tipo' => $estado,
+            'tipo' => 'Não Pago',
             'dataPagamento' => null,
             'utilizador_idUtilizador' => $idUtilizador,
         );

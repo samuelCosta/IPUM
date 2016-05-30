@@ -48,7 +48,7 @@ class Quotas extends CI_Controller {
 
 //       insere a data de pagamento 
         //    cria outra linha em sistema de quotas 
-        if ($this->quotas_m->pagarQuota($id) && $this->quotas_m->criarLinhaQuota($idUtilizador, $dataAviso, $estado)) {
+        if ($this->quotas_m->pagarQuota($id, $estado) && $this->quotas_m->criarLinhaQuota($idUtilizador, $dataAviso)) {
 
             redirect('Quotas/index'.'/1');
         }
