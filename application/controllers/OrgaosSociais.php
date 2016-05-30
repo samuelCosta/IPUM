@@ -6,7 +6,7 @@ class OrgaosSociais extends CI_Controller {
 
     public function index() {
         $this->load->model('utilizador_m');
-        $dados['utilizador'] = $this->utilizador_m->get_utilizadoresAtivos();
+        $dados['utilizador'] = $this->utilizador_m->todosUtilizadores();
         $this->load->view('includes/header_v');
         $this->load->view('registarOrgaosSociais_v', $dados);
         $this->load->view('includes/menu_v');

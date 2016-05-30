@@ -51,7 +51,7 @@ class Atuacoes extends CI_Controller {
 
         $this->load->view('includes/header_v');
          if ($indice == 1) {
-            $data['msg'] = "Novo Ensaio Registado.";
+            $data['msg'] = "Nova Atuação Registado.";
             $this->load->view('includes/msgSucesso_v', $data);
         } else if ($indice == 2) {
             $data['msg'] = "Alterado com Sucesso.";

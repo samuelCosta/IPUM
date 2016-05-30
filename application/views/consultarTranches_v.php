@@ -26,6 +26,7 @@
                                     <tr>
                                         <th>Tranche</th>
                                         <th>Ano</th>
+                                        <th>Fundos</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -33,6 +34,7 @@
                                      <tr>
                                         <th>Tranche</th>
                                         <th>Ano</th>
+                                        <th>Fundos</th>
                                         <th></th>
                                     </tr>
                                 </tfoot>
@@ -43,6 +45,7 @@
                                            
                                             <td><?= $tra->tranche; ?></td>
                                             <td><?= $tra->ano; ?></td>
+                                            <td><?= $tra->fundos.'€'; ?></td>
                                              <?php if($tra->tranche =='1ªTranche'){ ?>
                                             <td> <a data-toggle="tooltip" title="Detalhes" class="btn-lg" href="<?= base_url('Tranche/editarTranche/' . $tra->idApoios . '/' . $tra->ano) ?>"><i class="fa fa-info-circle"></i></a> </td>
                                              <?php }else { ?>

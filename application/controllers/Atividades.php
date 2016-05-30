@@ -161,7 +161,7 @@ class Atividades extends CI_Controller {
         $this->load->view('includes/header_v');
         $this->load->view('historicoAtividades_v', $dados);
         $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
+      //  $this->load->view('includes/footer_v');
     }
 
     //  botão pesquisar-  pesquisar historico dos orgaos socias onde seu estado e 0 
