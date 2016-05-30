@@ -63,7 +63,7 @@
                     <input hidden id="showtoast" value="<?php echo validation_errors(); ?>">
 
                     <div class="box-footer">  
-                        <button type="submit" value="upload" class="btn btn-primary">Submit</button>
+                        <button type="submit" value="upload" class="btn btn-primary">Registar</button>
                     </div>
                     </form>
 

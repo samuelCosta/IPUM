@@ -76,7 +76,7 @@
                     <input hidden id="showtoast" value="<?php echo validation_errors(); ?>">
 
                     <div class="box-footer">  
-                        <button type="submit" name="bt1"value="upload" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="bt1"value="upload" class="btn btn-primary">Atualizar</button>
                         <button type="submit" name="bt1" value="encerrar" class="btn btn-danger" onclick="return confirm('Deseja realmente finalizar a Atuação?');">Encerrar</button>
                         <a class="btn" href="<?php echo site_url('Atuacoes/consultarAtuacoes'); ?>">Cancelar</a>
 

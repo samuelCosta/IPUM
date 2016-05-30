@@ -168,7 +168,6 @@ class Tranche extends CI_Controller {
         //atividade do apoio
         $atividadesApoio = $this->Tranche_m->atividadesDoApoio($idApoios );
 
-
           
         //actuacoes do apoio
         $atuacoes = $this->Tranche_m->atuacoesDoApoio($idApoios );

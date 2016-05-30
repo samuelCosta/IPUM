@@ -67,7 +67,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= base_url(); ?>utilizador/logout" > <span class="hidden-xs">LOGOUT</span></a>                          
+                                <a href="<?= base_url(); ?>utilizador/logout" > <span class="hidden-xs">SAIR</span></a>                          
                             </li>
                         </ul>
                     </div>    

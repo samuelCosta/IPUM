@@ -82,11 +82,17 @@ class Utilizador extends CI_Controller {
     }
 
 //    devolve a lista de todos os utilizadores
-    public function consultarUtilizadoresAtivos() {
+    public function consultarUtilizadoresAtivos($indice=NULL) {
         $this->load->model('utilizador_m');
         $dados['utilizadoresAtivos'] = $this->utilizador_m->get_utilizadoresAtivos();
            
-      
+      if ($indice == 1) {
+            $data['msg'] = "Utilizador foi Ativado.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        } else if ($indice == 2) {
+            $data['msg'] = "Não foi possível ativar o Utilizador.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        }
 
         $this->load->view('includes/header_v');
         $this->load->view('ConsultarUtilizadores_v', $dados);
@@ -110,10 +116,10 @@ class Utilizador extends CI_Controller {
         $result=$this->utilizador_m->ativarUtilizador($id,$ativo);
         if($result == 1){
             
-            redirect('Utilizador/consultarUtilizadoresAtivos');
+            redirect('Utilizador/consultarUtilizadoresAtivos'.'/1');
         }else{
             
-            redirect('Utilizador/consultarUtilizadoresInativos');
+            redirect('Utilizador/consultarUtilizadoresInativos'.'/2');
         }
 
     }

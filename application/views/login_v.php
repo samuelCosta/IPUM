@@ -22,7 +22,7 @@
                 <a href="<?= base_url()?>Welcome"><b>IPU</b>Minho</a>
             </div><!-- /.login-logo -->
             <div class="login-box-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Introduza os seus dados</p>
                 <form action="<?= base_url()?>Welcome/verificaLogin" method="post">
                     <div class="form-group has-feedback">
                         <input type="email" class="form-control" name="email" placeholder="Email">
@@ -36,7 +36,7 @@
                     <div class="row">
                
                         <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
                         </div><!-- /.col -->
                     </div>
                 </form>

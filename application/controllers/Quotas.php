@@ -4,11 +4,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Quotas extends CI_Controller {
 
-    public function index() {
+    public function index($indice=NULL) {
         $this->load->model('quotas_m');
         $dados['quotas'] = $this->quotas_m->consultarQuotas();
 
         $this->load->view('includes/header_v');
+        if ($indice == 1) {
+            $data['msg'] = "Quota Paga com Sucesso.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        } else if ($indice == 2) {
+            $data['msg'] = "Data alterada com Sucesso.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        }
+        
         $this->load->view('consultarQuotas_v', $dados);
         $this->load->view('includes/menu_v');
 //        $this->load->view('includes/footer_v');
@@ -42,17 +50,19 @@ class Quotas extends CI_Controller {
         //    cria outra linha em sistema de quotas 
         if ($this->quotas_m->pagarQuota($id) && $this->quotas_m->criarLinhaQuota($idUtilizador, $dataAviso, $estado)) {
 
-            return redirect('Quotas');
+            redirect('Quotas/index'.'/1');
         }
     }
 
-    public function historicoQuotas() {
+    public function historicoQuotas($indice=null) {
 
         $this->load->model('quotas_m');
-
         $dados['historicoQuotas'] = $this->quotas_m->historicoQuotas();
-
         $this->load->view('includes/header_v');
+          if ($indice == 1) {
+            $data['msg'] = "Quota Paga com Sucesso.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        }
         $this->load->view('historicoQuotas_v', $dados);
         $this->load->view('includes/menu_v');
 //        $this->load->view('includes/footer_v');
@@ -63,10 +73,8 @@ class Quotas extends CI_Controller {
         $this->load->model('quotas_m');
 
 //       insere a data de pagamento 
-        //    cria outra linha em sistema de quotas 
         if ($this->quotas_m->pagarQuota($id)) {
-
-            return redirect('Quotas/historicoQuotas');
+            return redirect('Quotas/historicoQuotas'.'/1');
         }
     }
 
@@ -80,7 +88,7 @@ class Quotas extends CI_Controller {
         $this->load->view('includes/header_v');
         $this->load->view('editarQuota_v', $data);
         $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
+        $this->load->view('includes/footer_v');         
     }
 
     //guarda os dados editados da quota
@@ -111,14 +119,7 @@ class Quotas extends CI_Controller {
 
             $this->quotas_m->guardarAtualizacao($id, $dados);
 //            consultar quotas
-            $dados['quotas'] = $this->quotas_m->consultarQuotas();
-
-            $data['msg'] = "Data Alterada com Sucesso.";
-            $this->load->view('includes/header_v');
-            $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('consultarQuotas_v', $dados);
-            $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
+             redirect('Quotas/index'.'/2');
         }
     }
 
