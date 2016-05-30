@@ -60,7 +60,7 @@
 
 
                                         <td>
-                                            <a class="btn-lg" href="<?= base_url('utilizador/ativarUtilizador/' . $uti->idUtilizador) ?>">Ativar</a>
+                                            <a data-toggle="tooltip" title="Ativar" class="btn-lg" href="<?= base_url('utilizador/ativarUtilizador/' . $uti->idUtilizador) ?>"><i class="fa  fa-user" ></i></a>
                                         </td>
                                     </tr>
 
@@ -120,7 +120,7 @@
                 "info": "_START_ - _END_ de _TOTAL_ registos"
             },
             "columnDefs": [
-                { targets: 3, orderable: false}
+                { targets: 4, orderable: false}
             ]
         });
     });

@@ -157,7 +157,7 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/msgSucesso_v', $data);
             $this->load->view('consultarUtilizadores_v',$dados);
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
+//            $this->load->view('includes/footer_v');
         }
     }
 
@@ -272,7 +272,7 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/msgSucesso_v', $data);
             $this->load->view('ConsultarUtilizadores_v',$dados);
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
+//            $this->load->view('includes/footer_v');
         }
     }
 
@@ -317,7 +317,7 @@ class Utilizador extends CI_Controller {
         $this->load->view('includes/header_v');
         $this->load->view('ConsultarUtilizadores_v', $dados);
         $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
+//        $this->load->view('includes/footer_v');
     }
        //botao pesquisar utilizadores inativos(historicoUtilizadores_v)
         public function pesquisarInativos() {
@@ -397,7 +397,7 @@ class Utilizador extends CI_Controller {
         $this->load->model('utilizador_m');
         $result = $this->utilizador_m->eventosUtilizadores($designacao);
         $dados['tab'] = "tab1";
-        if (count($result) > 0) {
+//        if (count($result) > 0) {
             foreach ($result as $pr){
                 $dados['utilizadores'] = $this->utilizador_m->utilizadoresPorEvento($pr->idEventos);
             }
@@ -406,10 +406,10 @@ class Utilizador extends CI_Controller {
             $this->load->view('presencasEventos_v', $dados);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
-        } else {
-
-            redirect('utilizador/presencasAtuacoes');
-        }
+//        } else {
+//
+//            redirect('utilizador/presencasAtuacoes');
+//        }
     }
  
 //atuacoes num determinado ano 
@@ -420,16 +420,16 @@ class Utilizador extends CI_Controller {
         $result['eventos'] = $this->utilizador_m->eventosPorAno($ano);
 
         $result['tab'] = "tab2";
-        if (count($result) > 0) {
+//        if (count($result) > 0) {
 
             $this->load->view('includes/header_v');
             $this->load->view('presencasEventos_v', $result);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
-        } else {
+//        } else {
 
 //            redirect('utilizador/presencasAtuacoes');
-        }
+   //     }
     }
 
 
@@ -470,7 +470,7 @@ class Utilizador extends CI_Controller {
         $this->load->model('utilizador_m');
         $result = $this->utilizador_m->utilizadorEventos($nome);
         $dados['tab'] = "tab3";
-        if (count($result) > 0) {
+//        if (count($result) > 0) {
             foreach ($result as $pr){
                 $dados['presenca'] = $this->utilizador_m->eventoPorUtilizador($pr->idUtilizador);
             }
@@ -479,13 +479,13 @@ class Utilizador extends CI_Controller {
             $this->load->view('presencasEventos_v', $dados);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
-             } else {
-
-             $this->load->view('includes/header_v');
-            $this->load->view('presencasEventos_v', $dados);
-            $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
-        }
+//             } else {
+//
+//             $this->load->view('includes/header_v');
+//            $this->load->view('presencasEventos_v', $dados);
+//            $this->load->view('includes/menu_v');
+//            $this->load->view('includes/footer_v');
+//        }
     }
 
     

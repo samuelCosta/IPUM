@@ -11,7 +11,7 @@ class Quotas extends CI_Controller {
         $this->load->view('includes/header_v');
         $this->load->view('consultarQuotas_v', $dados);
         $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
+//        $this->load->view('includes/footer_v');
     }
 
     public function pagarQuota($id, $idUtilizador, $dataAviso) {
@@ -55,7 +55,7 @@ class Quotas extends CI_Controller {
         $this->load->view('includes/header_v');
         $this->load->view('historicoQuotas_v', $dados);
         $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
+//        $this->load->view('includes/footer_v');
     }
 
     public function pagarQuotaHistorico($id) {

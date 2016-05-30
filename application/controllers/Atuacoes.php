@@ -40,26 +40,32 @@ class Atuacoes extends CI_Controller {
             $this->load->model('Atuacoes_m');
             $this->Atuacoes_m->do_insert($dados);
             
-            $dados['atuacoes'] = $this->Atuacoes_m->get_atuacoes();
-
-            $data['msg'] = "Sucesso.";
-            $this->load->view('includes/header_v');
-            $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('consultarAtuacoes_v',$dados);
-            $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
+             redirect('atuacoes/consultarAtuacoes/' . '/1', 'refresh');
         }
     }
     
     
-        public function consultarAtuacoes() {
+        public function consultarAtuacoes($indice = null) {
         $this->load->model('Atuacoes_m');
         $dados['atuacoes'] = $this->Atuacoes_m->get_atuacoes();
 
         $this->load->view('includes/header_v');
+         if ($indice == 1) {
+            $data['msg'] = "Novo Ensaio Registado.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        } else if ($indice == 2) {
+            $data['msg'] = "Alterado com Sucesso.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        } else if ($indice == 3) {
+            $data['msg'] = "Atuação encerrada.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        } else if ($indice == 4) {
+            $data['msg'] = "Presenças Marcadas.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        }
         $this->load->view('consultarAtuacoes_v', $dados);
         $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
+//        $this->load->view('includes/footer_v');
     }
     
     
@@ -82,7 +88,7 @@ class Atuacoes extends CI_Controller {
      public function guardarAtualizacao() {
         //strtolower-colocar tudo em minusculo
         //ucwords-colocar iniciais em maiusculo
-
+        if ($this->input->post('bt1') == 'upload') {
         $this->form_validation->set_rules('dataEvento', 'Data', 'required');
         $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords');
         $this->form_validation->set_rules('responsavel', 'Responsavel', 'required|ucwords');
@@ -106,48 +112,86 @@ class Atuacoes extends CI_Controller {
             //insere os dados na base de dados
             $dados = elements(array('dataEvento','localizacao','responsavel','contacto','orcamento','despesa','notas'), $this->input->post());
 
-
             $this->load->model('Atuacoes_m');
             $this->Atuacoes_m->guardarAtualizacao($id, $dados);
 
-            $data['msg'] = "Alterado com Sucesso.";
-            $dados['atuacoes'] = $this->Atuacoes_m->get_atuacoes();
+              redirect('atuacoes/consultarAtuacoes/' . '/2');
+        }
+    }else{
+        
+        $this->form_validation->set_rules('dataEvento', 'Data', 'required');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords');
+        $this->form_validation->set_rules('responsavel', 'Responsavel', 'required|ucwords');
+        $this->form_validation->set_rules('contacto', 'Contacto', 'required');
+        $this->form_validation->set_rules('orcamento', 'Orçamento', 'required');
+        $this->form_validation->set_rules('despesa', 'Despesa', 'required');
+        $this->form_validation->set_rules('totalpresencas', 'Total de Presenças', 'callback_presenca_check');
+
+        
+        $id = $this->input->post('idEventos');
+        
+        if ($this->form_validation->run() == FALSE) {
+
+            $this->load->model('Atuacoes_m');
+            $data['atuacao'] = $this->Atuacoes_m->compararId($id);
+
             $this->load->view('includes/header_v');
-            $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('consultarAtuacoes_v',$dados);
+            $this->load->view('editarAtuacao_v', $data);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
+        } else {
+            //insere os dados na base de dados
+            $dados = elements(array('dataEvento','localizacao','responsavel','contacto','orcamento','despesa','notas'), $this->input->post());
+//          guarda os dados
+            $this->load->model('Atuacoes_m');
+            $this->Atuacoes_m->guardarAtualizacao($id, $dados);
+//          encerra
+            $this->Atuacoes_m->encerrarAtuacao($id);
+
+              redirect('atuacoes/consultarAtuacoes/' . '/3');
         }
+        
+        
     }
     
     
-           public function encerrarAtuacao($id) {
-
-              $this->load->model('Atuacoes_m');
-              
-        
-            if($this->Atuacoes_m->encerrarAtuacao($id)){
-                redirect('Atuacoes/consultarAtuacoes');
-            }else{
-                redirect('Atuacoes/consultarAtuacoes');
-            }
-             
+     }
+     public function presenca_check() {
+        if ($_POST['totalpresencas'] != null) {
+            return true;
+        } else {
+            $this->form_validation->set_message('presenca_check', 'É necessario primeiro marcar as presenças ');
+            return false;
         }
+    }
+
+//    public function encerrarAtuacao($id) {
+//
+//              $this->load->model('Atuacoes_m');
+//              
+//        
+//            if($this->Atuacoes_m->encerrarAtuacao($id)){
+//                redirect('Atuacoes/consultarAtuacoes');
+//            }else{
+//                redirect('Atuacoes/consultarAtuacoes');
+//            }
+//             
+//        }
         
         
         
   // boatao pesquisar (pesquisa por atuacao onde o seu estado e 1)
-      public function pesquisar() {
-
-        $this->load->model('Atuacoes_m');
-        $dados['atuacoes'] = $this->Atuacoes_m->pesquisar_atuacoes();
-
-        $this->load->view('includes/header_v');
-        $this->load->view('consultarAtuacoes_v', $dados);
-        $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
-      }
-      
+//      public function pesquisar() {
+//
+//        $this->load->model('Atuacoes_m');
+//        $dados['atuacoes'] = $this->Atuacoes_m->pesquisar_atuacoes();
+//
+//        $this->load->view('includes/header_v');
+//        $this->load->view('consultarAtuacoes_v', $dados);
+//        $this->load->view('includes/menu_v');
+//        $this->load->view('includes/footer_v');
+//      }
+//      
         //    devolve a lista de todos os Eventos que ja foram finalizados
     public function historicoAtuacoes() {
         $this->load->model('Atuacoes_m');
@@ -156,7 +200,7 @@ class Atuacoes extends CI_Controller {
         $this->load->view('includes/header_v');
         $this->load->view('historicoAtuacoes_v', $dados);
         $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
+//        $this->load->view('includes/footer_v');
     }
     
     //  botão pesquisar-  pesquisar historico das atuacoes onde seu estado e 0 
@@ -200,7 +244,7 @@ class Atuacoes extends CI_Controller {
          $this->Atuacoes_m->totalPresencas($total,$dado);
          
         }
-        redirect('Atuacoes/consultarAtuacoes');
+        redirect('Atuacoes/consultarAtuacoes'. '/4');
     }
     
     

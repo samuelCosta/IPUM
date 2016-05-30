@@ -18,11 +18,11 @@
         toastr.options.closeButton = true;
         $(document).ready(function () {
             
-            var shortCutFunction = "success";
+            var shortCutFunction = "error";
             
             
             var msg =  "<?= $msg; ?>";
-            var title = "Sucesso";
+            var title = "Erro";
   
             
           if(!msg ){

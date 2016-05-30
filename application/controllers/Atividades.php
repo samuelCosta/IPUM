@@ -34,38 +34,41 @@ class Atividades extends CI_Controller {
 
             $this->load->model('Atividades_m');
             $this->Atividades_m->do_insert($dados);
-            $dados['atividades'] = $this->Atividades_m->get_atividades();
-
-            $data['msg'] = "Novo Atividade Registada.";
-            $this->load->view('includes/header_v');
-            $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('consultarAtividades_v',$dados);
-            $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
+            redirect('atividades/consultarAtividades' . '/3');
         }
     }
 
-    public function consultarAtividades() {
+    public function consultarAtividades($indice = NULL) {
         $this->load->model('Atividades_m');
         $dados['atividades'] = $this->Atividades_m->get_atividades();
 
         $this->load->view('includes/header_v');
+        if ($indice == 1) {
+            $data['msg'] = "Atualização feita com Sucesso.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        } else if ($indice == 2) {
+            $data['msg'] = "Atividade encerrada com Sucesso.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        } else if ($indice == 3) {
+            $data['msg'] = "Nova Atividade Registada.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        }
         $this->load->view('consultarAtividades_v', $dados);
         $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
+//        $this->load->view('includes/footer_v');
     }
 
-// para o botao pesquisar
-    public function pesquisar() {
-
-        $this->load->model('Atividades_m');
-        $dados['atividades'] = $this->Atividades_m->pesquisar_atividades();
-
-        $this->load->view('includes/header_v');
-        $this->load->view('consultarAtividades_v', $dados);
-        $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
-    }
+//// para o botao pesquisar
+//    public function pesquisar() {
+//
+//        $this->load->model('Atividades_m');
+//        $dados['atividades'] = $this->Atividades_m->pesquisar_atividades();
+//
+//        $this->load->view('includes/header_v');
+//        $this->load->view('consultarAtividades_v', $dados);
+//        $this->load->view('includes/menu_v');
+//        $this->load->view('includes/footer_v');
+//    }
 
     public function atualizar($id = null) {
 
@@ -111,14 +114,8 @@ class Atividades extends CI_Controller {
 
                 $this->load->model('Atividades_m');
                 $this->Atividades_m->guardarAtualizacao($id, $dados);
-                
-                $dados['atividades'] = $this->Atividades_m->get_atividades();
-                $data['msg'] = "Alterado com Sucesso.";
-                $this->load->view('includes/header_v');
-                $this->load->view('includes/msgSucesso_v', $data);
-                $this->load->view('consultarAtividades_v',$dados);
-                $this->load->view('includes/menu_v');
-                $this->load->view('includes/footer_v');
+
+                redirect('atividades/consultarAtividades' . '/1');
             }
         } else {
 
@@ -150,9 +147,8 @@ class Atividades extends CI_Controller {
 
                 $this->load->model('Atividades_m');
                 $this->Atividades_m->guardarAtualizacao($id, $dados);
-                $this->load->model('Atividades_m');
                 $this->Atividades_m->encerrarAtividade($id);
-                redirect('Atividades/consultarAtividades');
+                redirect('atividades/consultarAtividades' . '/2');
             }
         }
     }

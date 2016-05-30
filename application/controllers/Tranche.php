@@ -39,7 +39,7 @@ class Tranche extends CI_Controller {
 
     public function registarTranche() {
          
-       $this->form_validation->set_rules('ano', 'Ano', 'callback_vericaTranche');
+       $this->form_validation->set_rules('ano', 'Ano', 'required|callback_vericaTranche');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
@@ -60,18 +60,26 @@ class Tranche extends CI_Controller {
         );
              $this->Tranche_m->do_insert($dados2);   
 
-             redirect('Tranche/consultarTranches','refresh');
+             redirect('Tranche/consultarTranches'.'/1','refresh');
         }
     }
 
-    public function consultarTranches() {
+    public function consultarTranches($indice = null) {
         $this->load->model('Tranche_m');
         $dados['tranches'] = $this->Tranche_m->get_tranches();
 
         $this->load->view('includes/header_v');
+         if ($indice == 1) {
+            $data['msg'] = "Nova Tranche Registada.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        } else if ($indice == 2) {
+            $data['msg'] = "Alterado com Sucesso.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        }
+        
         $this->load->view('consultarTranches_v', $dados);
         $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
+//        $this->load->view('includes/footer_v');
     }
 
     public function associarTranche($idApoios,$ano) {
@@ -241,7 +249,8 @@ class Tranche extends CI_Controller {
         $dados = elements(array('fundos'), $this->input->post());
         //insere os dados na base de dados
         $data = $this->Tranche_m->guardarAtualizacao($id, $dados);
-        redirect('Tranche/consultarTranches');
+   
+         redirect('Tranche/consultarTranches'.'/2');
     }
     
     

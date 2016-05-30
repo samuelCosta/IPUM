@@ -66,12 +66,7 @@
                                             </tr>
 
                                         <?php }
-                                    } else { ?>
-                                            <tr>
-                                        <td>  Não existe resultados </td> 
-                                        <td></td>
-                                            </tr>
-                                <?php } ?>
+                                    } else {  } ?>
                                             
                                         </tbody>
                
@@ -133,13 +128,7 @@
                                                         </tr>
 
                                                     <?php }
-                                                } else {
-                                                    ?>
-                                                        <tr>
-                                                    <td>  Não existe resultados </td>  
-                                                    <td></td>
-                                                        </tr>
-                                                <?php } ?>
+                                                } else { } ?>
                                     </tbody>
 
                                     </table>
@@ -192,11 +181,7 @@
 
                                                         </tr>
 
-                                                    <?php }
-                                                } else {
-                                                    ?>
-                                                    <td>  Não existe resultados </td>                                      
-                                                <?php } ?>
+                                                    <?php } } else {} ?>
 
                                     </table>
                                 </form>
@@ -356,7 +341,7 @@
         $(".submit").click(function (event) {
             event.preventDefault();
 
-            var user_name = $(this).attr('href');
+            var id = $(this).attr('href');
            
 
 //var user_name = $("input#name").val();
@@ -365,7 +350,7 @@
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "utilizador/verDetalhesEvento",
                 dataType: 'json',
-                data: {name: user_name, pwd: password},
+                data: {name: id},
                 success: function (res) {
 
                     html = "<table class='table table-hover'><thead>";
@@ -385,36 +370,3 @@
     });
 
 </script>
-<script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.1.4.min.js' ?>"></script>
- <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/plugins/datatables/jquery.datatables.css"/>
-<script src="<?php echo base_url() . 'assets/plugins/datatables/jquery.dataTables.min.js' ?>"></script>
-<script src="<?php echo base_url() . 'assets/plugins/datatables/dataTables.bootstrap.min.js' ?>"></script>
-
-<script>
-      $(function () {
-    
-        $('#evetos').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-    </script>
-    
-    <script>
-      $(function () {
-      
-        $('#ao').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-    </script>
-    
