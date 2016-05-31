@@ -37,15 +37,6 @@ class Material_m extends CI_Model {
         return $this->db->update('stock_produto', $data);
     }
     
-    public function get_material_id($id) {
-        $this->db->select('sp.*');
-        $this->db->from('stock_produto sp');
-        $this->db->where('sp.id', $id);
-
-        $query = $this->db->get();
-        return $query->row_array();
-    }
-
     public function get_material($id) {
         $query = $this->db->get_where('stock_produto', array('id' => $id));
         return $query->row_array();

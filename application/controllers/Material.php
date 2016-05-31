@@ -45,7 +45,7 @@ class Material extends CI_Controller{
         $this->load->model('tiposelecao_m');
 
 
-        $data['edit_data'] = $this->material_m->get_material_id($id);
+        $data['edit_data'] = $this->material_m->get_material($id);
         $data['tipos_material'] = $this->tiposelecao_m->get_tiposelecao('TIPO_MATERIAL');
 
         

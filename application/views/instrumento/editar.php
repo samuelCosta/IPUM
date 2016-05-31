@@ -57,31 +57,11 @@
                             <div class="col-md-2 form-group">
                                 <label> Estado </label>
                                 <div class="row">
-                                    <label class="radio-inline"><input type="radio" name="estado" value="1" class="minimal" <?php
-                                        if ($edit_data['estado'] === '1') {
-                                            echo 'checked';
-                                        }
-                                        ?>/>1</label>
-                                    <label class="radio-inline"><input type="radio" name="estado" value="2" class="minimal" <?php
-                                        if ($edit_data['estado'] === '2') {
-                                            echo 'checked';
-                                        }
-                                        ?>/>2</label>
-                                    <label class="radio-inline"><input type="radio" name="estado" value="3" class="minimal" <?php
-                                        if ($edit_data['estado'] === '3') {
-                                            echo 'checked';
-                                        }
-                                        ?>/>3</label>
-                                    <label class="radio-inline"><input type="radio" name="estado" value="4" class="minimal" <?php
-                                        if ($edit_data['estado'] === '4') {
-                                            echo 'checked';
-                                        }
-                                        ?>/>4</label>
-                                    <label class="radio-inline"><input type="radio" name="estado" value="5" class="minimal" <?php
-                                        if ($edit_data['estado'] === '5') {
-                                            echo 'checked';
-                                        }
-                                        ?>/>5</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="1" class="minimal" <?php if ($edit_data['estado'] === '1') {echo 'checked';}?>/>1</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="2" class="minimal" <?php if ($edit_data['estado'] === '2') {echo 'checked';}?>/>2</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="3" class="minimal" <?php if ($edit_data['estado'] === '3') {echo 'checked';}?>/>3</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="4" class="minimal" <?php if ($edit_data['estado'] === '4') {echo 'checked';}?>/>4</label>
+                                    <label class="radio-inline"><input type="radio" name="estado" value="5" class="minimal" <?php if ($edit_data['estado'] === '5') {echo 'checked';}?>/>5</label>
                                 </div>
                             </div>
                         </div>
