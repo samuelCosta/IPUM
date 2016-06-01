@@ -30,7 +30,7 @@
                                         <th>Nome</th>
                                         <th>Data</th>
                                         <th>Localização</th>
-                                        <th>Pessoa Responsavel</th>
+                                        <th>Cliente/Responsável</th>
                                         <th>Contacto</th>
                                         <th>Orçamento</th>
                                         <th>Presenças</th>
@@ -42,7 +42,7 @@
                                         <th>Nome</th>
                                         <th>Data</th>
                                         <th>Localização</th>
-                                        <th>Pessoa Responsavel</th>
+                                        <th>Cliente/Responsável</th>
                                         <th>Contacto</th>
                                         <th>Orçamento</th>
                                         <th></th>
@@ -78,9 +78,9 @@
 
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 1.0.0
+        <b>Versão</b> 1.0.0
     </div>
-    <strong>INOV Webdesign &copy; 2015-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+    <strong>INOV Webdesign &copy; 2015-2016 <a href="https://www.uminho.pt/PT">Universidade do Minho</a></strong>.
 </footer>
 
 <script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.1.4.min.js' ?>"></script>

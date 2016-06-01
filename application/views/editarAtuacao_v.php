@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>Pessoa responsavel pela Atuação</label>
+                            <label>Cliente/Responsável</label>
                             <input type="text" class="form-control" name="responsavel" value="<?= $atuacao[0]->responsavel; ?>">
                         </div>
 

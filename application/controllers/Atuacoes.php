@@ -21,7 +21,7 @@ class Atuacoes extends CI_Controller {
         $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords');
         $this->form_validation->set_rules('orcamento', 'Orçamento', 'required');
         $this->form_validation->set_rules('responsavel', 'Responsável', 'required|ucwords');
-        $this->form_validation->set_rules('contacto', 'Contacto', 'required|numeric|exact_length[9]');
+        $this->form_validation->set_rules('contacto', 'Contacto', 'required');
         $this->form_validation->set_rules('designacao', 'Designação', 'required|ucwords|is_unique[eventos.designacao]');
 
         

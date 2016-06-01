@@ -68,7 +68,7 @@
                         <div class="col-md-6 form-group">
                             
                             <table class="table table-hover">
-                                <tr> <th>Eliminar as Atividades </th> 
+                                <tr> <th>Atividades Associadas </th> 
                                   
                                 </tr>
 
@@ -88,7 +88,7 @@
 
                            <div class="col-md-6 form-group">                     
                                <table class="table table-hover">
-                                <tr> <th>Associar as Atividades </th> 
+                                <tr> <th>Atividades não Associadas </th> 
                                   
                                 </tr>
 
@@ -112,7 +112,7 @@
                             
                         <div class="col-md-6 form-group">                     
                             <table class="table table-hover">
-                                <tr> <th>Eliminar as Atuações</th> </tr>
+                                <tr> <th>Atuações Associadas</th> </tr>
                                 <?php foreach ($atuacoesApoio as $atu) { ?>
                                     <tr>
                                         <td><?= $atu->designacao; ?>  </td>
@@ -125,7 +125,7 @@
                             
                               <div class="col-md-6 form-group">                     
                             <table class="table table-hover">
-                                <tr> <th>Associar as Atuacoes  </th> </tr>
+                                <tr> <th>Atuações não Associadas  </th> </tr>
                                 <?php foreach ($atuacoesNaoApoio as $atu) { ?>
                                     <tr>
                                         <td><?= $atu->designacao; ?>  </td>

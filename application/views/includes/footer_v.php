@@ -3,7 +3,7 @@
     <div class="pull-right hidden-xs">
         <b>Versão</b> 1.0.0
     </div>
-    <strong>INOV Webdesign &copy; 2015-2016 <a href="https://www.uminho.pt/PT">Universidade do Minho</a>.</strong>.
+    <strong>INOV Webdesign &copy; 2015-2016 <a href="https://www.uminho.pt/PT">Universidade do Minho</a></strong>.
 </footer>
 
 <!-- jQuery 2.1.4 -->

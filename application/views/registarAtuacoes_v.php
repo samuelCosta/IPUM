@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label>Pessoa Responsável Pela Atuação</label>
+                            <label>Cliente/Responsável</label>
                             <input type="text" class="form-control"  name="responsavel" value="<?php echo set_value('responsavel'); ?>" placeholder="Introduza a pessoa responsavel...">
                         </div>
                         

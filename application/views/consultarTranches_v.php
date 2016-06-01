@@ -68,9 +68,9 @@
 
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 1.0.0
+        <b>Versão</b> 1.0.0
     </div>
-    <strong>INOV Webdesign &copy; 2015-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+    <strong>INOV Webdesign &copy; 2015-2016 <a href="https://www.uminho.pt/PT">Universidade do Minho</a></strong>.
 </footer>
 
 <script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.1.4.min.js' ?>"></script>
@@ -86,7 +86,7 @@
             "initComplete": function () {
                 this.api().columns().every(function () {
                     var column = this;
-                    if (column.index() < 2) {
+                    if (column.index() < 3) {
                         var select = $('<select><option value=""></option></select>')
                                 .appendTo($(column.footer()).empty())
                                 .on('change', function () {
@@ -115,7 +115,7 @@
                 }
                 },
             "columnDefs": [
-                {targets: 2, orderable: false}
+                {targets: 3, orderable: false}
             ]
         });
     });

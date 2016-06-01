@@ -29,6 +29,7 @@
                                         <th>Orçamento</th>   
                                         <th>Participantes</th>
                                         <th>Total de Gastos</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -40,6 +41,7 @@
                                         <th>Orçamento</th>
                                         <th>Participantes</th>
                                         <th>Total de Gastos</th>
+                                        <th></th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -52,6 +54,10 @@
                                             <td><?= $atu->orcamento . '€'; ?></td>
                                             <td><?= $atu->participantes; ?></td>
                                             <td><?= $atu->totalGastos . '€'; ?></td>
+                                            <td><a  href="<?= $atu->notas; ?>" type="submit" class="submit btn-lg" data-target="#myModal" data-toggle="modal" value="Ver Detalhes" class="input_box"  > <i class="fa fa-info"></i> </a>
+
+
+                                            </td>
                                         </tr>
                                     <?php } ?>
 
@@ -64,13 +70,32 @@
             </div>
     </section>
 </div><!-- /.content-wrapper -->
+<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog">       
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="myModalLabel"><strong>Notas da Atividade: </strong></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div style="margin: 20px 0px 0px 20px"  id="divResultado">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal" type="button">Fechar</button>
 
+            </div>
+        </div>      
+    </div>
+</div>    
 
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 1.0.0
+        <b>Versão</b> 1.0.0
     </div>
-    <strong>INOV Webdesign &copy; 2015-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+    <strong>INOV Webdesign &copy; 2015-2016 <a href="https://www.uminho.pt/PT">Universidade do Minho</a></strong>.
 </footer>
 
 <script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.1.4.min.js' ?>"></script>
@@ -80,7 +105,8 @@
 <script src="<?php echo base_url() . 'assets/plugins/slimScroll/jquery.slimscroll.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/plugins/fastclick/fastclick.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
-<script>
+
+<script  type="text/javascript">
     $(function () {
         $("#historicoAtividades").DataTable({
             "initComplete": function () {
@@ -115,15 +141,23 @@
                 }
             },
             "columnDefs": [
-                {targets: 4, orderable: false}
+                {targets: 7, orderable: false}
             ]
         });
     });
 </script>
 
+<script>
+    $(document).ready(function () {
+        $(".submit").click(function (event) {
+
+            event.preventDefault();
 
 
+            var id = $(this).attr('href');
 
+            document.getElementById("divResultado").innerHTML = "<p>" + id + "</p>";
 
-
-
+        });
+    });
+</script>
