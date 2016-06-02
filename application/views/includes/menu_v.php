@@ -26,11 +26,11 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="<?= base_url() ?>utilizador/presencasAtuacoes"><i class="fa fa-circle-o"></i>Presenças</a></li>
-                    <li><a href="<?= base_url() ?>Quotas"><i class="fa fa-circle-o"></i> Quotas</a></li>
+                    <li><a href="<?= base_url() ?>Quotas"><i class="fa fa-circle-o"></i>Quotas</a></li>
                  
 
                     <li class="active">
-                        <a href="#"><i class="fa fa-circle-o"></i>Elementos <i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-circle-o"></i>Elementos<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
                             <li><a href="<?= base_url() ?>utilizador/criarUtilizador"><i class="fa fa-circle-o"></i>Registar</a></li>
                             <li><a href="<?= base_url() ?>utilizador/consultarUtilizadoresAtivos"><i class="fa fa-circle-o"></i>Consultar</a></li>

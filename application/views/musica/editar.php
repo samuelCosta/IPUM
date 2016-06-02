@@ -41,10 +41,6 @@
                         </div>
                         </div>
 
-
-
-
-                    </div><!-- /.box-body -->
                     <input hidden id="showtoast" value="<?php echo validation_errors(); ?>">
 
                     <div class="box-footer">  
@@ -53,6 +49,7 @@
                     </div>
                     </form>
 
+                    </div><!-- /.box-body -->
                 </div><!-- /.box -->    
             </div>    
 
@@ -61,6 +58,14 @@
     </section>
 </div><!-- /.content-wrapper -->
 
+
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Versão</b> 1.0.0
+    </div>
+    <strong>INOV Webdesign &copy; 2015-2016 <a href="https://www.uminho.pt/PT">Universidade do Minho</a></strong>.
+</footer>
+
 <script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.2.0.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/bootstrap/js/bootstrap.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/plugins/select2/select2.full.min.js' ?>"></script>
@@ -68,7 +73,6 @@
 <script src="<?php echo base_url() . 'assets/plugins/iCheck/icheck.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/plugins/fastclick/fastclick.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="<?= base_url(); ?>assets/toastr.js"></script>
 <link href="<?= base_url(); ?>assets/build/toastr.css" rel="stylesheet" type="text/css" />  
 

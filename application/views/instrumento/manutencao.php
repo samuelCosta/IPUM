@@ -75,7 +75,7 @@
                             </div>
                         </div>
                     </div><!-- /.box-body -->
-                    <p> <?php echo validation_errors(); ?></p>
+                    <input hidden id="showtoast" value="<?php echo validation_errors(); ?>">
                     <div class="box-footer">
                         <button type="submit" value="upload" class="btn btn-primary">Guardar</button>
                         <a class="btn" href="<?php echo site_url('instrumento'); ?>">Cancelar</a>
@@ -98,6 +98,64 @@
 <script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
 
 
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Versão</b> 1.0.0
+    </div>
+    <strong>INOV Webdesign &copy; 2015-2016 <a href="https://www.uminho.pt/PT">Universidade do Minho</a></strong>.
+</footer>
+
+<script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.1.4.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/bootstrap/js/bootstrap.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/select2/select2.full.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/slimScroll/jquery.slimscroll.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/iCheck/icheck.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/fastclick/fastclick.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
+<script src="<?= base_url(); ?>assets/toastr.js"></script>
+<link href="<?= base_url(); ?>assets/build/toastr.css" rel="stylesheet" type="text/css" />  
+
+
+<script type="text/javascript">
+
+
+                            toastr.options.closeButton = true;
+                            $(document).ready(function () {
+
+                                var shortCutFunction = "warning";
+//            var erro = "error";
+
+                                var msg = $('#showtoast').val();
+                                var title = "AVISO!";
+
+
+                                if (!msg) {
+                                } else {
+
+                                    toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+
+                                }
+
+                            });
+
+</script>
+<script>
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+    });
+
+    $(document).ready(function () {
+        $('#armazenado').on('ifChanged', function () {
+            $('#localizacao').show();
+            $('#elemento').hide();
+        });
+        $('#emprestado').on('ifChanged', function () {
+            $('#elemento').show();
+            $('#localizacao').hide();
+        });
+    });
+</script>
 
 
 

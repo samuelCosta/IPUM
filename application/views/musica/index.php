@@ -74,13 +74,16 @@
         </section>
 </div>
 
+
+
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Versão</b> 0.0.1
+        <b>Versão</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2016.</strong> All rights reserved.
+    <strong>INOV Webdesign &copy; 2015-2016 <a href="https://www.uminho.pt/PT">Universidade do Minho</a></strong>.
 </footer>
-</div>
+
+
 <script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.1.4.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/bootstrap/js/bootstrap.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/plugins/slimScroll/jquery.slimscroll.min.js' ?>"></script>
