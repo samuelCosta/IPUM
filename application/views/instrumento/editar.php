@@ -33,11 +33,7 @@
                                 <select class="form-control" name="tipo_instrumento" disabled="true">
                                     <option value="">Selecione uma opção</option>
                                     <?php foreach ($tipos_instrumento as $tipo): ?>
-                                        <option value="<?php echo $tipo['id']; ?>" <?php
-                                        if ($edit_data['tipo_selecao_id'] === $tipo['id']) {
-                                            echo 'selected';
-                                        }
-                                        ?>><?php echo $tipo['descricao']; ?></option>
+                                        <option value="<?php echo $tipo['id']; ?>" <?php if ($edit_data['tipo_selecao_id'] === $tipo['id']) { echo 'selected';} ?> ><?php echo $tipo['descricao']; ?></option>
                                             <?php endforeach; ?>
                                 </select>
                                 <input type="hidden" name="tipo_instrumento_hidden" value="<?php echo $edit_data['tipo_selecao_id']; ?>"/>
@@ -69,20 +65,20 @@
                             <div class="col-md-2" id="choice">
                                 <label>Localização</label>
                                 <div class="row">
-                                    <label class="radio-inline"><input type="radio" name="local" id="armazenado" value="armazenado" class="minimal"/> Armazém </label>
-                                    <label class="radio-inline"><input type="radio" name="local" id="emprestado" value="emprestar" class="minimal"/> Emprestado </label>
+                                    <label class="radio-inline"><input type="radio" name="local" id="armazenado" value="armazenado" class="minimal" <?php if ($edit_data['localizacao'] != '') {echo 'checked';}?> />Armazém</label>
+                                    <label class="radio-inline"><input type="radio" name="local" id="emprestado" value="emprestar" class="minimal" <?php if ($edit_data['elemento'] > 0) {echo 'checked';}?> />Emprestado</label>
                                 </div>
                             </div>
-                            <div id="localizacao" style="display: none" class="col-md-4 form-group">
+                            <div id="localizacao" style="<?php if ($edit_data['elemento'] > 0) {echo 'display: none';}?>" class="col-md-4 form-group">
                                 <label>Local de Armazenamento</label>
-                                <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Insira o Local de Armazenamento" />
+                                <input type="text" class="form-control" value="<?php echo $edit_data['localizacao']; ?>" name="localizacao" placeholder="Insira o Local de Armazenamento" />
                             </div>
-                            <div id="elemento" style="display: none" class="col-md-4 form-group">
+                            <div id="elemento" style="<?php if ($edit_data['localizacao'] != '') {echo 'display: none';}?>" class="col-md-4 form-group">
                                 <label>Elemento</label>
                                 <select class="form-control" name="elemento" >
                                     <option value="">Selecione uma opção</option>
                                     <?php foreach ($elementos as $elemento): ?>
-                                        <option value="<?php echo $elemento['idUtilizador']; ?>"><?php echo $elemento['nome']; ?></option>
+                                        <option value="<?php echo $elemento['idUtilizador']; ?>" <?php if ($edit_data['elemento'] === $elemento['idUtilizador']) { echo 'selected';} ?> ><?php echo $elemento['nome']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -159,10 +155,12 @@
     $(document).ready(function () {
         $('#armazenado').on('ifChanged', function () {
             $('#localizacao').show();
+            $("#elemento option[value='']").attr('selected', true);
             $('#elemento').hide();
         });
         $('#emprestado').on('ifChanged', function () {
             $('#elemento').show();
+            $('#localizacao').val("");
             $('#localizacao').hide();
         });
     });

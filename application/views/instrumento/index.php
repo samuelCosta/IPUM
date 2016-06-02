@@ -53,7 +53,7 @@
                                         ?>">
                                                 <?php echo $instrumento['estado']; ?>
                                         </td>
-                                        <td><?php if ($instrumento['localizacao'] != NULL){ echo $instrumento['localizacao'];} else { echo $instrumento['elemento']; } ?></td>
+                                        <td><?php if ($instrumento['localizacao'] != NULL){ echo $instrumento['localizacao'];} else { echo $instrumento['nome_elemento']; } ?></td>
                                         <td>
                                             <a data-toggle="tooltip" title="Editar" class="btn-lg"  href="<?php echo site_url('instrumento/editar/' . $instrumento['id']); ?>">
                                                 <i class="fa fa-edit"></i>
