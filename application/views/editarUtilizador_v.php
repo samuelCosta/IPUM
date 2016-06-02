@@ -238,18 +238,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        
-                        
-                        
+                                                                      
                       <div class="col-md-12 form-group">
                            <label>Nova Password: </label>                        
-                           <input class="form-control"type="text"  type="hidden" id="Npass" name="password" >                           
+                           <input class="form-control" type="text"  readonly id="Npass" name="password" >                           
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-default" data-dismiss="modal" type="button">Fechar</button>
-                    <button class="btn btn-primary" id="enviarsocio" type="submit">Enviar</button>
+                    <button class="btn btn-primary"  type="submit">Enviar</button>
                 </div>
             </div>
         </form>
