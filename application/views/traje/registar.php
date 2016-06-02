@@ -78,7 +78,7 @@
 
 
                     </div><!-- /.box-body -->
-                    <p> <?php echo validation_errors(); ?></p>
+                    <input hidden id="showtoast" value="<?php echo validation_errors(); ?>">
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Registar</button>
@@ -101,9 +101,31 @@
 <script src="<?php echo base_url() . 'assets/plugins/iCheck/icheck.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/plugins/fastclick/fastclick.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="<?= base_url(); ?>assets/toastr.js"></script>
+<link href="<?= base_url(); ?>assets/build/toastr.css" rel="stylesheet" type="text/css" />  
 
 
+<script type="text/javascript">
 
 
+                            toastr.options.closeButton = true;
+                            $(document).ready(function () {
+
+                                var shortCutFunction = "warning";
+//            var erro = "error";
+
+                                var msg = $('#showtoast').val();
+                                var title = "AVISO!";
 
 
+                                if (!msg) {
+                                } else {
+
+                                    toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+
+                                }
+
+                            });
+
+</script>

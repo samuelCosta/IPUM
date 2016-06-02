@@ -15,6 +15,14 @@ class Material extends CI_Controller{
         $this->load->view('includes/menu_v');
     }
     
+    public function historico() {
+        $data['materiais'] = $this->material_m->get_historico_materiais();
+        
+        $this->load->view('includes/header_v');
+        $this->load->view('material/historico', $data);
+        $this->load->view('includes/menu_v');
+    }
+    
     public function registar() {
         $this->load->helper('form');
         $this->load->library('form_validation');

@@ -5,6 +5,17 @@ class Material_m extends CI_Model {
     public function get_materiais() {
         $this->db->select('sp.*, ts.descricao as tipo_material_descricao');
         $this->db->from('stock_produto sp');
+        $this->db->having('quantidade >', 0);
+        $this->db->join('tipo_selecao ts', 'sp.ts_tipo_material_id=ts.id', 'left');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function get_historico_materiais() {
+        $this->db->select('sp.*, ts.descricao as tipo_material_descricao');
+        $this->db->from('stock_produto sp');
+        $this->db->having('quantidade = 0');
         $this->db->join('tipo_selecao ts', 'sp.ts_tipo_material_id=ts.id', 'left');
 
         $query = $this->db->get();

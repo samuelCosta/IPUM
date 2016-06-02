@@ -11,7 +11,6 @@
         <section class="content">
             <?php foreach ($musicas as $musica) : ?>
                 <?php if ($musica['parent_id'] === NULL): ?>
-                    <div class="row">
                         <div class="col-md-6">
                             <!-- Box Comment -->
 
@@ -70,7 +69,6 @@
                             </div>
                             <!-- /.box -->
                         </div>
-                    </div>
                 <?php endif; ?>
             <?php endforeach; ?>
         </section>

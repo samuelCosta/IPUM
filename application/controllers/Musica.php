@@ -35,7 +35,6 @@ class Musica extends CI_Controller {
             $this->load->view('includes/header_v');
             $this->load->view('musica/registar');
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
         } else {
             $this->musica_m->registar($id);
             redirect('musica', 'refresh');
@@ -56,7 +55,6 @@ class Musica extends CI_Controller {
             $this->load->view('includes/header_v');
             $this->load->view('musica/editar', $data);
             $this->load->view('includes/menu_v');
-            $this->load->view('includes/footer_v');
         } else {
             $this->musica_m->editar($id);
             redirect('musica', 'refresh');

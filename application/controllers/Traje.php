@@ -24,6 +24,14 @@ class Traje extends CI_Controller {
         $this->load->view('includes/menu_v');
     }
     
+    public function historico() {
+        $data['pecas'] = $this->traje_m->get_historico_pecas();
+
+        $this->load->view('includes/header_v');
+        $this->load->view('traje/historico', $data);
+        $this->load->view('includes/menu_v');
+    }
+    
     public function registar() {
         $this->load->helper('form');
         $this->load->library('form_validation');

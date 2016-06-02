@@ -16,11 +16,13 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Stock</h3>
-                        <a  data-toggle="tooltip" title="Ver Histórico" href="<?php echo site_url('merchandising/historico/'); ?>" class="btn-lg pull-right" ><i class="fa fa-info pull-right" ></i> </a>
+                        <h3 class="box-title">Histórico</h3>
+                        <a data-toggle="tooltip" title="Retroceder" class="btn-lg" href="<?php echo site_url('material'); ?>">
+                            <i class="fa fa-arrow-left"></i>
+                        </a>
                     </div>
                     <div class="box-body">
-                        <table id="stock_dt" class="table table-bordered table-hover">
+                        <table id="materiais_dt" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>Tipo</th>
@@ -28,7 +30,6 @@
                                     <th>Custo Unitário</th>
                                     <th>Data de Compra</th>
                                     <th>Localização</th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -36,30 +37,18 @@
                                     <th>Tipo</th>
                                     <th>Quantidade</th>
                                     <th>Custo Unitário</th>
-                                    <th>Localização</th>
                                     <th>Data de Compra</th>
-                                    <th></th>
+                                    <th>Localização</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <?php foreach ($merchandising_stock as $stock): ?>
+                                <?php foreach ($materiais as $mat): ?>
                                     <tr>
-                                        <td><?php echo $stock['tipo_selecao_descricao']; ?></td>
-                                        <td><?php echo $stock['quantidade']; ?></td>
-                                        <td><?php echo $stock['custo_uni'] . '€'; ?></td>
-                                        <td><?php echo $stock['data_compra']; ?></td>
-                                        <td><?php echo $stock['localizacao']; ?></td>
-                                        <td>
-                                            <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?php echo site_url('merchandising/editar/' . $stock['id']); ?>">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a data-toggle="tooltip" title="Eliminar" class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('merchandising/delete/' . $stock['id']); ?>');" deleteConfirm href="#">
-                                                <i class="fa fa-trash-o"></i>
-                                            </a>
-                                            <a data-toggle="tooltip" title="Atribuir Merchandising" class="btn-lg" href="<?php echo site_url('merchandising/atribuir_merchandising/' . $stock['id']); ?>">
-                                                <i class="fa fa-share-square-o"></i>
-                                            </a>
-                                        </td>
+                                        <td><?php echo $mat['tipo_material_descricao']; ?></td>
+                                        <td><?php echo $mat['quantidade']; ?></td>
+                                        <td><?php echo $mat['custo_uni'] . '€'; ?></td>
+                                        <td><?php echo $mat['data_compra']; ?></td>
+                                        <td><?php echo $mat['localizacao']; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -73,6 +62,11 @@
 
 
 
+
+
+
+
+
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
         <b>Version</b> 1.0.0
@@ -80,7 +74,7 @@
     <strong>INOV Webdesign &copy; 2015-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
 </footer>
 
-<script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.1.4.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.2.0.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/bootstrap/js/bootstrap.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/plugins/datatables/jquery.dataTables.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/plugins/datatables/dataTables.bootstrap.min.js' ?>"></script>
@@ -89,23 +83,20 @@
 <script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
 <script>
                                                 $(function () {
-                                                    $("#stock_dt").DataTable({
+                                                    $("#materiais_dt").DataTable({
                                                         "initComplete": function () {
                                                             this.api().columns().every(function () {
                                                                 var column = this;
-                                                                if (column.index() < 5) {
                                                                     var select = $('<select><option value=""></option></select>')
                                                                             .appendTo($(column.footer()).empty())
                                                                             .on('change', function () {
                                                                                 var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
                                                                                 column.search(val ? '^' + val + '$' : '', true, false).draw();
                                                                             });
-
                                                                     column.data().unique().sort().each(function (d, j) {
                                                                         select.append('<option value="' + d + '">' + d + '</option>')
                                                                     });
-                                                                }
+                                                                
                                                             });
                                                         },
                                                         "language": {
@@ -122,11 +113,10 @@
                                                             }
                                                         },
                                                         "columnDefs": [
-                                                            {targets: 5, orderable: false}
+                                                            {targets: 4, orderable: false}
                                                         ]
                                                     });
-                                                });
-</script>
+                                                });</script>
 <script>
     function deleteConfirm(url)
     {
@@ -135,6 +125,4 @@
             window.location.href = url;
         }
     }
-
 </script>
-

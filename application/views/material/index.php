@@ -17,6 +17,7 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Stock de Material</h3>
+                        <a  data-toggle="tooltip" title="Ver Histórico" href="<?php echo site_url('material/historico/'); ?>" class="btn-lg pull-right" ><i class="fa fa-info pull-right" ></i> </a>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-block btn-primary" onclick="location.href = 'registar'">Registar</button>
                         </div>

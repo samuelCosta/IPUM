@@ -17,6 +17,7 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Stock</h3>
+                        <a  data-toggle="tooltip" title="Ver Histórico" href="<?php echo site_url('traje/historico/'); ?>" class="btn-lg pull-right" ><i class="fa fa-info pull-right" ></i> </a>
                     </div>
                     <div class="box-body">
                         <table id="stock_dt" class="table table-bordered table-hover">
@@ -54,7 +55,7 @@
                                         <td><?php echo $peca['data_compra']; ?></td>
                                         <td><?php echo $peca['custo_uni'] . '€'; ?></td>
                                         <td><?php echo $peca['localizacao']; ?></td>
-                                        <td <?php if ($peca['quantidade'] != 0) { ?>>
+                                        <td>
                                                 <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?php echo site_url('traje/editar/' . $peca['id']); ?>">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
@@ -64,7 +65,7 @@
                                                 <a data-toggle="tooltip" title="Atribuir Traje" class="btn-lg" href="<?php echo site_url('traje/atribuir_traje/' . $peca['id']); ?>">
                                                     <i class="fa fa-share-square-o"></i>
                                                 </a>
-                                            </td <?php } ?> >
+                                            </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

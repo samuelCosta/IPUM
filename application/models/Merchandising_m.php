@@ -6,6 +6,17 @@ class Merchandising_m extends CI_Model {
     public function get_merchandising_stock() {
         $this->db->select('sm.*, ts.descricao as tipo_selecao_descricao');
         $this->db->from('stock_merchandising sm');
+        $this->db->having('quantidade >', 0);
+        $this->db->join('tipo_selecao ts', 'sm.ts_tipo_id=ts.id', 'left');
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function get_historico_merchandising() {
+        $this->db->select('sm.*, ts.descricao as tipo_selecao_descricao');
+        $this->db->from('stock_merchandising sm');
+        $this->db->having('quantidade = 0');
         $this->db->join('tipo_selecao ts', 'sm.ts_tipo_id=ts.id', 'left');
         
         $query = $this->db->get();

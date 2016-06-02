@@ -16,50 +16,45 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Stock</h3>
-                        <a  data-toggle="tooltip" title="Ver Histórico" href="<?php echo site_url('merchandising/historico/'); ?>" class="btn-lg pull-right" ><i class="fa fa-info pull-right" ></i> </a>
+                        <h3 class="box-title">Histórico</h3>
+                        <a data-toggle="tooltip" title="Retroceder" class="btn-lg" href="<?php echo site_url('traje/stock'); ?>">
+                            <i class="fa fa-arrow-left"></i>
+                        </a>
                     </div>
                     <div class="box-body">
                         <table id="stock_dt" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>Tipo</th>
+                                    <th>Género</th>
+                                    <th>Tamanho</th>
                                     <th>Quantidade</th>
-                                    <th>Custo Unitário</th>
                                     <th>Data de Compra</th>
+                                    <th>Custo Unitário</th>
                                     <th>Localização</th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>Tipo</th>
+                                    <th>Género</th>
+                                    <th>Tamanho</th>
                                     <th>Quantidade</th>
+                                    <th>Data de Compra</th>
                                     <th>Custo Unitário</th>
                                     <th>Localização</th>
-                                    <th>Data de Compra</th>
-                                    <th></th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <?php foreach ($merchandising_stock as $stock): ?>
+                                <?php foreach ($pecas as $peca): ?>
                                     <tr>
-                                        <td><?php echo $stock['tipo_selecao_descricao']; ?></td>
-                                        <td><?php echo $stock['quantidade']; ?></td>
-                                        <td><?php echo $stock['custo_uni'] . '€'; ?></td>
-                                        <td><?php echo $stock['data_compra']; ?></td>
-                                        <td><?php echo $stock['localizacao']; ?></td>
-                                        <td>
-                                            <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?php echo site_url('merchandising/editar/' . $stock['id']); ?>">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a data-toggle="tooltip" title="Eliminar" class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('merchandising/delete/' . $stock['id']); ?>');" deleteConfirm href="#">
-                                                <i class="fa fa-trash-o"></i>
-                                            </a>
-                                            <a data-toggle="tooltip" title="Atribuir Merchandising" class="btn-lg" href="<?php echo site_url('merchandising/atribuir_merchandising/' . $stock['id']); ?>">
-                                                <i class="fa fa-share-square-o"></i>
-                                            </a>
-                                        </td>
+                                        <td><?php echo $peca['ts_tipo']; ?></td>
+                                        <td><?php echo $peca['ts_genero']; ?></td>
+                                        <td><?php echo $peca['ts_tamanho']; ?></td>
+                                        <td><?php echo $peca['quantidade']; ?></td>
+                                        <td><?php echo $peca['data_compra']; ?></td>
+                                        <td><?php echo $peca['custo_uni'] . '€'; ?></td>
+                                        <td><?php echo $peca['localizacao']; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -70,6 +65,11 @@
         </div>
     </section>
 </div><!-- /.content-wrapper -->
+
+
+
+
+
 
 
 
@@ -93,7 +93,7 @@
                                                         "initComplete": function () {
                                                             this.api().columns().every(function () {
                                                                 var column = this;
-                                                                if (column.index() < 5) {
+                                                                if (column.index() < 7) {
                                                                     var select = $('<select><option value=""></option></select>')
                                                                             .appendTo($(column.footer()).empty())
                                                                             .on('change', function () {
@@ -122,7 +122,7 @@
                                                             }
                                                         },
                                                         "columnDefs": [
-                                                            {targets: 5, orderable: false}
+                                                            {targets: 6, orderable: false}
                                                         ]
                                                     });
                                                 });
@@ -135,6 +135,12 @@
             window.location.href = url;
         }
     }
-
 </script>
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 

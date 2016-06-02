@@ -28,8 +28,11 @@
                             <div class="col-md-6 form-group">    
                                 <label >Tipo de Material</label>
                                 <select class="form-control" name="tipo_material">
+                                    <option value="">Selecione uma opção</option>
                                     <?php foreach ($materiais as $material): ?>
-                                        <option value="<?php echo $material['id']; ?>"><?php echo $material['tipo_material_descricao'] . ' (' . $material['localizacao'] . ' - ' . $material['quantidade'] . ' unid' . ')'; ?></option>
+                                        <?php if ($material['quantidade'] != 0) { ?>
+                                            <option value="<?php echo $material['id']; ?>"><?php echo $material['tipo_material_descricao'] . ' (' . $material['localizacao'] . ' - ' . $material['quantidade'] . ' unid' . ')'; ?></option>
+                                        <?php } ?>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -49,7 +52,7 @@
                                 <label>Data da Manutenção</label>
                                 <input type="date" class="form-control" value="<?php echo set_value('data_manutencao'); ?>" name="data_manutencao">
                             </div>
-                        <div class="col-md-2 form-group">
+                            <div class="col-md-2 form-group">
                                 <label>Estado</label>
                                 <div class="row">
                                     <label class="radio-inline"><input type="radio" name="estado" value="1" class="minimal" />1</label>
@@ -61,15 +64,15 @@
                             </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>Elemento</label>
-                            <select class="form-control" name="elemento" >
-                                <option value="">Selecione uma opção</option>
-                                <?php foreach ($elementos as $elemento): ?>
-                                    <option value="<?php echo $elemento['idUtilizador']; ?>"><?php echo $elemento['nome']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
+                            <div class="col-md-6 form-group">
+                                <label>Elemento</label>
+                                <select class="form-control" name="elemento" >
+                                    <option value="">Selecione uma opção</option>
+                                    <?php foreach ($elementos as $elemento): ?>
+                                        <option value="<?php echo $elemento['idUtilizador']; ?>"><?php echo $elemento['nome']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
                         </div>
                     </div><!-- /.box-body -->
                     <p> <?php echo validation_errors(); ?></p>

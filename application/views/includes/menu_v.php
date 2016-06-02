@@ -25,16 +25,16 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= base_url() ?>utilizador/presencasAtuacoes"><i class="fa fa-circle-o"></i> Presenças</a></li>
+                    <li><a href="<?= base_url() ?>utilizador/presencasAtuacoes"><i class="fa fa-circle-o"></i>Presenças</a></li>
                     <li><a href="<?= base_url() ?>Quotas"><i class="fa fa-circle-o"></i> Quotas</a></li>
                  
 
                     <li class="active">
-                        <a href="#"><i class="fa fa-circle-o"></i> Elementos <i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-circle-o"></i>Elementos <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>utilizador/criarUtilizador"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>utilizador/consultarUtilizadoresAtivos"><i class="fa fa-circle-o"></i> Consultar</a></li>
-                            <li><a href="<?= base_url() ?>utilizador/consultarUtilizadoresInativos"><i class="fa fa-circle-o"></i> Historico</a></li>
+                            <li><a href="<?= base_url() ?>utilizador/criarUtilizador"><i class="fa fa-circle-o"></i>Registar</a></li>
+                            <li><a href="<?= base_url() ?>utilizador/consultarUtilizadoresAtivos"><i class="fa fa-circle-o"></i>Consultar</a></li>
+                            <li><a href="<?= base_url() ?>utilizador/consultarUtilizadoresInativos"><i class="fa fa-circle-o"></i>Historico</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -50,33 +50,33 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="active">
-                        <a href="#"><i class="fa fa-circle-o"></i> Instrumentos <i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-circle-o"></i>Instrumentos <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>instrumento/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>instrumento/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>instrumento/registar"><i class="fa fa-circle-o"></i>Registar</a></li>
+                            <li><a href="<?= base_url() ?>instrumento/index"><i class="fa fa-circle-o"></i>Consultar</a></li>
                             <li><a href="<?= base_url() ?>material/index"><i class="fa fa-circle-o"></i>Stock Material</a></li>
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="#"><i class="fa fa-circle-o"></i> Traje<i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-circle-o"></i>Traje<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>traje/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>traje/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>traje/registar"><i class="fa fa-circle-o"></i>Registar</a></li>
+                            <li><a href="<?= base_url() ?>traje/index"><i class="fa fa-circle-o"></i>Consultar</a></li>
                             <li><a href="<?= base_url() ?>traje/stock"><i class="fa fa-circle-o"></i>Stock</a></li>
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="#"><i class="fa fa-circle-o"></i> Música<i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-circle-o"></i>Música<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>musica/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>musica/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>musica/registar"><i class="fa fa-circle-o"></i>Registar</a></li>
+                            <li><a href="<?= base_url() ?>musica/index"><i class="fa fa-circle-o"></i>Consultar</a></li>
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="#"><i class="fa fa-circle-o"></i> Merchandising<i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-circle-o"></i>Merchandising<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>merchandising/registar"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>merchandising/index"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>merchandising/registar"><i class="fa fa-circle-o"></i>Registar</a></li>
+                            <li><a href="<?= base_url() ?>merchandising/index"><i class="fa fa-circle-o"></i>Consultar</a></li>
                             <li><a href="<?= base_url() ?>merchandising/stock"><i class="fa fa-circle-o"></i>Stock</a></li>
                         </ul>
                     </li>
@@ -92,34 +92,34 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="active">
-                        <a href="#"><i class="fa fa-circle-o"></i> Atividades<i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-circle-o"></i>Atividades<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>Atividades"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>Atividades/consultarAtividades"><i class="fa fa-circle-o"></i> Consultar</a></li>
-                            <li><a href="<?= base_url() ?>Atividades/historicoAtividades"><i class="fa fa-circle-o"></i> Historico</a></li>
+                            <li><a href="<?= base_url() ?>Atividades"><i class="fa fa-circle-o"></i>Registar</a></li>
+                            <li><a href="<?= base_url() ?>Atividades/consultarAtividades"><i class="fa fa-circle-o"></i>Consultar</a></li>
+                            <li><a href="<?= base_url() ?>Atividades/historicoAtividades"><i class="fa fa-circle-o"></i>Historico</a></li>
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="#"><i class="fa fa-circle-o"></i> Ensaios<i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-circle-o"></i>Ensaios<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>Ensaios"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>Ensaios/consultarEnsaios"><i class="fa fa-circle-o"></i> Consultar</a></li>
-                            <li><a href="<?= base_url() ?>Ensaios/historicoEnsaios"><i class="fa fa-circle-o"></i> Historico</a></li>
+                            <li><a href="<?= base_url() ?>Ensaios"><i class="fa fa-circle-o"></i>Registar</a></li>
+                            <li><a href="<?= base_url() ?>Ensaios/consultarEnsaios"><i class="fa fa-circle-o"></i>Consultar</a></li>
+                            <li><a href="<?= base_url() ?>Ensaios/historicoEnsaios"><i class="fa fa-circle-o"></i>Historico</a></li>
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="#"><i class="fa fa-circle-o"></i> Atuações<i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-circle-o"></i>Atuações<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>Atuacoes"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>Atuacoes/consultarAtuacoes"><i class="fa fa-circle-o"></i> Consultar</a></li>
-                            <li><a href="<?= base_url() ?>Atuacoes/historicoAtuacoes"><i class="fa fa-circle-o"></i> Historico</a></li>
+                            <li><a href="<?= base_url() ?>Atuacoes"><i class="fa fa-circle-o"></i>Registar</a></li>
+                            <li><a href="<?= base_url() ?>Atuacoes/consultarAtuacoes"><i class="fa fa-circle-o"></i>Consultar</a></li>
+                            <li><a href="<?= base_url() ?>Atuacoes/historicoAtuacoes"><i class="fa fa-circle-o"></i>Historico</a></li>
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="#"><i class="fa fa-circle-o"></i> PGCUM<i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-circle-o"></i>PGCUM<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu menu-open" style="display: none;">
-                            <li><a href="<?= base_url() ?>Tranche"><i class="fa fa-circle-o"></i> Registar</a></li>
-                            <li><a href="<?= base_url() ?>Tranche/consultarTranches"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                            <li><a href="<?= base_url() ?>Tranche"><i class="fa fa-circle-o"></i>Registar</a></li>
+                            <li><a href="<?= base_url() ?>Tranche/consultarTranches"><i class="fa fa-circle-o"></i>Consultar</a></li>
                         </ul>
                     </li>    
                 </ul>
@@ -137,10 +137,21 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="<?= base_url() ?>OrgaosSociais"><i class="fa fa-circle-o"></i> Registar</a></li>
-                    <li><a href="<?= base_url() ?>OrgaosSociais/consultarOrgaosSociais"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                    <li><a href="<?= base_url() ?>OrgaosSociais/consultarOrgaosSociais"><i class="fa fa-circle-o"></i>Consultar</a></li>
 
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-gear"></i> <span>Definições</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?= base_url() ?>tiposelecao/index"><i class="fa fa-circle-o"></i>Tipos de Seleção</a></li>
+
+                </ul>
+            </li>
+
 
 
 

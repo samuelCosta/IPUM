@@ -24,6 +24,14 @@ class Merchandising extends CI_Controller{
         $this->load->view('includes/menu_v');
     }
     
+    public function historico() {
+        $data['merchandising_stock'] = $this->merchandising_m->get_historico_merchandising();
+        
+        $this->load->view('includes/header_v');
+        $this->load->view('merchandising/historico', $data);
+        $this->load->view('includes/menu_v');
+    }
+    
     public function registar() {
         $this->load->helper('form');
         $this->load->library('form_validation');

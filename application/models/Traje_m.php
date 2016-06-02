@@ -5,6 +5,19 @@ class Traje_m extends CI_Model {
     public function get_pecas() {
         $this->db->select('st.*, ts_p.descricao as ts_tipo, ts_g.descricao as ts_genero, ts_t.descricao as ts_tamanho');
         $this->db->from('stock_traje st');
+        $this->db->having('quantidade >', 0);
+        $this->db->join('tipo_selecao ts_p', 'st.ts_tipo_id=ts_p.id', 'left');
+        $this->db->join('tipo_selecao ts_g', 'st.ts_genero_id=ts_g.id', 'left');
+        $this->db->join('tipo_selecao ts_t', 'st.ts_tamanho_id=ts_t.id', 'left');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function get_historico_pecas() {
+        $this->db->select('st.*, ts_p.descricao as ts_tipo, ts_g.descricao as ts_genero, ts_t.descricao as ts_tamanho');
+        $this->db->from('stock_traje st');
+        $this->db->having('quantidade = 0');
         $this->db->join('tipo_selecao ts_p', 'st.ts_tipo_id=ts_p.id', 'left');
         $this->db->join('tipo_selecao ts_g', 'st.ts_genero_id=ts_g.id', 'left');
         $this->db->join('tipo_selecao ts_t', 'st.ts_tamanho_id=ts_t.id', 'left');

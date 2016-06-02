@@ -124,19 +124,21 @@
                            
                             
                             <strong><i class="  margin-r-5"></i> Traje</strong>
-                            <?php foreach ($traje as $atribuido): ?>
+                            
+                            <?php if ($traje != NULL) { foreach ($traje as $atribuido): ?>
                             <p class="text-muted"><?php echo $atribuido['ts_tipo'] . ' - ' . $atribuido['ts_genero'] . ' - ' . $atribuido['ts_tamanho']; ?>  </p>
-                            <?php endforeach; ?>
-                            
+                            <?php endforeach; } else {?>
+                            <p class="text-muted"><?php echo "Sem traje atribuído";} ?></p>
                             <strong><i class="  margin-r-5"></i> Instrumento</strong>
-                            <?php foreach ($instrumento as $emprestado): ?>
+                            <?php if ($instrumento != NULL) { foreach ($instrumento as $emprestado): ?>
                             <p class="text-muted"><?php echo $emprestado['instrumento']. ' - ' . $emprestado['numero']; ?> </p>
-                            <?php endforeach; ?>
-                            
+                            <?php endforeach; } else {?>
+                            <p class="text-muted"><?php echo "Sem instrumento atribuído"; }?></p>
                             <strong><i class="  margin-r-5"></i> Manutenções</strong>
-                            <?php foreach ($manutencao as $manu): ?>
+                             <?php if ($manutencao != NULL) { foreach ($manutencao as $manu): ?>
                             <p class="text-muted"><?php echo $manu['instrumento'] . ' - ' . $manu['numero'] . ' - ' . $manu['material']; ?> </p>
-                            <?php endforeach; ?>
+                             <?php endforeach; } else { ?>
+                             <p class="text-muted"><?php echo "O utilizador não realizou manutenções"; }?></p>
 
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->               

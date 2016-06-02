@@ -16,8 +16,10 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Stock</h3>
-                        <a  data-toggle="tooltip" title="Ver Histórico" href="<?php echo site_url('merchandising/historico/'); ?>" class="btn-lg pull-right" ><i class="fa fa-info pull-right" ></i> </a>
+                        <h3 class="box-title">Histórico</h3>
+                        <a data-toggle="tooltip" title="Retroceder" class="btn-lg" href="<?php echo site_url('merchandising/stock'); ?>">
+                            <i class="fa fa-arrow-left"></i>
+                        </a>
                     </div>
                     <div class="box-body">
                         <table id="stock_dt" class="table table-bordered table-hover">
@@ -28,7 +30,6 @@
                                     <th>Custo Unitário</th>
                                     <th>Data de Compra</th>
                                     <th>Localização</th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -38,7 +39,6 @@
                                     <th>Custo Unitário</th>
                                     <th>Localização</th>
                                     <th>Data de Compra</th>
-                                    <th></th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -49,17 +49,7 @@
                                         <td><?php echo $stock['custo_uni'] . '€'; ?></td>
                                         <td><?php echo $stock['data_compra']; ?></td>
                                         <td><?php echo $stock['localizacao']; ?></td>
-                                        <td>
-                                            <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?php echo site_url('merchandising/editar/' . $stock['id']); ?>">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a data-toggle="tooltip" title="Eliminar" class="btn-lg" onclick="javascript:deleteConfirm('<?php echo site_url('merchandising/delete/' . $stock['id']); ?>');" deleteConfirm href="#">
-                                                <i class="fa fa-trash-o"></i>
-                                            </a>
-                                            <a data-toggle="tooltip" title="Atribuir Merchandising" class="btn-lg" href="<?php echo site_url('merchandising/atribuir_merchandising/' . $stock['id']); ?>">
-                                                <i class="fa fa-share-square-o"></i>
-                                            </a>
-                                        </td>
+                                        <td></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -93,7 +83,6 @@
                                                         "initComplete": function () {
                                                             this.api().columns().every(function () {
                                                                 var column = this;
-                                                                if (column.index() < 5) {
                                                                     var select = $('<select><option value=""></option></select>')
                                                                             .appendTo($(column.footer()).empty())
                                                                             .on('change', function () {
@@ -105,7 +94,7 @@
                                                                     column.data().unique().sort().each(function (d, j) {
                                                                         select.append('<option value="' + d + '">' + d + '</option>')
                                                                     });
-                                                                }
+                                                                
                                                             });
                                                         },
                                                         "language": {
@@ -122,7 +111,7 @@
                                                             }
                                                         },
                                                         "columnDefs": [
-                                                            {targets: 5, orderable: false}
+                                                            {targets: 4, orderable: false}
                                                         ]
                                                     });
                                                 });
