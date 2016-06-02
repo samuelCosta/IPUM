@@ -212,12 +212,15 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/msgSucesso_v', $data);
         } else if ($indice == 2) {
             $data['msg'] = "Não foi possível atualizar a senha do usuário.";
-            $this->load->view('includes/msgSucesso_v', $data);
+            $this->load->view('includes/msgError_v', $data);
         } else if ($indice == 3) {
             $data['msg'] = "Atualização para sócio com sucesso.";
             $this->load->view('includes/msgSucesso_v', $data);
         } else if ($indice == 4) {
             $data['msg'] = "Não foi possível tornar-se sócio.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        }else if ($indice == 5) {
+            $data['msg'] = "Nova senha gerada.";
             $this->load->view('includes/msgSucesso_v', $data);
         }
         $this->load->view('editarUtilizador_v', $data);
@@ -236,11 +239,7 @@ class Utilizador extends CI_Controller {
         $this->form_validation->set_rules('nAluno', 'Numero de Aluno', 'required|numeric');
         $id = $this->input->post('idUtilizador');
 
-
-    
-    
-        
-        
+ 
 
         if ($this->form_validation->run() == FALSE) {
 
@@ -520,5 +519,43 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
     }
+    
+    
+  
+        
+      
+    function get_random_password($chars_min=6, $chars_max=8, $use_upper_case=false, $include_numbers=false, $include_special_chars=false)
+    {
+        $length = rand($chars_min, $chars_max);
+        $selection = 'aeuoyibcdfghjklmnpqrstvwxz';
+        if($include_numbers) {
+            $selection .= "1234567890";
+        }
+        if($include_special_chars) {
+            $selection .= "!@\"#$%&[]{}?|";
+        }
+
+        $password = "";
+        for($i=0; $i<$length; $i++) {
+            $current_letter = $use_upper_case ? (rand(0,1) ? strtoupper($selection[(rand() % strlen($selection))]) : $selection[(rand() % strlen($selection))]) : $selection[(rand() % strlen($selection))];            
+            $password .=  $current_letter;
+        }
+     
+         echo json_encode($password);
+     // return $password;
+    }
+
+//    edita so a password
+    public function guardarPassword(){
+        $this->load->model('utilizador_m');
+        $id = $this->input->post('idUtilizador');
+        $this->utilizador_m->guardarPassword();
+        redirect('utilizador/atualizar/' . $id . '/5');
+    } 
+
+        
+        
+        
+    
 
 }

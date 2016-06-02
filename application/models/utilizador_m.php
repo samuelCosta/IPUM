@@ -375,6 +375,16 @@ class Utilizador_m extends CI_Model {
         return $query->num_rows();
     }
     
+    public function guardarPassword(){
+        
+        
+        $dados['password'] = md5( $this->input->post('password'));
+        $id = $this->input->post('idUtilizador');
+        
+        $this->db->where('idUtilizador', $id);
+        $this->db->update('utilizador', $dados);
+        
+    }
     
     
 }

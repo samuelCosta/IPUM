@@ -109,7 +109,12 @@
                         <div class="col-md-3 form-group"> <i class="fa fa-lock"></i> 
                            <label>Password</label>
                            <input class=" btn btn-default btn-block active" data-target="#myModal" data-toggle="modal" type="button" value="Atualizar Password">
-                       </div>                       
+                       <a href="" type="submit" class="submit btn-sm" data-target="#myModal3" data-toggle="modal" value="Ver Detalhes" class="input_box"  > Recuperar Password </a>
+                        </div>  
+                        
+                        
+                       
+                      
 
                     </div><!-- /.box-body -->
                     <p> <?php echo validation_errors(); ?></p>
@@ -214,7 +219,42 @@
     </div>
 </div>
 
+<!--------------------------------GERAR password------------------------------->
 
+
+<div aria-hidden="true" aria-labelledby="myModalLabel3" class="modal fade" id="myModal3" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <form action="<?= base_url() ?>utilizador/guardarPassword" method="post">
+            <input id="idUsuario" name="idUtilizador" type="hidden" value="<?= $utilizador[0]->idUtilizador; ?>">
+             <input id="idUsuario" name="socio" type="hidden" value="1">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+
+
+                    <h4 class="modal-title" id="myModalLabel3">Gerar Password</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        
+                        
+                        
+                      <div class="col-md-12 form-group">
+                           <label>Nova Password: </label>                        
+                           <input class="form-control"type="text"  type="hidden" id="Npass" name="password" >                           
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" type="button">Fechar</button>
+                    <button class="btn btn-primary" id="enviarsocio" type="submit">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 
 <script>
@@ -259,4 +299,28 @@ function imprimir($id) {
 }
 </script>
 
+
+<script type="text/javascript">
+
+// Ajax post
+
+    $(document).ready(function () {
+        $(".submit").click(function (event) {
+            event.preventDefault();
+   
+            jQuery.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>" + "utilizador/get_random_password",
+                dataType: 'json',
+                
+                success: function (res) {
+                 $("#Npass").val(res);
+
+
+                }
+            });
+        });
+    });
+
+</script>
 

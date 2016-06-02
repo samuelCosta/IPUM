@@ -43,7 +43,7 @@ p  {
 
 <pre>                            __________________________________
                             
-                        Vice-Presidente da Assembleia Geral da iPUM</pre>
+                                  Mesa da Assembleia Geral da iPUM</pre>
 
 
 <?php 
