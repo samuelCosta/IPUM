@@ -283,7 +283,7 @@ class Utilizador_m extends CI_Model {
     }
     
     
-        //   estatisca na pagina Inicial 
+        //   estatistica na pagina Inicial 
     public function totalAtuacoes($data) {
 
         $this->db->select('*');
@@ -293,7 +293,7 @@ class Utilizador_m extends CI_Model {
         return $query->num_rows();
     }
     
-           //   estatisca na pagina Inicial 
+           //   estatisticas na pagina Inicial 
     public function totalAtividades($data) {
 
         $this->db->select('*');   
@@ -302,7 +302,7 @@ class Utilizador_m extends CI_Model {
         return $query->num_rows();
     }
     
-               //   estatisca na pagina Inicial 
+               //   estatisticas na pagina Inicial 
     public function totalEnsaios($data) {
 
         $this->db->select('*');   
@@ -312,7 +312,7 @@ class Utilizador_m extends CI_Model {
         return $query->num_rows();
     }
     
-                   //   estatisca na pagina Inicial 
+                   //   estatisticas na pagina Inicial 
     public function totalAtivos() {
 
         $this->db->select('*');   

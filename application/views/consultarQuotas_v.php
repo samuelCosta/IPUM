@@ -59,22 +59,20 @@
                                         <td class="<?php
                                         if ($quo->tipo == "Pago") {
                                             echo 'bg-green-active';
-                                        } else if ($quo->tipo == "Não Pago") {
-                                            echo 'bg-red-active';
                                         } else {
-                                            echo 'bg-yellow-active';
-                                        }
+                                            echo 'bg-red-active';
+                                        } 
                                         ?>">
                                                 <?php echo $quo->tipo ?>
                                         </td>
 
-
-
-
                                         <td>
 
                                             <?php if ($quo->tipo == 'Não Pago') { ?>
-                                                <a data-toggle="tooltip" title="Pagar Quota" class="btn-lg" href="<?= base_url('Quotas/pagarQuota/' . $quo->idQuota . '/' . $quo->idUtilizador . '/' . $quo->dataAviso) ?>"><i class="fa fa-euro" onclick="return confirm('Deseja realmente realizar o pagamento ?');"></i></a>
+
+                                        <a id="<?= $quo->utilizador_idUtilizador ?>" id1="<?= $quo->idQuota ?>" href="<?= $quo->dataAviso; ?>" type="button" class="submit1 btn-lg" data-target="#myModal2" data-toggle="modal"  > <i class="fa fa-euro" ></i></a>                                        
+                                            
+                                      
                                                 <a data-toggle="tooltip" title="Editar" class="btn-lg" href="<?= base_url('Quotas/atualizarQuota/' . $quo->idQuota) ?>"><i class="fa fa-edit"></i></a>
                                             <?php } else { ?>
                                                 <a data-toggle="tooltip" hidden="" title="Pagamento já Efectuado" disabled class="btn-lg" ><i class="fa fa-euro" ></i></a>
@@ -98,6 +96,65 @@
     </section>
 </div><!-- /.content-wrapper -->
 
+
+
+<div aria-hidden="true" aria-labelledby="myModalLabel2" class="modal fade" id="myModal2" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <form action="<?= base_url() ?>Quotas/pagarQuota" method="post">
+            <input id="idUsuario" name="idUtilizador" type="hidden" value="">
+             <input id="idUsuario" name="socio" type="hidden" value="1">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+
+
+                    <h4 class="modal-title" id="myModalLabel2">Informação</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Percentagem Ensaios:</label>
+                            <input class="form-control" type="text"  disabled="" id="Pensaios" name="Pensaios" >  
+                        </div>
+                       <div class="col-md-6 form-group">
+                            <label>Percentagem Atuações:</label>
+                             <input class="form-control" type="text"   disabled="" id="Patuacoes" name="Patuacoes" >  
+                        </div>
+                        <div  class="col-md-12 form-group">
+                            <label>Percentagem Total:</label>
+                             <input   class="form-control" type="text"   disabled=""id="Ptotal" name="Ptotal" >  
+                        </div>
+                         
+                        <input   class="form-control" type="hidden" id="idUtilizador" name="idUtilizador" >  
+                        <input   class="form-control" type="hidden" id="dataAviso" name="dataAviso" >  
+                        <input   class="form-control" type="hidden" id="idQuota" name="idQuota" >  
+                       
+                        
+                        <div id="estado" class="alert alert-warning alert-dismissable">
+                            
+                            
+                           
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label>Data de Pagamento:</label>
+                            <input class="form-control" id="dataPagamento" name="dataPagamento" onchange="alterarData()" type="date">
+                        </div>
+                      <div class="col-md-12 form-group">
+                            <div id="divcheck2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" type="button">Fechar</button>
+                    <button class="btn btn-primary" disabled="" id="enviarData" type="submit">Pagar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 
 <footer class="main-footer">
@@ -154,3 +211,61 @@
                                                         });
                                                     });
 </script>
+
+
+<script>
+
+// Ajax post
+    $(document).ready(function () {
+        $(".submit1").click(function (event) {
+            event.preventDefault();
+
+            var id = $(this).attr('id');
+            var idQuota = $(this).attr('id1');
+            var data = $(this).attr('href');
+
+            jQuery.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>" + "Quotas/estatisticaQuotas",
+                dataType: 'json',
+                data: {id: id, data:data, idQuota:idQuota},
+                success: function (res) {
+ $("#Ptotal").val(res.Ptotal + " %" );
+ $("#Pensaios").val(res.Pensaios + " %");
+ $("#Patuacoes").val(res.Patuacoes + " %");
+ $("#idUtilizador").val(res.idUtilizador );
+ $("#dataAviso").val(res.dataAviso);
+ $("#idQuota").val(res.idQuota);
+ 
+                  
+        
+        html = "<i class='icon fa fa-warning'></i>"+res.estado ;
+//                    html += "<tr><th>Nome"+res+"</th><th>Localizacao</th><th>Orçamento</th><th>Notas</th></tr>";
+//                    html += "</thead><tbody>";
+//                    for ($i = 0; $i < res.length; $i++) {
+//                        html += "<tr><td>" + res[$i].designacao + "</td><td>" + res[$i].localizacao + "</td><td>"
+//                                + res[$i].orcamento + "</td><td>" + res[$i].notas + "</td><td>";
+////
+////                    }//fim do laço
+//                    html += "</tbody></table>";
+                    $("#estado").html(html);
+//                    //coloco a variável html na tela
+
+                }
+            });
+        });
+    });
+    
+    
+    
+     function alterarData(){
+        var socio = $("#dataPagamento").val();
+      
+        if(socio != ''){
+             document.getElementById("enviarData").disabled = false;            
+        }else            
+        document.getElementById("enviarData").disabled = true;
+        
+    
+    }
+    </script>

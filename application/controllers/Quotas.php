@@ -22,14 +22,36 @@ class Quotas extends CI_Controller {
 //        $this->load->view('includes/footer_v');
     }
 
-    public function pagarQuota($id, $idUtilizador, $dataAviso) {
+    public function pagarQuota() {
         $this->load->model('utilizador_m');
+         $this->load->model('quotas_m');
 
-//        $estado = 'Não Pago';
-        $tensaios = $this->utilizador_m->totalEnsaios(date('Y'));
-        $tatuacoes = $this->utilizador_m->totalAtuacoes(date('Y'));
-        $tensaiosu = $this->utilizador_m->totalEnsaiosElemento($idUtilizador);
-        $tatuacoesu = $this->utilizador_m->totalAtuacoesElemento($idUtilizador);
+        $dataPagamento=$this->input->post('dataPagamento');
+        $id=$this->input->post('idUtilizador');
+        $dataAviso=$this->input->post('dataAviso');
+        $idQuota=$this->input->post('idQuota');
+
+      // insere a data de pagamento 
+           // cria outra linha em sistema de quotas 
+        if ($this->quotas_m->pagarQuota($idQuota,$dataPagamento) && $this->quotas_m->criarLinhaQuota($id, $dataAviso)) {
+
+            redirect('Quotas/index'.'/1');
+        }
+    }
+
+    public function estatisticaQuotas(){        
+         $this->load->model('quotas_m');
+         
+         $idUtilizador=$this->input->post('id');
+         $dataAviso=$this->input->post('data');
+         $idQuota=$this->input->post('idQuota');
+
+        $tensaios = $this->quotas_m->totalEnsaios($dataAviso);        
+        $tatuacoes = $this->quotas_m->totalAtuacoes($dataAviso);
+        $tensaiosu = $this->quotas_m->totalEnsaiosElemento($idUtilizador,$dataAviso);
+        $tatuacoesu = $this->quotas_m->totalAtuacoesElemento($idUtilizador,$dataAviso);
+        
+        $estado = 'Tem de Pagar a Quota';
         $pensaios = 0;
         if ($tensaios > 0 && $tensaiosu > 0) {
             $pensaios = ($tensaiosu / $tensaios) * 100;
@@ -41,18 +63,22 @@ class Quotas extends CI_Controller {
         $ptotal = $pensaios + $patuacoes;
 
         if ($pensaios >= 40 && $patuacoes >= 40 && $ptotal >= 115) {
-            $estado = 'Isento';
+            $estado = 'Está Isento de Pagar';
         }
-
-        $this->load->model('quotas_m');
-
-//       insere a data de pagamento 
-        //    cria outra linha em sistema de quotas 
-        if ($this->quotas_m->pagarQuota($id,$estado) && $this->quotas_m->criarLinhaQuota($idUtilizador, $dataAviso)) {
-
-            redirect('Quotas/index'.'/1');
-        }
+           // echo $ptotal;
+        $dados['Ptotal']=$ptotal;
+        $dados['Pensaios']=$pensaios;
+        $dados['Patuacoes']=$patuacoes;
+        $dados['estado']=$estado;
+        $dados['idUtilizador']=$idUtilizador;
+        $dados['dataAviso']=$dataAviso;
+        $dados['idQuota']=$idQuota;
+        echo json_encode($dados);
+   
     }
+
+
+
 
     public function historicoQuotas($indice=null) {
 

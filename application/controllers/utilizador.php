@@ -214,7 +214,7 @@ class Utilizador extends CI_Controller {
             $data['msg'] = "Não foi possível atualizar a senha do usuário.";
             $this->load->view('includes/msgError_v', $data);
         } else if ($indice == 3) {
-            $data['msg'] = "Atualização para sócio com sucesso.";
+            $data['msg'] = "Atualização para sócio com sucesso. Primeira Quota Paga Automaticamente";
             $this->load->view('includes/msgSucesso_v', $data);
         } else if ($indice == 4) {
             $data['msg'] = "Não foi possível tornar-se sócio.";
@@ -300,11 +300,11 @@ class Utilizador extends CI_Controller {
         $this->load->model('quotas_m');
         $this->load->model('utilizador_m');
         
-        
+        $dataSocio = $this->input->post('dataSocio');       
         $id = $this->input->post('idUtilizador');
 //        $this->quotas_m->do_insert();
         
-        if ($this->utilizador_m->alterarDataSocio() && $this->quotas_m->do_insert()) {
+        if ($this->utilizador_m->alterarDataSocio() && $this->quotas_m->do_insert($id,$dataSocio)&& $this->quotas_m->criarLinhaQuota($id,$dataSocio) ) {
 
             redirect('utilizador/atualizar/' . $id . '/3');
         } else {
