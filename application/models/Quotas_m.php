@@ -31,12 +31,15 @@ class Quotas_m extends CI_Model {
     }
 
     //    Pagar Quota
-    public function pagarQuota($idQuota,$dataPagamento) {
-      
+    public function pagarQuota($idQuota, $dataPagamento, $tipo) {
+       
+        if ($tipo == '') {
+            $tipo = 'Pago';
+        }
 
         $this->db->where('idQuota', $idQuota);
         $this->db->set('dataPagamento', $dataPagamento);
-        $this->db->set('tipo', 'Pago');
+        $this->db->set('tipo', $tipo);
         return $this->db->update('quota');
 //                 
     }
@@ -130,6 +133,18 @@ class Quotas_m extends CI_Model {
         $this->db->join('eventos', 'eventos_idEventos=idEventos', 'inner');
         $query = $this->db->get('presencasEventos');
         return $query->num_rows();
+    }
+    
+    //   lista as quotas em atraso (pagina bem vindo)
+    public function quotasEmFalta() {
+
+        $dataAtual=date('Y/m/d');
+        $this->db->select('*');
+        $this->db->where('utilizador.socio', 1);         
+        $this->db->where('quota.dataAviso <=', $dataAtual);        
+        $this->db->join('utilizador', 'idUtilizador=utilizador_idUtilizador', 'inner');
+        $this->db->group_by("utilizador.nome");
+        return $this->db->get('quota')->result();
     }
 
 }

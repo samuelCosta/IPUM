@@ -18,6 +18,7 @@ class Utilizador extends CI_Controller {
     public function index() {
 //        estatistica 
         $this->load->model('utilizador_m');
+        $this->load->model('quotas_m');
         $data=date('Y');
        
         $totalAtuacoes=$this->utilizador_m->totalAtuacoes($data);        
@@ -27,12 +28,13 @@ class Utilizador extends CI_Controller {
         $proximaAtuacao=$this->utilizador_m->proximaAtuacao();     
         $proximaAtividade=$this->utilizador_m->proximaAtividade();     
         $proximoEnsaio=$this->utilizador_m->proximoEnsaio();
+        $quotasEmFalta=$this->quotas_m->quotasEmFalta();
     
         $this->load->view('includes/header_v');
         $this->load->view('bemVindo_v',array('totalAtuacoes'=>$totalAtuacoes,
             'totalAtividades'=>$totalAtividades,'totalEnsaios'=>$totalEnsaios,
                 'totalAtivos'=>$totalAtivos,'proximaAtuacao'=>$proximaAtuacao,
-                'proximaAtividade' => $proximaAtividade,'proximoEnsaio' => $proximoEnsaio));
+                'proximaAtividade' => $proximaAtividade,'proximoEnsaio' => $proximoEnsaio ,'quotasEmFalta' => $quotasEmFalta));
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
@@ -214,8 +216,10 @@ class Utilizador extends CI_Controller {
             $data['msg'] = "Não foi possível atualizar a senha do usuário.";
             $this->load->view('includes/msgError_v', $data);
         } else if ($indice == 3) {
-            $data['msg'] = "Atualização para sócio com sucesso. Primeira Quota Paga Automaticamente";
+            $data['msg'] = "Atualização para sócio com sucesso.";
             $this->load->view('includes/msgSucesso_v', $data);
+             $data['msg'] = " Primeira Quota Paga Automaticamente";
+             $this->load->view('includes/msgSucesso_v', $data);
         } else if ($indice == 4) {
             $data['msg'] = "Não foi possível tornar-se sócio.";
             $this->load->view('includes/msgSucesso_v', $data);

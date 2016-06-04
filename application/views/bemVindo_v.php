@@ -29,6 +29,16 @@
     echo strftime(' %d de %B de %Y', strtotime($proximoEnsaio['dataEvento']));
 } ?> 
 
+          <br>
+
+        <strong> Quotas em Falta: </strong>  <?php if ($quotasEmFalta == Null) {
+    echo " Não existe quotas em atraso";
+} else {    foreach ($quotasEmFalta as $quo) {?>
+       
+        Esta com a quota em atraso <strong><?=  $quo->nome ?></strong><br>
+    
+<?php }} ?> 
+        
     </div>
 
 

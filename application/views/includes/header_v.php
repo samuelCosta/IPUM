@@ -31,7 +31,7 @@
 
         
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
+   
 <!--        <script src="<?= base_url(); ?>assets/bootstrap/js/bootstrap-select.js"></script>-->
 
 <!--        <script type="text/javascript">

@@ -30,10 +30,11 @@ class Quotas extends CI_Controller {
         $id=$this->input->post('idUtilizador');
         $dataAviso=$this->input->post('dataAviso');
         $idQuota=$this->input->post('idQuota');
+        $tipo=$this->input->post('tipo');
 
       // insere a data de pagamento 
            // cria outra linha em sistema de quotas 
-        if ($this->quotas_m->pagarQuota($idQuota,$dataPagamento) && $this->quotas_m->criarLinhaQuota($id, $dataAviso)) {
+        if ($this->quotas_m->pagarQuota($idQuota,$dataPagamento,$tipo) && $this->quotas_m->criarLinhaQuota($id, $dataAviso)) {
 
             redirect('Quotas/index'.'/1');
         }
@@ -50,7 +51,8 @@ class Quotas extends CI_Controller {
         $tatuacoes = $this->quotas_m->totalAtuacoes($dataAviso);
         $tensaiosu = $this->quotas_m->totalEnsaiosElemento($idUtilizador,$dataAviso);
         $tatuacoesu = $this->quotas_m->totalAtuacoesElemento($idUtilizador,$dataAviso);
-        
+       
+        $tipo= '';
         $estado = 'Tem de Pagar a Quota';
         $pensaios = 0;
         if ($tensaios > 0 && $tensaiosu > 0) {
@@ -64,12 +66,15 @@ class Quotas extends CI_Controller {
 
         if ($pensaios >= 40 && $patuacoes >= 40 && $ptotal >= 115) {
             $estado = 'Está Isento de Pagar';
+            $tipo= 'Isento';
         }
+        
            // echo $ptotal;
-        $dados['Ptotal']=$ptotal;
-        $dados['Pensaios']=$pensaios;
-        $dados['Patuacoes']=$patuacoes;
+        $dados['Ptotal']=round($ptotal);
+        $dados['Pensaios']=round($pensaios);
+        $dados['Patuacoes']=round($patuacoes);
         $dados['estado']=$estado;
+        $dados['tipo']=$tipo;
         $dados['idUtilizador']=$idUtilizador;
         $dados['dataAviso']=$dataAviso;
         $dados['idQuota']=$idQuota;
@@ -94,12 +99,14 @@ class Quotas extends CI_Controller {
 //        $this->load->view('includes/footer_v');
     }
 
-    public function pagarQuotaHistorico($id) {
+    public function pagarQuotaHistorico() {
 
-        $this->load->model('quotas_m');
-
+          $this->load->model('quotas_m');
+          $dataPagamento=$this->input->post('dataPagamento');
+          $idQuota=$this->input->post('idQuota');
+          $tipo=$this->input->post('tipo');
 //       insere a data de pagamento 
-        if ($this->quotas_m->pagarQuota($id)) {
+        if ($this->quotas_m->pagarQuota($idQuota,$dataPagamento,$tipo)) {
             return redirect('Quotas/historicoQuotas'.'/1');
         }
     }
