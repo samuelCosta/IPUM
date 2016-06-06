@@ -28,13 +28,13 @@
                     <?php echo form_open( ); ?>
                     <div class="box-body">
                         <div class="row">
-                        <div class="col-md-6 form-group">
+                        <div class="col-md-8 form-group">
                             <label>Nome do Tutorial</label>
                             <input type="text" class="form-control" value="<?php echo $edit_data['nome'] ?>" name="nome" placeholder="Insira o nome do tutorial">
                         </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-6 form-group">
+                        <div class="col-md-8 form-group">
                             <label>Link</label>
                             <input type="text" class="form-control" value="<?php echo $edit_data['link'] ?>" name="link" placeholder="Insira o link da música">
                         </div>

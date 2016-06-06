@@ -9,6 +9,7 @@
         <!-- listar utilizador-->
 
         <section class="content">
+            <div class="row">
             <?php foreach ($musicas as $musica) : ?>
                 <?php if ($musica['parent_id'] === NULL): ?>
                         <div class="col-md-6">
@@ -71,9 +72,9 @@
                         </div>
                 <?php endif; ?>
             <?php endforeach; ?>
+            </div>
         </section>
 </div>
-
 
 
 <footer class="main-footer">
@@ -90,8 +91,6 @@
 <script src="<?php echo base_url() . 'assets/plugins/fastclick/fastclick.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
 <script src="<?php echo base_url() . 'assets/dist/js/demo.js' ?>"></script>
-</section>
-</div>
 
 <script>
                                     function deleteConfirm(url)

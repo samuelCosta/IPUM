@@ -28,7 +28,7 @@
                     <?php echo form_open('merchandising/registar'); ?>
                     <div class="box-body">
                         <div class="row">  
-                        <div class="col-md-6 form-group">    
+                        <div class="col-md-9 form-group">    
                             <label >Tipo de Merchandising</label>
                             <select class="form-control" name="tipo_merchandising" >
                                 <?php foreach ($tipos_merchandising as $tipo): ?>
@@ -38,21 +38,21 @@
                         </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-2 form-group">
+                        <div class="col-md-3 form-group">
                             <label>Quantidade</label>
                             <input type="text" class="form-control" value="<?php echo set_value('quantidade'); ?>" name="quantidade" placeholder="Insira a quantidade">
                         </div>
-                        <div class="col-md-2 form-group">
+                        <div class="col-md-3 form-group">
                             <label>Custo Unitário</label>
                             <input type="text" class="form-control" value="<?php echo set_value('custo_uni'); ?>" name="custo_uni" placeholder="Insira o custo">
                         </div>
-                        <div class="col-md-2 form-group">
+                        <div class="col-md-3 form-group">
                             <label> Data de Compra </label>
                             <input type="date" class="form-control" value="<?php echo set_value('data_compra'); ?>" name="data_compra">
                         </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-6 form-group">
+                        <div class="col-md-9 form-group">
                             <label>Localização</label>
                             <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Insira a Localização">
                         </div>

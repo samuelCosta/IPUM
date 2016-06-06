@@ -28,7 +28,7 @@
                     <?php echo form_open(); ?>
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-6 form-group">    
+                            <div class="col-md-4 form-group">    
                                 <label >Tipo Merchandising</label>
                                 <select class="form-control" name="merchandising" disabled="true">
                                     <?php foreach ($merchandising as $tipo): ?>
@@ -37,29 +37,6 @@
                                 </select>
                                 <input type="hidden" name="tipo_merchandising_hidden" value="<?php echo $edit_data['id']; ?>"/>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 form-group">    
-                                <label>Motivo</label>
-                                <select class="form-control" name="motivo" >
-                                    <option value="">Selecione uma opção</option>
-                                    <?php foreach ($tipos_motivo as $motivo): ?> 
-                                    <option value="<?php echo $motivo['id']; ?>"><?php echo $motivo['descricao']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="col-md-3 form-group">
-                                <label>Data</label>
-                                <input type="date" class="form-control" value="<?php echo set_value('data'); ?>" name="data"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>Descrição</label>
-                            <textarea  class="form-control" value="<?php echo set_value('descricao'); ?>" rows="5" name="descricao" placeholder="Insira uma descrição..."></textarea>
-                        </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-3 form-group">
                                 <label>Quantidade</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('quantidade'); ?>" name="quantidade" placeholder="Insira a quantidade"/>
@@ -70,7 +47,28 @@
                             </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-6 form-group">
+                            <div class="col-md-5 form-group">    
+                                <label>Motivo</label>
+                                <select class="form-control" name="motivo" >
+                                    <option value="">Selecione uma opção</option>
+                                    <?php foreach ($tipos_motivo as $motivo): ?> 
+                                    <option value="<?php echo $motivo['id']; ?>"><?php echo $motivo['descricao']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="col-md-5 form-group">
+                                <label>Data</label>
+                                <input type="date" class="form-control" value="<?php echo set_value('data'); ?>" name="data"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-10 form-group">
+                            <label>Descrição</label>
+                            <textarea  class="form-control" value="<?php echo set_value('descricao'); ?>" rows="4" name="descricao" placeholder="Insira uma descrição..."></textarea>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-10 form-group">
                             <label>Elemento</label>
                             <select class="form-control" name="elemento" >
                                 <option value="">Selecione uma opção</option>

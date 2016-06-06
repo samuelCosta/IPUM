@@ -36,17 +36,18 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2 form-group">
+                            <div class="col-md-4 form-group">
                                 <label>Número do Instrumento</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('numero'); ?>" name="numero" placeholder="Insira o número" />
                             </div>
-                            <div class="col-md-2 form-group">
+                        </div>
+                        <div class="row">
+                            
+                            <div class="col-md-6 form-group">
                                 <label>Tamanho</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('tamanho'); ?>" name="tamanho" placeholder="Insira o tamanho" />
                             </div>
-                            <div class="col-md-2 form-group">
+                            <div class="col-md-6 form-group">
                                 <label>Estado</label>
                                 <div class="row">
                                     <label class="radio-inline"><input type="radio" name="estado" value="1" class="minimal" >1</label>
@@ -58,18 +59,18 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2" id="choice">
+                            <div class="col-md-4" id="choice">
                                 <label>Localização</label>
                                 <div class="row">
                                     <label class="radio-inline"><input type="radio" name="local" id="armazenado" value="armazenado" class="minimal"/> Armazém </label>
                                     <label class="radio-inline"><input type="radio" name="local" id="emprestado" value="emprestar" class="minimal"/> Emprestado </label>
                                 </div>
                             </div>
-                            <div id="localizacao" style="display: none" class="col-md-4 form-group">
+                            <div id="localizacao" style="display: none" class="col-md-6 form-group">
                                 <label>Local de Armazenamento</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Insira a Localização" />
                             </div>
-                            <div id="elemento" style="display: none" class="col-md-4 form-group">
+                            <div id="elemento" style="display: none" class="col-md-6 form-group">
                                 <label>Elemento</label>
                                 <select class="form-control" name="elemento" >
                                     <option value="">Selecione uma opção</option>

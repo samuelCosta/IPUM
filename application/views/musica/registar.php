@@ -25,26 +25,26 @@
                     <!-- form start -->
 
 
-                    <?php echo form_open( ); ?>
+                    <?php echo form_open(); ?>
                     <div class="box-body">
                         <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>Nome do Tutorial</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('nome'); ?>" name="nome" placeholder="Insira o nome do tutorial">
-                        </div>
+                            <div class="col-md-8 form-group">
+                                <label><?php echo $titulo ?></label>
+                                <input type="text" class="form-control" value="<?php echo set_value('nome'); ?>" name="nome" placeholder="<?php echo $label ?>">
+                            </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>Link</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('link'); ?>" name="link" placeholder="Insira o link da música">
+                            <div class="col-md-8 form-group">
+                                <label>Link</label>
+                                <input type="text" class="form-control" value="<?php echo set_value('link'); ?>" name="link" placeholder="Insira o link do tutorial">
+                            </div>
                         </div>
-                        </div>
-                        </div>
+                    </div>
 
 
 
 
-                    
+
                     <input hidden id="showtoast" value="<?php echo validation_errors(); ?>">
 
                     <div class="box-footer">  
@@ -52,13 +52,13 @@
                         <a class="btn" href="<?php echo site_url('musica'); ?>">Cancelar</a>
                     </div>
                     </form>
-</div><!-- /.box-body -->
-                </div><!-- /.box -->    
-            </div>    
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->    
+        </div>    
 
 
-        </div>  
-    </section>
+</div>  
+</section>
 </div><!-- /.content-wrapper -->
 
 <footer class="main-footer">
@@ -82,24 +82,24 @@
 <script type="text/javascript">
 
 
-                            toastr.options.closeButton = true;
-                            $(document).ready(function () {
+    toastr.options.closeButton = true;
+    $(document).ready(function () {
 
-                                var shortCutFunction = "warning";
+        var shortCutFunction = "warning";
 //            var erro = "error";
 
-                                var msg = $('#showtoast').val();
-                                var title = "AVISO!";
+        var msg = $('#showtoast').val();
+        var title = "AVISO!";
 
 
-                                if (!msg) {
-                                } else {
+        if (!msg) {
+        } else {
 
-                                    toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+            toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
 
-                                }
+        }
 
-                            });
+    });
 
 </script>
 

@@ -18,7 +18,7 @@
                     <div class="box-header">
                         <h3 class="box-title">Tipos de Seleção</h3>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-block btn-primary" onclick="location.href = 'tiposelecao/registar'">Registar</button>
+                            <button type="button" class="btn btn-block btn-primary" onclick="location.href = 'registar'">Registar</button>
                         </div>
                     </div>
                     <div class="box-body">

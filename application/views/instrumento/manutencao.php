@@ -25,7 +25,7 @@
                     <?php echo form_open(); ?>
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-6 form-group">    
+                            <div class="col-md-8 form-group">    
                                 <label >Tipo de Material</label>
                                 <select class="form-control" name="tipo_material">
                                     <option value="">Selecione uma opção</option>
@@ -38,21 +38,21 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2 form-group">
+                            <div class="col-md-4 form-group">
                                 <label>Quantidade</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('quantidade'); ?>" name="quantidade" placeholder="Insira a quantidade"/>
                             </div>
-                            <div class="col-md-2 form-group">
+                            <div class="col-md-4 form-group">
                                 <label>Custo</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('custo_total'); ?>" name="custo_total" placeholder="Insira o custo">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2 form-group">
+                            <div class="col-md-4 form-group">
                                 <label>Data da Manutenção</label>
                                 <input type="date" class="form-control" value="<?php echo set_value('data_manutencao'); ?>" name="data_manutencao">
                             </div>
-                            <div class="col-md-2 form-group">
+                            <div class="col-md-4 form-group">
                                 <label>Estado</label>
                                 <div class="row">
                                     <label class="radio-inline"><input type="radio" name="estado" value="1" class="minimal" />1</label>
@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-8 form-group">
                                 <label>Elemento</label>
                                 <select class="form-control" name="elemento" >
                                     <option value="">Selecione uma opção</option>
@@ -87,15 +87,6 @@
     </section>
 </div><!-- /.content-wrapper -->
 
-<script src="<?php echo base_url() . 'assets/plugins/jQuery/jQuery-2.1.4.min.js' ?>"></script>
-<script src="<?php echo base_url() . 'assets/bootstrap/js/bootstrap.min.js' ?>"></script>
-<script src="<?php echo base_url() . 'assets/plugins/datatables/jquery.dataTables.min.js' ?>"></script>
-<script src="<?php echo base_url() . 'assets/plugins/datatables/dataTables.bootstrap.min.js' ?>"></script>
-<script src="<?php echo base_url() . 'assets/plugins/select2/select2.full.min.js' ?>"></script>
-<script src="<?php echo base_url() . 'assets/plugins/slimScroll/jquery.slimscroll.min.js' ?>"></script>
-<script src="<?php echo base_url() . 'assets/plugins/iCheck/icheck.min.js' ?>"></script>
-<script src="<?php echo base_url() . 'assets/plugins/fastclick/fastclick.js' ?>"></script>
-<script src="<?php echo base_url() . 'assets/dist/js/app.min.js' ?>"></script>
 
 
 <footer class="main-footer">

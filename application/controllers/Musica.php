@@ -26,14 +26,17 @@ class Musica extends CI_Controller {
         $this->form_validation->set_rules('link', 'Link', 'required');
         $this->form_validation->set_rules('nome', 'Título', 'required');
         
-//        if ($id === NULL) {
-//            $data['titulo'] = 'Inserir música';
-//            $data['label'] = 'Nome da música';
-//        }
+        if ($id === NULL) {
+            $data['titulo'] = 'Tutorial música';
+            $data['label'] = 'Nome da música';
+        } else {
+            $data['titulo'] = 'Tutorial Instrumento';
+            $data['label'] = 'Nome do instrumento';
+        }
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
-            $this->load->view('musica/registar');
+            $this->load->view('musica/registar', $data);
             $this->load->view('includes/menu_v');
         } else {
             $this->musica_m->registar($id);
@@ -49,6 +52,7 @@ class Musica extends CI_Controller {
 
         $this->form_validation->set_rules('link', 'Link', 'required');
         $this->form_validation->set_rules('nome', 'Título', 'required');
+        
         
 
         if ($this->form_validation->run() == FALSE) {

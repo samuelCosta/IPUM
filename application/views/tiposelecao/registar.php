@@ -28,7 +28,7 @@
                     <?php echo form_open('tiposelecao/registar'); ?>
                     <div class="box-body">
                         <div class="row">  
-                        <div class="col-md-6 form-group">    
+                        <div class="col-md-9 form-group">    
                             <label >Tipo de Material</label>
                             <select class="form-control" name="tipo_selecao" >                                
                                     <option value="">Selecione uma opção</option>
@@ -43,7 +43,7 @@
                         </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-2 form-group">
+                        <div class="col-md-9 form-group">
                             <label>Descrição</label>
                             <input type="text" class="form-control" value="<?php echo set_value('descricao'); ?>" name="descricao" placeholder="Insira uma Descrição">
                         </div>
@@ -56,7 +56,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Registar</button>
-                        <a class="btn" href="<?php echo site_url('tiposelecao'); ?>">Cancelar</a>
+                        <a class="btn" href="<?php echo site_url('tiposelecao/index'); ?>">Cancelar</a>
                     </div>
                     </form>
 
