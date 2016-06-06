@@ -53,17 +53,17 @@ class Atuacoes_m extends CI_Model {
     }
     
     
-        public function pesquisar_atuacoes() {
-//like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
-        $pesquisa = $this->input->post('pesquisar');
-
-        $this->db->select('*');
-        $this->db->like('localizacao', $pesquisa);
-        $this->db->where('tipo', 'atuação');
-        $this->db->where('estado', '1');
-        return $this->db->get('eventos')->result();
-    }
-    
+//        public function pesquisar_atuacoes() {
+////like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
+//        $pesquisa = $this->input->post('pesquisar');
+//
+//        $this->db->select('*');
+//        $this->db->like('localizacao', $pesquisa);
+//        $this->db->where('tipo', 'atuação');
+//        $this->db->where('estado', '1');
+//        return $this->db->get('eventos')->result();
+//    }
+//    
     //vai buscar todas as atuacoes onde o seu estado e 0 ou seja eventos finalizado //consultarAtuacoes
     public function get_historicoAtuacoes() {
         

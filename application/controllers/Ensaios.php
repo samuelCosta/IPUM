@@ -64,17 +64,17 @@ class Ensaios extends CI_Controller {
 //        $this->load->view('includes/footer_v');
     }
 
-    // boatao pesquisar (pesquisa por ensaio onde o seu estado e 1)
-    public function pesquisar() {
-
-        $this->load->model('Ensaios_m');
-        $dados['Ensaios'] = $this->Ensaios_m->pesquisar_ensaios();
-
-        $this->load->view('includes/header_v');
-        $this->load->view('consultarEnsaios_v', $dados);
-        $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
-    }
+//    // boatao pesquisar (pesquisa por ensaio onde o seu estado e 1)
+//    public function pesquisar() {
+//
+//        $this->load->model('Ensaios_m');
+//        $dados['Ensaios'] = $this->Ensaios_m->pesquisar_ensaios();
+//
+//        $this->load->view('includes/header_v');
+//        $this->load->view('consultarEnsaios_v', $dados);
+//        $this->load->view('includes/menu_v');
+//        $this->load->view('includes/footer_v');
+//    }
 
     //    vai permitar devolver os dados de um determinado ensaio
     public function atualizar($id = null) {
@@ -167,7 +167,7 @@ class Ensaios extends CI_Controller {
         $this->load->view('includes/header_v');
         $this->load->view('presencaEnsaios_v', $dados);
         $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
+       // $this->load->view('includes/footer_v');
     }
 
     public function marcarPresencas() {

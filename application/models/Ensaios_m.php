@@ -24,15 +24,15 @@ class Ensaios_m extends CI_Model {
         return $this->db->get('eventos')->result();
     }
 
-    public function pesquisar_ensaios() {
-//like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
-        $pesquisa = $this->input->post('pesquisar');
-
-        $this->db->select('*');
-        $this->db->like('localizacao', $pesquisa);
-        $this->db->where('estado', '1');
-        return $this->db->get('eventos')->result();
-    }
+//    public function pesquisar_ensaios() {
+////like-Esta função permite gerar cláusulas LIKE, úteis para fazer buscas .
+//        $pesquisa = $this->input->post('pesquisar');
+//
+//        $this->db->select('*');
+//        $this->db->like('localizacao', $pesquisa);
+//        $this->db->where('estado', '1');
+//        return $this->db->get('eventos')->result();
+//    }
 
     //colocar data de Fim no ensaio
     public function encerrarEnsaio($id = null) {
