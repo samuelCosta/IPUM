@@ -139,11 +139,13 @@ class Quotas_m extends CI_Model {
     public function quotasEmFalta() {
 
         $dataAtual=date('Y/m/d');
+      
         $this->db->select('*');
-        $this->db->where('utilizador.socio', 1);         
+        $this->db->where('utilizador.socio', 1); 
+        $this->db->where('quota.tipo', 'Não Pago'); 
         $this->db->where('quota.dataAviso <=', $dataAtual);        
         $this->db->join('utilizador', 'idUtilizador=utilizador_idUtilizador', 'inner');
-        $this->db->group_by("utilizador.nome");
+       $this->db->group_by("utilizador.nome");
         return $this->db->get('quota')->result();
     }
 
