@@ -4,6 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Quotas extends CI_Controller {
 
+    function __construct() {
+        parent::__construct();
+     
+          if($this->session ->userdata('conectado')==false){
+            redirect('Welcome');
+            
+        }       
+        
+    }
+    
     public function index($indice=NULL) {
         $this->load->model('quotas_m');
         $dados['quotas'] = $this->quotas_m->consultarQuotas();

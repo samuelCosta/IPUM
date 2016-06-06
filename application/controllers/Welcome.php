@@ -6,17 +6,8 @@ class Welcome extends CI_Controller {
 
     public function index() {
          $this->load->view('login_v');
-//        $this->load->view('bemVindo_v');
-//        $this->load->view('includes/footer_v');
     }
 
-    public function login() {
-//                $this->load->view('includes/header_v');
-//                $this->load->view('utilizador_v');
-        $this->load->view('login_v');
-//                $this->load->view('includes/menu_v');
-//                $this->load->view('includes/footer_v');
-    }
 
     public function verificaLogin() {
 
@@ -34,15 +25,8 @@ class Welcome extends CI_Controller {
             $dados['conectado']=true;
                         
             $this->session->set_userdata($dados);
-//            $this->session->set_userdata("usuario_logado", $usuario); session vai permitir navegar com o utilizador que iniciar sessao
-//            $dados['msg'] = "Login feito com sucesso!";
-//            $this->load->view('includes/header_v');
-//            $this->load->view('includes/msgSucesso_v',$dados);
-//                        
+                        
             redirect('utilizador','refresh');
-//            $this->load->view("bemVindo_v");
-//            $this->load->view('includes/menu_v');
-//            $this->load->view('includes/footer_v');
         } else {
     
             $this->load->view('login_v');
@@ -51,13 +35,4 @@ class Welcome extends CI_Controller {
     }
     
     
-//
-//    public function utilizador() {
-//
-//        $this->load->view('includes/header_v');
-//        $this->load->view('utilizador_v');
-//        $this->load->view('includes/menu_v');
-//        $this->load->view('includes/footer_v');
-//    }
-
 }

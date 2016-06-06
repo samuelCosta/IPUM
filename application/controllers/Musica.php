@@ -5,6 +5,11 @@ class Musica extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('musica_m');
+        
+        if($this->session ->userdata('conectado')==false){
+            redirect('Welcome');
+            
+        }
     }
 
     public function index() {

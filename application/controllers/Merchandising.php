@@ -6,6 +6,11 @@ class Merchandising extends CI_Controller{
         parent::__construct();
         $this->load->model('merchandising_m');
         $this->load->model('tiposelecao_m');
+        
+        if($this->session ->userdata('conectado')==false){
+            redirect('Welcome');
+            
+        } 
     }
     
     public function index() {

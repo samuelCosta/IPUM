@@ -6,6 +6,11 @@ class Traje extends CI_Controller {
         parent::__construct();
         $this->load->model('traje_m');
         $this->load->model('tiposelecao_m');
+        
+        if($this->session ->userdata('conectado')==false){
+            redirect('Welcome');
+            
+        } 
     }
 
     public function index() {

@@ -6,6 +6,11 @@ class Instrumento extends CI_Controller {
         parent::__construct();
         $this->load->model('instrumento_m');
         $this->load->model('tiposelecao_m');
+        
+        if($this->session ->userdata('conectado')==false){
+            redirect('Welcome');
+            
+        } 
     }
 
     public function index() {

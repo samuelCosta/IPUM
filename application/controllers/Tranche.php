@@ -4,6 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Tranche extends CI_Controller {
 
+    function __construct() {
+        parent::__construct();
+     
+          if($this->session ->userdata('conectado')==false){
+            redirect('Welcome');
+            
+        }       
+        
+    }
+    
     public function index() {
 
         $this->load->model('Atividades_m');
@@ -39,7 +49,7 @@ class Tranche extends CI_Controller {
 
     public function registarTranche() {
          
-       $this->form_validation->set_rules('ano', 'Ano', 'required|callback_vericaTranche');
+       $this->form_validation->set_rules('ano', 'Ano', 'required|callback_vericaTranche|xss_clean');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');

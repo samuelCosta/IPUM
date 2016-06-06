@@ -4,16 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Utilizador extends CI_Controller {
 
-//     function __construct() {
-//        parent::__construct();
-//     
-//          if($this->session ->userdata('conectado')==false){
-//            redirect('Welcome');
-//            
-//        }       
-//        
-//    }
-//    
+     function __construct() {
+        parent::__construct();
+     
+          if($this->session ->userdata('conectado')==false){
+            redirect('Welcome');
+            
+        }       
+        
+    }
+    
 
     public function index() {
 //        estatistica 

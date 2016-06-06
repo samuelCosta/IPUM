@@ -5,6 +5,11 @@ class Material extends CI_Controller{
     function __construct() {
         parent::__construct();
         $this->load->model('material_m');
+        
+        if($this->session ->userdata('conectado')==false){
+            redirect('Welcome');
+            
+        } 
     }
     
     public function index() {

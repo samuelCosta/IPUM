@@ -4,12 +4,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Atividades extends CI_Controller {
 
+    function __construct() {
+        parent::__construct();
+     
+          if($this->session ->userdata('conectado')==false){
+            redirect('Welcome');
+            
+        }       
+        
+    }
+    
     public function index() {
 
         $this->load->view('includes/header_v');
         $this->load->view('registarAtividades_v');
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
+        
     }
 
     public function registarAtividades() {

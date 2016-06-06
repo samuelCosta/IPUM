@@ -4,6 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class OrgaosSociais extends CI_Controller {
 
+    function __construct() {
+        parent::__construct();
+     
+          if($this->session ->userdata('conectado')==false){
+            redirect('Welcome');
+            
+        }       
+        
+    }
+    
     public function index() {
         $this->load->model('utilizador_m');
         $dados['utilizador'] = $this->utilizador_m->todosUtilizadores();
