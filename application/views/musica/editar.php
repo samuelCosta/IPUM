@@ -28,9 +28,10 @@
                     <?php echo form_open( ); ?>
                     <div class="box-body">
                         <div class="row">
+                            
                         <div class="col-md-8 form-group">
-                            <label>Nome do Tutorial</label>
-                            <input type="text" class="form-control" value="<?php echo $edit_data['nome'] ?>" name="nome" placeholder="Insira o nome do tutorial">
+                            <label><?php if ($edit_data['parent_id'] === NULL) { echo 'Tutorial música'; } else {     echo 'Tutorial Instrumento';} ?></label>
+                            <input type="text" class="form-control" value="<?php echo $edit_data['nome'] ?>" name="nome">
                         </div>
                         </div>
                         <div class="row">

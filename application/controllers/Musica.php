@@ -53,7 +53,6 @@ class Musica extends CI_Controller {
         $this->form_validation->set_rules('link', 'Link', 'required');
         $this->form_validation->set_rules('nome', 'Título', 'required');
         
-        
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
