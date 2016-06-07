@@ -202,8 +202,13 @@
                         
                         <div class="col-md-12 form-group">
                             <label>Data sócio:</label>
+                                 <?php if($utilizador[0]->dataSocio==Null) { ?>
                             <input class="form-control" id="dataSocio" name="dataSocio" onchange="alterarSocio()" type="date">
+                                 <?php }else { ?>
+                            <input class="form-control"  disabled="" value="<?=$utilizador[0]->dataSocio?>" onload="alterarSocio()" type="date">
+                        <?php } ?>
                         </div>
+                   
                       <div class="col-md-12 form-group">
                             <div id="divcheck2">
                             </div>
@@ -212,7 +217,11 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-default" data-dismiss="modal" type="button">Fechar</button>
+                     <?php if($utilizador[0]->dataSocio==Null) { ?>
                     <button class="btn btn-primary" disabled="" id="enviarsocio" type="submit">Salvar</button>
+                     <?php }else { ?>
+                      <button class="btn btn-primary" type="submit">Salvar</button>
+                       <?php } ?>
                 </div>
             </div>
         </form>
@@ -282,8 +291,8 @@
     
     function alterarSocio(){
         var socio = $("#dataSocio").val();
-      
-        if(socio != ''){
+  
+        if(socio != '' ){
              document.getElementById("enviarsocio").disabled = false;            
         }else            
         document.getElementById("enviarsocio").disabled = true;
