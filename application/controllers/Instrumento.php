@@ -34,10 +34,10 @@ class Instrumento extends CI_Controller {
         $data['elementos'] = $this->traje_m->get_utilizadores();
 
 
-        $this->form_validation->set_rules('tipo_instrumento', 'Tipo de Instrmuento', 'required');
-        $this->form_validation->set_rules('numero', 'Numero do Instrumento', 'required');
-        $this->form_validation->set_rules('tamanho', 'Tamanho', 'required');
-        $this->form_validation->set_rules('localizacao', 'Localização');
+        $this->form_validation->set_rules('tipo_instrumento', 'Tipo de Instrumuento', 'required');
+        $this->form_validation->set_rules('numero', 'Numero do Instrumento', 'trim|required');
+        $this->form_validation->set_rules('tamanho', 'Tamanho', 'trim|required');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'trim');
         $this->form_validation->set_rules('elemento', 'Elemento');
         $this->form_validation->set_rules('estado', 'Estado', 'required');
 
@@ -61,8 +61,8 @@ class Instrumento extends CI_Controller {
         $data['elementos'] = $this->traje_m->get_utilizadores();
 
         $this->form_validation->set_rules('tipo_material', 'Tipo de Material', 'required');
-        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required|callback_check_quantidade');
-        $this->form_validation->set_rules('custo_total', 'Custo', 'required');
+        $this->form_validation->set_rules('quantidade', 'Quantidade', 'trim|required|callback_check_quantidade');
+        $this->form_validation->set_rules('custo_total', 'Custo', 'trim|required');
         $this->form_validation->set_rules('data_manutencao', 'Data da Manutenção', 'required');
         $this->form_validation->set_rules('elemento', 'Elemento', 'required');
         $this->form_validation->set_rules('estado', 'Estado', 'required');
@@ -115,7 +115,7 @@ class Instrumento extends CI_Controller {
         $data['elementos'] = $this->traje_m->get_utilizadores();
 
 
-        $this->form_validation->set_rules('localizacao', 'Localização');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'trim');
         $this->form_validation->set_rules('elemento', 'Elemento');
         $this->form_validation->set_rules('estado', 'Estado', 'required');
 

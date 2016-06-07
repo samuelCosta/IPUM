@@ -140,7 +140,7 @@
                              <?php if ($manutencao != NULL) { foreach ($manutencao as $manu): ?>
                             <p class="text-muted"><?php echo $manu['instrumento'] . ' - ' . $manu['numero'] . ' - ' . $manu['material']; ?> </p>
                              <?php endforeach; } else { ?>
-                             <p class="text-muted"><?php echo "O utilizador não realizou manutenções"; }?></p>
+                             <p class="text-muted"><?php echo "O utilizador não efectuou qualquer manutenção"; }?></p>
 
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->               

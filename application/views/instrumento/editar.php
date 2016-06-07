@@ -71,11 +71,11 @@
                             </div>
                             <div id="localizacao" style="<?php if ($edit_data['elemento'] > 0) {echo 'display: none';}?>" class="col-md-6 form-group">
                                 <label>Local de Armazenamento</label>
-                                <input type="text" class="form-control" value="<?php echo $edit_data['localizacao']; ?>" name="localizacao" placeholder="Insira o Local de Armazenamento" />
+                                <input type="text" class="form-control" value="<?php echo $edit_data['localizacao']; ?>" id="ilocalizacao" name="localizacao" placeholder="Insira o Local de Armazenamento" />
                             </div>
                             <div id="elemento" style="<?php if ($edit_data['localizacao'] != '') {echo 'display: none';}?>" class="col-md-6 form-group">
                                 <label>Elemento</label>
-                                <select class="form-control" name="elemento" >
+                                <select class="form-control" name="elemento" id="ielemento">
                                     <option value="">Selecione uma opção</option>
                                     <?php foreach ($elementos as $elemento): ?>
                                         <option value="<?php echo $elemento['idUtilizador']; ?>" <?php if ($edit_data['elemento'] === $elemento['idUtilizador']) { echo 'selected';} ?> ><?php echo $elemento['nome']; ?></option>
@@ -155,12 +155,12 @@
     $(document).ready(function () {
         $('#armazenado').on('ifChanged', function () {
             $('#localizacao').show();
-            $("#elemento option[value='']").attr('selected', true);
+            $("#ielemento option[value='']").prop('selected', true);
             $('#elemento').hide();
         });
         $('#emprestado').on('ifChanged', function () {
             $('#elemento').show();
-            $('#localizacao').val("");
+            $('#ilocalizacao').val("");
             $('#localizacao').hide();
         });
     });

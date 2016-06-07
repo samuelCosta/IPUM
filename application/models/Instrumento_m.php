@@ -62,8 +62,7 @@ class Instrumento_m extends CI_Model {
 
     public function editar($id) {
         $elemento = $this->input->post('elemento');
-        var_dump($elemento);
-        die();
+        
         if ($elemento === 0) {
             $elemento = NULL;
         }
@@ -76,7 +75,7 @@ class Instrumento_m extends CI_Model {
             'elemento' => $elemento,
             'estado' => $this->input->post('estado'),
         );
-
+        
         $this->db->where('id', $id);
         return $this->db->update('instrumento', $data);
     }
