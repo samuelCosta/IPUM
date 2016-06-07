@@ -15,6 +15,7 @@ class Utilizador_m extends CI_Model {
     public function buscaPorEmailSenha($email, $password) {
 
         $this->db->where("email", $email);
+        $this->db->where("ativo", 1);
         $this->db->where("password", $password);
         return $this->db->get('utilizador')->result();
         
