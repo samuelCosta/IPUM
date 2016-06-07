@@ -132,8 +132,8 @@
                         <input   class="form-control" type="hidden" id="dataAviso" name="dataAviso" >  
                         <input   class="form-control" type="hidden" id="idQuota" name="idQuota" >  
                         <input   class="form-control" type="hidden" id="tipo" name="tipo" >  
-                        
-                        <div id="estado" class="alert alert-warning alert-dismissable">
+                   
+                        <div id="estado">
                         </div>
                         <div class="col-md-12 form-group">
                             <label>Data de Pagamento:</label>
@@ -229,10 +229,18 @@
                     $("#idQuota").val(res.idQuota);
                     $("#tipo").val(res.tipo);
                     
-
-                    html = "<i class='icon fa fa-warning'></i>" + res.estado;
+                    if(res.tipo == 'Isento'){
+                    html = "<div  class='alert alert-warning alert-dismissable'>";
+                    html += "<i class='icon fa fa-warning'></i>" + res.estado;
+                    html += "</div>";
+                 }
+                    html = "<div class='alert alert alert-dismissable' >";
+                    html += "<h3><span class='label label-danger'><i class='icon fa fa-warning'></i>"+ res.estado+"</span></h3>";
+                    html += "</div>";
+                 
                     $("#estado").html(html);
 //                    //coloco a variável html na tela
+                    
 
                 }
             });

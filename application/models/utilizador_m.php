@@ -119,6 +119,15 @@ class Utilizador_m extends CI_Model {
         
        
     }
+    public function alterarSocio(){
+       $id = $this->input->post('idUtilizador');
+       $socio['socio'] = $this->input->post('socio');
+          
+       $this->db->where('idUtilizador', $id);
+       return $this->db->update('utilizador', $socio);
+        
+       
+    }
     
   function searchEventos($dado){
         

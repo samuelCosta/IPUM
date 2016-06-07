@@ -52,9 +52,7 @@
                             echo "a " . $p['dataFim']; ?>   </ul> <?php
                             } ?> 
 <?php } ?>
-                       
-                    
-                    
+                                           
                           
                             <a onclick="imprimir(<?php echo  $utilizador['idUtilizador'] ?>)" class="btn btn-primary btn-block"><i class="fa fa-download"></i><b>  Imprimir Certificado de Orgão Social</b></a>
                             <?php }else {}
@@ -93,6 +91,10 @@
 
                             <strong><i class="  margin-r-5"></i> Data Nascimento</strong>
                             <p class="text-muted"> <?php echo $utilizador['dataNascimento'];  ?></p>  
+                            
+                            <strong><i class="  margin-r-5"></i> Nº Aluno</strong>
+                            <p class="text-muted"> <?php echo $utilizador['nAluno'];  ?></p>
+                            
                             
    
 

@@ -176,9 +176,6 @@ class Utilizador extends CI_Controller {
         $config['max_size'] = '3000';
    
 
-
-
-
         $this->load->library('upload', $config);
 
 
@@ -226,6 +223,9 @@ class Utilizador extends CI_Controller {
         }else if ($indice == 5) {
             $data['msg'] = "Nova senha gerada.";
             $this->load->view('includes/msgSucesso_v', $data);
+        }else if ($indice == 6) {
+            $data['msg'] = "Como já foi sócio a data continua a mesma.";
+            $this->load->view('includes/msgSucesso_v', $data);
         }
         $this->load->view('editarUtilizador_v', $data);
         $this->load->view('includes/menu_v');
@@ -259,14 +259,8 @@ class Utilizador extends CI_Controller {
    
             
             //insere os dados na base de dados
-            $dados = elements(array('nAluno','ativo', 'alcunha', 'email', 'dataNascimento', 'privilegio'), $this->input->post());
-               if($this->input->post('ativo') == 0){
-                $dados['socio']=0;
-            }else if($this->input->post('socio')==1){
-                 $dados['socio']=1;
-            }else {
-                 $dados['socio']=0;
-    }
+            $dados = elements(array('nAluno','socio','ativo', 'alcunha', 'email', 'dataNascimento', 'privilegio'), $this->input->post());
+              
     
             
             $this->load->model('utilizador_m');
@@ -306,14 +300,21 @@ class Utilizador extends CI_Controller {
         
         $dataSocio = $this->input->post('dataSocio');       
         $id = $this->input->post('idUtilizador');
-//        $this->quotas_m->do_insert();
         
-        if ($this->utilizador_m->alterarDataSocio() && $this->quotas_m->do_insert($id,$dataSocio)&& $this->quotas_m->criarLinhaQuota($id,$dataSocio) ) {
+       if($this->quotas_m->verificaSocio($id) <= 0){
+
+          if ($this->utilizador_m->alterarDataSocio() &&$this->quotas_m->do_insert($id,$dataSocio) &&$this->quotas_m->criarLinhaQuota($id,$dataSocio)) {
 
             redirect('utilizador/atualizar/' . $id . '/3');
         } else {
             redirect('utilizador/atualizar/' . $id . '/4');
         }
+       }else {
+           $this->utilizador_m->alterarSocio();
+            redirect('utilizador/atualizar/' . $id . '/6');
+       }
+        
+       
     }
 
     //botao pesquisar utilizadores ativos(consultarUtilizadores_v)

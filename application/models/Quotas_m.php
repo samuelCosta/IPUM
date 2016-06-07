@@ -26,6 +26,7 @@ class Quotas_m extends CI_Model {
 
         $this->db->select('*');
         $this->db->where('utilizador.socio', 1);
+        $this->db->where('utilizador.ativo', 1);
         $this->db->join('utilizador', 'idUtilizador=utilizador_idUtilizador', 'inner');
         return $this->db->get('quota')->result();
     }
@@ -62,7 +63,8 @@ class Quotas_m extends CI_Model {
     public function historicoQuotas() {
 
         $this->db->select('*');
-        $this->db->where('utilizador.socio', 0);
+        $this->db->where('utilizador.socio', 0);               
+        $this->db->or_where('utilizador.ativo', 0);
         $this->db->join('utilizador', 'idUtilizador=utilizador_idUtilizador', 'inner');
         return $this->db->get('quota')->result();
     }
@@ -147,6 +149,12 @@ class Quotas_m extends CI_Model {
         $this->db->join('utilizador', 'idUtilizador=utilizador_idUtilizador', 'inner');
        $this->db->group_by("utilizador.nome");
         return $this->db->get('quota')->result();
+    }
+    
+        public function verificaSocio($id) {
+
+        $this->db->where('utilizador_idUtilizador', $id);
+            return $this->db->get('quota')->num_rows();
     }
 
 }

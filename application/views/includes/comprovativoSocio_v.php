@@ -48,7 +48,7 @@ p {
 
 
 <pre >
-        Aprovado a ___-___-20___
+        Aprovado a <?php echo $utilizador['dataSocio']?>
 
 
         O Sócio                                          A Direção

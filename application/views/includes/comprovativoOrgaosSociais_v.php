@@ -41,7 +41,7 @@ p  {
 <br><br><br><br><br><br><br>
 
 
-<pre>                            __________________________________
+<pre>                                 __________________________________
                             
                                   Mesa da Assembleia Geral da iPUM</pre>
 
