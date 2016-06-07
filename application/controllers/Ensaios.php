@@ -26,8 +26,8 @@ class Ensaios extends CI_Controller {
         //strtolower-colocar tudo em minusculo
         //ucwords-colocar iniciais em maiusculo
 
-        $this->form_validation->set_rules('dataEvento', 'Data', 'required');
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords');
+        $this->form_validation->set_rules('dataEvento', 'Data', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords|xss_clean|trim');
 
 
 
@@ -119,8 +119,8 @@ class Ensaios extends CI_Controller {
         //strtolower-colocar tudo em minusculo
         //ucwords-colocar iniciais em maiusculo
 
-        $this->form_validation->set_rules('dataEvento', 'Data', 'required');
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords');
+        $this->form_validation->set_rules('dataEvento', 'Data', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords|xss_clean|trim');
 
         $id = $this->input->post('idEventos');
 

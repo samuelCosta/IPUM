@@ -27,11 +27,11 @@ class Atividades extends CI_Controller {
         //strtolower-colocar tudo em minusculo
         //ucwords-colocar iniciais em maiusculo
 
-        $this->form_validation->set_rules('nomeAtividade', 'Nome da Atividade', 'required|ucwords');
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords');
+        $this->form_validation->set_rules('nomeAtividade', 'Nome da Atividade', 'required|ucwords|xss_clean|trim');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords|xss_clean|trim');
         $this->form_validation->set_rules('dataInicio', 'Data de Inicio', 'required');
-        $this->form_validation->set_rules('duracao', 'Duração', 'required');
-        $this->form_validation->set_rules('orcamento', 'Orçamento', 'required');
+        $this->form_validation->set_rules('duracao', 'Duração', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('orcamento', 'Orçamento', 'required|xss_clean|trim');
 
 
         if ($this->form_validation->run() == FALSE) {
@@ -97,14 +97,14 @@ class Atividades extends CI_Controller {
         //strtolower-colocar tudo em minusculo
         //ucwords-colocar iniciais em maiusculo
         if ($this->input->post('bt1') == 'upload') {
-            $this->form_validation->set_rules('nomeAtividade', 'Nome da Atividade', 'required|ucwords');
-            $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords');
-            $this->form_validation->set_rules('participantes', 'Total de Participantes', 'required');
-            $this->form_validation->set_rules('totalGastos', 'Total de Gastos', 'required');
-            $this->form_validation->set_rules('notas', 'Notas', 'required|ucwords');
+            $this->form_validation->set_rules('nomeAtividade', 'Nome da Atividade', 'required|ucwords|xss_clean|trim');
+            $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords|xss_clean|trim');
+            $this->form_validation->set_rules('participantes', 'Total de Participantes', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('totalGastos', 'Total de Gastos', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('notas', 'Notas', 'required|ucwords|xss_clean|trim');
             $this->form_validation->set_rules('dataInicio', 'Data de Inicio', 'required');
-            $this->form_validation->set_rules('duracao', 'Duração', 'required');
-            $this->form_validation->set_rules('orcamento', 'Orçamento', 'required');
+            $this->form_validation->set_rules('duracao', 'Duração', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('orcamento', 'Orçamento', 'required|xss_clean|trim');
 
             $id = $this->input->post('idAtividades');
 
@@ -131,14 +131,14 @@ class Atividades extends CI_Controller {
         } else {
 
 
-            $this->form_validation->set_rules('nomeAtividade', 'Nome da Atividade', 'required|ucwords');
-            $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords');
-            $this->form_validation->set_rules('participantes', 'Total de Participantes', 'required');
-            $this->form_validation->set_rules('totalGastos', 'Total de Gastos', 'required');
-            $this->form_validation->set_rules('notas', 'Notas', 'required|ucwords');
+            $this->form_validation->set_rules('nomeAtividade', 'Nome da Atividade', 'required|ucwords|xss_clean|trim');
+            $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords|xss_clean|trim');
+            $this->form_validation->set_rules('participantes', 'Total de Participantes', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('totalGastos', 'Total de Gastos', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('notas', 'Notas', 'required|ucwords|xss_clean|trim');
             $this->form_validation->set_rules('dataInicio', 'Data de Inicio', 'required');
-            $this->form_validation->set_rules('duracao', 'Duração', 'required');
-            $this->form_validation->set_rules('orcamento', 'Orçamento', 'required');
+            $this->form_validation->set_rules('duracao', 'Duração', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('orcamento', 'Orçamento', 'required|xss_clean|trim');
 
             $id = $this->input->post('idAtividades');
 

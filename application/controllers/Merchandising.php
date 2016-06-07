@@ -43,10 +43,10 @@ class Merchandising extends CI_Controller{
 
         $data['tipos_merchandising'] = $this->tiposelecao_m->get_tiposelecao('TIPO_MERCHANDISING');
         
-        $this->form_validation->set_rules('tipo_merchandising', 'Tipo de Merchandising', 'required');
-        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
-        $this->form_validation->set_rules('custo_uni', 'Custo Unitário', 'required');
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required');
+        $this->form_validation->set_rules('tipo_merchandising', 'Tipo de Merchandising', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('quantidade', 'Quantidade', 'require|xss_clean|trimd');
+        $this->form_validation->set_rules('custo_uni', 'Custo Unitário', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required|xss_clean|trim');
         $this->form_validation->set_rules('data_compra', 'Data de Compra', 'required');
         
         if ($this->form_validation->run() == FALSE) {
@@ -67,7 +67,7 @@ class Merchandising extends CI_Controller{
         $data['edit_data'] = $this->merchandising_m->get_merchandising_id($id);
         $data['tipos_merchandising'] = $this->tiposelecao_m->get_tiposelecao('TIPO_MERCHANDISING');
         
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required|xss_clean|trim');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
@@ -92,9 +92,9 @@ class Merchandising extends CI_Controller{
         $this->form_validation->set_rules('motivo', 'Motivo', 'required');
         $this->form_validation->set_rules('elemento', 'Elemento');
         $this->form_validation->set_rules('data', 'Data', 'required');
-        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required|callback_check_quantidade');
-        $this->form_validation->set_rules('custo', 'Custo');
-        $this->form_validation->set_rules('descricao', 'Descrição');
+        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required|callback_check_quantidade|xss_clean|trim');
+        $this->form_validation->set_rules('custo', 'Custo','xss_clean|trim');
+        $this->form_validation->set_rules('descricao', 'Descrição','xss_clean|trim');
         
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
