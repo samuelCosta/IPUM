@@ -131,16 +131,16 @@ class Utilizador extends CI_Controller {
         //strtolower-colocar tudo em minusculo
         //ucwords-colocar iniciais em maiusculo
 
-        $this->form_validation->set_rules('nome', 'Nome', 'required|ucwords|is_unique[utilizador.nome]|xss_clean|trim');
-        $this->form_validation->set_rules('alcunha', 'Alcunha', 'required|alpha|xss_clean|trim');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|strtolower|valid_email|is_unique[utilizador.email]|xss_clean|trim');
-        $this->form_validation->set_rules('password', 'Password', 'required|strtolower|xss_clean|trim');
+        $this->form_validation->set_rules('nome', 'Nome', 'required|ucwords|is_unique[utilizador.nome]');
+        $this->form_validation->set_rules('alcunha', 'Alcunha', 'required|alpha');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|strtolower|valid_email|is_unique[utilizador.email]');
+        $this->form_validation->set_rules('password', 'Password', 'required|strtolower');
         $this->form_validation->set_message('matches', 'O campo %s esta diferente do campo %s');
-        $this->form_validation->set_rules('password2', 'Repita Password', 'required|strtolower|matches[password]|xss_clean|trim');
-        $this->form_validation->set_rules('nif', 'NIF', 'required|numeric|exact_length[9]|is_unique[utilizador.nif]|xss_clean|trim');
-        $this->form_validation->set_rules('bi', 'BI', 'required|numeric|exact_length[8]|is_unique[utilizador.bi]|xss_clean|trim');
-        $this->form_validation->set_rules('nAluno', 'NUmero Aluno', 'required|numeric|xss_clean|trim');
-        $this->form_validation->set_rules('dataNascimento', 'Data de Nascimento', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('password2', 'Repita Password', 'required|strtolower|matches[password]');
+        $this->form_validation->set_rules('nif', 'NIF', 'required|numeric|exact_length[9]|is_unique[utilizador.nif]');
+        $this->form_validation->set_rules('bi', 'BI', 'required|numeric|exact_length[8]|is_unique[utilizador.bi]');
+        $this->form_validation->set_rules('nAluno', 'NUmero Aluno', 'required|numeric');
+        $this->form_validation->set_rules('dataNascimento', 'Data de Nascimento', 'required');
         $this->form_validation->set_rules('dataEntrada', 'Data de Entrada', 'required');
         $this->form_validation->set_rules('privilegio', 'Privilégio', 'required');
         $this->form_validation->set_rules('foto', 'Imagem', 'callback_validar_foto');
@@ -236,11 +236,11 @@ class Utilizador extends CI_Controller {
         //strtolower-colocar tudo em minusculo
         //ucwords-colocar iniciais em maiusculo
 
-        $this->form_validation->set_rules('alcunha', 'Alcunha', 'required|alpha|xss_clean|trim');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|strtolower|valid_email|xss_clean|trim');
+        $this->form_validation->set_rules('alcunha', 'Alcunha', 'required|alpha');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|strtolower|valid_email');
         $this->form_validation->set_rules('dataNascimento', 'Data Nascimento', 'required');
         $this->form_validation->set_rules('privilegio', 'Privilegio', 'required');
-        $this->form_validation->set_rules('nAluno', 'Numero de Aluno', 'required|numeric|xss_clean|trim');
+        $this->form_validation->set_rules('nAluno', 'Numero de Aluno', 'required|numeric');
         $id = $this->input->post('idUtilizador');
 
  

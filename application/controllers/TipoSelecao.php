@@ -25,7 +25,7 @@ class TipoSelecao extends CI_Controller {
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('tipo_selecao', 'Tipo de Seleção', 'required');
-        $this->form_validation->set_rules('descricao', 'Descrição', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('descricao', 'Descrição', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
@@ -42,7 +42,7 @@ class TipoSelecao extends CI_Controller {
         $this->load->library('form_validation');
         
         $data['edit_data'] = $this->tiposelecao_m->get_tiposelecao_id($id);
-        $this->form_validation->set_rules('descricao', 'Descrição', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('descricao', 'Descrição', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');

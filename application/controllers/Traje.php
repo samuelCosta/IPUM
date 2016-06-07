@@ -49,10 +49,10 @@ class Traje extends CI_Controller {
         $this->form_validation->set_rules('tipo_peca', 'Tipo de Peça', 'required');
         $this->form_validation->set_rules('tipo_genero', 'Género', 'required');
         $this->form_validation->set_rules('tipo_tamanho', 'Tamanho', 'required');
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('custo_uni', 'Custo Unitário', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('data_compra', 'Data de Compra', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required');
+        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
+        $this->form_validation->set_rules('custo_uni', 'Custo Unitário', 'required');
+        $this->form_validation->set_rules('data_compra', 'Data de Compra', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
@@ -73,7 +73,7 @@ class Traje extends CI_Controller {
         $data['tipos_genero'] = $this->tiposelecao_m->get_tiposelecao('TIPO_GENERO');
         $data['tipos_tamanho'] = $this->tiposelecao_m->get_tiposelecao('TIPO_TAMANHO');
 
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
@@ -102,9 +102,9 @@ class Traje extends CI_Controller {
         $this->form_validation->set_rules('motivo', 'Motivo', 'required');
         $this->form_validation->set_rules('elemento', 'Elemento');
         $this->form_validation->set_rules('data', 'Data', 'required');
-        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required|callback_check_quantidade|xss_clean|trim');
-        $this->form_validation->set_rules('descricao', 'Descricao','xss_clean|trim');
-        $this->form_validation->set_rules('custo', 'Custo', 'xss_clean|trim');
+        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required|callback_check_quantidade');
+        $this->form_validation->set_rules('descricao', 'Descricao');
+        $this->form_validation->set_rules('custo', 'Custo');
         
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
@@ -132,6 +132,18 @@ class Traje extends CI_Controller {
         return false;
     }
     
-   
+//    public function aumenta_stock($id) {
+//        $this->load->helper('form');
+//        $this->load->library('form_validation');
+//        
+//        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
+//        
+//        $result= $this->traje_m->get_traje_id($id);
+//        $result['quantidade'] = $result['quantidade'] + $this->input->post('quantidade');
+//        
+//        $this->traje_m->atualiza_quantidade($result['id'], $result['quantidade']);
+//        
+//        redirect('traje', 'refresh');
+//    }
 
 }

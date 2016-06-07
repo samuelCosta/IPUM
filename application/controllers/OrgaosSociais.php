@@ -188,8 +188,8 @@ class OrgaosSociais extends CI_Controller {
         //ucwords-colocar iniciais em maiusculo
 
 
-        $this->form_validation->set_rules('cargo', 'Cargo', 'required|ucwords|xss_clean|trim');
-        $this->form_validation->set_rules('dataInicio', 'Data de Inicio', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('cargo', 'Cargo', 'required|ucwords');
+        $this->form_validation->set_rules('dataInicio', 'Data de Inicio', 'required');
         $id = $this->input->post('idorgaosSociais');
 
 

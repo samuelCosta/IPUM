@@ -28,8 +28,8 @@ class Musica extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('link', 'Link', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('nome', 'Título', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('link', 'Link', 'required');
+        $this->form_validation->set_rules('nome', 'Título', 'required');
         
         if ($id === NULL) {
             $data['titulo'] = 'Tutorial música';
@@ -55,8 +55,8 @@ class Musica extends CI_Controller {
 
         $data['edit_data'] = $this->musica_m->get_musica_id($id);
 
-        $this->form_validation->set_rules('link', 'Link', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('nome', 'Título', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('link', 'Link', 'required');
+        $this->form_validation->set_rules('nome', 'Título', 'required');
         
 
         if ($this->form_validation->run() == FALSE) {

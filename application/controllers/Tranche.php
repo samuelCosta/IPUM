@@ -49,7 +49,7 @@ class Tranche extends CI_Controller {
 
     public function registarTranche() {
          
-       $this->form_validation->set_rules('ano', 'Ano', 'required|callback_vericaTranche|xss_clean|trim');
+       $this->form_validation->set_rules('ano', 'Ano', 'required|callback_vericaTranche|xss_clean');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');

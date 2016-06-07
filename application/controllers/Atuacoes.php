@@ -28,11 +28,11 @@ class Atuacoes extends CI_Controller {
         //ucwords-colocar iniciais em maiusculo
        
         $this->form_validation->set_rules('dataEvento', 'Data', 'required');
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords|xss_clean|trim');
-        $this->form_validation->set_rules('orcamento', 'Orçamento', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('responsavel', 'Responsável', 'required|ucwords|xss_clean|trim');
-        $this->form_validation->set_rules('contacto', 'Contacto', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('designacao', 'Designação', 'required|ucwords|is_unique[eventos.designacao]|xss_clean|trim');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords');
+        $this->form_validation->set_rules('orcamento', 'Orçamento', 'required');
+        $this->form_validation->set_rules('responsavel', 'Responsável', 'required|ucwords');
+        $this->form_validation->set_rules('contacto', 'Contacto', 'required');
+        $this->form_validation->set_rules('designacao', 'Designação', 'required|ucwords|is_unique[eventos.designacao]');
 
         
    
@@ -100,11 +100,11 @@ class Atuacoes extends CI_Controller {
         //ucwords-colocar iniciais em maiusculo
         if ($this->input->post('bt1') == 'upload') {
         $this->form_validation->set_rules('dataEvento', 'Data', 'required');
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords|xss_clean|trim');
-        $this->form_validation->set_rules('responsavel', 'Responsavel', 'required|ucwords|xss_clean|trim');
-        $this->form_validation->set_rules('contacto', 'Contacto', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('orcamento', 'Orçamento', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('despesa', 'Despesa', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords');
+        $this->form_validation->set_rules('responsavel', 'Responsavel', 'required|ucwords');
+        $this->form_validation->set_rules('contacto', 'Contacto', 'required');
+        $this->form_validation->set_rules('orcamento', 'Orçamento', 'required');
+        $this->form_validation->set_rules('despesa', 'Despesa', 'required');
         
         $id = $this->input->post('idEventos');
 
@@ -130,12 +130,12 @@ class Atuacoes extends CI_Controller {
     }else{
         
         $this->form_validation->set_rules('dataEvento', 'Data', 'required');
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords|xss_clean|trim');
-        $this->form_validation->set_rules('responsavel', 'Responsavel', 'required|ucwords|xss_clean|trim');
-        $this->form_validation->set_rules('contacto', 'Contacto', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('orcamento', 'Orçamento', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('despesa', 'Despesa', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('totalpresencas', 'Total de Presenças', 'callback_presenca_check|xss_clean|trim');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required|ucwords');
+        $this->form_validation->set_rules('responsavel', 'Responsavel', 'required|ucwords');
+        $this->form_validation->set_rules('contacto', 'Contacto', 'required');
+        $this->form_validation->set_rules('orcamento', 'Orçamento', 'required');
+        $this->form_validation->set_rules('despesa', 'Despesa', 'required');
+        $this->form_validation->set_rules('totalpresencas', 'Total de Presenças', 'callback_presenca_check');
 
         
         $id = $this->input->post('idEventos');

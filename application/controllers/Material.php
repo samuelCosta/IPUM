@@ -36,10 +36,10 @@ class Material extends CI_Controller{
         $data['tipos_material'] = $this->tiposelecao_m->get_tiposelecao('TIPO_MATERIAL');
 
 
-        $this->form_validation->set_rules('tipo_material', 'Tipo de Material', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('custo_uni', 'Custo Unitario', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('tipo_material', 'Tipo de Material', 'required');
+        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
+        $this->form_validation->set_rules('custo_uni', 'Custo Unitario', 'required');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required');
         $this->form_validation->set_rules('data_compra', 'Data de Compra', 'required');
 
         if ($this->form_validation->run() == FALSE) {
@@ -62,7 +62,7 @@ class Material extends CI_Controller{
         $data['tipos_material'] = $this->tiposelecao_m->get_tiposelecao('TIPO_MATERIAL');
 
         
-        $this->form_validation->set_rules('localizacao', 'Localização', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('localizacao', 'Localização', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('includes/header_v');
