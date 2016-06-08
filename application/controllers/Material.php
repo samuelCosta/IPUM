@@ -48,7 +48,7 @@ class Material extends CI_Controller{
             $this->load->view('includes/menu_v');
         } else {
             $this->material_m->registar();
-            redirect('material', 'refresh');
+            redirect('material/index', 'refresh');
         }
     }
     
@@ -70,13 +70,13 @@ class Material extends CI_Controller{
             $this->load->view('includes/menu_v');
         } else {
             $this->material_m->editar($id);
-            redirect('material', 'refresh');
+            redirect('material/index', 'refresh');
         }
     }
     
     public function delete_material($id) {
         $this->material_m->delete($id);
-        redirect('material', 'refresh');
+        redirect('material/index', 'refresh');
     }
 
 }

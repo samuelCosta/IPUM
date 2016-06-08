@@ -33,7 +33,7 @@ class TipoSelecao extends CI_Controller {
             $this->load->view('includes/menu_v');
         } else {
             $this->tiposelecao_m->registar();
-            redirect('tiposelecao', 'refresh');
+            redirect('tiposelecao/index', 'refresh');
         }
     }
     
@@ -50,13 +50,13 @@ class TipoSelecao extends CI_Controller {
             $this->load->view('includes/menu_v');
         } else {
             $this->tiposelecao_m->editar($id);
-            redirect('tiposelecao', 'refresh');
+            redirect('tiposelecao/index', 'refresh');
         }
     }
     
     public function delete($id) {
         $this->tiposelecao_m->delete($id);
-        redirect('tiposelecao', 'refresh');
+        redirect('tiposelecao/index', 'refresh');
     }
 
 }
