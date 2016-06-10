@@ -138,7 +138,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Diretor Prospecção e Arquivo:</label>
+                                        <label>Diretor  Prospeção e Arquivo:</label>
                                         <select class="form-control" name="check[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -260,7 +260,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Diretor Prospecção e Arquivo:</label>
+                                        <label>Diretor  Prospeção e Arquivo:</label>
                                         <select class="form-control" name="check1[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -383,7 +383,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Diretor Prospecção e Arquivo:</label>
+                                        <label>Diretor  Prospeção e Arquivo:</label>
                                         <select class="form-control" name="check2[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
