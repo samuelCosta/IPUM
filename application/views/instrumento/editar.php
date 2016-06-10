@@ -29,7 +29,7 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-6 form-group">    
-                                <label >Tipo de Instrumento</label>
+                                <label >Tipo de Instrumento*</label>
                                 <select class="form-control" name="tipo_instrumento" disabled="true">
                                     <option value="">Selecione uma opção</option>
                                     <?php foreach ($tipos_instrumento as $tipo): ?>
@@ -39,19 +39,19 @@
                                 <input type="hidden" name="tipo_instrumento_hidden" value="<?php echo $edit_data['tipo_selecao_id']; ?>"/>
                             </div>
                             <div class="col-md-4 form-group">
-                                <label>Número do Instrumento</label>
+                                <label>Número do Instrumento*</label>
                                 <input type="text" class="form-control" value="<?php echo $edit_data['numero']; ?>" name="numero" disabled="true"/>
                                 <input type="hidden" value="<?php echo $edit_data['numero']; ?>" name="numero_hidden" />
                             </div>                            
                         </div>
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <label>Tamanho</label>
+                                <label>Tamanho*</label>
                                 <input type="text" class="form-control" value="<?php echo $edit_data['tamanho']; ?>" name="tamanho" disabled="true"/>
                                 <input type="hidden" value="<?php echo $edit_data['tamanho']; ?>" name="tamanho_hidden" />
                             </div>
                             <div class="col-md-6 form-group">
-                                <label> Estado </label>
+                                <label> Estado *</label>
                                 <div class="row">
                                     <label class="radio-inline"><input type="radio" name="estado" value="1" class="minimal" <?php if ($edit_data['estado'] === '1') {echo 'checked';}?>/>1</label>
                                     <label class="radio-inline"><input type="radio" name="estado" value="2" class="minimal" <?php if ($edit_data['estado'] === '2') {echo 'checked';}?>/>2</label>
@@ -63,18 +63,18 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4" id="choice">
-                                <label>Localização</label>
+                                <label>Localização*</label>
                                 <div class="row">
                                     <label class="radio-inline"><input type="radio" name="local" id="armazenado" value="armazenado" class="minimal" <?php if ($edit_data['localizacao'] != '') {echo 'checked';}?> />Armazém</label>
                                     <label class="radio-inline"><input type="radio" name="local" id="emprestado" value="emprestar" class="minimal" <?php if ($edit_data['elemento'] > 0) {echo 'checked';}?> />Emprestado</label>
                                 </div>
                             </div>
                             <div id="localizacao" style="<?php if ($edit_data['elemento'] > 0) {echo 'display: none';}?>" class="col-md-6 form-group">
-                                <label>Local de Armazenamento</label>
+                                <label>Local de Armazenamento*</label>
                                 <input type="text" class="form-control" value="<?php echo $edit_data['localizacao']; ?>" id="ilocalizacao" name="localizacao" placeholder="Insira o Local de Armazenamento" />
                             </div>
                             <div id="elemento" style="<?php if ($edit_data['localizacao'] != '') {echo 'display: none';}?>" class="col-md-6 form-group">
-                                <label>Elemento</label>
+                                <label>Elemento*</label>
                                 <select class="form-control" name="elemento" id="ielemento">
                                     <option value="">Selecione uma opção</option>
                                     <?php foreach ($elementos as $elemento): ?>

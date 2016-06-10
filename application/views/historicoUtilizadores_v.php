@@ -47,7 +47,7 @@
                             </tfoot>
                             <tbody >
                                 <?php foreach ($utilizadoresInativos as $uti) { ?>
-                                    <tr style="cursor: pointer" onclick= script:location.href="<?= base_url(); ?>utilizador/detalheUtilizador/<?php echo $uti->idUtilizador; ?>">
+                                    <tr style="cursor: pointer" onclick= script:location.href="<?= base_url('utilizador/detalheUtilizador/'.$uti->idUtilizador) ?>">
                                         <td><?= $uti->nome; ?></td>
                                         <td><?= $uti->alcunha; ?></td>
                                         <td><?= $uti->email; ?></td>

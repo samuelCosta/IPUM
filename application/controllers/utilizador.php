@@ -38,13 +38,7 @@ class Utilizador extends CI_Controller {
         $this->load->view('includes/menu_v');
         $this->load->view('includes/footer_v');
     }
-     public function teste() {
 
-//        $this->load->view('includes/header_v');
-        $this->load->view('teste');
-//        $this->load->view('includes/menu_v');
-//       $this->load->view('includes/footer_v');
-    }
  
     public function detalheUtilizador($id) {
 
@@ -57,10 +51,12 @@ class Utilizador extends CI_Controller {
         $manutencao = $this->utilizador_m->get_manutencoes($id);
         
         
-        if($dados['dataSocio']!=0){       
-        $dataPagamento= date('Y/m/d', strtotime("+365 days",strtotime( $dados['dataSocio'])));
-        }else{ $dataPagamento="Não é Sócio";}
-        
+        $dataPagamento= $this->utilizador_m->proximoPagamento($id);
+        if($dataPagamento==Null){
+            $dataPagamento="Não é Socio";
+        }else{
+            $dataPagamento=$dataPagamento['dataAviso'];
+        }
         
        $imprimirOrgaoSocial= $this->utilizador_m->imprimirOrgaoSocial($id);
         
@@ -94,6 +90,12 @@ class Utilizador extends CI_Controller {
         } else if ($indice == 2) {
             $data['msg'] = "Não foi possível ativar o Utilizador.";
             $this->load->view('includes/msgSucesso_v', $data);
+        }else if ($indice == 3) {
+            $data['msg'] = "Novo Utilizador Registado com Sucesso.";
+            $this->load->view('includes/msgSucesso_v', $data);
+        }else if ($indice == 4) {
+            $data['msg'] = "Alterado com Sucesso.";
+            $this->load->view('includes/msgSucesso_v', $data);
         }
 
         $this->load->view('includes/header_v');
@@ -109,7 +111,7 @@ class Utilizador extends CI_Controller {
         $this->load->view('includes/header_v');
         $this->load->view('historicoUtilizadores_v', $dados);
         $this->load->view('includes/menu_v');
-//        $this->load->view('includes/footer_v');
+
     }
        //    ativar Utilizador
     public function ativarUtilizador($id) {
@@ -158,14 +160,8 @@ class Utilizador extends CI_Controller {
             $this->load->model('utilizador_m');
             $this->utilizador_m->do_insert($dados);
 
-            //            envia utilizadores ativos
-            $dados['utilizadoresAtivos'] = $this->utilizador_m->get_utilizadoresAtivos();
-            $data['msg'] = "Sucesso.";
-            $this->load->view('includes/header_v');
-            $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('consultarUtilizadores_v',$dados);
-            $this->load->view('includes/menu_v');
-//            $this->load->view('includes/footer_v');
+            redirect('Utilizador/consultarUtilizadoresAtivos'.'/3');
+
         }
     }
 
@@ -175,9 +171,7 @@ class Utilizador extends CI_Controller {
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size'] = '3000';
    
-
         $this->load->library('upload', $config);
-
 
         //isset-Determinar se uma variável está definido e não é NULL
         //empty — Informa se a variável é vazia
@@ -224,7 +218,7 @@ class Utilizador extends CI_Controller {
             $data['msg'] = "Nova senha gerada.";
             $this->load->view('includes/msgSucesso_v', $data);
         }else if ($indice == 6) {
-            $data['msg'] = "Como já foi sócio a data continua a mesma.";
+            $data['msg'] = "Alteraçao para Sócio com Sucesso .";
             $this->load->view('includes/msgSucesso_v', $data);
         }
         $this->load->view('editarUtilizador_v', $data);
@@ -255,34 +249,21 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
         } else {
-            
-   
-            
+    
             //insere os dados na base de dados
             $dados = elements(array('nAluno','socio','ativo', 'alcunha', 'email', 'dataNascimento', 'privilegio'), $this->input->post());
-              
-    
-            
+                             
             $this->load->model('utilizador_m');
             $this->utilizador_m->guardarAtualizacao($id, $dados);
             
-//            envia utilizadores ativos
-            $dados['utilizadoresAtivos'] = $this->utilizador_m->get_utilizadoresAtivos();
 
-              
-            $data['msg'] = "Alterado com Sucesso.";
-            $this->load->view('includes/header_v');
-            $this->load->view('includes/msgSucesso_v', $data);
-            $this->load->view('ConsultarUtilizadores_v',$dados);
-            $this->load->view('includes/menu_v');
+             redirect('Utilizador/consultarUtilizadoresAtivos'.'/4');
 //            $this->load->view('includes/footer_v');
         }
     }
 
     public function salvar_senha() {
         
-        
-
         $this->load->model('utilizador_m');
         $id = $this->input->post('idUtilizador');
         
@@ -312,34 +293,31 @@ class Utilizador extends CI_Controller {
        }else {
            $this->utilizador_m->alterarSocio();
             redirect('utilizador/atualizar/' . $id . '/6');
-       }
-        
-       
+       }      
     }
 
-    //botao pesquisar utilizadores ativos(consultarUtilizadores_v)
-    public function pesquisarAtivos() {
-
-        $this->load->model('utilizador_m');
-        $dados['utilizadoresAtivos'] = $this->utilizador_m->pesquisar_utlizadoresAtivos();
-   
-
-        $this->load->view('includes/header_v');
-        $this->load->view('ConsultarUtilizadores_v', $dados);
-        $this->load->view('includes/menu_v');
+//    //botao pesquisar utilizadores ativos(consultarUtilizadores_v)
+//    public function pesquisarAtivos() {
+//
+//        $this->load->model('utilizador_m');
+//        $dados['utilizadoresAtivos'] = $this->utilizador_m->pesquisar_utlizadoresAtivos();
+//   
+//        $this->load->view('includes/header_v');
+//        $this->load->view('ConsultarUtilizadores_v', $dados);
+//        $this->load->view('includes/menu_v');
+////        $this->load->view('includes/footer_v');
+//    }
+//       //botao pesquisar utilizadores inativos(historicoUtilizadores_v)
+//        public function pesquisarInativos() {
+//
+//        $this->load->model('utilizador_m');
+//        $dados['utilizadoresInativos'] = $this->utilizador_m->pesquisar_utlizadoresInativos();
+//
+//        $this->load->view('includes/header_v');
+//        $this->load->view('historicoUtilizadores_v', $dados);
+//        $this->load->view('includes/menu_v');
 //        $this->load->view('includes/footer_v');
-    }
-       //botao pesquisar utilizadores inativos(historicoUtilizadores_v)
-        public function pesquisarInativos() {
-
-        $this->load->model('utilizador_m');
-        $dados['utilizadoresInativos'] = $this->utilizador_m->pesquisar_utlizadoresInativos();
-
-        $this->load->view('includes/header_v');
-        $this->load->view('historicoUtilizadores_v', $dados);
-        $this->load->view('includes/menu_v');
-        $this->load->view('includes/footer_v');
-    }
+//    }
 
 
     //destroi a sessao 
@@ -480,7 +458,7 @@ class Utilizador extends CI_Controller {
         $this->load->model('utilizador_m');
         $result = $this->utilizador_m->utilizadorEventos($nome);
         $dados['tab'] = "tab3";
-//        if (count($result) > 0) {
+
             foreach ($result as $pr){
                 $dados['presenca'] = $this->utilizador_m->eventoPorUtilizador($pr->idUtilizador);
             }
@@ -489,13 +467,7 @@ class Utilizador extends CI_Controller {
             $this->load->view('presencasEventos_v', $dados);
             $this->load->view('includes/menu_v');
             $this->load->view('includes/footer_v');
-//             } else {
-//
-//             $this->load->view('includes/header_v');
-//            $this->load->view('presencasEventos_v', $dados);
-//            $this->load->view('includes/menu_v');
-//            $this->load->view('includes/footer_v');
-//        }
+
     }
 
     
@@ -505,19 +477,16 @@ class Utilizador extends CI_Controller {
         $ano = $this->input->post('ano');
     
         $utilizadores1=$this->utilizador_m->todosUtilizadores();
-     
-        
+             
         foreach ($utilizadores1 as $as){
         //total atuacoes por utlizador
         $totalAtuacoes[]=$this->utilizador_m->totalAtuacaoPorAnoUtilizador($as->idUtilizador,$ano);
         
         //total de ensaios por utilizador       
         $totalEnsaios[]=$this->utilizador_m->totalEnsaioPorAnoUtilizador($as->idUtilizador,$ano);//        $array=array(
-
     
         }
-            $dados = "tab4";
-           
+            $dados = "tab4";           
             $this->load->view('includes/header_v');
             $this->load->view('presencasEventos_v', array("tab"=>$dados,"totalAtuacoes"=>$totalAtuacoes,
                 "utilizadores1"=>$utilizadores1,"totalEnsaios"=>$totalEnsaios));
@@ -525,9 +494,7 @@ class Utilizador extends CI_Controller {
             $this->load->view('includes/footer_v');
     }
     
-    
-  
-        
+          
       
     function get_random_password($chars_min=6, $chars_max=8, $use_upper_case=false, $include_numbers=false, $include_special_chars=false)
     {
@@ -558,9 +525,6 @@ class Utilizador extends CI_Controller {
         redirect('utilizador/atualizar/' . $id . '/5');
     } 
 
-        
-        
-        
-    
+
 
 }

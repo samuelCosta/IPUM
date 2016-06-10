@@ -29,7 +29,7 @@
                     <div class="box-body">
                         <div class="row">
                         <div class="col-md-3 form-group">    
-                            <label >Tipo de Peça</label>
+                            <label >Tipo de Peça*</label>
                             <select class="form-control" name="tipo_peca" disabled="true">
                                 <option value="">Selecione uma opção</option>
                                 <?php foreach ($tipos_peca as $tipo_p): ?>
@@ -39,7 +39,7 @@
                             <input type="hidden" name="tipo_peca_hidden" value="<?php echo $edit_data['ts_tipo_id']; ?>"/>
                         </div>
                         <div class="col-md-3 form-group">    
-                            <label >Género</label>
+                            <label >Género*</label>
                             <select class="form-control" name="tipo_genero" disabled="true">
                                 <option value="">Selecione uma opção</option>
                                 <?php foreach ($tipos_genero as $tipo_g): ?>
@@ -49,7 +49,7 @@
                             <input type="hidden" name="tipo_genero_hidden" value="<?php echo $edit_data['ts_genero_id']; ?>"/>
                         </div>
                         <div class="col-md-3 form-group">    
-                            <label >Tamanho</label>
+                            <label >Tamanho*</label>
                             <select class="form-control" name="tipo_tamanho" disabled="true">
                                 <option value="">Selecione uma opção</option>
                                 <?php foreach ($tipos_tamanho as $tipo_t): ?>
@@ -61,24 +61,24 @@
                         </div>
                         <div class="row">
                         <div class="col-md-3 form-group">
-                            <label>Custo Unitário</label>
+                            <label>Custo Unitário*</label>
                             <input type="text" class="form-control" value="<?php echo $edit_data['custo_uni']; ?>" name="custo_uni" disabled="true"/>
                             <input type="hidden" value="<?php echo $edit_data['custo_uni']; ?>" name="custo_uni_hidden" />
                         </div>
                         <div class="col-md-3 form-group">
-                            <label>Quantidade</label>
+                            <label>Quantidade*</label>
                             <input type="text" class="form-control" value="<?php echo $edit_data['quantidade']; ?>" name="quantidade" disabled="true" />
                             <input type="hidden" value="<?php echo $edit_data['quantidade']; ?>" name="quantidade_hidden" />
                         </div>
                             <div class="col-md-3 form-group">
-                            <label>Data de Compra</label>
+                            <label>Data de Compra*</label>
                             <input type="date" class="form-control" value="<?php echo $edit_data['data_compra']; ?>" name="data_compra" disabled="true" />
                             <input type="hidden" value="<?php echo $edit_data['data_compra']; ?>" name="data_compra_hidden" />
                         </div>
                         </div>
                         <div class="row">
                         <div class="col-md-9 form-group">
-                            <label>Localização</label>
+                            <label>Localização*</label>
                             <input type="text" class="form-control" value="<?php echo $edit_data['localizacao']; ?>" name="localizacao" />
                         </div>
                         </div>

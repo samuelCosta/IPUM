@@ -94,7 +94,7 @@
                                 <table id="porAno" class="table table-bordered table-hover">                 
                                     <thead>
                                         <tr>
-                                            <th>Nome Atuação </th>
+                                            <th>Nome da Atuação </th>
                                             <th>Data </th>
                                             <th></th>
                                         </tr>
@@ -161,11 +161,10 @@
                                                 <tr>
                                                     <td>  <?= $uti->designacao; ?> </td>
                                                     <td>  <?= $uti->dataEvento; ?> </td>
-                                                    <td></td>
+                                                   
                                                 </tr>
                                                       <?php }
-                                                            } else {    
-                                                         } ?>
+                                                            }  ?>
                                     </tbody>
                                 </table>                               
                             </div><!-- /.box-body -->                    
@@ -214,7 +213,7 @@ if (isset($utilizadores1, $totalAtuacoes, $totalEnsaios)) {
                                                     <td >  <?= $uti->nome; ?> </td>                                                   
                                                     <td >  <?= $totalAtuacoes[$ind]; ?> </td>
                                                     <td >  <?= $totalEnsaios[$ind]; ?> </td>
-                                                    <td></td>
+                                                   
                                                 </tr>
 
     <?php }
@@ -258,6 +257,7 @@ if (isset($utilizadores1, $totalAtuacoes, $totalEnsaios)) {
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-default" data-dismiss="modal" type="button">Fechar</button>
+                  
 
                 </div>
             </div>      
@@ -326,53 +326,9 @@ if (isset($utilizadores1, $totalAtuacoes, $totalEnsaios)) {
         });
     });
 
-</script>
 
-
-<script type="text/javascript">
 
     $("#totalEventos").DataTable({
-        "initComplete": function () {
-            this.api().columns().every(function () {
-                var column = this;
-                if (column.index() < 3) {
-                    var select = $('<select><option value=""></option></select>')
-                            .appendTo($(column.footer()).empty())
-                            .on('change', function () {
-                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                                column.search(val ? '^' + val + '$' : '', true, false).draw();
-                            });
-
-                    column.data().unique().sort().each(function (d, j) {
-                        select.append('<option value="' + d + '">' + d + '</option>')
-                    });
-                }
-            });
-        },
-        "language": {
-            "lengthMenu": "Ver _MENU_ registos",
-            "info": "_START_ - _END_ de _TOTAL_ registos",
-            "infoEmpty": "0 - 0 de 0 registos",
-            "infoFiltered": "(selecionado de _MAX_ registos totais)",
-            "search": "Pesquisar:",
-            "zeroRecords": "Não existem registos correspondentes",
-            "emptyTable": "Não existem registos disponíveis",
-            "paginate": {
-                "previous": "Anterior",
-                "next": "Seguinte"
-            }
-        },
-        "columnDefs": [
-            {targets: 3, orderable: false}
-        ]
-    });
-
-</script>
-
-<script type="text/javascript">
-
-    $("#porElemento").DataTable({
         "initComplete": function () {
             this.api().columns().every(function () {
                 var column = this;
@@ -410,8 +366,46 @@ if (isset($utilizadores1, $totalAtuacoes, $totalEnsaios)) {
     });
 
 
-</script>
-<script type="text/javascript">
+
+    $("#porElemento").DataTable({
+        "initComplete": function () {
+            this.api().columns().every(function () {
+                var column = this;
+                if (column.index() < 1) {
+                    var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+                                column.search(val ? '^' + val + '$' : '', true, false).draw();
+                            });
+
+                    column.data().unique().sort().each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d + '</option>')
+                    });
+                }
+            });
+        },
+        "language": {
+            "lengthMenu": "Ver _MENU_ registos",
+            "info": "_START_ - _END_ de _TOTAL_ registos",
+            "infoEmpty": "0 - 0 de 0 registos",
+            "infoFiltered": "(selecionado de _MAX_ registos totais)",
+            "search": "Pesquisar:",
+            "zeroRecords": "Não existem registos correspondentes",
+            "emptyTable": "Não existem registos disponíveis",
+            "paginate": {
+                "previous": "Anterior",
+                "next": "Seguinte"
+            }
+        },
+        "columnDefs": [
+            {targets: 1, orderable: false}
+        ]
+    });
+
+
+
 
     $("#porAno").DataTable({
         "initComplete": function () {
@@ -450,8 +444,7 @@ if (isset($utilizadores1, $totalAtuacoes, $totalEnsaios)) {
         ]
     });
 
-</script>
-<script type="text/javascript">
+
 
     $("#porEventos").DataTable({
         "initComplete": function () {

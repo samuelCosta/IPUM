@@ -30,33 +30,30 @@
 
                         <input type="hidden"  value="1" name="estado" >
                         <div class="col-md-6 form-group">    
-                            <label >Nome da Atividade</label>
+                            <label >Nome da Atividade*</label>
                             <input type="text" class="form-control" value="<?php echo set_value('nomeAtividade'); ?>" name="nomeAtividade" placeholder="Introduza o nome da atividade...">                     
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label>Localização</label>
+                            <label>Localização*</label>
                             <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Introduza a localização...">
                         </div>
                         
                         <div class="col-md-6 form-group">
-                            <label>Data de Início</label>
+                            <label>Data de Início*</label>
                             <input type="date" class="form-control" value="<?php echo set_value('dataInicio'); ?>" name="dataInicio" placeholder="Introduza a data de início...">
                         </div>
                         
                         <div class="col-md-6 form-group">
-                            <label>Duração (em dias)</label>
+                            <label>Duração (em dias)*</label>
                             <input type="number" class="form-control" name="duracao" value="<?php echo set_value('duracao'); ?>" placeholder="Introduza a duração da atividade...">
                         </div>
                         
                         <div class="col-md-6 form-group">
-                            <label>Orçamento</label>
-                            <input type="number" step="0.01" class="form-control" name="orcamento" value="<?php echo set_value('orcamento'); ?>" placeholder="Introduza o orcamento...">
+                            <label>Orçamento*</label>
+                            <input type="number" step="0.01" class="form-control" name="orcamento" value="<?php echo set_value('orcamento'); ?>" placeholder="Introduza o orçamento...">
                         </div>
-                        
-                        
-
-                        
+                 
 
 
                     </div><!-- /.box-body -->
@@ -64,6 +61,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Registar</button>
+                         <a class="btn" href="<?php echo site_url('Atividades/consultarAtividades'); ?>">Cancelar</a>
                     </div>
                     </form>
 

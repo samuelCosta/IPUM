@@ -29,7 +29,7 @@
                     <div class="box-body">
                         <div class="row">
                         <div class="col-md-3 form-group">    
-                            <label >Tipo de Peça</label>
+                            <label >Tipo de Peça*</label>
                             <select class="form-control" name="tipo_peca" >
                                 <?php foreach ($tipos_peca as $tipo_p): ?>
                                     <option value="<?php echo $tipo_p['id']; ?>"><?php echo $tipo_p['descricao']; ?></option>
@@ -37,7 +37,7 @@
                             </select>
                         </div>  
                         <div class="col-md-3 form-group">    
-                            <label >Género</label>
+                            <label >Género*</label>
                             <select class="form-control" name="tipo_genero" >
                                 <?php foreach ($tipos_genero as $tipo_g): ?>
                                     <option value="<?php echo $tipo_g['id']; ?>"><?php echo $tipo_g['descricao']; ?></option>
@@ -45,7 +45,7 @@
                             </select>
                         </div>  
                         <div class="col-md-3 form-group">    
-                            <label >Tamanho</label>
+                            <label >Tamanho*</label>
                             <select class="form-control" name="tipo_tamanho" >
                                 <?php foreach ($tipos_tamanho as $tipo_t): ?>
                                     <option value="<?php echo $tipo_t['id']; ?>"><?php echo $tipo_t['descricao']; ?></option>
@@ -55,21 +55,21 @@
                         </div>
                         <div class="row">
                         <div class="col-md-3 form-group">
-                            <label>Quantidade</label>
+                            <label>Quantidade*</label>
                             <input type="text" class="form-control" value="<?php echo set_value('quantidade'); ?>" name="quantidade" placeholder="Insira a quantidade">
                         </div>
                         <div class="col-md-3 form-group">
-                            <label>Custo Unitário</label>
+                            <label>Custo Unitário*</label>
                             <input type="text" class="form-control" value="<?php echo set_value('custo_uni'); ?>" name="custo_uni" placeholder="Insira o custo">
                         </div>
                         <div class="col-md-3 form-group">
-                            <label>Data de Compra</label>
+                            <label>Data de Compra*</label>
                             <input type="date" class="form-control" value="<?php echo set_value('data_compra'); ?>" name="data_compra">
                         </div>
                         </div>
                         <div class="row">
                         <div class="col-md-9 form-group">
-                            <label>Localização</label>
+                            <label>Localização*</label>
                             <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Insira a Localização">
                         </div>
                         </div>

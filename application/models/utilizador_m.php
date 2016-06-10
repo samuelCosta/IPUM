@@ -395,6 +395,23 @@ class Utilizador_m extends CI_Model {
         $this->db->update('utilizador', $dados);
         
     }
+      
+    public function proximoPagamento($idUtilizador){
+        
+        
+    
+        $this->db->select('*');
+        $this->db->where('idUtilizador', $idUtilizador);
+        $this->db->where('utilizador.socio', 1);               
+        $this->db->where('utilizador.ativo', 1);
+        $this->db->join('quota', 'utilizador_idUtilizador=idUtilizador', 'inner');
+        $this->db->where('quota.tipo', 'Não Pago');
+        $query = $this->db->get('utilizador');
+        return $query->row_array();
+        
+        
+    }
+    
     
     
 }

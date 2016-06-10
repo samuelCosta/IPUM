@@ -25,8 +25,8 @@
                         <table id="quotashistorico" class="table table-striped table-bordered" cellspacing="0" width="100%" >
                             <thead>
                                 <tr>
-                                    <th>Data Aviso</th>
-                                    <th>Data De pagamento</th>
+                                    <th>Data de Aviso</th>
+                                    <th>Data do Pagamento</th>
                                     <th>Utilizador</th>
                                     <th>Estado</th>
                                   

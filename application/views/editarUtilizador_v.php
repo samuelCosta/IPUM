@@ -31,43 +31,43 @@
                        <input name="idUtilizador" type="hidden" value="<?= $utilizador[0]->idUtilizador; ?>">
                         
                         <div class="col-md-4 form-group">    
-                            <label >Nome</label>
+                            <label >Nome*</label>
                             <input disabled="" type="text" class="form-control" value="<?= $utilizador[0]->nome; ?>" name="nome" >                     
                         </div>
                        
                         <div class="col-md-4 form-group">
-                            <label>Alcunha</label>
+                            <label>Alcunha*</label>
                             <input type="text" class="form-control" value="<?= $utilizador[0]->alcunha; ?>" name="alcunha" placeholder="Introduza o alcunha...">
                         </div>
                        
                         <div class="col-md-4 form-group">
-                            <label>Email address</label>
+                            <label>Email*</label>
                             <input type="email" class="form-control" name="email" value="<?= $utilizador[0]->email; ?>" placeholder="Introduza email">
                         </div>                                         
 
                         <div class="col-md-4 form-group">
-                            <label>NIF</label>
+                            <label>NIF*</label>
                             <input  disabled="" type="text" class="form-control" name="nif" value="<?= $utilizador[0]->nif; ?>" placeholder="Introduza o NIF">
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>BI</label>
+                            <label>BI*</label>
                             <input disabled="" type="text" class="form-control" name="bi" value="<?= $utilizador[0]->bi; ?>"placeholder="Introduza o numero de BI">
                         </div>
                        
                          <div class="col-md-4 form-group">
-                            <label>Numero de Aluno</label>
+                            <label>Nª Aluno*</label>
                             <input type="text" class="form-control" name="nAluno" value="<?= $utilizador[0]->nAluno; ?>">
                         </div>
 
 
                         <div class="col-md-4 form-group">
-                            <label>Data Nascimento</label>
+                            <label>Data Nascimento*</label>
                             <input type="date" class="form-control" name="dataNascimento" value="<?= $utilizador[0]->dataNascimento; ?>">
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>Privilegio</label>
+                            <label>Privilégio*</label>
                             <select class="form-control" name="privilegio">                                                            
                                 <option  value="Administrador" <?= $utilizador[0]->privilegio == 'Administrador' ? ' selected ' : ''; ?>> Administrador</option>
                                 <option  value="Utilizador" <?= $utilizador[0]->privilegio == 'Utilizador' ? ' selected ' : ''; ?>> Utilizador </option>
@@ -75,7 +75,7 @@
                         </div>
                        
                           <div class="col-md-4 form-group">
-                            <label>Estado</label>
+                            <label>Estado*</label>
                             <select class="form-control" name="ativo">                                                            
                                 <option  value="1" <?= $utilizador[0]->ativo == '1' ? ' selected ' : ''; ?>> Ativo</option>
                                 <option  value="0" <?= $utilizador[0]->ativo == '0' ? ' selected ' : ''; ?>> Não Ativo </option>
@@ -121,6 +121,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Atualizar</button>
+                         <a class="btn" href="<?php echo site_url('utilizador/consultarUtilizadoresAtivos'); ?>">Cancelar</a>
                     </div>
                     </form>
 
@@ -152,15 +153,15 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <label >Senha antiga:</label>
+                            <label >Senha antiga*</label>
                             <input class="form-control" id="senha_antiga" name="senha_antiga" type="password">
                         </div>
                         <div class="col-md-12 form-group">
-                            <label>Nova Senha:</label>
+                            <label>Nova Senha*</label>
                             <input class="form-control" id="senha_nova" name="senha_nova" onkeyup="checarSenha()" type="password">
                         </div>
                         <div class="col-md-12 form-group">
-                            <label>Confirmar Senha:</label>
+                            <label>Confirmar Senha*</label>
 <!--                         O evento KeyUp Ocorre quando uma tecla do teclado é solta.-->
                             <input class="form-control" id="senha_confirmar" name="senha_confirmar" onkeyup="checarSenha()" type="password">
                         </div>
@@ -201,7 +202,7 @@
                     <div class="row">
                         
                         <div class="col-md-12 form-group">
-                            <label>Data sócio:</label>
+                            <label>Data sócio*</label>
                                  <?php if($utilizador[0]->dataSocio==Null) { ?>
                             <input class="form-control" id="dataSocio" name="dataSocio" onchange="alterarSocio()" type="date">
                                  <?php }else { ?>

@@ -33,7 +33,7 @@
                         </div>
                         
                       <div class="col-md-4 form-group">
-                            <label>Ano</label>
+                            <label>Ano*</label>
                             <input type="text" class="form-control" value="<?php echo set_value('ano'); ?>" name="ano" placeholder="Introduza o ano...">
                         </div>            
 
@@ -52,6 +52,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Registar</button>
+                        <a class="btn" href="<?php echo site_url('Tranche/consultarTranches'); ?>">Cancelar</a>
                     </div>
                     </form>
 

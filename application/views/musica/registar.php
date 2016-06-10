@@ -29,13 +29,13 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-8 form-group">
-                                <label><?php echo $titulo ?></label>
+                                <label><?php echo $titulo ?>*</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('nome'); ?>" name="nome" placeholder="<?php echo $label ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8 form-group">
-                                <label>Link</label>
+                                <label>Link*</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('link'); ?>" name="link" placeholder="Insira o link do tutorial">
                             </div>
                         </div>

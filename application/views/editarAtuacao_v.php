@@ -32,38 +32,38 @@
                         <input name="totalpresencas"  type="hidden" value="<?= $atuacao[0]->totalpresencas; ?>">
 
                         <div class="col-md-6 form-group">
-                            <label>Nome</label>
+                            <label>Nome*</label>
                             <input type="text" disabled="" name="dataEvento" class="form-control" value="<?= $atuacao[0]->designacao; ?>" >
                         </div>
 
 
                         <div class="col-md-6 form-group">
-                            <label>Data de Atuação</label>
+                            <label>Data de Atuação*</label>
                             <input type="date" name="dataEvento" class="form-control" value="<?= $atuacao[0]->dataEvento; ?>" >
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>Localização</label>
+                            <label>Localização*</label>
                             <input type="text" class="form-control" name="localizacao" value="<?= $atuacao[0]->localizacao; ?>">
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>Cliente/Responsável</label>
+                            <label>Cliente/Responsável*</label>
                             <input type="text" class="form-control" name="responsavel" value="<?= $atuacao[0]->responsavel; ?>">
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>Contacto</label>
+                            <label>Contacto*</label>
                             <input type="text" class="form-control" name="contacto" value="<?= $atuacao[0]->contacto; ?>">
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label>Orçamento</label>
+                            <label>Orçamento*</label>
                             <input type="text" class="form-control" name="orcamento" value="<?= $atuacao[0]->orcamento; ?>">
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label>Despesa</label>
+                            <label>Despesa*</label>
                             <input type="number" step="0.01" class="form-control" name="despesa" value="<?= $atuacao[0]->despesa; ?>" >
                         </div>
                         <div class="col-md-12 form-group">

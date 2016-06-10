@@ -32,43 +32,43 @@
 
 
                         <div class="col-md-6 form-group">
-                            <label>Nome da Atividades</label>
+                            <label>Nome da Atividade*</label>
                             <input type="text" name="nomeAtividade" class="form-control" value="<?= $atividades[0]->nomeAtividade; ?>" >
                         </div>
 
 
                         <div class="col-md-6 form-group">
-                            <label>Localização</label>
+                            <label>Localização*</label>
                             <input type="text" class="form-control" name="localizacao" value="<?= $atividades[0]->localizacao; ?>">
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>Data de Início</label>
+                            <label>Data de Início*</label>
                             <input type="date" class="form-control" name="dataInicio" value="<?= $atividades[0]->dataInicio; ?>">
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>Duração</label>
+                            <label>Duração*</label>
                             <input type="numeric" class="form-control" name="duracao" value="<?= $atividades[0]->duracao; ?>">
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>Orçamento</label>
+                            <label>Orçamento*</label>
                             <input type="text" class="form-control" name="orcamento" value="<?= $atividades[0]->orcamento; ?>">
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label>Total de Participantes</label>
+                            <label>Total de Participantes*</label>
                             <input type="number" class="form-control" name="participantes" value="<?= $atividades[0]->participantes; ?>">
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label>Total de Gastos</label>
+                            <label>Total de Gastos*</label>
                             <input type="number" class="form-control" name="totalGastos" value="<?= $atividades[0]->totalGastos; ?>">
                         </div>
 
                         <div class="col-md-12 form-group">
-                            <label>Notas</label>
+                            <label>Notas*</label>
                             <textarea name="notas"  placeholder="intoduza as suas Notas" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?= $atividades[0]->notas ?></textarea>
                         </div>
 

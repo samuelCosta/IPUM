@@ -26,7 +26,7 @@
                         <?php echo form_open_multipart('OrgaosSociais/registarOrgaosSociais'); ?>
                       
                         <div class="col-md-6 form-group">
-                            <label class="col-sm-2 control-label">Data</label>
+                            <label class="col-sm-2 control-label">Data*</label>
                             <div class="col-sm-8">
                                 <input type="date" class="form-control" name="dataInicio" value="<?php echo set_value('participantes'); ?>" >
                             </div>
@@ -37,7 +37,7 @@
                             <div class="box collapsed-box">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">
-                                        Direcção
+                                        Direção
 
                                     </h3>
                                     <div class="box-tools pull-right">
@@ -75,7 +75,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>1ªSecretario:</label>
+                                        <label>1ª Secretário:</label>
                                         <select class="form-control" name="check[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -84,7 +84,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>2ªSecretario:</label>
+                                        <label>2ª Secretário:</label>
                                         <select class="form-control" name="check[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -102,7 +102,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Secretariado e Burocracia:</label>
+                                        <label>Diretor Secretariado e Burocracia:</label>
                                         <select class="form-control" name="check[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -111,7 +111,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Património e Administração Interna:</label>
+                                        <label>Diretor Património e Administração Interna:</label>
                                         <select class="form-control" name="check[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -120,7 +120,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Marketing e Comunicação:</label>
+                                        <label>Diretor Marketing e Comunicação:</label>
                                         <select class="form-control" name="check[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -129,7 +129,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Social e Recreativo:</label>
+                                        <label>Diretor Social e Recreativo:</label>
                                         <select class="form-control" name="check[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -138,7 +138,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Prospecção e Arquivo:</label>
+                                        <label>Diretor Prospecção e Arquivo:</label>
                                         <select class="form-control" name="check[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -147,7 +147,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Relações Externas:</label>
+                                        <label>Diretor Relações Externas:</label>
                                         <select class="form-control" name="check[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -197,7 +197,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>1ªSecretario:</label>
+                                        <label>1ª Secretário:</label>
                                         <select class="form-control" name="check1[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -206,7 +206,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>2ªSecretario:</label>
+                                        <label>2ª Secretário:</label>
                                         <select class="form-control" name="check1[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -224,7 +224,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Secretariado e Burocracia:</label>
+                                        <label>Diretor Secretariado e Burocracia:</label>
                                         <select class="form-control" name="check1[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -233,7 +233,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Património e Administração Interna:</label>
+                                        <label>Diretor Património e Administração Interna:</label>
                                         <select class="form-control" name="check1[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -242,7 +242,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Marketing e Comunicação:</label>
+                                        <label>Diretor Marketing e Comunicação:</label>
                                         <select class="form-control" name="check1[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -251,7 +251,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Social e Recreativo:</label>
+                                        <label>Diretor Social e Recreativo:</label>
                                         <select class="form-control" name="check1[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -260,7 +260,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Prospecção e Arquivo:</label>
+                                        <label>Diretor Prospecção e Arquivo:</label>
                                         <select class="form-control" name="check1[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -269,7 +269,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Relações Externas:</label>
+                                        <label>Diretor Relações Externas:</label>
                                         <select class="form-control" name="check1[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -320,7 +320,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>1ªSecretario:</label>
+                                        <label>1ª Secretário:</label>
                                         <select class="form-control" name="check2[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -329,7 +329,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>2ªSecretario:</label>
+                                        <label>2ª Secretário:</label>
                                         <select class="form-control" name="check2[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -347,7 +347,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Secretariado e Burocracia:</label>
+                                        <label>Diretor Secretariado e Burocracia:</label>
                                         <select class="form-control" name="check2[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -356,7 +356,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Património e Administração Interna:</label>
+                                        <label>Diretor Património e Administração Interna:</label>
                                         <select class="form-control" name="check2[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -365,7 +365,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Marketing e Comunicação:</label>
+                                        <label>Diretor Marketing e Comunicação:</label>
                                         <select class="form-control" name="check2[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -374,7 +374,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Social e Recreativo:</label>
+                                        <label>Diretor Social e Recreativo:</label>
                                         <select class="form-control" name="check2[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -383,7 +383,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Prospecção e Arquivo:</label>
+                                        <label>Diretor Prospecção e Arquivo:</label>
                                         <select class="form-control" name="check2[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -392,7 +392,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <label>Director Relações Externas:</label>
+                                        <label>Diretor Relações Externas:</label>
                                         <select class="form-control" name="check2[]" required="">
                                             <option value="0" <?php echo set_select('utilizador_idUtilizador', '', TRUE); ?>>---</option>
                                             <?php foreach ($utilizador as $utilizadore) { ?>
@@ -408,6 +408,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" onclick="return confirm('Depois de submeter não sera possivel voltar atrás, tem acerteza que pretende proseguir?');"class="btn btn-primary">Registar</button>
+                          <a class="btn" href="<?php echo site_url('OrgaosSociais/consultarOrgaosSociais'); ?>">Cancelar</a>
                     </div>
                     </form>
                 </div><!-- /.box -->    

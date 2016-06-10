@@ -30,12 +30,12 @@
                        <input type="hidden"  value="ensaio" name="tipo" >
                        <input type="hidden"  value="1" name="estado" >
                         <div class="col-md-6 form-group">    
-                            <label >Data</label>
+                            <label >Data*</label>
                             <input type="date" class="form-control" value="<?php echo set_value('dataEvento'); ?>" name="dataEvento" >                     
                         </div>
 <!--                        alterar nome para localizaçao na base de dados-->
                         <div class="col-md-6 form-group">
-                            <label>Localização</label>
+                            <label>Localização*</label>
                             <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Introduza a localização...">
                         </div>            
 
@@ -44,6 +44,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Registar</button>
+                         <a class="btn" href="<?php echo site_url('Ensaios/consultarEnsaios'); ?>">Cancelar</a>
                     </div>
                     </form>
 

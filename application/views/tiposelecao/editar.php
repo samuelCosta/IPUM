@@ -29,7 +29,7 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-9 form-group">    
-                                <label>Tipo de Material</label>
+                                <label>Tipo de Material*</label>
                                 <select class="form-control" name="tipo_selecao" disabled="true">                                
                                     <option value="">Selecione uma opção</option>
                                     <option value="TIPO_INSTRUMENTO" <?php if ($edit_data['cod_tipo'] === 'TIPO_INSTRUMENTO') {echo 'selected';} ?> ><?php echo $edit_data['cod_tipo']; ?></option>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-9 form-group">
-                                <label>Descrição</label>
+                                <label>Descrição*</label>
                                 <input type="text" class="form-control" value="<?php echo $edit_data['descricao']; ?>" name="descricao"/>
                             </div>
                         </div>

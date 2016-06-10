@@ -34,13 +34,13 @@
                                    
                        
                         <div class="col-md-6 form-group">
-                            <label>Data de Ensaio</label>
+                            <label>Data de Ensaio*</label>
                             <input type="date" name="dataEvento" class="form-control" value="<?= $Ensaios[0]->dataEvento; ?>" >
                         </div>
                     
                        
                         <div class="col-md-6 form-group">
-                            <label>Localização</label>
+                            <label>Localização*</label>
                             <input type="text" class="form-control" name="localizacao" value="<?= $Ensaios[0]->localizacao; ?>">
                         </div>
 

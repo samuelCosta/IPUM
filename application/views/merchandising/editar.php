@@ -29,7 +29,7 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-9 form-group">    
-                                <label >Tipo de Merchandising</label>
+                                <label >Tipo de Merchandising*</label>
                                 <select class="form-control" name="tipo_merchandising" disabled="true">
                                     <option value="">Selecione uma opção</option>
                                     <?php foreach ($tipos_merchandising as $tipo): ?>
@@ -41,24 +41,24 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3 form-group">
-                                <label>Quantidade</label>
+                                <label>Quantidade*</label>
                                 <input type="text" class="form-control" value="<?php echo $edit_data['quantidade']; ?>" name="quantidade" disabled="true"/>
                                 <input type="hidden" value="<?php echo $edit_data['quantidade']; ?>" name="quantidade_hidden" />
                             </div>
                             <div class="col-md-3 form-group">
-                                <label>Custo Unitário</label>
+                                <label>Custo Unitário*</label>
                                 <input type="text" class="form-control" value="<?php echo $edit_data['custo_uni']; ?>" name="custo_uni" disabled="true"/>
                                 <input type="hidden" value="<?php echo $edit_data['custo_uni']; ?>" name="custo_uni_hidden" />
                             </div>
                             <div class="col-md-3 form-group">
-                                <label>Data de Compra</label>
+                                <label>Data de Compra*</label>
                                 <input type="text" class="form-control" value="<?php echo $edit_data['data_compra']; ?>" name="data_compra" disabled="true"/>
                                 <input type="hidden" value="<?php echo $edit_data['data_compra']; ?>" name="data_compra_hidden" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-9 form-group">
-                                <label>Localização</label>
+                                <label>Localização*</label>
                                 <input type="text" class="form-control" value="<?php echo $edit_data['localizacao']; ?>" name="localizacao" />
                             </div>
                         </div>

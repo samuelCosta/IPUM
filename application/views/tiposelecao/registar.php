@@ -29,7 +29,7 @@
                     <div class="box-body">
                         <div class="row">  
                         <div class="col-md-9 form-group">    
-                            <label >Tipo de Material</label>
+                            <label >Tipo de Material*</label>
                             <select class="form-control" name="tipo_selecao" >                                
                                     <option value="">Selecione uma opção</option>
                                     <option value="TIPO_INSTRUMENTO">Tipo de Instrumento</option>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="row">
                         <div class="col-md-9 form-group">
-                            <label>Descrição</label>
+                            <label>Descrição*</label>
                             <input type="text" class="form-control" value="<?php echo set_value('descricao'); ?>" name="descricao" placeholder="Insira uma Descrição">
                         </div>
 

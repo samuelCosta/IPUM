@@ -31,33 +31,33 @@
                          <input type="hidden"  value="1" name="estado" >
                          
                         <div class="col-md-6 form-group">
-                            <label>Nome da Atuação</label>
+                            <label>Nome da Atuação*</label>
                             <input type="text" class="form-control" name="designacao" value="<?php echo set_value('designacao'); ?>" placeholder="Introduza o nome da atuação...">
                         </div>
 
                         <div class="col-md-6 form-group">    
-                            <label >Data</label>
+                            <label >Data*</label>
                             <input type="date" class="form-control" value="<?php echo set_value('dataEvento'); ?>" name="dataEvento">                     
                         </div>
 <!--                        alterar na base de dados-->
                         <div class="col-md-6 form-group">
-                            <label>Localização</label>
+                            <label>Localização*</label>
                             <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Introduza a localização...">
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label>Orçamento</label>
+                            <label>Orçamento*</label>
                             <input type="number" step="0.01" class="form-control" name="orcamento" value="<?php echo set_value('orcamento'); ?>" placeholder="Introduza o orcamento...">
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label>Cliente/Responsável</label>
+                            <label>Cliente/Responsável*</label>
                             <input type="text" class="form-control"  name="responsavel" value="<?php echo set_value('responsavel'); ?>" placeholder="Introduza a pessoa responsavel...">
                         </div>
                         
 
                            <div class="col-md-6 form-group">
-                            <label>Contacto</label>
+                            <label>Contacto*</label>
                             <input type="text" class="form-control" name="contacto" value="<?php echo set_value('contacto'); ?>" placeholder="Introduza o contacto...">
                         </div>
 
@@ -67,6 +67,7 @@
 
                     <div class="box-footer">  
                         <button type="submit" value="upload" class="btn btn-primary">Registar</button>
+                         <a class="btn" href="<?php echo site_url('Atuacoes/consultarAtuacoes'); ?>">Cancelar</a>
                     </div>
                     </form>
 

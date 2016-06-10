@@ -29,7 +29,7 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-6 form-group">    
-                                <label >Tipo de Instrumento</label>
+                                <label >Tipo de Instrumento*</label>
                                 <select class="form-control" name="tipo_instrumento" >
                                     <?php foreach ($tipos_instrumento as $tipo): ?>
                                         <option value="<?php echo $tipo['id']; ?>"><?php echo $tipo['descricao']; ?></option>
@@ -37,18 +37,18 @@
                                 </select>
                             </div>
                             <div class="col-md-4 form-group">
-                                <label>Número do Instrumento</label>
+                                <label>Número do Instrumento*</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('numero'); ?>" name="numero" placeholder="Insira o número" />
                             </div>
                         </div>
                         <div class="row">
                             
                             <div class="col-md-6 form-group">
-                                <label>Tamanho</label>
+                                <label>Tamanho*</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('tamanho'); ?>" name="tamanho" placeholder="Insira o tamanho" />
                             </div>
                             <div class="col-md-6 form-group">
-                                <label>Estado</label>
+                                <label>Estado*</label>
                                 <div class="row">
                                     <label class="radio-inline"><input type="radio" name="estado" value="1" class="minimal" >1</label>
                                     <label class="radio-inline"><input type="radio" name="estado" value="2" class="minimal" />2</label>
@@ -67,11 +67,11 @@
                                 </div>
                             </div>
                             <div id="localizacao" style="display: none" class="col-md-6 form-group">
-                                <label>Local de Armazenamento</label>
+                                <label>Local de Armazenamento*</label>
                                 <input type="text" class="form-control" value="<?php echo set_value('localizacao'); ?>" name="localizacao" placeholder="Insira a Localização" />
                             </div>
                             <div id="elemento" style="display: none" class="col-md-6 form-group">
-                                <label>Elemento</label>
+                                <label>Elemento*</label>
                                 <select class="form-control" name="elemento" >
                                     <option value="">Selecione uma opção</option>
                                     <?php foreach ($elementos as $elemento): ?>

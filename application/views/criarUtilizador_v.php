@@ -32,61 +32,60 @@
                         <input type="hidden"  value="0" name="socio" >
 
                         <div class="col-md-4 form-group">    
-                            <label >Nome</label>
+                            <label >Nome*</label>
                             <input type="text" class="form-control" value="<?php echo set_value('nome'); ?>" name="nome" placeholder="Introduza o nome completo...">                     
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>Alcunha</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('alcunha'); ?>" name="alcunha" placeholder="Introduza o alcunha...">
+                            <label>Alcunha*</label>
+                            <input type="text" class="form-control" value="<?php echo set_value('alcunha'); ?>" name="alcunha" placeholder="Introduza a alcunha...">
                         </div>
 
-
                         <div class="col-md-4 form-group">
-                            <label>Email address</label>
+                            <label>Email*</label>
                             <input type="email" class="form-control" name="email" value="<?php echo set_value('email'); ?>" placeholder="Introduza email">
                         </div>
 
 
                         <div class="col-md-4 form-group">
-                            <label>NIF</label>
+                            <label>NIF*</label>
                             <input type="text" class="form-control" name="nif" value="<?php echo set_value('nif'); ?>" placeholder="Introduza o seu NIF">
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>BI</label>
+                            <label>BI*</label>
                             <input type="text" class="form-control" name="bi" value="<?php echo set_value('bi'); ?>"placeholder="Introduza o número de BI">
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>Nª aluno</label>
-                            <input type="text" class="form-control" name="nAluno" value="<?php echo set_value('nAluno'); ?>" placeholder="Introduza o numero de aluno">
+                            <label>Nª aluno*</label>
+                            <input type="text" class="form-control" name="nAluno" value="<?php echo set_value('nAluno'); ?>" placeholder="Introduza o número de aluno">
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label>Password</label>
+                            <label>Password*</label>
                             <input type="password" class="form-control" name="password" value="<?php echo set_value('password'); ?>" placeholder="Introduza uma Password">
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label>Repita a Password</label>
+                            <label>Repita a Password*</label>
                             <input type="password" class="form-control" name="password2" value="<?php echo set_value('password2'); ?>" placeholder="Repita Password">
                         </div>
 
 
 
                         <div class="col-md-4 form-group">
-                            <label>Data de Nascimento</label>
+                            <label>Data de Nascimento*</label>
                             <input type="date" class="form-control" name="dataNascimento" value="<?php echo set_value('dataNascimento'); ?>">
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>Data de Entrada</label>
+                            <label>Data de Entrada*</label>
                             <input type="date" class="form-control" name="dataEntrada" value="<?php echo set_value('dataEntrada'); ?>">
                         </div>
 
                         <div class="col-md-4 form-group">
-                            <label>Privilégios</label>
+                            <label>Privilégios*</label>
                             <select class="form-control" name="privilegio">
                                 <option value="" <?php echo set_select('privilegio', '', TRUE); ?> >---</option>
                                 <option value="Administrador" <?php echo set_select('privilegio', 'Administrador'); ?> >Administrador</option>
@@ -97,7 +96,7 @@
                         <div class="col-md-12 form-group">
                             <label for="exampleInputFile">Foto</label>
                             <input type="file"  name="foto" >
-                            <p class="help-block">Se possivel insira uma foto.</p>
+                            <p class="help-block">Se possível insira uma foto.</p>
                         </div>
 
                     </div><!-- /.box-body -->
@@ -105,6 +104,7 @@
 
                     <div class="box-footer">  
                         <button  type="submit" value="upload" class="btn btn-primary">Registar</button>
+                         <a class="btn" href="<?php echo site_url('Utilizador/consultarUtilizadoresAtivos'); ?>">Cancelar</a>
                     </div>
                     </form>
                 </div><!-- /.box -->    

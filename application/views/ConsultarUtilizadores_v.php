@@ -28,7 +28,7 @@
                                     <th>Nome</th>
                                     <th>Alcunha</th>
                                     <th>Email</th>
-                                    <td></td>
+                                    <th></th>
                                     <th></th>
 
 
@@ -40,15 +40,14 @@
                                     <th>Nome</th>
                                     <th>Alcunha</th>
                                     <th>Email</th>
-                                    <td></td>
                                     <th></th>
-
+                                     <th></th>
                                 </tr>
                             </tfoot>
 
                             <tbody>
                                 <?php foreach ($utilizadoresAtivos as $uti): ?>
-                                    <tr style="cursor: pointer" onclick= script:location.href="<?= base_url(); ?>utilizador/detalheUtilizador/<?php echo $uti->idUtilizador; ?>">
+                                    <tr style="cursor: pointer" onclick=script:location.href="<?= base_url('utilizador/detalheUtilizador/'.$uti->idUtilizador) ?>">
                                         <td><?= $uti->nome; ?></td>
                                         <td><?= $uti->alcunha; ?></td>
                                         <td><?= $uti->email; ?></td>

@@ -24,7 +24,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nome da Atividade</th>
-                                        <th>Data Inicio</th>
+                                        <th>Data Início</th>
                                         <th>Localização</th>
                                         <th>Duração</th>
                                         <th>Orçamento</th>
@@ -34,7 +34,7 @@
                                 <tfoot>
                                     <tr>
                                         <th>Nome da Atividade</th>
-                                        <th>Data Inicio</th>
+                                        <th>Data Início</th>
                                         <th>Localização</th>
                                         <th>Duração</th>
                                         <th>Orçamento</th>

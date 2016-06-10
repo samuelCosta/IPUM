@@ -30,13 +30,13 @@
                         <div class="row">
                             
                         <div class="col-md-8 form-group">
-                            <label><?php if ($edit_data['parent_id'] === NULL) { echo 'Tutorial música'; } else {     echo 'Tutorial Instrumento';} ?></label>
+                            <label><?php if ($edit_data['parent_id'] === NULL) { echo 'Tutorial música'; } else {     echo 'Tutorial Instrumento';} ?>*</label>
                             <input type="text" class="form-control" value="<?php echo $edit_data['nome'] ?>" name="nome">
                         </div>
                         </div>
                         <div class="row">
                         <div class="col-md-8 form-group">
-                            <label>Link</label>
+                            <label>Link*</label>
                             <input type="text" class="form-control" value="<?php echo $edit_data['link'] ?>" name="link" placeholder="Insira o link da música">
                         </div>
                         </div>
