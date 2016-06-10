@@ -113,7 +113,7 @@
                                                             }
                                                         },
                                                         "columnDefs": [
-                                                            {targets: 2, orderable: true}
+                                                            {targets: 2, orderable: false}
                                                         ]
                                                     });
                                                 });</script>
