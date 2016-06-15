@@ -4,15 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Utilizador extends CI_Controller {
 
-     function __construct() {
-        parent::__construct();
-     
-          if($this->session ->userdata('conectado')==false){
-            redirect('Welcome');
-            
-        }       
-        
-    }
+//     function __construct() {
+//        parent::__construct();
+//     
+//          if($this->session ->userdata('conectado')==false){
+//            redirect('Welcome');
+//            
+//        }       
+//        
+//    }
     
 
     public function index() {
@@ -136,7 +136,7 @@ class Utilizador extends CI_Controller {
         $this->form_validation->set_rules('nome', 'Nome', 'required|ucwords|is_unique[utilizador.nome]');
         $this->form_validation->set_rules('alcunha', 'Alcunha', 'required|alpha');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|strtolower|valid_email|is_unique[utilizador.email]');
-        $this->form_validation->set_rules('password', 'Password', 'required|strtolower');
+        $this->form_validation->set_rules('password', 'Password', 'required|strtolower|min_length[6]');
         $this->form_validation->set_message('matches', 'O campo %s esta diferente do campo %s');
         $this->form_validation->set_rules('password2', 'Repita Password', 'required|strtolower|matches[password]');
         $this->form_validation->set_rules('nif', 'NIF', 'required|numeric|exact_length[9]|is_unique[utilizador.nif]');
