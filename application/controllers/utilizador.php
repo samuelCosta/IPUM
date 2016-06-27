@@ -179,7 +179,7 @@ class Utilizador extends CI_Controller {
             if ($this->upload->do_upload('foto')) {
                 // coloca o nome do ficheiro na variavel
                 $upload_data = $this->upload->data();
-                $_POST['foto'] = $upload_data['file_name'];
+                $_POST['foto'] = utf8_encode($upload_data['file_name']);
                 return true;
             } else {
                 // mostrar os erros 
